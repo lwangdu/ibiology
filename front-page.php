@@ -4,7 +4,7 @@
  * Front page Template
  *
  * @package		iBiology
- * @Authour  	Lobsang Wangdu
+ * @Authour  	Anca Mosoiu and Lobsang Wangdu
  * @Link 	 	https://www.yowangdu.com
  * @copyright 	Copyrigh (c) 2017, Lobsang Wangdu
  * @license 	GPL-2.0+

@@ -3,9 +3,9 @@
  * Theme customization
  *
  * @package		iBiology
- * @Authour  	Lobsang Wangdu
+ * @Authour  	Anca Mosoiu and Lobsang Wangdu
  * @Link 	 	https://www.yowangdu.com
- * @copyright 	Copyrigh (c) 2017, Lobsang Wangdu
+ * @copyright 	Copyrigh (c) 2017, iBiology
  * @license 	GPL-2.0+
  */
 
@@ -33,6 +33,15 @@ function ibiology_setup() {
 	
 	//Add viwport meta ag for mobile browsers.
 	add_theme_support( 'genesis-responsive-viewport' );
+	
+	//* Add support for custom header
+add_theme_support( 'custom-header', array(
+	'width'           => 694,
+	'height'          => 139,
+	'header-selector' => '.site-title a',
+	'header-text'     => false,
+	'flex-height'     => true,
+) );
 	
 	// Add them support for accessibility.
 	add_theme_support( 'genesis-accessibility', array(
