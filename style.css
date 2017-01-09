@@ -591,12 +591,13 @@ th:first-child {
 .title-area {
 	float: left;
 	padding: 10px 0;
-	width: 694px;
+	width: 1280px;
 }
 
 .header-image .title-area {
+	float: left;
 	margin: 0 auto;
-	max-width: 694px;
+	max-width: 1280px;
 	padding: 0;
 }
 
@@ -623,7 +624,7 @@ th:first-child {
 	background-position: center !important;
 	background-size: contain !important;
 	float: left;
-	min-height: 139px;
+	min-height: 129px;
 	width: 100%;
 }
 
@@ -1315,8 +1316,8 @@ p.entry-meta {
 	.menu-toggle,
 	.sub-menu-toggle {
 		border-width: 0;
-		background-color: #fefefe;
-		color: #333;
+		background-color: #222;
+		color: #fff;
 		display: block;
 		margin: 0 auto;
 		overflow: hidden;
@@ -1423,13 +1424,13 @@ p.entry-meta {
 	.js nav button:hover,
 	.js .menu-toggle:hover,
 	.js .nav-primary {
-		background-color: #fefefe;
+		background-color: #222;
 		color: #333;
 	}
 
 	.js nav button:focus,
 	.js .menu-toggle:focus {
-		background-color: #fefefe;
+		background-color: #222;
 		color: #0099d1;
 	}
 
