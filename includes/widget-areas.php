@@ -9,16 +9,16 @@
  * @license 	GPL-2.0+
  */
 
-//* Register home welocme widget area
+//* Register home new talk widget area
 genesis_register_sidebar( array(
-'id'           => 	'home-welcome',
-'name'         => 	__( 'Home Welcome', 'ibiology' ),
+'id'           => 	'new-talk',
+'name'         => 	__( 'New talk', 'ibiology' ),
 'description'  => 	__( 'This is a home widget area that show on the front page', 'ibiology' ),
 ) );
 	
-// Register call to action widget area
+// Register playlist widget area
 genesis_register_sidebar( array(
-'id'            => 	'call-to-action',
-'name'          => 	__( 'Call to Action', 'ibiology' ),
-'description'   => 	__( 'This is a call to action  widget area that show on the front page', 'ibiology' ),
+'id'            => 	'playlist',
+'name'          => 	__( 'Playlist', 'ibiology' ),
+'description'   => 	__( 'This is a playlist  widget area that show on the front page', 'ibiology' ),
 ) );

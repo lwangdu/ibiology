@@ -20,8 +20,8 @@ add_action( 'genesis_meta', 'ibiology_home_page_setup' );
 */
 function ibiology_home_page_setup() {
 	$home_sidebars = array(
-	'home_welcome' 		=>is_active_sidebar( 'home-welcome' ),
-	'call_to_action' 	=>is_active_sidebar( 'call-to-action' ),
+	'new_talk' 		=>is_active_sidebar( 'new-talk' ),
+	'playlist' 		=>is_active_sidebar( 'playlist' ),
 	);
 // Return early if no sidebars are active.
 if ( ! in_array( true, $home_sidebars )) {
@@ -29,27 +29,27 @@ if ( ! in_array( true, $home_sidebars )) {
 }
 	
 // Add home welcome area if "home welcom" widget area is active.
-if ( $home_sidebars['home_welcome']) {
-	add_action( 'genesis_after_header', 'ibiology_add_home_welcome' );
+if ( $home_sidebars['new_talk']) {
+	add_action( 'genesis_after_header', 'ibiology_add_new_talk' );
 
 }
 	
 		
 // Add home call to action area if "Call to action" widget area is active.
-if ( $home_sidebars['call_to_action']) {
-	add_action( 'genesis_after_header', 'ibiology_add_call_to_action');
+if ( $home_sidebars['playlist']) {
+	add_action( 'genesis_after_header', 'ibiology_add_playlist');
 	}
 	
 }
 /**
-* Display content for the "Home Welcome" section.
+* Display content for the "Home new talk" section.
 *
 * @since 1.0.0
 */
-function ibiology_add_home_welcome() {
-	genesis_widget_area('home-welcome',
+function ibiology_add_new_talk() {
+	genesis_widget_area('new-talk',
 		array(
-			'before' 	=>'<div class="home-welcome"><div class="wrap">',
+			'before' 	=>'<div class="new-talk"><div class="wrap">',
 			'after'		=> '</div></div>',
 		)
 	);
@@ -57,14 +57,14 @@ function ibiology_add_home_welcome() {
 }
 
 /**
-* Display content for the "Call to Action" section.
+* Display content for the "Playlist" section.
 *
 * @since 1.0.0
 */
-function ibiology_add_call_to_action() {
-	genesis_widget_area('call-to-action',
+function ibiology_add_playlist() {
+	genesis_widget_area('playlist',
 		array(
-			'before' 	=>'<div class="call-to-action"><div class="wrap">',
+			'before' 	=>'<div class="playlist"><div class="wrap">',
 			'after'		=> '</div></div>',
 		)
 	);

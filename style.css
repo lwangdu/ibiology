@@ -1093,25 +1093,25 @@ p.entry-meta {
 }
 
 
-.home-welcome .wrap {
+.new-talk .wrap {
 	background: url(images/mainImages.jpg) no-repeat;
 	font-size: 24px;
 	margin: 0 auto;
 	min-height: 450px;
-	max-width: 1200px;
+	max-width: 1240px;
 	padding: 40px 100px 0;
 	text-align: center;
 }
 
-.home-welcome .h3 {
+.new-talk .h3 {
 	font-size: 60px;
 }
 
-.call-to-action .wrap {
+.playlist .wrap {
 	margin: 0 auto;
 	padding: 40px;
 	text-align: left;
-	max-width: 1200px;
+	max-width: 1240px;
 	
 	
 }
