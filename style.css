@@ -578,6 +578,7 @@ th:first-child {
 
 .site-header {
 	background-color: #000 !important;
+	border-top: 2px solid #0099d1;
 }
 
 .site-header > .wrap {
@@ -907,7 +908,7 @@ p.entry-meta {
 }
 
 .entry-footer .entry-meta {
-	border-top: 1px solid #eee;
+	border-top: 2px solid #0099d1;
 	padding-top: 24px;
 }
 
@@ -1049,6 +1050,7 @@ p.entry-meta {
 .footer-widgets a {
 	color: #fff;
 	text-decoration: none;
+	display: inline !important;
 }
 
 
@@ -1080,11 +1082,12 @@ p.entry-meta {
 ---------------------------------------------------------------------------------------------------- */
 
 .site-footer {
-	background-color: #000;
-	border-top: 1px solid #333;
-	font-size: 16px;
+	background-color: #f6f6f6;
+	border-top: 4px solid #0099d1;
+	color: #333 !important;
+	font-size: 14px;
 	line-height: 1;
-	padding: 60px 0;
+	padding: 20px 0;
 	text-align: center;
 }
 
@@ -1331,7 +1334,7 @@ p.entry-meta {
 	}
 
 	.menu-toggle {
-		border-top: 1px solid #eee;
+		border-top: 1px solid #333;
 		line-height: 20px;
 		position: relative;
 		right: 0;
@@ -1425,7 +1428,7 @@ p.entry-meta {
 	.js .menu-toggle:hover,
 	.js .nav-primary {
 		background-color: #222;
-		color: #333;
+		color: #fff;
 	}
 
 	.js nav button:focus,
