@@ -93,3 +93,10 @@ function ibiology_enqueue_scripts_styles() {
 	wp_localize_script( 'ibiology-responsive-menu', 'ibiologyL10n', $output );
 
 }
+
+//* Customize the footer credits
+	add_filter('genesis_footer_creds_text', 'ibiology_footer_creds_filter');
+	function ibiology_footer_creds_filter( $creds ) {
+		$creds = '[footer_copyright] &middot; <a href="https://www.ibiology.org">iBiology</a> &middot; <a href="https://www.ibiology.org/about" title="About Us">About Us</a>';
+		return $creds;
+	}
