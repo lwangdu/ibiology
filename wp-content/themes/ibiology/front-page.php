@@ -62,6 +62,7 @@ function ibiology_add_new_talk() {
 * @since 1.0.0
 */
 function ibiology_add_playlist() {
+
 	echo "<div class='wrap'><p>Welcome!!!</p></div>";
 	genesis_widget_area('playlist',
 		array(
