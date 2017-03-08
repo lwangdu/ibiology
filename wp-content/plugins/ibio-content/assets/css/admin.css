@@ -1,0 +1,77 @@
+/* CSS for the admin portion of the LBL Profiles Plugin */
+
+/* Hide the Gravatar image element */
+
+.profile-php tr.user-profile-picture {
+	display: none;
+}
+
+.user-url-wrap, .user-googleplus-wrap, .user-description-wrap, .user-pass1-wrap{
+	display: none;
+}
+
+/* resize the avatar image in the user listing */
+
+.wp-admin .username .photo,
+.wp-admin .wp-list-table .photo{
+	max-width:50px;
+	max-height:50px;
+}
+
+.wp-admin-bar-user-info .photo{
+	max-width: 80px;
+}
+
+.wp-admin .wp-list-table .locked-avatar{
+	float:right;
+	margin-right: 8px;
+}
+
+.wp-list-table .avatar-container,
+.activity-block .avatar-container,
+.revisionsdiv .avatar-container{
+	height: 32px;
+	width: 32px;
+	overflow: hidden;
+	float:left;
+	margin: 0 10px 10px 0;
+}
+
+#wpadminbar #wp-admin-bar-my-account.with-avatar > a .avatar-container {
+	width: auto;
+	height: 16px;
+	padding: 0;
+	border: 1px solid #82878c;
+	background: #eee;
+	line-height: 24px;
+	vertical-align: middle;
+	margin: -4px 0 0 6px;
+	float: none;
+	display: inline;
+}
+
+#wpadminbar #wp-admin-bar-my-account.with-avatar > a .avatar-container img{
+	margin:0;
+}
+
+#activity-widget #the-comment-list .avatar-container{
+	width: 50px;
+	height: 50px;
+	margin: 0 0 0 0;
+}
+
+#activity-widget #the-comment-list .avatar-container .avatar,
+.wp-list-table .avatar-container img{
+	max-width: 100%; 
+	height: auto;
+	position: relative;
+}
+
+#activity-widget #the-comment-list .avatar-container .avatar{
+	margin-top: -10px;
+}
+
+a.staffpage{
+	display:block;
+}
+

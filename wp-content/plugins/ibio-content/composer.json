@@ -1,0 +1,27 @@
+{
+    "name" : "ibiology/ibio-content",
+    "description" : "Post Types for iBiology website",
+    "type" : "wordpress-plugin",
+    "keywords" : [ "wordpress" ],
+    "license" : "GPL-2.0+",
+    "authors" : [
+        {
+            "name" : "Anca Mosoiu",
+            "email" : "anca@techliminal.com",
+            "role" : "Developer"
+        },
+        {
+            "name" : "Lobsang Wandu",
+            "email" : "",
+            "role" : "Developer"
+        },
+    ],
+    "require" : {
+        "php" : ">=5.5",
+    },
+    "homepage" : "http://ibiology.org",
+    "support": {
+        "issues": "https://github.com/lwangdu/ibiology/issues",
+        "source": "https://github.com/lwangdu/ibiology/"
+    }
+}
