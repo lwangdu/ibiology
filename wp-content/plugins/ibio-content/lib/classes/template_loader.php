@@ -49,19 +49,15 @@ class LBLProfile_Template_Loader {
 			return $template;
 		}
 
-		if ( is_single() && get_post_type() == LBLStaffProfile::$post_type ) {
+		$post_type = get_post_type();
+		if ( is_single() && 
+				( $post_type == IBioTalk::$post_type 
+					|| $post_type == IBioSpeaker::$post_type 
+					|| $post_type == IBioPlaylist::$post_type ) ){
 
-			$file 	= 'single-staff_page.php';
+			$file 	= 'single-'.$post_type.'.php';
 			$find[] = $file;
 			$find[] = $lbl_profiles_plugin->template_path . $file;
-
-
-		} elseif ( is_post_type_archive( 'staff_page' )  ) {
-
-			$file 	= 'archive-staff_page.php';
-			$find[] = $file;
-			$find[] = $lbl_profiles_plugin->template_path . $file;
-
 		}
 
 		if ( $file ) {
