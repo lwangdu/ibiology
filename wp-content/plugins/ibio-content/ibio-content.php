@@ -36,8 +36,8 @@ class IBioContentPlugin{
 		
 
 		add_action('admin_enqueue_scripts', array( &$this, 'load_admin_scripts' ));
-
 		add_action( 'wp_enqueue_scripts', array( &$this, 'load_scripts' ) );
+		add_action('wp_loaded', array(&$this, 'create_connection_types'), 10);
 	}
 
 
@@ -63,8 +63,25 @@ class IBioContentPlugin{
 		$this->talks = new IBioTalk();
 		$this->playlists = new IBioPlaylist();
 		
-		// Initialize the Posts2Posts relationships.
-		
+
+	}
+
+	/* Load styles and scripts for use in the admin interface */
+	function load_admin_scripts(){
+		wp_enqueue_style('profile-admin', plugin_dir_url( __FILE__ ) . 'assets/css/admin.css' );
+		wp_register_script( 'js-datatables', '//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js', array( 'jquery' ), '1.10.12', true);
+		wp_enqueue_script( 'lbl-profiles', plugin_dir_url( __FILE__ ) . '/assets/js/profiles.js', array( 'jquery' , 'js-datatables' ), '1.0.0' );
+		wp_enqueue_script( 'js-datatables');
+		wp_enqueue_style( 'js-datatables-css', '//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css');
+	} 
+
+	/* Load display scripts */
+	function load_scripts(){
+
+	}
+	
+	/* Create the Post2Posts connection types we will be using */
+	function create_connection_types(){
 		if ( function_exists( 'p2p_register_connection_type' ) ){
         p2p_register_connection_type( array(
           'name' => 'speaker_to_talk',
@@ -86,20 +103,6 @@ class IBioContentPlugin{
       } else {
       	error_log('Posts 2 Posts is not loaded yet.');
       }
-	}
-
-	/* Load styles and scripts for use in the admin interface */
-	function load_admin_scripts(){
-		wp_enqueue_style('profile-admin', plugin_dir_url( __FILE__ ) . 'assets/css/admin.css' );
-		wp_register_script( 'js-datatables', '//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js', array( 'jquery' ), '1.10.12', true);
-		wp_enqueue_script( 'lbl-profiles', plugin_dir_url( __FILE__ ) . '/assets/js/profiles.js', array( 'jquery' , 'js-datatables' ), '1.0.0' );
-		wp_enqueue_script( 'js-datatables');
-		wp_enqueue_style( 'js-datatables-css', '//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css');
-	} 
-
-	/* Load display scripts */
-	function load_scripts(){
-
 	}
 
 }
