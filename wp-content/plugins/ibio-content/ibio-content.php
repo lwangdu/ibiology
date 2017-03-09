@@ -88,8 +88,7 @@ class IBioContentPlugin{
           'from' => IbioSpeaker::$post_type,
           'to' => IbioTalk::$post_type,
           'cardinality' => 'many-to-many',
-          'admin_column' => 'none',
-          'title' => array('from' => "Speakers", 'to' => 'Talks')
+          'title' => array('from' => "Talks for this Speaker", 'to' => 'Speakers in this Talk')
         ) );
         
 				p2p_register_connection_type( array(
@@ -97,8 +96,7 @@ class IBioContentPlugin{
           'from' => IbioPlaylist::$post_type,
           'to' => IbioTalk::$post_type,
           'cardinality' => 'one-to-many',
-          'admin_column' => 'none',
-          'title' => array('from' => "Playlist", 'to' => 'Talks')
+          'title' => array('from' => "Talks on Playlist", 'to' => 'Playlists')
         ) );
       } else {
       	error_log('Posts 2 Posts is not loaded yet.');
