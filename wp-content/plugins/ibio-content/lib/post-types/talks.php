@@ -19,7 +19,7 @@ class IBioTalk {
 	public static $field_names = array();
 
 
-	public function init(){
+	public function __construct(){
 		add_action( 'init', array(&$this, 'create_post_type'));	
 		
 		//add_action( 'init', array(&$this, 'create_taxonomies'));	
