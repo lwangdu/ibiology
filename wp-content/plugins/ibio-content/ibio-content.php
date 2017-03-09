@@ -47,7 +47,6 @@ class IBioContentPlugin{
 		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/playlists.php' );
 	
 		/* Functions */
-		require_once ( plugin_dir_path( __FILE__ ) . '/lib/functions/templates.php' );
 		
 		/* Classes */
 		require_once ( plugin_dir_path( __FILE__ ) . '/lib/classes/template_loader.php' );
