@@ -19,6 +19,11 @@ if( WP_DEBUG ) {
 
 class IBioContentPlugin{
 	
+	
+	public $talks;
+	public $speakers;
+	public $playlists;
+	
 	public $template_path;
 	
 	function __construct(){
@@ -54,10 +59,10 @@ class IBioContentPlugin{
 
 
 	function init_objects(){
-
-		global $lbl_profiles;
-		$lbl_profiles = new LBLStaffProfile();
-		$lbl_profiles->init();
+		$this->speakers = new IBioSpeaker();
+		$this->talks = new IBioTalk();
+		$this->playlists = new IBioPlaylist();
+		
 	}
 
 	/* Load styles and scripts for use in the admin interface */
