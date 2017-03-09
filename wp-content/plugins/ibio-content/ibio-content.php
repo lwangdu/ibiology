@@ -83,6 +83,8 @@ class IBioContentPlugin{
           'admin_column' => 'none',
           'title' => array('from' => "Playlist", 'to' => 'Talks')
         ) );
+      } else {
+      	error_log('Posts 2 Posts is not loaded yet.');
       }
 	}
 
