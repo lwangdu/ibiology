@@ -63,6 +63,27 @@ class IBioContentPlugin{
 		$this->talks = new IBioTalk();
 		$this->playlists = new IBioPlaylist();
 		
+		// Initialize the Posts2Posts relationships.
+		
+		if ( function_exists( 'p2p_register_connection_type' ) ){
+        p2p_register_connection_type( array(
+          'name' => 'speaker_to_talk',
+          'from' => IbioSpeaker::$post_type,
+          'to' => IbioTalk::$post_type,
+          'cardinality' => 'many-to-many',
+          'admin_column' => 'none',
+          'title' => array('from' => "Speakers", 'to' => 'Talks')
+        ) );
+        
+				p2p_register_connection_type( array(
+          'name' => 'playlist_to_talks',
+          'from' => IbioPlaylist::$post_type,
+          'to' => IbioTalk::$post_type,
+          'cardinality' => 'one-to-many',
+          'admin_column' => 'none',
+          'title' => array('from' => "Playlist", 'to' => 'Talks')
+        ) );
+      }
 	}
 
 	/* Load styles and scripts for use in the admin interface */
