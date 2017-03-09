@@ -52,7 +52,7 @@ class IBioSpeaker {
 				'labels'               => array(
 					'name'                => _x( 'Speakers', 'Post Type General Name', 'ibiology' ),
 					'singular_name'       => _x( 'Speaker', 'Post Type Singular Name', 'ibiology' ),
-					'menu_name'           => __( 'Speakers/Videos', 'ibiology' ),
+					'menu_name'           => __( 'Speakers', 'ibiology' ),
 					'all_items'           => __( 'All Speakers', 'ibiology' ),
 					'view_item'           => __( 'View Speaker', 'ibiology' ),
 					'add_new_item'        => __( 'Add New Speaker', 'ibiology' ),
@@ -82,7 +82,7 @@ class IBioSpeaker {
 				'rewrite'             => array('slug' => 'people', 'with_front' => false),
 				'capability_type'			=> 'post',
 				'map_meta_cap'				=> true,
-				'menu_icon'						=> 'dashicons-video-alt2'
+				'menu_icon'						=> 'dashicons-groups'
 					)
 			);
 

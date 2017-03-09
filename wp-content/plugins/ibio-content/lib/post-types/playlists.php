@@ -52,7 +52,7 @@ class IBioPlaylist {
 				'labels'               => array(
 					'name'                => _x( 'Playlists', 'Post Type General Name', 'ibiology' ),
 					'singular_name'       => _x( 'Playlist', 'Post Type Singular Name', 'ibiology' ),
-					'menu_name'           => __( 'Playlists/Videos', 'ibiology' ),
+					'menu_name'           => __( 'Playlists', 'ibiology' ),
 					'all_items'           => __( 'All Playlists', 'ibiology' ),
 					'view_item'           => __( 'View Playlist', 'ibiology' ),
 					'add_new_item'        => __( 'Add New Playlist', 'ibiology' ),
@@ -82,7 +82,7 @@ class IBioPlaylist {
 				'rewrite'             => array('slug' => 'people', 'with_front' => false),
 				'capability_type'			=> 'post',
 				'map_meta_cap'				=> true,
-				'menu_icon'						=> 'dashicons-video-alt2'
+				'menu_icon'						=> 'dashicons-images-alt'
 					)
 			);
 
