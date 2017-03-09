@@ -43,6 +43,8 @@ class IBioContentPlugin{
 
 		/* Post Types and Classes */
 		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/talks.php' );
+		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/speakers.php' );
+		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/playlists.php' );
 	
 		/* Functions */
 		require_once ( plugin_dir_path( __FILE__ ) . '/lib/functions/templates.php' );
@@ -75,8 +77,8 @@ class IBioContentPlugin{
 
 }
 
-global $lbl_profiles_plugin;
-$lbl_profiles_plugin = new LBLProfilePlugin();
+global $ibiology_content;
+$ibiology_content = new IBioContentPlugin();
 
 /* -----------   Activate / Deactivate  ------------- */
 register_activation_hook(__FILE__, 'tl_profiles_activate');
