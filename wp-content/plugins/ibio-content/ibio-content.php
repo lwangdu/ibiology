@@ -88,6 +88,7 @@ class IBioContentPlugin{
           'from' => IbioSpeaker::$post_type,
           'to' => IbioTalk::$post_type,
           'cardinality' => 'many-to-many',
+          'admin_column' => 'any',
           'title' => array('from' => "Talks for this Speaker", 'to' => 'Speakers in this Talk')
         ) );
         
@@ -96,6 +97,7 @@ class IBioContentPlugin{
           'from' => IbioPlaylist::$post_type,
           'to' => IbioTalk::$post_type,
           'cardinality' => 'one-to-many',
+          'admin_column' => 'any',
           'title' => array('from' => "Talks on Playlist", 'to' => 'Playlists')
         ) );
       } else {
