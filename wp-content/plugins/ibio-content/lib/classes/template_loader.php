@@ -43,7 +43,7 @@ class IBio_Template_Loader {
 		$find = array( );
 		$file = '';
 
-		global $lbl_profiles_plugin;
+		global $ibiology_content;
 
 		if ( is_embed() ) {
 			return $template;
@@ -57,13 +57,13 @@ class IBio_Template_Loader {
 
 			$file 	= 'single-'.$post_type.'.php';
 			$find[] = $file;
-			$find[] = $lbl_profiles_plugin->template_path . $file;
+			$find[] = $ibiology_content->template_path . $file;
 		}
 
 		if ( $file ) {
 			$template       = locate_template( array_unique( $find ) );
 			if ( ! $template ) {
-				$template = $lbl_profiles_plugin->template_path . $file;
+				$template = $ibiology_content->template_path . $file;
 			}
 		}
 
