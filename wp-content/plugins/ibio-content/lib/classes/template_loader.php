@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Template Loader
  *
- * @class 		LBLProfile_Template_Loader
+ * @class 		IBio_Template_Loader
  * @version		1.0
  * @package		LBLProfile
  * @category	Class
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @description A template loader based on WooCommerce's excellent feature.
  *
  */
-class LBLProfile_Template_Loader {
+class IBio_Template_Loader {
 
 	/**
 	 * Hook in methods.
@@ -72,4 +72,4 @@ class LBLProfile_Template_Loader {
 
 }
 
-LBLProfile_Template_Loader::init();
+IBio_Template_Loader::init();
