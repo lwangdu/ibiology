@@ -577,7 +577,7 @@ th:first-child {
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header {
-	background-color: #fefefe !important;
+	background-color: #333 !important;
 	border-top: 2px solid #0099d1;
 }
 
