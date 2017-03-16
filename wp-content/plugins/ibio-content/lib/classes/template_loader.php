@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @class 		IBio_Template_Loader
  * @version		1.0
- * @package		LBLProfile
+ * @package		IBiology
  * @category	Class
  * @author 		Tech Liminal
  * @description A template loader based on WooCommerce's excellent feature.

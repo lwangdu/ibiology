@@ -15,7 +15,7 @@
 class IBioPlaylist {
 
 	public static $post_type = 'ibiology_playlist';
-	private static $prefix = "_ibio_";
+	private static $prefix = "ibio_";
 	public static $field_names = array();
 
 
