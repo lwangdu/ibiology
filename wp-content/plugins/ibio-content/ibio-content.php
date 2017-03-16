@@ -38,7 +38,7 @@ class IBioContentPlugin{
 		add_action('admin_enqueue_scripts', array( &$this, 'load_admin_scripts' ));
 		add_action( 'wp_enqueue_scripts', array( &$this, 'load_scripts' ) );
 		add_action('wp_loaded', array(&$this, 'create_connection_types'), 10);
-		add_action ('init', array(&this, 'create_taxonomies' ), 10 );
+		add_action ('init', array(&$this, 'create_taxonomies' ), 10 );
 	}
 
 
@@ -108,8 +108,7 @@ class IBioContentPlugin{
 	
 	function create_taxonomies(){
 	function create_custom_taxonomies()
-{
-    register_taxonomy('length', 'post', array(
+	    register_taxonomy('length', 'post', array(
         'hierarchical' => true,
         'labels' => array(
             'name' => 'Length',
