@@ -108,7 +108,6 @@ class IBioContentPlugin{
 	}
 	
 	function create_taxonomies(){
-	function create_custom_taxonomies()
 	    register_taxonomy('length', 'post', array(
         'hierarchical' => true,
         'labels' => array(
