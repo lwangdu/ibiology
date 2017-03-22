@@ -69,10 +69,10 @@ class IBio_Fields_Display_Helper {
 						//var_dump($repeaters[$field['name']]);
 						foreach($subfields as $sf){
 							foreach($repeaters[$field['name']] as $sfn){
-								if ($sf == 'video_url'){
+								if ($sfn == 'video_url'){
 									echo wp_oembed_get($sf[$sfn]);
 								} else {
-									echo "<strong> $f :</strong>" . $sf[$sfn];
+									echo "<strong> $sfm :</strong>" . $sf[$sfn];
 								}
 							}
 						}
