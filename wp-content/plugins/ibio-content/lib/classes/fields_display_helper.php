@@ -40,10 +40,9 @@ class IBio_Fields_Display_Helper {
 			
 		}	
 		
-		echo "<pre>";
+
 		echo "<h2>Repeaters</h2>";
 		var_dump($repeaters);
-		echo "</pre>";		
 		
 		// show the fields that are in a table form	
 		$fields = get_field_objects();
@@ -65,12 +64,13 @@ class IBio_Fields_Display_Helper {
 						echo '<td><a href="' . $file_parts['url'] . '"><img class="file-icon" src="' . $file_parts['icon'] . '" alt=""/> ' . $file_parts['filename'] . '</a></td>';
 					} else if ($field['type'] == 'number'){
 						echo $field['value'];
-					} else if ($field['type'] == 'repeater' && is_array($field['value'] ) ){
+					} else if ($field['type'] == 'repeater' ){
 						$subfields = $field['value'];
 						foreach($repeater[$field['name']] as $sf){
 							echo "<strong> $f :</strong>" . $subfields[$sf];
 						
 						}
+						var_dump($subfields);
 
 					} else if ($field['type'] == 'url'){
 						echo '<td><a href="'.$field['value'] . '">' . $field['value'] . '</a></td>';
