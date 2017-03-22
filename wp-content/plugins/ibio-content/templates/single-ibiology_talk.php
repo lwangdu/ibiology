@@ -30,6 +30,7 @@ function ibio_related_content(){
 }
 
 function ibio_talks_speaker(){
+	global $talk_speaker;
 	echo "<h2>Speaker</h2>";
 	
 	echo "<pre>";
@@ -43,6 +44,6 @@ function ibio_talks_speaker(){
 add_action('genesis_entry_header', 'ibio_talks_info', 20);
 add_action('genesis_entry_content', 'ibio_talks_videos', 2);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 20);
-add_action('genesis_loop', 'ibio_related_content', 15);
+add_action('genesis_entry_content', 'ibio_related_content', 21);
 
 genesis();
