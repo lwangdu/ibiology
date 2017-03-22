@@ -70,10 +70,20 @@ class IBio_Fields_Display_Helper {
 						//var_dump($repeaters[$field['name']]);
 						foreach($subfields as $sf){
 							foreach($repeaters[$field['name']] as $sfn){
+								switch ($sfn){
+									case "video_url":
+										echo wp_oembed_get($sf[$sfn]);
+										break;
+									case "transcript":
+										echo '<div class="su-accordion"><div class="su-spoiler su-spoiler-style-default su-spoiler-icon-plus su-spoiler-closed">';
+										echo '<div class="su-spoiler-title"><span class="su-spoiler-icon"></span>Expand Transcript</div><div class="su-spoiler-content su-clearfix">';
+										echo  $sf[$sfn];
+										echo '</div></div></div>';
+								}
 								if ($sfn == 'video_url'){
-									echo wp_oembed_get($sf[$sfn]);
+									
 								} else {
-									echo "<strong> $sfm :</strong>" . $sf[$sfn] . "<Br/>";
+									echo "<strong> $sfn :</strong>" . $sf[$sfn] . "<Br/>";
 								}
 							}
 						}
