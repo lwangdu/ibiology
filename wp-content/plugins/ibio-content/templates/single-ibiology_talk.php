@@ -31,11 +31,12 @@ function ibio_related_content(){
 
 function ibio_talks_speaker(){
 	global $talk_speaker;
-	echo "<h2>Speaker</h2>";
+	echo "<h2>Speaker Bio</h2>";
 	
-	echo "<pre>";
-	var_dump($talk_speaker);
-	echo "</pre>";
+	foreach ($talk_speaker as $s){
+		$url = get_post_permalink($s->ID);
+		echo "<h3><a href='$url'>" . $s->post_title . "</a></h3>" . $s->post_content;
+	}	
 
 }
 
