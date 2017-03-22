@@ -35,7 +35,7 @@ function ibio_talks_speaker(){
 	
 	foreach ($speaker_talks as $s){
 		$url = get_post_permalink($s->ID);
-		echo "<h3><a href='$url'>" . $s->post_title . "</a></h3>" . $s->post_content;
+		echo "<h3><a href='$url'>" . $s->post_title . "</a></h3>" . get_the_post_thumbnail($s->ID, 'thubmanil');
 	}	
 
 }
