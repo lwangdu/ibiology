@@ -15,6 +15,7 @@ function ibio_talks_info(){
   		'nopaging' => true
 		));
 	
+	$talk_speaker = $talk_speakers->posts;
 	
 }
 
@@ -32,7 +33,7 @@ function ibio_talks_speaker(){
 	echo "<h2>Speaker</h2>";
 	
 	echo "<pre>";
-	var_dump($talk_speakers);
+	var_dump($talk_speaker);
 	echo "</pre>";
 
 }
