@@ -14,8 +14,7 @@ function ibio_speaker_info(){
 			'connected_items' => get_queried_object(),
   		'nopaging' => true
 		));
-	
-	$speaker_talks = $talk_speakers->posts;
+	$speaker_talks = $posts->posts;
 	
 }
 
@@ -26,6 +25,7 @@ function ibio_speaker_details(){
 
 function ibio_related_content(){
 	global $acf_fields_helper;
+	echo "<h2>Related Information</h2>";
 	$acf_fields_helper->show_field_group(32376);
 }
 
