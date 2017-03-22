@@ -23,7 +23,6 @@ class IBioTalk {
 
 
 	public function __construct(){
-		$this->field_helper = new IBioFieldsHelper(self::$prefix, self::$post_type);
 		
 		add_action( 'init', array(&$this, 'create_post_type'));	
 		
