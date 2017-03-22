@@ -107,9 +107,9 @@ class IBio_Fields_Display_Helper {
 			
 		}
 		
-		echo "<pre>";
+		/*echo "<pre>";
 		var_dump($all_fields);
-		echo "</pre>";	
+		echo "</pre>";	*/
 	}
 	
 }
