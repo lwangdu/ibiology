@@ -66,6 +66,7 @@ class IBio_Fields_Display_Helper {
 						echo $field['value'];
 					} else if ($field['type'] == 'repeater' ){
 						$subfields = $field['value'];
+						var_dump($repeaters[$field['name']]);
 						foreach($repeaters[$field['name']] as $sf){
 							if ($sf == 'video_url'){
 								echo wp_oembed_get($subfields[$sf]);
