@@ -41,8 +41,8 @@ function ibio_talks_speaker(){
 /* -------------------  Page Rendering --------------------------*/
 
 add_action('genesis_entry_header', 'ibio_talks_info', 20);
-
-add_action('genesis_loop', 'ibio_talks_videos', 2);
+add_action('genesis_entry_content', 'ibio_talks_videos', 2);
+add_action('genesis_entry_content', 'ibio_talks_speaker', 20);
 add_action('genesis_loop', 'ibio_related_content', 15);
-add_action('genesis_loop', 'ibio_talks_speaker', 20);
+
 genesis();
