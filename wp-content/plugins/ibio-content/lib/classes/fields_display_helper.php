@@ -66,7 +66,7 @@ class IBio_Fields_Display_Helper {
 					} else if ($field['type'] == 'number'){
 						echo $field['value'];
 					} else if ($field['type'] == 'repeater' && is_array($field['value'] ) ){
-						$subfields = $field['value']
+						$subfields = $field['value'];
 						foreach($repeater[$field['name']] as $sf){
 							echo "<strong> $f :</strong>" . $subfields[$sf];
 						
