@@ -66,11 +66,11 @@ class IBio_Fields_Display_Helper {
 						echo $field['value'];
 					} else if ($field['type'] == 'repeater' ){
 						$subfields = $field['value'];
-						foreach($repeater[$field['name']] as $sf){
+						foreach($repeaters[$field['name']] as $sf){
 							echo "<strong> $f :</strong>" . $subfields[$sf];
 						
 						}
-						var_dump($repeater[$field['name']]);
+						//var_dump($repeaters[$field['name']]);
 
 					} else if ($field['type'] == 'url'){
 						echo '<td><a href="'.$field['value'] . '">' . $field['value'] . '</a></td>';
