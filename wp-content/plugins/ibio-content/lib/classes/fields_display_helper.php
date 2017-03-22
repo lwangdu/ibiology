@@ -21,11 +21,28 @@ class IBio_Fields_Display_Helper {
 		$all_fields = acf_get_fields($field_group_id);
 		
 		$fieldnames = array();
+		$repeaters = array();
 	
 		// get the regular beamline fields
 		foreach($all_fields as $f){
 			$fieldnames[] = $f['name'];
+			
+			// if it's a repeater field, fill it out in the repeaters array
+			if ($f['type'] == 'repeater'){
+				$fields = array();
+				foreach ($f['sub_fields'] as $s){
+					$fields[] = $s['name'];
+				}
+			}
+			
+			$repeaters[$f['name']] = $fields;
+			
 		}	
+		
+		echo "<pre>";
+		echo "<h2>Repeaters</h2>";
+		var_dump($repeaters);
+		echo "</pre>";		
 		
 		// show the fields that are in a table form	
 		$fields = get_field_objects();
