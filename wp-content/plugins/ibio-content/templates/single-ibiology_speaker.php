@@ -43,6 +43,7 @@ function ibio_talks_speaker(){
 /* -------------------  Page Rendering --------------------------*/
 
 add_action('genesis_entry_header', 'ibio_speaker_info', 20);
+add_action('genesis_entry_content', 'ibio_speaker_details', 15);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 20);
 add_action('genesis_entry_content', 'ibio_related_content', 21);
 
