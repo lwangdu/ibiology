@@ -33,9 +33,10 @@ class IBio_Fields_Display_Helper {
 				foreach ($f['sub_fields'] as $s){
 					$fields[] = $s['name'];
 				}
+			$repeaters[$f['name']] = $fields;
 			}
 			
-			$repeaters[$f['name']] = $fields;
+			
 			
 		}	
 		
@@ -63,7 +64,14 @@ class IBio_Fields_Display_Helper {
 						$file_parts = $field['value'];
 						echo '<td><a href="' . $file_parts['url'] . '"><img class="file-icon" src="' . $file_parts['icon'] . '" alt=""/> ' . $file_parts['filename'] . '</a></td>';
 					} else if ($field['type'] == 'number'){
-						echo beamline_number_field($field['value']);
+						echo $field['value'];
+					} else if ($field['type'] == 'repeater' && is_array($field['value'] ) ){
+						$subfields = $field['value']
+						foreach($repeater[$field['name']] as $sf){
+							echo "<strong> $f :</strong>" . $subfields[$sf];
+						
+						}
+
 					} else if ($field['type'] == 'url'){
 						echo '<td><a href="'.$field['value'] . '">' . $field['value'] . '</a></td>';
 					} else  if (is_array($field['value'])){
