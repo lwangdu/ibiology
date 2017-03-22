@@ -66,17 +66,18 @@ class IBio_Fields_Display_Helper {
 						echo $field['value'];
 					} else if ($field['type'] == 'repeater' ){
 						$subfields = $field['value'];
+						echo "<td>";
 						//var_dump($repeaters[$field['name']]);
 						foreach($subfields as $sf){
 							foreach($repeaters[$field['name']] as $sfn){
 								if ($sfn == 'video_url'){
 									echo wp_oembed_get($sf[$sfn]);
 								} else {
-									echo "<strong> $sfm :</strong>" . $sf[$sfn];
+									echo "<strong> $sfm :</strong>" . $sf[$sfn] . "<Br/>";
 								}
 							}
 						}
-						//var_dump($subfields);
+						echo "</td>";
 
 					} else if ($field['type'] == 'url'){
 						echo '<td><a href="'.$field['value'] . '">' . $field['value'] . '</a></td>';
