@@ -7,7 +7,7 @@ function ibio_talks_info(){
 	
 }
 
-funciton ibio_talks_videos(){
+function ibio_talks_videos(){
 		$acf_fields_helper->show_field_group(32361);
 }
 
