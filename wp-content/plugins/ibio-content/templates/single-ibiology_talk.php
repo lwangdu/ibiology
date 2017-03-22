@@ -1,5 +1,6 @@
 <?php
 
+global $acf_fields_helper;
 $acf_fields_helper = new IBio_Fields_Display_Helper();
 
 
@@ -8,11 +9,17 @@ function ibio_talks_info(){
 }
 
 function ibio_talks_videos(){
-		$acf_fields_helper->show_field_group(32361);
+	global $acf_fields_helper;
+	$acf_fields_helper->show_field_group(32361);
 }
 
 function ibio_related_content(){
+	global $acf_fields_helper;
 	$acf_fields_helper->show_field_group(32376);
+}
+
+function ibio_talks_speaker(){
+	
 }
 
 /* -------------------  Page Rendering --------------------------*/
