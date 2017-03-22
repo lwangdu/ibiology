@@ -70,7 +70,7 @@ class IBio_Fields_Display_Helper {
 							echo "<strong> $f :</strong>" . $subfields[$sf];
 						
 						}
-						var_dump($subfields);
+						var_dump($repeater[$field['name']]);
 
 					} else if ($field['type'] == 'url'){
 						echo '<td><a href="'.$field['value'] . '">' . $field['value'] . '</a></td>';
