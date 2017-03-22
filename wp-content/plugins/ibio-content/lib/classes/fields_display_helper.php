@@ -19,7 +19,6 @@ class IBio_Fields_Display_Helper {
 	public function show_field_group($field_group_id){
 	
 		$all_fields = acf_get_fields($field_group_id);
-
 		var_dump($all_fields);
 	
 	}
