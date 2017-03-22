@@ -26,6 +26,7 @@ function ibio_talks_videos(){
 
 function ibio_related_content(){
 	global $acf_fields_helper;
+	echo "<h2>Related Conetnt</h2>";
 	$acf_fields_helper->show_field_group(32376);
 }
 
