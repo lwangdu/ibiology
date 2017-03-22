@@ -41,9 +41,9 @@ class IBio_Fields_Display_Helper {
 		}	
 		
 
-		echo "<h2>Repeaters</h2>";
+		/*echo "<h2>Repeaters</h2>";
 		var_dump($repeaters);
-		
+		*/
 		// show the fields that are in a table form	
 		$fields = get_field_objects();
 
@@ -72,18 +72,16 @@ class IBio_Fields_Display_Helper {
 							foreach($repeaters[$field['name']] as $sfn){
 								switch ($sfn){
 									case "video_url":
-										echo wp_oembed_get($sf[$sfn]);
+										echo wp_oembed_get($sf[$sfn]) . "<Br/>";
 										break;
 									case "transcript":
 										echo '<div class="su-accordion"><div class="su-spoiler su-spoiler-style-default su-spoiler-icon-plus su-spoiler-closed">';
 										echo '<div class="su-spoiler-title"><span class="su-spoiler-icon"></span>Expand Transcript</div><div class="su-spoiler-content su-clearfix">';
 										echo  $sf[$sfn];
 										echo '</div></div></div>';
-								}
-								if ($sfn == 'video_url'){
-									
-								} else {
-									echo "<strong> $sfn :</strong>" . $sf[$sfn] . "<Br/>";
+										break;
+									default:
+										echo "<strong> $sfn :</strong>" . $sf[$sfn] . "<Br/>";
 								}
 							}
 						}
