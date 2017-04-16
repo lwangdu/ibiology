@@ -103,5 +103,11 @@ wp-content/plugins/wp-recaptcha/
 wp-content/plugins/wp-show-ids/
 wp-content/plugins/wp-smushit/
 wp-content/plugins/wp-sweep/
+wp-content/plugins/hello.php
+
+wp-content/themes/twentyfifteen/
+wp-content/themes/twentyseventeen/
+wp-content/themes/twentysixteen/
+wp-content/*.sql
 wp-content/themes/genesis/
 wp-content/themes/landscape/
