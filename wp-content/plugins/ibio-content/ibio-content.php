@@ -65,6 +65,7 @@ class IBioContentPlugin{
 		$this->speakers = new IBioSpeaker();
 		$this->talks = new IBioTalk();
 		$this->playlists = new IBioPlaylist();
+		$this->resources = new IBioResource();
 		
 
 	}
