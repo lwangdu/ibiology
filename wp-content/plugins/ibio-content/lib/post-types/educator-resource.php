@@ -1,20 +1,20 @@
 <?php
 
 /**
- * IBioPlaylist Class
+ * IBioResource Class
  *
- * @class 		IBioPlaylist
+ * @class 		IBioResource
  * @version		1.0
  * @package		IBiology
  * @category	Class
  * @author 		Tech Liminal
- * @description The Post Type that represents a Playlist for IBiology
+ * @description The Post Type that represents a Resource for IBiology
  *
  */
 
-class IBioPlaylist {
+class IBioResource {
 
-	public static $post_type = 'ibiology_playlist';
+	public static $post_type = 'ibiology_resource';
 	private static $prefix = "ibio_";
 	public static $field_names = array();
 
@@ -50,21 +50,21 @@ class IBioPlaylist {
 		register_post_type( self::$post_type,
 			array(
 				'labels'               => array(
-					'name'                => _x( 'Playlists', 'Post Type General Name', 'ibiology' ),
-					'singular_name'       => _x( 'Playlist', 'Post Type Singular Name', 'ibiology' ),
-					'menu_name'           => __( 'Playlists', 'ibiology' ),
-					'all_items'           => __( 'All Playlists', 'ibiology' ),
-					'view_item'           => __( 'View Playlist', 'ibiology' ),
-					'add_new_item'        => __( 'Add New Playlist', 'ibiology' ),
-					'add_new'             => __( 'New Playlist', 'ibiology' ),
-					'edit_item'           => __( 'Edit Playlist', 'ibiology' ),
-					'update_item'         => __( 'Update Playlist', 'ibiology' ),
-					'search_items'        => __( 'Search Playlists', 'ibiology' ),
-					'not_found'           => __( 'No Playlists found', 'ibiology' ),
-					'not_found_in_trash'  => __( 'No Playlists found in Trash', 'ibiology' ),
+					'name'                => _x( 'Resources', 'Post Type General Name', 'ibiology' ),
+					'singular_name'       => _x( 'Resource', 'Post Type Singular Name', 'ibiology' ),
+					'menu_name'           => __( 'Resources', 'ibiology' ),
+					'all_items'           => __( 'All Resources', 'ibiology' ),
+					'view_item'           => __( 'View Resource', 'ibiology' ),
+					'add_new_item'        => __( 'Add New Resource', 'ibiology' ),
+					'add_new'             => __( 'New Resource', 'ibiology' ),
+					'edit_item'           => __( 'Edit Resource', 'ibiology' ),
+					'update_item'         => __( 'Update Resource', 'ibiology' ),
+					'search_items'        => __( 'Search Resources', 'ibiology' ),
+					'not_found'           => __( 'No Resources found', 'ibiology' ),
+					'not_found_in_trash'  => __( 'No Resources found in Trash', 'ibiology' ),
 						),
-				'label'               => __( 'Playlists', 'ibiology' ),
-				'description'         => __( 'IBiology Playlist with one or more Videos', 'ibiology' ),
+				'label'               => __( 'Resources', 'ibiology' ),
+				'description'         => __( 'IBiology Educator Resource', 'ibiology' ),
 				'supports'						=> $supports,
 				'taxonomies'          => array( 'post_tag', 'category' ),
 				'hierarchical'        => false,
@@ -79,10 +79,10 @@ class IBioPlaylist {
 				'query_var'           => true,
 				'exclude_from_search' => false,
 				'publicly_queryable'  => true,
-				'rewrite'             => array('slug' => 'playlists', 'with_front' => false),
+				'rewrite'             => array('slug' => 'educator-resource', 'with_front' => false),
 				'capability_type'			=> 'post',
 				'map_meta_cap'				=> true,
-				'menu_icon'						=> 'dashicons-images-alt'
+				'menu_icon'						=> 'dashicons-media-document'
 					)
 			);
 
@@ -218,7 +218,7 @@ class IBioPlaylist {
 
 	function default_title($title){
 		if ( isset( $_REQUEST['post_type']) && self::$post_type == $_REQUEST['post_type'] ) {
-			return "Long title of This Playlist"; 
+			return "Long title of This Resource"; 
 		} else {
 			return $title;
 		}

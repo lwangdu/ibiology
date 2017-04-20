@@ -51,6 +51,7 @@ class IBioContentPlugin{
 		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/talks.php' );
 		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/speakers.php' );
 		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/playlists.php' );
+		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/educator-resource.php' );
 	
 		/* Functions */
 		

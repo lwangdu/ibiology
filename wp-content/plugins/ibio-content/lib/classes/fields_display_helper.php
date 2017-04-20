@@ -41,9 +41,9 @@ class IBio_Fields_Display_Helper {
 		}	
 		
 
-		echo "<h2>Repeaters</h2>";
+		/*echo "<h2>Repeaters</h2>";
 		var_dump($repeaters);
-		
+		*/
 		// show the fields that are in a table form	
 		$fields = get_field_objects();
 
@@ -66,11 +66,26 @@ class IBio_Fields_Display_Helper {
 						echo $field['value'];
 					} else if ($field['type'] == 'repeater' ){
 						$subfields = $field['value'];
-						foreach($repeater[$field['name']] as $sf){
-							echo "<strong> $f :</strong>" . $subfields[$sf];
-						
+						echo "<td>";
+						//var_dump($repeaters[$field['name']]);
+						foreach($subfields as $sf){
+							foreach($repeaters[$field['name']] as $sfn){
+								switch ($sfn){
+									case "video_url":
+										echo wp_oembed_get($sf[$sfn]) . "<Br/>";
+										break;
+									case "transcript":
+										echo '<div class="su-accordion"><div class="su-spoiler su-spoiler-style-default su-spoiler-icon-plus su-spoiler-closed">';
+										echo '<div class="su-spoiler-title"><span class="su-spoiler-icon"></span>Expand Transcript</div><div class="su-spoiler-content su-clearfix">';
+										echo  $sf[$sfn];
+										echo '</div></div></div>';
+										break;
+									default:
+										echo "<strong> $sfn :</strong>" . $sf[$sfn] . "<Br/>";
+								}
+							}
 						}
-						var_dump($subfields);
+						echo "</td>";
 
 					} else if ($field['type'] == 'url'){
 						echo '<td><a href="'.$field['value'] . '">' . $field['value'] . '</a></td>';
@@ -92,9 +107,9 @@ class IBio_Fields_Display_Helper {
 			
 		}
 		
-		echo "<pre>";
+		/*echo "<pre>";
 		var_dump($all_fields);
-		echo "</pre>";	
+		echo "</pre>";	*/
 	}
 	
 }

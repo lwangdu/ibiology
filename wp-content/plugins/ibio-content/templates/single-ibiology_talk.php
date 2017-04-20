@@ -26,15 +26,18 @@ function ibio_talks_videos(){
 
 function ibio_related_content(){
 	global $acf_fields_helper;
+	echo "<h2>Related Conetnt</h2>";
 	$acf_fields_helper->show_field_group(32376);
 }
 
 function ibio_talks_speaker(){
-	echo "<h2>Speaker</h2>";
+	global $talk_speaker;
+	echo "<h2>Speaker Bio</h2>";
 	
-	echo "<pre>";
-	var_dump($talk_speaker);
-	echo "</pre>";
+	foreach ($talk_speaker as $s){
+		$url = get_post_permalink($s->ID);
+		echo "<h3><a href='$url'>" . $s->post_title . "</a></h3>" . $s->post_content;
+	}	
 
 }
 
@@ -43,6 +46,6 @@ function ibio_talks_speaker(){
 add_action('genesis_entry_header', 'ibio_talks_info', 20);
 add_action('genesis_entry_content', 'ibio_talks_videos', 2);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 20);
-add_action('genesis_loop', 'ibio_related_content', 15);
+add_action('genesis_entry_content', 'ibio_related_content', 21);
 
 genesis();
