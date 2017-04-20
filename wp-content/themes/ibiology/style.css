@@ -501,6 +501,7 @@ tbody {
 td,
 th {
 	text-align: left;
+	vertical-align:top;
 }
 
 td {
@@ -509,8 +510,9 @@ td {
 }
 
 th {
-	font-weight: 400;
+	font-weight: 700;
 	padding: 0 6px;
+	line-height: 1rem;
 }
 
 td:first-child,
