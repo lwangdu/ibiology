@@ -100,3 +100,20 @@ function ibiology_enqueue_scripts_styles() {
 		$creds = '[footer_copyright] &middot; <a href="https://www.ibiology.org">iBiology</a> &middot; <a href="https://www.ibiology.org/about" title="About Us">About Us</a>';
 		return $creds;
 	}
+
+
+//* work around turning off cusotm fields
+/*
+if ( !defined( 'get_field' ) ){
+  function get_field($field_name, $post_id = null, $format = false){
+    if ( empty( $post_id ) ){
+      global $post;
+      if ( ! empty( $post ) ){
+        $post_id = $post->ID;
+      } 
+    }
+    
+    return get_post_meta( $post_id, $field, true ); 
+  }
+}
+*/

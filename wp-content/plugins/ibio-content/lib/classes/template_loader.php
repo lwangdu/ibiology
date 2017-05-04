@@ -50,18 +50,24 @@ class IBio_Template_Loader {
 		}
 
 		$post_type = get_post_type();
-		if ( is_single() && 
-				( $post_type == IBioTalk::$post_type 
+		if ( $post_type == IBioTalk::$post_type 
 					|| $post_type == IBioSpeaker::$post_type 
-					|| $post_type == IBioPlaylist::$post_type ) ){
-
-			$file 	= 'single-'.$post_type.'.php';
-			$find[] = $file;
-			$find[] = $ibiology_content->template_path . $file;
-		}
-
+					|| $post_type == IBioPlaylist::$post_type 
+					|| $post_type == IBioResource::$post_type
+					|| $post_type == IBioLesson::$post_type ) {
+        
+      if ( is_single() ) {
+        $file 	= 'single-'.$post_type.'.php';
+        $find[] = $file;
+        $find[] = $ibiology_content->template_path . $file;
+      } else if ( is_archive() ) {
+        $file 	= 'archive-'.$post_type.'.php';
+        $find[] = $file;
+        $find[] = $ibiology_content->template_path . $file;      
+      }
+    }
 		if ( $file ) {
-			$template       = locate_template( array_unique( $find ) );
+			$template = locate_template( array_unique( $find ) );
 			if ( ! $template ) {
 				$template = $ibiology_content->template_path . $file;
 			}

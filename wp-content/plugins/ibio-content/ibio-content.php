@@ -49,6 +49,7 @@ class IBioContentPlugin{
 
 		/* Post Types and Classes */
 		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/talks.php' );
+		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/course-lesson.php' );
 		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/speakers.php' );
 		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/playlists.php' );
 		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/educator-resource.php' );
@@ -64,6 +65,7 @@ class IBioContentPlugin{
 	function init_objects(){
 		$this->speakers = new IBioSpeaker();
 		$this->talks = new IBioTalk();
+		$this->lessons = new IBioLesson();
 		$this->playlists = new IBioPlaylist();
 		$this->resources = new IBioResource();
 		
@@ -96,6 +98,15 @@ class IBioContentPlugin{
           'title' => array('from' => "Talks for this Speaker", 'to' => 'Speakers in this Talk')
         ) );
         
+          p2p_register_connection_type( array(
+          'name' => 'speaker_to_lesson',
+          'from' => IbioSpeaker::$post_type,
+          'to' => IbioLesson::$post_type,
+          'cardinality' => 'many-to-many',
+          'admin_column' => 'any',
+          'title' => array('from' => "Lessons with this Speaker", 'to' => 'Speakers in this Lesson')
+        ) );
+        
 				p2p_register_connection_type( array(
           'name' => 'playlist_to_talks',
           'from' => IbioPlaylist::$post_type,
@@ -104,6 +115,25 @@ class IBioContentPlugin{
           'admin_column' => 'any',
           'title' => array('from' => "Talks on Playlist", 'to' => 'Playlists')
         ) );
+        
+        p2p_register_connection_type( array(
+          'name' => 'tool_to_talk',
+          'from' => IbioPlaylist::$post_type,
+          'to' => IbioTalk::$post_type,
+          'cardinality' => 'one-to-one',
+          'admin_column' => 'any',
+          'title' => array('from' => "Teaching Tools for This Talk", 'to' => 'Talk')
+        ) );
+        
+				p2p_register_connection_type( array(
+          'name' => 'playlist_to_talks',
+          'from' => IbioPlaylist::$post_type,
+          'to' => IbioTalk::$post_type,
+          'cardinality' => 'one-to-many',
+          'admin_column' => 'any',
+          'title' => array('from' => "Talks on Playlist", 'to' => 'Playlists')
+        ) );
+                
       } else {
       	error_log('Posts 2 Posts is not loaded yet.');
       }
