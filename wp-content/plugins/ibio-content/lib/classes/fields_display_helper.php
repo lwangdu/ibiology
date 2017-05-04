@@ -49,7 +49,7 @@ class IBio_Fields_Display_Helper {
 
 		if( $fields )
 		{
-			echo '<table class="beamline-detail">';
+			echo '<table class="subfield-detail">';
 	
 			foreach($fieldnames as $fn){
 				if (isset($fields[$fn])){

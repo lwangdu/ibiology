@@ -18,7 +18,7 @@ function ibio_speaker_info(){
 	
 }
 
-function ibio_speaker_details(){
+function ibio_playlist_details(){
 	global $acf_fields_helper;
 	$acf_fields_helper->show_field_group(32397);
 }
@@ -30,8 +30,8 @@ function ibio_related_content(){
 }
 
 function ibio_talks_playlist(){
-	global $speaker_talks;
-	echo "<h2>Talks with this Speaker</h2>";
+	global $talks;
+	echo "<h2>Talks On this Playlist</h2>";
 	
 	foreach ($speaker_talks as $s){
 		$url = get_post_permalink($s->ID);

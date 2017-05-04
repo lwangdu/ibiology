@@ -141,7 +141,7 @@ class IBioContentPlugin{
 	}
 	
 	function create_taxonomies(){
-	    register_taxonomy('length', 'post', array(
+	    /* register_taxonomy('length', 'post', array(
         'hierarchical' => true,
         'labels' => array(
             'name' => 'Length',
@@ -166,9 +166,41 @@ class IBioContentPlugin{
             'slug' => 'length',
             'hierarchical' => true,
         )
+    ));*/
+    	
+    	$post_types = array ( 'post', 
+    	                     IBioTalk::$post_type,
+    	                     IBioLesson::$post_type,
+    	                     IBioPlaylist::$post_type );
+    	                     
+	    register_taxonomy('audience', $post_types, array(
+        'hierarchical' => true,
+        'labels' => array(
+            'name' => 'Audience',
+            'singlur_name' => 'audience',
+            'all_items' => 'All Audiences',
+            'edit_item' => 'Edit Audience',
+            'view_item' => 'View Audience',
+            'update_item' => 'Update Audience',
+            'add_new_item' => 'Add New Audience',
+            'new_item_name' => 'New Audience Name',
+            'parent_item' => 'Parent Audience',
+            'parent_item_colon' => "Parent Audience: ",
+            'search_items' => 'Search Audiencea',
+            'popular_items' => 'Populuar Audiences',
+            'separate_items_with_commas' => 'Separate audiences with commas',
+            'add_or_remove_items' => 'Add or remove audiences',
+            'choose_from_most_used' => 'Choose from most used audiences',
+            'not_found' => 'No audiences found.',
+            'menu_name' => 'Audience',
+        ),
+        'rewrite' => array(
+            'slug' => 'audience',
+            'hierarchical' => true,
+        )
     ));
     
-    register_taxonomy('level', 'post', array(
+      register_taxonomy('level', 'post', array(
         'hierarchical' => true,
         'labels' => array(
             'name' => 'Level / Site Area',
@@ -197,7 +229,7 @@ class IBioContentPlugin{
         
     ));
     
-    register_taxonomy('topics', 'post', array(
+      register_taxonomy('topics', 'post', array(
         'hierarchical' => true,
         'labels' => array(
             'name' => 'Topics',
@@ -226,7 +258,7 @@ class IBioContentPlugin{
         
     ));
     
-    register_taxonomy('English Subtitles', 'post', array(
+      register_taxonomy('English Subtitles', 'post', array(
         'hierarchical' => true,
         'labels' => array(
             'name' => 'English Subtitles',
@@ -255,7 +287,7 @@ class IBioContentPlugin{
         
     ));
     
-    register_taxonomy('educator resources', 'post', array(
+      register_taxonomy('educator resources', 'post', array(
         'hierarchical' => true,
         'labels' => array(
             'name' => 'Educator Resources',
@@ -284,7 +316,6 @@ class IBioContentPlugin{
         
     ));
     
-
 	}
 
 }

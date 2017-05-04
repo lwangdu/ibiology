@@ -29,8 +29,8 @@ class IBio_Template_Loader {
 	 *
 	 * Handles template usage so that we can use our own templates instead of the themes.
 	 *
-	 * Templates are in the 'templates' folder. LBLProfile looks for theme 
-	 * overrides in /theme/profiles/ by default.
+	 * Templates are in the 'templates' folder. IBio_Template_Loader looks for theme 
+	 * overrides in the theme's folder
 	 *
 	 *
 	 * @param mixed $template
