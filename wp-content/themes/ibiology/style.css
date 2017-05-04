@@ -39,6 +39,7 @@ Text Domain: iBiology
 	- Sidebar Widgets
 	- Footer Navigation
 	- Content Area and Entries
+	- Entries in Lists
 	- Entry Meta
 	- Pagination
 	- Comments
@@ -1017,6 +1018,25 @@ p.entry-meta {
 	display: none;
 }
 
+/* # Entries in Lists 
+---------------------------------------------------------------------------------------------------- */
+
+.grid-listing .content{
+  display:flex ;
+  flex-flow: row wrap;
+}
+
+.grid-listing .content .entry{
+  flex: 1 1 400px;
+}
+
+.grid-listing .content .entry-title{
+  font-size: 18px;
+}
+
+.grid-listing .content .archive-description{
+  flex: 0 0 100%;
+}
 
 /* # Sidebars
 ---------------------------------------------------------------------------------------------------- */

@@ -55,6 +55,7 @@ class IBioContentPlugin{
 		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/educator-resource.php' );
 	
 		/* Functions */
+		include (  plugin_dir_path( __FILE__ ) . '/lib/functions/content.php' );
 		
 		/* Classes */
 		require_once ( plugin_dir_path( __FILE__ ) . '/lib/classes/template_loader.php' );

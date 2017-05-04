@@ -24,9 +24,9 @@ add_action( 'genesis_setup', 'ibiology_setup',15 );
 */
 function ibiology_setup() {
 	// Define them constants.
-	define( 'CHILD_THEM_NAME', 'iBiology' );
-	define( 'CHILD_THEM_URL', 'http://github.com/lwangdu/ibiology' );
-	define( 'CHILD_THEM_VERSION', '1.0.0' );
+	define( 'CHILD_THEME_NAME', 'iBiology' );
+	define( 'CHILD_THEME_URL', 'http://github.com/lwangdu/ibiology' );
+	define( 'CHILD_THEME_VERSION', '0.1.0' );
 	
 	// Add HTML5 makup structure.
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption'  ) );
@@ -35,13 +35,13 @@ function ibiology_setup() {
 	add_theme_support( 'genesis-responsive-viewport' );
 	
 	//* Add support for custom header
-add_theme_support( 'custom-header', array(
-	'width'           => 1240,
-	'height'          => 129,
-	'header-selector' => '.site-title a',
-	'header-text'     => false,
-	'flex-height'     => true,
-) );
+  add_theme_support( 'custom-header', array(
+    'width'           => 1240,
+    'height'          => 129,
+    'header-selector' => '.site-title a',
+    'header-text'     => false,
+    'flex-height'     => true,
+  ) );
 	
 	// Add them support for accessibility.
 	add_theme_support( 'genesis-accessibility', array(
@@ -91,7 +91,6 @@ function ibiology_enqueue_scripts_styles() {
 		'subMenu'  => __( 'Menu', 'ibiology' ),
 	);
 	wp_localize_script( 'ibiology-responsive-menu', 'ibiologyL10n', $output );
-
 }
 
 //* Customize the footer credits
@@ -100,6 +99,7 @@ function ibiology_enqueue_scripts_styles() {
 		$creds = '[footer_copyright] &middot; <a href="https://www.ibiology.org">iBiology</a> &middot; <a href="https://www.ibiology.org/about" title="About Us">About Us</a>';
 		return $creds;
 	}
+
 
 
 //* work around turning off cusotm fields
