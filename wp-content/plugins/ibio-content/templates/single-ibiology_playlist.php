@@ -3,19 +3,25 @@
 global $acf_fields_helper;
 $acf_fields_helper = new IBio_Fields_Display_Helper();
 
-global $speaker_talks;
+global $talks;
 
-function ibio_speaker_info(){
-	global $speaker_talks;
+function ibio_playlist_talks() {
+  global $talks;
+  
+  if ( $posts->have_post() ) {
+    $talks = $posts->posts;
+  } else {
+    $talks = null;
+  }
+  return $talks;
+}
+
+function ibio_playlist_info(){
+	global $talks;
 	
-	$posts = new WP_Query(array(
-			'post_type' => 'ibiology_talk',
-			'connected_type' => 'playlist_to_talks',
-			'connected_items' => get_queried_object(),
-  		'nopaging' => true
-		));
-	$speaker_talks = $posts->posts;
-	
+	if (! empty( $talks ) && is_array( $talks ) ){
+	  echo '<div class="post-info">' . count( $talks ) . ' talks</div>';
+	} 
 }
 
 function ibio_playlist_details(){
@@ -30,21 +36,25 @@ function ibio_related_content(){
 }
 
 function ibio_talks_playlist(){
-	global $talks;
-	echo "<h2>Talks On this Playlist</h2>";
-	
-	foreach ($speaker_talks as $s){
-		$url = get_post_permalink($s->ID);
-		echo "<h3><a href='$url'>" . $s->post_title . "</a></h3>" . get_the_post_thumbnail($s->ID, 'thubmanil');
-	}	
 
+  $talks = new WP_Query(array(
+    'post_type' => 'ibiology_talk',
+    'connected_type' => 'playlist_to_talks',
+    'connected_items' => get_queried_object(),
+    'nopaging' => true
+  ));
+  if ( $talks->have_posts( ) ) {
+    foreach ( $talks->posts as $s){
+      $url = get_post_permalink($s->ID);
+      echo "<h3><a href='$url'>" . $s->post_title . "</a></h3>" . get_the_post_thumbnail($s->ID, 'thubmanil');
+    }	
+  }
 }
 
 /* -------------------  Page Rendering --------------------------*/
 
-add_action('genesis_entry_header', 'ibio_speaker_info', 20);
-add_action('genesis_entry_content', 'ibio_speaker_details', 15);
-add_action('genesis_entry_content', 'ibio_talks_speaker', 20);
+add_action('genesis_entry_header', 'ibio_playlist_info', 20);
+add_action('genesis_entry_content', 'ibio_talks_playlist', 20);
 add_action('genesis_entry_content', 'ibio_related_content', 21);
 
 genesis();

@@ -17,6 +17,15 @@ function ibio_talks_info(){
 	
 	$talk_speaker = $talk_speakers->posts;
 	
+	// put the speaker info in the page title
+	if ( ! empty ($talk_speaker) ) {
+	  echo '<div class="post-info">With :';
+  	foreach ($talk_speaker as $s){
+	  	$url = get_post_permalink($s->ID);
+		  echo "<a class='speaker-link' href='$url'>" . $s->post_title . "</a>";
+  	}	
+  	echo '</div>';
+	}
 }
 
 function ibio_talks_videos(){
@@ -64,11 +73,21 @@ function ibio_talks_speaker(){
 
 }
 
+function ibio_talk_sidebar(){
+  get_sidebar( 'talk' );
+}
+
 /* -------------------  Page Rendering --------------------------*/
 
+// force content-sidebar layout
+add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
+  
 add_action('genesis_entry_header', 'ibio_talks_info', 20);
-add_action('genesis_entry_content', 'ibio_talks_videos', 20);
+add_action('genesis_entry_content', 'ibio_talks_videos', 8);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 22);
 add_action('genesis_entry_content', 'ibio_related_content', 24);
+
+remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
+add_action( 'genesis_sidebar', 'ibio_talk_sidebar' );
 
 genesis();
