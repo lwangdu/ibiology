@@ -112,28 +112,28 @@ class IBioContentPlugin{
           'name' => 'playlist_to_talks',
           'from' => IbioPlaylist::$post_type,
           'to' => IbioTalk::$post_type,
-          'cardinality' => 'one-to-many',
+          'cardinality' => 'many-to-many',
           'admin_column' => 'any',
           'title' => array('from' => "Talks on Playlist", 'to' => 'Playlists')
         ) );
         
-        p2p_register_connection_type( array(
+        /*p2p_register_connection_type( array(
           'name' => 'tool_to_talk',
           'from' => IbioPlaylist::$post_type,
           'to' => IbioTalk::$post_type,
           'cardinality' => 'one-to-one',
           'admin_column' => 'any',
           'title' => array('from' => "Teaching Tools for This Talk", 'to' => 'Talk')
-        ) );
+        ) ); */
         
-				p2p_register_connection_type( array(
+				/* p2p_register_connection_type( array(
           'name' => 'playlist_to_talks',
           'from' => IbioPlaylist::$post_type,
           'to' => IbioTalk::$post_type,
           'cardinality' => 'one-to-many',
           'admin_column' => 'any',
           'title' => array('from' => "Talks on Playlist", 'to' => 'Playlists')
-        ) );
+        ) );*/
                 
       } else {
       	error_log('Posts 2 Posts is not loaded yet.');
