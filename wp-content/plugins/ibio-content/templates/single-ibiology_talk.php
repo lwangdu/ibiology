@@ -34,24 +34,36 @@ function ibio_talks_videos(){
   
   $videos = get_field( 'videos' );
   if ( is_array( $videos ) ) {
-    echo '<section class="videos row"><h2>Videos in this Talk</h2>';
+    echo '<section class="videos row"><div class="wrap">';
     
+      $counter = 1; // count the parts;
+      $titles = array();
+      
       foreach( $videos as $v ){
-        $title = isset( $v[ 'part_title' ] ) ? esc_attr( $v[ 'part_title' ] ) : '';
+        $title = isset( $v[ 'part_title' ] ) ? "Part $counter: " . esc_attr( $v[ 'part_title' ] ) : '';
+        $titles[ $counter ] = $title;
         $length = isset( $v[ 'video_length' ] ) ?  '<span class="length">' . esc_attr( $v[ 'video_length' ] ) . '</span>' : '';
         $download = isset( $v[ 'video_download_url' ] ) ?  esc_url( $v[ 'video_download_url' ] ) : '';
         $size = isset( $v[ 'download_size' ] ) ?  '<span class="size">' . esc_attr( $v[ 'download_size' ] ) . '</span>' : '';
         $download_link = ! empty ( $download ) ? "<a href='$download'>Download $size</a>" : '';
         $transcript = isset( $v[ 'transcript' ] ) ? '<div class="transcript"><div class="toggle">View Transcript</div><div class="content" style="display:none">' . esc_html( $v[ 'transcript' ] ) . '</div></div>' : '';
         $video_url = isset( $v[ 'video_url' ] ) ? esc_html( $v[ 'video_url' ] ) : '';
-      
-        echo "<div class='single-video'><h2 class='title'>$title</h2><div class='content'>";
-        echo wp_oembed_get( $video_url );
+        echo "<div class='single-video part-$counter'><h2 class='title'>$title</h2><div class='content'>";
+        echo wp_oembed_get( $video_url . '&showinfo=0' , array( 'width' => '800' ) );
         echo "</div><div class='footer'>$length $download $transcript </div></div>";
+        $counter++;
         
       }
-    
-    echo '</section>';
+      
+      $tabs = '<ul class="videos-nav">';
+      for( $i = 1 ; $i < $counter ; $i++ ){
+        $title =  $titles[ $i ];
+        $tabs .= "<li class='part-$i' data-select='part-$i'>$title</li>";
+      }
+      $tabs .= "</ul>";
+      echo $tabs;
+      
+    echo '</wrap></section>';
   } 
 
 }
@@ -81,9 +93,11 @@ function ibio_talk_sidebar(){
 
 // force content-sidebar layout
 add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
+
+add_action('genesis_after_header', 'ibio_talks_videos', 30);
   
 add_action('genesis_entry_header', 'ibio_talks_info', 20);
-add_action('genesis_entry_content', 'ibio_talks_videos', 8);
+
 add_action('genesis_entry_content', 'ibio_talks_speaker', 22);
 add_action('genesis_entry_content', 'ibio_related_content', 24);
 

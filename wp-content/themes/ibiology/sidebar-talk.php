@@ -11,7 +11,7 @@
 
   ?>
   
-  <div class="widget"><h4 class="widgettitle">More Videos from Cell Biology</h4><ul class="related-by-category talks-list">
+  <div class="widget"><h4 class="widgettitle">In this Playlist: Cell Biology</h4><ul class="related-by-category talks-list">
 <li class="talk-list-item">Previous: 
 <strong class="entry-title"><a href="/talks/microrna-biogenesis-and-regulation">microRNA Biogenesis and Regulation</a>
 </strong></li>

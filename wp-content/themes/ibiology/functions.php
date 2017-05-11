@@ -91,6 +91,9 @@ function ibiology_enqueue_scripts_styles() {
 		'subMenu'  => __( 'Menu', 'ibiology' ),
 	);
 	wp_localize_script( 'ibiology-responsive-menu', 'ibiologyL10n', $output );
+	
+	wp_enqueue_script( 'ibiology-content', get_stylesheet_directory_uri() . '/js/ibio.js', array( 'jquery' ), '1.0.0', true );
+	
 }
 
 //* Customize the footer credits
