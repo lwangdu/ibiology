@@ -120,3 +120,22 @@ if ( !defined( 'get_field' ) ){
   }
 }
 */
+
+/* For SearchWP - until we disable the http protection */
+
+function ibio_searchwp_basic_auth_creds() {
+	
+	// NOTE: this needs to be your HTTP BASIC AUTH login
+	//
+	//                 *** NOT *** your WordPress login
+	//
+	//
+	$credentials = array( 
+		'username' => 'iobiology2017', // the HTTP BASIC AUTH username
+		'password' => 'ronvale'  // the HTTP BASIC AUTH password
+	);
+	
+	return $credentials;
+}
+
+add_filter( 'searchwp_basic_auth_creds', 'ibio_searchwp_basic_auth_creds' );
