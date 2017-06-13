@@ -200,7 +200,7 @@ class IBioContentPlugin{
         )
     ));
     
-      register_taxonomy('level', 'post', array(
+     /* register_taxonomy('level', 'post', array(
         'hierarchical' => true,
         'labels' => array(
             'name' => 'Level / Site Area',
@@ -227,9 +227,9 @@ class IBioContentPlugin{
         )
         
         
-    ));
+    ));*/
     
-      register_taxonomy('topics', 'post', array(
+     /*  register_taxonomy('topics', 'post', array(
         'hierarchical' => true,
         'labels' => array(
             'name' => 'Topics',
@@ -256,9 +256,9 @@ class IBioContentPlugin{
         )
         
         
-    ));
+    )); */
     
-      register_taxonomy('English Subtitles', 'post', array(
+      /* register_taxonomy('English Subtitles', 'post', array(
         'hierarchical' => true,
         'labels' => array(
             'name' => 'English Subtitles',
@@ -285,9 +285,9 @@ class IBioContentPlugin{
         )
         
         
-    ));
+    ));*/
     
-      register_taxonomy('educator resources', 'post', array(
+     /* register_taxonomy('educator resources', 'post', array(
         'hierarchical' => true,
         'labels' => array(
             'name' => 'Educator Resources',
@@ -314,7 +314,7 @@ class IBioContentPlugin{
         )
         
         
-    ));
+    )); */
     
 	}
 
