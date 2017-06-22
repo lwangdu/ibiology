@@ -18,6 +18,9 @@ load_child_theme_textdomain( 'ibiology' );
 
 add_action( 'genesis_setup', 'ibiology_setup',15 );
 
+//* Add HTML5 markup structure
+add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+
 
 /**
 *
