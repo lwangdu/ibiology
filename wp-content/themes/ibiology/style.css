@@ -39,6 +39,7 @@ Text Domain: iBiology
 	- Sidebar Widgets
 	- Footer Navigation
 	- Content Area and Entries
+	- Entries in Lists
 	- Entry Meta
 	- Pagination
 	- Comments
@@ -501,6 +502,7 @@ tbody {
 td,
 th {
 	text-align: left;
+	vertical-align:top;
 }
 
 td {
@@ -509,8 +511,9 @@ td {
 }
 
 th {
-	font-weight: 400;
+	font-weight: 700;
 	padding: 0 6px;
+	line-height: 1rem;
 }
 
 td:first-child,
@@ -895,6 +898,45 @@ th:first-child {
 	color: #eee;
 }
 
+/* ## Video list
+--------------------------------------------- */
+
+section.videos {
+	background-color: #000;
+	color: #fff;
+	position: relative;
+	height: 550px;
+}
+
+section.videos .single-video{
+	width: 800px;
+	position: absolute;
+	top: 30px;
+	display:none;
+}
+
+section.videos .single-video.active{
+	display:block;
+}
+
+secition.videos .single-video .footer{
+	clear:both;
+}
+
+section.videos .videos-nav{
+	width: 250px;
+	float: right;
+	cursor: pointer;
+}
+
+.videos-nav {
+	color:  #0099d1;
+}
+
+.videos-nav .active{
+	color: #fff;
+}
+
 /* ## Entry Meta
 --------------------------------------------- */
 
@@ -1015,6 +1057,25 @@ p.entry-meta {
 	display: none;
 }
 
+/* # Entries in Lists 
+---------------------------------------------------------------------------------------------------- */
+
+.grid-listing .content{
+  display:flex ;
+  flex-flow: row wrap;
+}
+
+.grid-listing .content .entry{
+  flex: 1 1 400px;
+}
+
+.grid-listing .content .entry-title{
+  font-size: 18px;
+}
+
+.grid-listing .content .archive-description{
+  flex: 0 0 100%;
+}
 
 /* # Sidebars
 ---------------------------------------------------------------------------------------------------- */

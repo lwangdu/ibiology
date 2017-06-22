@@ -15,11 +15,15 @@
 class IBioTalk {
 
 	public static $post_type = 'ibiology_talk';
-	private static $prefix = "_ibio_";
+	private static $prefix = "ibio_";
+
+	// use for any required field names.  These will be saved with the $prefix value
 	public static $field_names = array();
+	private $field_helper;
 
 
 	public function __construct(){
+		
 		add_action( 'init', array(&$this, 'create_post_type'));	
 		
 		//add_action( 'init', array(&$this, 'create_taxonomies'));	
@@ -44,7 +48,8 @@ class IBioTalk {
 			'excerpt',
 			'editor',
 			'author',
-			'genesis-cpt-archives-settings'
+			'genesis-cpt-archives-settings',
+			'comments'
 		);
 
 		register_post_type( self::$post_type,
@@ -99,10 +104,13 @@ class IBioTalk {
 
 	public function create_post ($args){
 
+		$author = wp_get_current_user();
+		$author_id = isset($author->ID) ? $author->ID : 0;
+		
 		$default = array(
 			'comment_status' => 'closed', // 'closed' means no comments.
 			'ping_status' => 'closed' , // 'closed' means pingbacks or trackbacks turned off
-			'post_author' => 1, // The user ID number of the author.
+			'post_author' => $author_id, // The user ID number of the author.
 			'post_status' => 'publish' , // Set the status of the new post. 
 			'post_title' => 'TBD', // The title of your post.
 			'post_type' =>  self::$post_type, // You may want to insert a regular post, page, link, a menu item or some custom post type
@@ -279,5 +287,12 @@ class IBioTalk {
 	
 	
 	}
+	
+	/* --------------------  Data Retrieval Components ---------------------- */
+
+	function get_videos(){
+		
+	}
+
 
 } // Finish class defintion

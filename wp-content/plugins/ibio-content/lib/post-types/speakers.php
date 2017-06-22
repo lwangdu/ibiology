@@ -15,7 +15,7 @@
 class IBioSpeaker {
 
 	public static $post_type = 'ibiology_speaker';
-	private static $prefix = "_ibio_";
+	private static $prefix = "ibio_";
 	public static $field_names = array();
 
 
