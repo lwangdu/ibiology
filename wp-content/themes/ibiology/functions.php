@@ -9,6 +9,10 @@
  * @license 	GPL-2.0+
  */
 
+//* Start the engine
+include_once( get_template_directory() . '/lib/init.php' );
+
+
 // load child theme textdomain.
 load_child_theme_textdomain( 'ibiology' );
 
@@ -17,7 +21,7 @@ add_action( 'genesis_setup', 'ibiology_setup',15 );
 
 /**
 *
-*Them setup.
+* Theme setup.
 * Attach all of the site-wide functions to the correct hooks and filters. All the function themselves are defind below this setup function
 *
 * @since 1.0.0
@@ -75,6 +79,23 @@ function ibiology_enqueue_styles() {
 	wp_enqueue_style( 'google-fonts','//fonts.googleapis.com/css?family=Roboto:400,400i,700,700i|Signika' );
 	wp_enqueue_style( 'ionicons', '//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css', array(), CHILD_THEME_VERSION );
 }
+
+
+//* Add support for 3-column footer widgets
+add_theme_support( 'genesis-footer-widgets', 1 );
+
+
+/** 
+ *
+ *  Widget Areas
+ */
+
+genesis_register_sidebar( array(
+	'id'          => 'sidebar_talks',
+	'name'        => __( 'Individual Talk', 'metro' ),
+	'description' => __( 'This is the sidebar for an individual talk', 'metro' ),
+) );
+
 
 
 /**

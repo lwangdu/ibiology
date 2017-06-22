@@ -11,7 +11,7 @@
 
   ?>
   
-  <div class="widget"><h4 class="widgettitle">In this Playlist: Cell Biology</h4><ul class="related-by-category talks-list">
+  <!-- <div class="widget"><h4 class="widgettitle">In this Playlist: Cell Biology</h4><ul class="related-by-category talks-list">
 <li class="talk-list-item">Previous: 
 <strong class="entry-title"><a href="/talks/microrna-biogenesis-and-regulation">microRNA Biogenesis and Regulation</a>
 </strong></li>
@@ -20,7 +20,7 @@
 <strong class="entry-title"><a href="/talks/microrna-biogenesis-and-regulation">microRNA Biogenesis and Regulation</a>
 </strong></li>
 
-</ul></div>
+</ul></div> -->
   
   <?
   
@@ -31,7 +31,7 @@
   
     $talk = get_queried_object();  
     
-    var_dump( $talk->ID );
+    //var_dump( $talk->ID );
     
     $related_talks = new WP_Query( array (
         'post_type' => IbioTalk::$post_type,
@@ -53,3 +53,5 @@
     
     wp_reset_query();
   }
+  
+  dynamic_sidebar( 'sidebar_talks' );
