@@ -7,7 +7,7 @@
 function ibio_content_archive_setup(){
   add_action( 'body_class', 'ibio_grid_body_class' );
   add_filter( 'genesis_post_title_text', 'ibio_talk_short_title' );
-  remove_action( 'genesis_entry_header', 'genesis_post_info', 8 );
+  remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
   remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
   remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 }
