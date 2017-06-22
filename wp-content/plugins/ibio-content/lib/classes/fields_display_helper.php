@@ -23,7 +23,10 @@ class IBio_Fields_Display_Helper {
 		$fieldnames = array();
 		$repeaters = array();
 	
-		// get the regular beamline fields
+		// get the content of the fields.
+		
+		if ( empty( $all_fields ) ) return;
+		
 		foreach($all_fields as $f){
 			$fieldnames[] = $f['name'];
 			

@@ -35,12 +35,18 @@ function ibio_talks_videos(){
   $videos = get_field( 'videos' );
   if ( is_array( $videos ) ) {
     echo '<section class="videos row"><div class="wrap">';
+    genesis_do_breadcrumbs();
     
       $counter = 1; // count the parts;
       $titles = array();
+  
+      $num_parts = count( $videos );
       
       foreach( $videos as $v ){
-        $title = isset( $v[ 'part_title' ] ) ? "Part $counter: " . esc_attr( $v[ 'part_title' ] ) : '';
+        $title = isset( $v[ 'part_title' ] ) ?  esc_attr( $v[ 'part_title' ] ) : '';
+        if ( $num_parts > 1 ){
+          $title = "Part $counter: " . $title;
+        }
         $titles[ $counter ] = $title;
         $length = isset( $v[ 'video_length' ] ) ?  '<span class="length">' . esc_attr( $v[ 'video_length' ] ) . '</span>' : '';
         $download = isset( $v[ 'video_download_url' ] ) ?  esc_url( $v[ 'video_download_url' ] ) : '';
@@ -55,34 +61,44 @@ function ibio_talks_videos(){
         
       }
       
-      $tabs = '<ul class="videos-nav">';
-      for( $i = 1 ; $i < $counter ; $i++ ){
-        $title =  $titles[ $i ];
-        $tabs .= "<li class='part-$i' data-select='part-$i'>$title</li>";
+      if ( $num_parts > 1 ){
+        $tabs = '<ul class="videos-nav">';
+        for( $i = 1 ; $i < $counter ; $i++ ){
+          $title =  $titles[ $i ];
+          $tabs .= "<li class='part-$i' data-select='part-$i'>$title</li>";
+        }
+        $tabs .= "</ul>";
+        echo $tabs;
       }
-      $tabs .= "</ul>";
-      echo $tabs;
-      
+            
     echo '</wrap></section>';
   } 
 
 }
 
 function ibio_related_content(){
-	global $acf_fields_helper;
-	echo "<h2>Related Conetnt</h2>";
-	$acf_fields_helper->show_field_group(32376);
+	$resources = get_field( 'related_resources' );
+  
+  if( !empty( $resources ) ){
+    	echo "<h2>Related Resources</h2>";
+      echo $resources;
+  }	
+
+	
+	
 }
 
 function ibio_talks_speaker(){
 	global $talk_speaker;
-	echo "<h2>Speaker Bio</h2>";
-	
-	foreach ($talk_speaker as $s){
-		$url = get_post_permalink($s->ID);
-		echo "<h3><a href='$url'>" . $s->post_title . "</a></h3>" . $s->post_content;
-	}	
+  
+  if ( !empty(  $talk_speaker ) ){
+  	echo "<h2>Speaker Bio</h2>";
+    foreach ($talk_speaker as $s){
+      $url = get_post_permalink($s->ID);
+      echo "<h3><a href='$url'>" . $s->post_title . "</a></h3>" . $s->post_content;
+    }	
 
+  }
 }
 
 function ibio_talk_sidebar(){
@@ -93,6 +109,10 @@ function ibio_talk_sidebar(){
 
 // force content-sidebar layout
 add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
+
+// move the breadcrumbs
+remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
+//add_action( 'genesis_after_header', 'genesis_do_breadcrumbs', 15 );
 
 add_action('genesis_after_header', 'ibio_talks_videos', 30);
   
