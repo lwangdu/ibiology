@@ -79,7 +79,7 @@ class IBioSpeaker {
 				'query_var'           => true,
 				'exclude_from_search' => false,
 				'publicly_queryable'  => true,
-				'rewrite'             => array('slug' => 'people', 'with_front' => false),
+				'rewrite'             => array('slug' => 'speakers', 'with_front' => false),
 				'capability_type'			=> 'post',
 				'map_meta_cap'				=> true,
 				'menu_icon'						=> 'dashicons-groups'
