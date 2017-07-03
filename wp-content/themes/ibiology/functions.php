@@ -128,7 +128,9 @@ function ibiology_enqueue_scripts_styles() {
 		return $creds;
 	}
 
-
+if ( ! isset( $content_width ) ) {
+	$content_width = 800;
+}
 
 //* work around turning off cusotm fields
 /*

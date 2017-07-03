@@ -79,3 +79,41 @@ class IBio_Template_Loader {
 }
 
 IBio_Template_Loader::init();
+
+/**
+ * Get template part (for templates of iBio types).
+ *
+ *
+ * @access public
+ * @param mixed $slug
+ * @param string $name (default: '')
+ */
+function ibio_get_template_part( $slug, $name = '' ) {
+
+		error_log("[ibio_get_template_part] slug: $slug ; name: $name ");
+
+		global $ibiology_content;
+		
+    $template = '';
+
+    // Look in yourtheme/slug-name.php and yourtheme/ibiology/slug-name.php
+    if ( $name  ) {
+        $template = locate_template( array( "{$slug}-{$name}.php", $ibiology_content->template_path_slug . "/{$slug}-{$name}.php" ) );
+    }
+
+    // Get default slug-name.php
+    if ( ! $template && $name && file_exists( $ibiology_content->template_path  . "/{$slug}-{$name}.php" ) ) {
+        $template = $ibiology_content->template_path  . "/{$slug}-{$name}.php";
+    }
+
+    // If template file doesn't exist, look in yourtheme/slug.php and yourtheme/ibiology/slug.php
+    if ( ! $template ) {
+        $template = locate_template( array( "{$slug}.php",  $ibiology_content->template_path_slug . "/{$slug}.php" ) );
+    }
+
+		error_log("[ibio_get_template_part] template: $template");
+
+    if ( $template ) {
+        load_template( $template, false );
+    }
+}

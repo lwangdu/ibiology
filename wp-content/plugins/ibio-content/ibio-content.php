@@ -17,7 +17,7 @@ if( WP_DEBUG ) {
 
 }
 
-class IBioContentPlugin{
+class IBioContent{
 	
 	
 	public $talks;
@@ -25,11 +25,12 @@ class IBioContentPlugin{
 	public $playlists;
 	
 	public $template_path;
+	public $template_path_slug;
 	
 	function __construct(){
 		
 		$this->template_path = plugin_dir_path( __FILE__ ) . 'templates/';
-		
+		$this->template_path_slug = 'ibiology';
 		$this->load_files();
 		$this->init_objects();
 		
@@ -200,128 +201,13 @@ class IBioContentPlugin{
         )
     ));
     
-     /* register_taxonomy('level', 'post', array(
-        'hierarchical' => true,
-        'labels' => array(
-            'name' => 'Level / Site Area',
-            'singlur_name' => 'level',
-            'all_items' => 'All Levels',
-            'edit_item' => 'Edit Level',
-            'view_item' => 'View Level',
-            'update_item' => 'Update Level',
-            'add_new_item' => 'Add New Level',
-            'new_item_name' => 'New Level Name',
-            'parent_item' => 'Parent Level',
-            'parent_item_colon' => "Parent Level: ",
-            'search_items' => 'Search Levels',
-            'popular_items' => 'Populuar Levels',
-            'separate_items_with_commas' => 'Separate levels with commas',
-            'add_or_remove_items' => 'Add or remove levels',
-            'choose_from_most_used' => 'Choose from most used levels',
-            'not_found' => 'No levels found.',
-            'menu_name' => 'Level',
-        ),
-        'rewrite' => array(
-            'slug' => 'level',
-            'hierarchical' => true,
-        )
-        
-        
-    ));*/
-    
-     /*  register_taxonomy('topics', 'post', array(
-        'hierarchical' => true,
-        'labels' => array(
-            'name' => 'Topics',
-            'singlur_name' => 'topic',
-            'all_items' => 'All Topic',
-            'edit_item' => 'Edit Topics',
-            'view_item' => 'View Topics',
-            'update_item' => 'Update Topics',
-            'add_new_item' => 'Add New Topic',
-            'new_item_name' => 'New Topic Name',
-            'parent_item' => 'Parent Topic',
-            'parent_item_colon' => "Parent Topic: ",
-            'search_items' => 'Search Topics',
-            'popular_items' => 'Populuar Topics',
-            'separate_items_with_commas' => 'Separate topics with commas',
-            'add_or_remove_items' => 'Add or remove topics',
-            'choose_from_most_used' => 'Choose from most used topics',
-            'not_found' => 'No topics found.',
-            'menu_name' => 'Topics',
-        ),
-        'rewrite' => array(
-            'slug' => 'topics',
-            'hierarchical' => true,
-        )
-        
-        
-    )); */
-    
-      /* register_taxonomy('English Subtitles', 'post', array(
-        'hierarchical' => true,
-        'labels' => array(
-            'name' => 'English Subtitles',
-            'singlur_name' => 'English Subtitles',
-            'all_items' => 'All English Subtitles',
-            'edit_item' => 'Edit English Subtitles',
-            'view_item' => 'View English Subtitles',
-            'update_item' => 'Update English Subtitles',
-            'add_new_item' => 'Add New English Subtitle',
-            'new_item_name' => 'New English Subtitle Name',
-            'parent_item' => 'Parent English Subtitle',
-            'parent_item_colon' => "Parent English Subtitle: ",
-            'search_items' => 'Search English Subtitles',
-            'popular_items' => 'Populuar English Subtitles',
-            'separate_items_with_commas' => 'Separate english subtitles with commas',
-            'add_or_remove_items' => 'Add or remove english subtitles',
-            'choose_from_most_used' => 'Choose from most used english subtitles',
-            'not_found' => 'No english subtitles found.',
-            'menu_name' => 'English Subtitles',
-        ),
-        'rewrite' => array(
-            'slug' => 'english-subtitles',
-            'hierarchical' => true,
-        )
-        
-        
-    ));*/
-    
-     /* register_taxonomy('educator resources', 'post', array(
-        'hierarchical' => true,
-        'labels' => array(
-            'name' => 'Educator Resources',
-            'singlur_name' => 'Educator Resource',
-            'all_items' => 'All Educator Resources',
-            'edit_item' => 'Edit Educator Resources',
-            'view_item' => 'View Educator Resources',
-            'update_item' => 'Update Educator Resources',
-            'add_new_item' => 'Add New Educator Resources',
-            'new_item_name' => 'New Educator Resournce Name',
-            'parent_item' => 'Parent Educator Resource',
-            'parent_item_colon' => "Parent Educator Resourc: ",
-            'search_items' => 'Search Educator Resources',
-            'popular_items' => 'Populuar Educator Resources',
-            'separate_items_with_commas' => 'Separate educator resources with commas',
-            'add_or_remove_items' => 'Add or remove educator resources',
-            'choose_from_most_used' => 'Choose from most used educator resources',
-            'not_found' => 'No educator resources found',
-            'menu_name' => 'Educator Resources',
-        ),
-        'rewrite' => array(
-            'slug' => 'educator-resources',
-            'hierarchical' => true,
-        )
-        
-        
-    )); */
     
 	}
 
 }
 
 global $ibiology_content;
-$ibiology_content = new IBioContentPlugin();
+$ibiology_content = new IBioContent();
 
 /* -----------   Activate / Deactivate  ------------- */
 register_activation_hook(__FILE__, 'tl_profiles_activate');

@@ -681,8 +681,18 @@ th:first-child {
 	max-width: 800px;
 }
 
+/* Breadcrumbs Strip */
 
+.single-ibiology_talk .breadcrumbs-strip {
+		width: 100%;
+		background-color: #111;
+		font-size: 80%;
+		color: #fff;
+}
 
+.single-ibiology_talk .breadcrumbs-strip .wrap{
+	padding: 10px 20px;
+}
 /* Column Widths and Positions
 --------------------------------------------- */
 
@@ -898,20 +908,30 @@ th:first-child {
 	color: #eee;
 }
 
-/* ## Video list
+/* ## Videos
 --------------------------------------------- */
 
-section.videos {
-	background-color: #000;
+section.videos.row {
+	background-color: #111;
 	color: #fff;
-	position: relative;
-	height: 555px;
+	height: 545px;
+	
+}
+
+section.videos.row .wrap{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+section.videos .videos-container{
+	flex: 1 1 75%;
+	width: 75%;
 }
 
 section.videos .single-video{
-	width: 800px;
-	position: absolute;
-	top: 40px;
+	width: 100%;
+	max-width: 800px;
+	position: relative;
 	display:none;
 }
 
@@ -951,10 +971,25 @@ section.videos .single-video .footer span{
 }
 
 section.videos .videos-nav{
-	width: 250px;
-	float: right;
+	min-width: 250px;
+	flex: 1 1 25%;
 	cursor: pointer;
+	font-size: 1.2rem;
+	line-height: 1.5rem;
 }
+
+section.videos .videos-nav li{
+	margin-bottom: 10px;
+}
+
+section.videos .videos-nav li figure{
+	height: 50px;
+	width: 75px;
+	background-color: #999;
+	float: left;
+	margin-right: 10px;
+}
+
 
 .videos-nav {
 	color:  #0099d1;
@@ -1107,7 +1142,6 @@ p.entry-meta {
 /* # Entries in smaller grids 
 ---------------------------------------------------------------------------------------------------- */
 ul.grid {
-
 	display: flex;
 }
 
