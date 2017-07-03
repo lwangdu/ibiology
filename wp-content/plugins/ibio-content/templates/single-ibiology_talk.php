@@ -55,8 +55,13 @@ function ibio_talks_videos(){
         $transcript = isset( $v[ 'transcript' ] ) ? '<div class="transcript"><div class="toggle">View Transcript</div><div class="content" style="display:none">' . esc_html( $v[ 'transcript' ] ) . '</div></div>' : '';
         $video_url = isset( $v[ 'video_url' ] ) ? esc_html( $v[ 'video_url' ] ) : '';
         echo "<div class='single-video part-$counter'><h2 class='title'>$title</h2><div class='content'>";
-        echo wp_oembed_get( $video_url . '&showinfo=0' , array( 'width' => '800' ) );
-        echo "</div><div class='footer'>$length $download $transcript </div></div>";
+        echo wp_oembed_get( $video_url , array( 'width' => '800' ) );
+        echo '</div><div class="footer">';
+        echo "<span class='video-length' data-length='$length'>$length</span>";
+        echo "<span class='video-part-download'><a href='$download'>Download Hi-Res</a></span>";
+        echo "<span class='video-part-transcript-toggle' data-part='$counter'>Transcript</span>";
+        echo "<div id='video-part-transcript-$counter' class='video-part-transcript' style='display:none'>$transcript</div>";
+        echo '</div></div>';
         $counter++;
         
       }
@@ -84,7 +89,7 @@ function ibio_related_content(){
       echo $resources;
   }	
 
-	
+	get_template_part("parts/related-talks-by-category");
 	
 }
 

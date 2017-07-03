@@ -33,7 +33,7 @@ class IBioTalk {
 		add_filter('admin_body_class', array( &$this, 'admin_body_class' ) );
 		add_filter( 'enter_title_here', array( &$this,'default_title') );
 	
-		//add_action( 'save_post', array( &$this, 'save_post' ), 10, 2 );
+		add_action( 'save_post', array( &$this, 'save_post' ), 10, 2 );
 		//add_action( 'acf/save_post', array( &$this, 'acf_save_post' ), 10, 2 );
 
 		
@@ -179,6 +179,8 @@ class IBioTalk {
     // verify this came from the our screen and with proper authorization,
     // because save_post can be triggered at other times
 		
+		error_log('updating talk with excerpt.  We hope?') ;
+		
 		$post = get_post($post_id);
 
   	if (!isset($post->post_type) || self::$post_type != $post->post_type ) {
@@ -197,6 +199,28 @@ class IBioTalk {
 
 		// do stuff that might trigger another Save
 
+
+		// grab the parts and put them in the excerpt.
+		
+		if ( function_exists( 'get_field' ) ){
+			$videos = get_field( 'videos' );
+			
+			error_log('Got Video and Count') ;
+
+			
+			if ( is_array( 'videos' ) && count( $videos ) > 1 ){
+				// we have a multi-part talk;
+				
+				$post->post_excerpt = "multi-part talk";
+				
+			} else {
+			
+				$post->post_excerpt = "single part talk";		
+			}
+			
+			wp_update_post( $post );
+		}
+		
 
 		// re-hook this function
 		add_action( 'save_post', array( &$this, 'save_post' ), 10, 2  );

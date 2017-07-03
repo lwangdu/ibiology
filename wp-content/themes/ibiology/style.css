@@ -905,22 +905,49 @@ section.videos {
 	background-color: #000;
 	color: #fff;
 	position: relative;
-	height: 550px;
+	height: 555px;
 }
 
 section.videos .single-video{
 	width: 800px;
 	position: absolute;
-	top: 30px;
+	top: 40px;
 	display:none;
+}
+
+.single-video .title{
+	position: absolute;
+	top: 0;
+	padding: 10px 20px;
+	background-color: rgba(128, 128, 128, .4);
+	opacity: 1;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+	
+	min-width: 800px;
+}
+
+.singe-video:hover .title{
+	opacity: 0;
 }
 
 section.videos .single-video.active{
 	display:block;
 }
 
-secition.videos .single-video .footer{
+section.videos .single-video .footer{
 	clear:both;
+	height: 35px;
+	border-top: 1px solid #999;
+	margin-top: 10px;
+	padding-left: 20px;
+	font-size: 80%;
+}
+
+section.videos .single-video .footer span{
+	font-weight: 100;
+	padding-right: 20px;
 }
 
 section.videos .videos-nav{

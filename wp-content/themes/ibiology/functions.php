@@ -15,6 +15,7 @@ include_once( get_template_directory() . '/lib/init.php' );
 
 // load child theme textdomain.
 load_child_theme_textdomain( 'ibiology' );
+define( 'CHILD_THEME_VERSION', '1.0' );
 
 add_action( 'genesis_setup', 'ibiology_setup',15 );
 
@@ -163,3 +164,19 @@ function ibio_searchwp_basic_auth_creds() {
 }
 
 add_filter( 'searchwp_basic_auth_creds', 'ibio_searchwp_basic_auth_creds' );
+
+
+// customize embed settings 
+// YouTue URL'S_IRWXU
+function ibio_youtube_embed($code){
+	//error_log( '[ibio_youtube_embed With ' . $code );
+	if(strpos($code, 'youtu.be') !== false || strpos($code, 'youtube.com') !== false){
+		$return = preg_replace("@src=(['\"])?([^'\">\s]*)@", "src=$1$2&showinfo=0", $code);
+		//error_log( '[ibio_youtube_embed return  ' . $return );
+		return $return;
+	}
+	return $code;
+}
+
+add_filter('embed_handler_html', 'ibio_youtube_embed', 200);
+add_filter('embed_oembed_html', 'ibio_youtube_embed', 200);

@@ -24,3 +24,25 @@ function ibio_grid_body_class($classes){
   $classes[] = 'grid-listing';
   return $classes;
 }
+
+// Get the playlists for a talk.  Returns an array of playlists.
+
+function ibio_playlists_talk($talk_id=null){
+	if ( empty( $talk_id ) ) {
+		$talk = get_queried_object();
+		if ( isset( $talk->ID ) ){
+			$talk_id = $talk->ID;
+		} else {
+			return null;
+		}
+	}
+	
+	
+  $playlist_talks = new WP_Query( array (
+        'post_type' => IbioPLaylist::$post_type,
+        'posts_per_page'  => 4,
+        'connected_type' => 'playlist_to_talks'
+     ) );
+	
+}
+
