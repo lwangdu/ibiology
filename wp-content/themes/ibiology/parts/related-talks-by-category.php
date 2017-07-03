@@ -19,7 +19,7 @@
       
     if ( $related_talks->have_posts() ) {
       echo '<h4 class="widgettitle">Related Talks</h4>';
-      echo '<ul class="related-by-category talks-list">';
+      echo '<ul class="related-by-category talks-list grid">';
       while ( $related_talks->have_posts() ) {
         $related_talks->the_post();
         get_template_part( 'parts/list-talk');

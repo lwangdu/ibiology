@@ -179,7 +179,6 @@ class IBioTalk {
     // verify this came from the our screen and with proper authorization,
     // because save_post can be triggered at other times
 		
-		error_log('updating talk with excerpt.  We hope?') ;
 		
 		$post = get_post($post_id);
 
