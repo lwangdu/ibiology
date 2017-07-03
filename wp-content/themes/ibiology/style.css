@@ -580,7 +580,7 @@ th:first-child {
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header {
-	background-color: #333 !important;
+	background-color: #333;
 	border-top: 2px solid #0099d1;
 }
 
@@ -654,13 +654,12 @@ th:first-child {
 /* Structure & Layout
 ---------------------------------------------------------------------------------------------------- */
 
-.site-header,
-.site-inner,
-.site-footer {
+.site-inner {
 	margin: 0 auto;
 	max-width: 1280px;
 	background-color: #fefefe;
 }
+
 
 /* ## Site Containers
 --------------------------------------------- */
@@ -842,7 +841,6 @@ th:first-child {
 .nav-primary {
 	background-color: #222;
 	margin: 0 auto;
-	max-width: 1280px;
 	border-top: 1px solid #333;
 }
 
@@ -970,16 +968,21 @@ section.videos .single-video .footer span{
 	padding-right: 20px;
 }
 
-section.videos .videos-nav{
+section.videos .videos-info{
 	min-width: 250px;
 	flex: 1 1 25%;
-	cursor: pointer;
 	font-size: 1.2rem;
 	line-height: 1.5rem;
 }
 
+section.videos .videos-info header{
+	font-weight: 100;
+	margin-bottom: 5px;
+}
+
 section.videos .videos-nav li{
 	margin-bottom: 10px;
+	cursor: pointer;
 }
 
 section.videos .videos-nav li figure{
@@ -997,6 +1000,12 @@ section.videos .videos-nav li figure{
 
 .videos-nav .active{
 	color: #fff;
+}
+
+.video-part-transcript{
+	overflow: scroll;
+	background-color: #ffffee;
+	height: 400px;
 }
 
 /* ## Entry Meta
