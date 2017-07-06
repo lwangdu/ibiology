@@ -5,21 +5,24 @@ $acf_fields_helper = new IBio_Fields_Display_Helper();
 
 global $talk_speaker;
 
+$talk_speakers = new WP_Query(array(
+    'post_type' => 'ibiology_speaker',
+    'connected_type' => 'speaker_to_talk',
+    'connected_items' => get_queried_object(),
+    'nopaging' => true
+  ));
+if ( !empty($talk_speakers) && isset($talk_speakers->posts)) {
+  $talk_speaker = $talk_speakers->posts;
+}
+
+
 function ibio_talks_info(){
 	global $talk_speaker;
 	
-	$talk_speakers = new WP_Query(array(
-			'post_type' => 'ibiology_speaker',
-			'connected_type' => 'speaker_to_talk',
-			'connected_items' => get_queried_object(),
-  		'nopaging' => true
-		));
-	
-	$talk_speaker = $talk_speakers->posts;
 	
 	// put the speaker info in the page title
 	if ( ! empty ($talk_speaker) ) {
-	  echo '<div class="post-info">With :';
+	  echo '<div class="post-info">With: ';
   	foreach ($talk_speaker as $s){
 	  	$url = get_post_permalink($s->ID);
 		  echo "<a class='speaker-link' href='$url'>" . $s->post_title . "</a>";
@@ -86,7 +89,7 @@ remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 //add_action( 'genesis_after_header', 'genesis_do_breadcrumbs', 15 );
 
 remove_action( 'genesis_entry_header', 'genesis_post_info');
-
+remove_action( 'genesis_entry_footer', 'genesis_post_meta');
 add_action('genesis_after_header', 'ibio_talks_videos', 30);
   
 add_action('genesis_entry_header', 'ibio_talks_info', 20);

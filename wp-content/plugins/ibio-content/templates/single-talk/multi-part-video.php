@@ -5,9 +5,17 @@ global $videos;
   if ( is_array( $videos ) ) {
     echo '<section class="videos row"><div class="wrap">';
    
-    
+      global $talk_speaker;
+   
+      if ( isset( $talk_speaker) ){
+        foreach( $talk_speaker as $s ){
+          $speakers .= "<span class='speaker-name'>{$s->post_title}</span>";
+        }
+      }
+      
       $counter = 1; // count the parts;
       $titles = array();
+      $thumbs = array();
   
       $num_parts = count( $videos );
       echo '<div class="videos-container">';
@@ -23,9 +31,14 @@ global $videos;
         $download_link = ! empty ( $download ) ? "<a href='$download'>Download $size</a>" : '';
         $transcript = isset( $v[ 'transcript' ] ) ? '<span class="transcript toggle" data-toggle="video-part-transcript-'. $counter .'">View Transcript</span><div id="video-part-transcript-'. $counter .'" class="" style="display:none">' . esc_html( $v[ 'transcript' ] ) . '</div>' : '';
         $video_url = isset( $v[ 'video_url' ] ) ? esc_html( $v[ 'video_url' ] ) : '';
+        $video_thumbnail = isset( $v[ 'video_thumbnail' ] ) ? $v[ 'video_thumbnail' ] : '';
         
+        // video thumbnail is an array.  Let's grab the thumbnail size of this image.
+        if ( is_array( $video_thumbnail ) && isset( $video_thumbnail['sizes'] ) && isset( $video_thumbnail['sizes']['thumbnail'] ) ){
+          $thumbs[ $counter ] = $video_thumbnail['sizes']['thumbnail']; 
+        }
         
-        echo "<div class='single-video part-$counter'><h2 class='title'>$title</h2><div class='content'>";
+        echo "<div class='single-video part-$counter'><header><h2 class='title'>$title</h2>$speakers</header><div class='content'>";
         echo wp_oembed_get( $video_url , array( 'height' => 475 ) );
         echo '</div><div class="footer"><div class="row controls">';
         echo "<span class='video-length' data-length='$length'>$length</span>";
@@ -39,12 +52,16 @@ global $videos;
       
       echo '<div class="videos-info">';
       
+      //var_dump($thumbs);
+      
       if ( $num_parts > 1 ){
         echo '<header>Videos in this Talk</header>';
         $tabs = '<ul class="videos-nav">';
         for( $i = 1 ; $i < $counter ; $i++ ){
           $title =  $titles[ $i ];
-          $tabs .= "<li class='part-$i' data-select='part-$i'><figure></figure>$title</li>";
+          $thumb = isset( $thumbs[ $i] ) ? '<img src="'. $thumbs[ $i] .'" alt="' . $title . '"/>' : '';
+          
+          $tabs .= "<li class='part-$i' data-select='part-$i'><figure>$thumb</figure>$title</li>";
         }
         $tabs .= "</ul>";
         echo $tabs;
@@ -70,7 +87,7 @@ global $videos;
       }
   
       echo $date_recorded;
-      echo $languages;
+      //echo $languages;
       
       echo '</div>';     
     echo '</div></section>';

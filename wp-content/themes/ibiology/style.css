@@ -939,9 +939,9 @@ section.videos .single-video{
 	display:none;
 }
 
-.single-video .title{
+.single-video header{
 	position: absolute;
-	top: 0;
+	bottom: 30px;
 	padding: 10px 20px;
 	background-color: rgba(128, 128, 128, .4);
 	opacity: 1;
@@ -950,9 +950,14 @@ section.videos .single-video{
   -webkit-transition: opacity .25s ease-in-out;
 	
 	min-width: 800px;
+
 }
 
-.single-video:hover .title{
+.single-video .title{
+	font-size: 2rem;
+}
+
+.single-video:hover header{
 	opacity: 0;
 }
 
@@ -1000,6 +1005,10 @@ section.videos .videos-nav li figure{
 	float: left;
 	margin-right: 10px;
 	margin-bottom: 10px;
+}
+
+section.videos .videos-nav li figure img{
+	width: 100%;
 }
 
 
