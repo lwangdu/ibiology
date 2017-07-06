@@ -1150,7 +1150,9 @@ p.entry-meta {
   font-size: 18px;
 }
 
-.grid-listing .content .archive-description, .grid-listing .content .pagination{
+.grid-listing .content .archive-description, 
+.grid-listing .content .pagination, 
+.grid-listing .content .breadcrumb{
   flex: 0 0 100%;
 }
 
