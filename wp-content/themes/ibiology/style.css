@@ -921,12 +921,15 @@ section.videos.row {
 
 section.videos.row .wrap{
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
+	justify-content: space-between;
 }
 
 section.videos .videos-container{
-	flex: 1 1 75%;
-	width: 75%;
+	flex: 1 1 66%;
+	width: 66%;
+	max-width: 800;
+	margin-right: 20px;
 }
 
 section.videos .single-video{
@@ -949,7 +952,7 @@ section.videos .single-video{
 	min-width: 800px;
 }
 
-.singe-video:hover .title{
+.single-video:hover .title{
 	opacity: 0;
 }
 
@@ -973,7 +976,7 @@ section.videos .single-video .footer span{
 
 section.videos .videos-info{
 	min-width: 250px;
-	flex: 1 1 25%;
+	flex: 1 1 30%;
 	font-size: 1.2rem;
 	line-height: 1.5rem;
 }
@@ -986,14 +989,17 @@ section.videos .videos-info header{
 section.videos .videos-nav li{
 	margin-bottom: 10px;
 	cursor: pointer;
+	clear: both;
 }
 
 section.videos .videos-nav li figure{
-	height: 50px;
-	width: 75px;
+	height: 79px;
+	width: 140px;
 	background-color: #999;
+	overflow: hidden;
 	float: left;
 	margin-right: 10px;
+	margin-bottom: 10px;
 }
 
 
@@ -1143,6 +1149,7 @@ p.entry-meta {
 .grid-listing .content .entry{
   flex: 0 0  200px;
   padding: 10px;
+  margin-bottom: 20px;
   box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
 }
 
@@ -1160,12 +1167,14 @@ p.entry-meta {
 ---------------------------------------------------------------------------------------------------- */
 ul.grid {
 	display: flex;
+	flex-flow: row wrap;
 }
 
 ul.grid li{
-	flex: 1 1 28%;
+	flex: 0 1 300px;
 	list-style-type: none;
 	max-width: 300px;
+	margin: 0 10px 10px 0;
 }
 
 
