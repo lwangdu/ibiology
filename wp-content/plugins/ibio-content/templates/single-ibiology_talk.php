@@ -85,6 +85,8 @@ add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 //add_action( 'genesis_after_header', 'genesis_do_breadcrumbs', 15 );
 
+remove_action( 'genesis_entry_header', 'genesis_post_info');
+
 add_action('genesis_after_header', 'ibio_talks_videos', 30);
   
 add_action('genesis_entry_header', 'ibio_talks_info', 20);
