@@ -46,7 +46,7 @@ function ibio_talks_videos(){
   if ( count( $videos ) > 1 ){   
     ibio_get_template_part( 'single-talk/multi-part', 'video' );
   } else {
-    ibio_get_template_part( 'single-talk/single-part', 'video' );
+    ibio_get_template_part( 'single-talk/multi-part', 'video' );
   }
 }
 
