@@ -12,8 +12,7 @@
     echo "<li>Post ID: {$post->ID}</li>";
     echo "<li>Publish Date: {$post->post_date}</li>";
     echo "<li>Migration Status: $migration_status </li>";
-    
-    if ( empty( 'original_url' ) ){
+    if ( empty( $original_url ) ){
       echo "<li>Original URL not entered.<a href='https://www.ibiology.org/?p={$post->ID}'>Maybe this is it?</a></li>";
     } else {
       echo "<li><a href='$original_url'>View on current site</a></li>";
