@@ -44,8 +44,8 @@ function ibiology_setup() {
 	
 	//* Add support for custom header
   add_theme_support( 'custom-header', array(
-    'width'           => 1240,
-    'height'          => 129,
+    'width'           => 600,
+    'height'          => 160,
     'header-selector' => '.site-title a',
     'header-text'     => false,
     'flex-height'     => true,

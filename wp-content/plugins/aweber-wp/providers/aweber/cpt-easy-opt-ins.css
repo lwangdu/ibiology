@@ -1,0 +1,27 @@
+.fca_eoi_aweber_label {
+  position: relative;
+}
+.fca_eoi_aweber_label .fca_eoi_provider_status {
+  position: absolute;
+  top: 1.3em;
+  left: 27em;
+}
+#aweber_add_tag {
+	margin-left: 3px;
+}
+
+#aweber_tag_text_input {
+	width: 21.5em;	
+}
+.aweber-tag {
+    margin-left: 2px;
+}
+.aweber-tag-wrapper {
+	margin: 5px;
+}
+.aweber-tag-delete {
+	cursor: pointer;
+}
+.aweber-tag-delete:hover {
+	color: #d54e21;
+}
