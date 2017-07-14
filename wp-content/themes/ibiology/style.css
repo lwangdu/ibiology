@@ -156,7 +156,7 @@ input[type="search"]{
 body {
 	background-color: #f6f6f6;
 	color: #333;
-	font-family: 'Helvetica Neue', Helvetica, Arial,sans-serif;
+	font-family: "Helvetica Neue Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 1.2rem;
 	-webkit-font-smoothing: antialiased;
 	font-weight: 400;
@@ -255,7 +255,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'Helvetica Neue', Helvetica, Arial,sans-serif;
+	font-family: "Helvetica Neue Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-weight: 700;
 	line-height: 1.2;
 	margin: 0 0 10px;
@@ -1006,7 +1006,7 @@ section.videos .single-video .footer{
 	border-top: 1px solid #999;
 	margin-top: 10px;
 	padding-left: 20px;
-	font-size: 80%;
+	font-size: 90%;
 }
 
 section.videos .single-video .footer span{
@@ -1241,12 +1241,11 @@ ul.grid li{
 /* # Footer Widgets
 ---------------------------------------------------------------------------------------------------- */
 
-.footer-widgets .wrap {
+.footer-widgets {
 	background-color: #000;
 	color: #fff;
 	margin: 4px auto 0;
 	padding: 20px;
-	width: 1280px;
 }
 
 .footer-widgets .widgettitle {
@@ -1412,7 +1411,7 @@ ul.grid li{
 
 	.footer-widgets-1
 	 {
-		width: 340px;
+		width: 100%;
 	}
 
 	.footer-widgets-1 {

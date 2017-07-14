@@ -80,7 +80,7 @@ function ibiology_setup() {
 // Google font stylesheet
 add_action( 'wp_enqueue_scripts', 'ibiology_enqueue_styles' );
 function ibiology_enqueue_styles() {
-	wp_enqueue_style( 'google-fonts','//fonts.googleapis.com/css?family=Roboto:400,400i,700,700i|Signika' );
+	wp_enqueue_style( 'google-fonts','https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:400,500' );
 	wp_enqueue_style( 'ionicons', '//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css', array(), CHILD_THEME_VERSION );
 }
 
