@@ -632,7 +632,7 @@ th:first-child {
 	background-position: center !important;
 	background-size: contain !important;
 	float: left;
-	min-height: 100px;
+	min-height: 110px;
 	width: 100%;
 }
 
@@ -1242,19 +1242,19 @@ ul.grid li{
 ---------------------------------------------------------------------------------------------------- */
 
 .footer-widgets {
-	background-color: #000;
-	color: #fff;
+	background-color: #fff;
+	color: #222;
 	margin: 4px auto 0;
 	padding: 20px;
 }
 
 .footer-widgets .widgettitle {
-	color: #fff;
+	color: #222;
 }
 
 
 .footer-widgets a {
-	color: #fff;
+	color: #222;
 	text-decoration: none;
 	display: inline !important;
 }
