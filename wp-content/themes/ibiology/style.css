@@ -154,7 +154,7 @@ input[type="search"]{
 --------------------------------------------- */
 
 body {
-	background-color: #f6f6f6;
+	background-color: #fafafa;
 	color: #333;
 	font-family: "Helvetica Neue Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 1.2rem;
@@ -1118,7 +1118,7 @@ p.entry-meta {
 .archive-pagination a:hover,
 .archive-pagination a:focus,
 .archive-pagination .active a {
-	background-color: #c3251d;
+	background-color: #0099d1;
 	color: #fff;
 }
 
@@ -1198,7 +1198,7 @@ p.entry-meta {
 }
 
 .grid-listing .content .entry-title{
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .grid-listing .content .archive-description, 
