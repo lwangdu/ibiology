@@ -25,7 +25,7 @@ speakers/
 *.swp
 Thumbs.db
 
-# wordpress specific
+# wordpress core specific
 index.php
 license.txt
 readme.html
@@ -60,9 +60,23 @@ wp-content/cache/supercache/*
 wp-content/mu-plugins/*
 wp-content/plugins/advanced-cache.php
 wp-content/debug.log
+wp-content/db.php
 
 wp-content/ewww/
 wp-content/mysql.sql
+
+
+wp-content/plugins/force-regenerate-thumbnails/
+wp-content/plugins/post-type-switcher/
+wp-content/plugins/posts-to-posts/
+wp-content/plugins/query-monitor/
+wp-content/plugins/wordpress-importer/
+wp-content/plugins/wp-all-export-pro/
+wp-content/plugins/wp-all-import-pro/
+wp-content/plugins/wpai-acf-add-on/
+
+wp-content/plugins/aweber-wp/
+wp-content/plugins/advanced-custom-fields-pro/
 wp-content/plugins/Post-Parents-master/
 wp-content/plugins/acf-theme-code-pro/
 wp-content/plugins/addthis/
@@ -72,8 +86,10 @@ wp-content/plugins/breadcrumb-navxt/
 wp-content/plugins/cptui-extended/
 wp-content/plugins/custom-post-type-ui/
 wp-content/plugins/footable/
+wp-content/plugins/featured-videos-for-genesis/
 wp-content/plugins/genesis-404-page/
 wp-content/plugins/genesis-accessible/
+wp-content/plugins/genesis-enews-extended/
 wp-content/plugins/genesis-featured-page-advanced/
 wp-content/plugins/genesis-responsive-slider/
 wp-content/plugins/genesis-simple-edits/
@@ -97,18 +113,22 @@ wp-content/plugins/sendgrid-email-delivery-simplified/
 wp-content/plugins/shortcodes-ultimate/
 wp-content/plugins/sidebar-login/
 wp-content/plugins/simple-custom-css/
+wp-content/plugins/simple-social-icons/
 wp-content/plugins/tinymce-advanced/
 wp-content/plugins/widget-context/
 wp-content/plugins/wordpress-seo/
 wp-content/plugins/wp-recaptcha/
 wp-content/plugins/wp-show-ids/
 wp-content/plugins/wp-smushit/
+wp-content/plugins/wp-pagenavi/
 wp-content/plugins/wp-sweep/
 wp-content/plugins/hello.php
+
 
 wp-content/themes/twentyfifteen/
 wp-content/themes/twentyseventeen/
 wp-content/themes/twentysixteen/
 wp-content/*.sql
 wp-content/themes/genesis/
+wp-content/themes/genesis-sample/
 wp-content/themes/landscape/

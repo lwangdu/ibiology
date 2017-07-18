@@ -45,5 +45,5 @@ global $videos;
         echo $tabs;
       }
             
-    echo '</wrap></section>';
+    echo '</div></section>';
   } 

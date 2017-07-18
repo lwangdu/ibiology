@@ -9,32 +9,24 @@
  * @license 	GPL-2.0+
  */
 
-//* Start the engine
-include_once( get_template_directory() . '/lib/init.php' );
-
-
 // load child theme textdomain.
 load_child_theme_textdomain( 'ibiology' );
-define( 'CHILD_THEME_VERSION', '1.0' );
 
 add_action( 'genesis_setup', 'ibiology_setup',15 );
-
-//* Add HTML5 markup structure
-add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 
 
 /**
 *
-* Theme setup.
+*Them setup.
 * Attach all of the site-wide functions to the correct hooks and filters. All the function themselves are defind below this setup function
 *
 * @since 1.0.0
 */
 function ibiology_setup() {
 	// Define them constants.
-	define( 'CHILD_THEME_NAME', 'iBiology' );
-	define( 'CHILD_THEME_URL', 'http://github.com/lwangdu/ibiology' );
-	define( 'CHILD_THEME_VERSION', '0.1.0' );
+	define( 'CHILD_THEM_NAME', 'iBiology' );
+	define( 'CHILD_THEM_URL', 'http://github.com/lwangdu/ibiology' );
+	define( 'CHILD_THEM_VERSION', '1.0.0' );
 	
 	// Add HTML5 makup structure.
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption'  ) );
@@ -43,13 +35,13 @@ function ibiology_setup() {
 	add_theme_support( 'genesis-responsive-viewport' );
 	
 	//* Add support for custom header
-  add_theme_support( 'custom-header', array(
-    'width'           => 600,
-    'height'          => 160,
-    'header-selector' => '.site-title a',
-    'header-text'     => false,
-    'flex-height'     => true,
-  ) );
+add_theme_support( 'custom-header', array(
+	'width'           => 1240,
+	'height'          => 129,
+	'header-selector' => '.site-title a',
+	'header-text'     => false,
+	'flex-height'     => true,
+) );
 	
 	// Add them support for accessibility.
 	add_theme_support( 'genesis-accessibility', array(
@@ -80,26 +72,9 @@ function ibiology_setup() {
 // Google font stylesheet
 add_action( 'wp_enqueue_scripts', 'ibiology_enqueue_styles' );
 function ibiology_enqueue_styles() {
-	wp_enqueue_style( 'google-fonts','https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:400,500' );
+	wp_enqueue_style( 'google-fonts','//fonts.googleapis.com/css?family=Roboto:400,400i,700,700i|Signika' );
 	wp_enqueue_style( 'ionicons', '//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css', array(), CHILD_THEME_VERSION );
 }
-
-
-//* Add support for 3-column footer widgets
-add_theme_support( 'genesis-footer-widgets', 1 );
-
-
-/** 
- *
- *  Widget Areas
- */
-
-genesis_register_sidebar( array(
-	'id'          => 'sidebar_talks',
-	'name'        => __( 'Individual Talk', 'metro' ),
-	'description' => __( 'This is the sidebar for an individual talk', 'metro' ),
-) );
-
 
 
 /**
@@ -116,9 +91,7 @@ function ibiology_enqueue_scripts_styles() {
 		'subMenu'  => __( 'Menu', 'ibiology' ),
 	);
 	wp_localize_script( 'ibiology-responsive-menu', 'ibiologyL10n', $output );
-	
-	wp_enqueue_script( 'ibiology-content', get_stylesheet_directory_uri() . '/js/ibio.js', array( 'jquery' ), '1.0.0', true );
-	
+
 }
 
 //* Customize the footer credits
@@ -127,58 +100,3 @@ function ibiology_enqueue_scripts_styles() {
 		$creds = '[footer_copyright] &middot; <a href="https://www.ibiology.org">iBiology</a> &middot; <a href="https://www.ibiology.org/about" title="About Us">About Us</a>';
 		return $creds;
 	}
-
-if ( ! isset( $content_width ) ) {
-	$content_width = 800;
-}
-
-//* work around turning off cusotm fields
-/*
-if ( !defined( 'get_field' ) ){
-  function get_field($field_name, $post_id = null, $format = false){
-    if ( empty( $post_id ) ){
-      global $post;
-      if ( ! empty( $post ) ){
-        $post_id = $post->ID;
-      } 
-    }
-    
-    return get_post_meta( $post_id, $field, true ); 
-  }
-}
-*/
-
-/* For SearchWP - until we disable the http protection */
-
-function ibio_searchwp_basic_auth_creds() {
-	
-	// NOTE: this needs to be your HTTP BASIC AUTH login
-	//
-	//                 *** NOT *** your WordPress login
-	//
-	//
-	$credentials = array( 
-		'username' => 'iobiology2017', // the HTTP BASIC AUTH username
-		'password' => 'ronvale'  // the HTTP BASIC AUTH password
-	);
-	
-	return $credentials;
-}
-
-add_filter( 'searchwp_basic_auth_creds', 'ibio_searchwp_basic_auth_creds' );
-
-
-// customize embed settings 
-// YouTue URL'S_IRWXU
-function ibio_youtube_embed($code){
-	//error_log( '[ibio_youtube_embed With ' . $code );
-	if(strpos($code, 'youtu.be') !== false || strpos($code, 'youtube.com') !== false){
-		$return = preg_replace("@src=(['\"])?([^'\">\s]*)@", "src=$1$2&showinfo=0", $code);
-		//error_log( '[ibio_youtube_embed return  ' . $return );
-		return $return;
-	}
-	return $code;
-}
-
-add_filter('embed_handler_html', 'ibio_youtube_embed', 200);
-add_filter('embed_oembed_html', 'ibio_youtube_embed', 200);

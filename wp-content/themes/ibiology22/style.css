@@ -39,7 +39,6 @@ Text Domain: iBiology
 	- Sidebar Widgets
 	- Footer Navigation
 	- Content Area and Entries
-	- Entries in Lists
 	- Entry Meta
 	- Pagination
 	- Comments
@@ -154,10 +153,10 @@ input[type="search"]{
 --------------------------------------------- */
 
 body {
-	background-color: #fafafa;
+	background-color: #f6f6f6;
 	color: #333;
-	font-family: "Helvetica Neue Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-size: 1.2rem;
+	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
 	-webkit-font-smoothing: antialiased;
 	font-weight: 400;
 	line-height: 1.625;
@@ -255,8 +254,8 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: "Helvetica Neue Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-weight: 700;
+	font-family: 'Signika', sans-serif;
+	font-weight: 600;
 	line-height: 1.2;
 	margin: 0 0 10px;
 }
@@ -502,7 +501,6 @@ tbody {
 td,
 th {
 	text-align: left;
-	vertical-align:top;
 }
 
 td {
@@ -511,9 +509,8 @@ td {
 }
 
 th {
-	font-weight: 700;
+	font-weight: 400;
 	padding: 0 6px;
-	line-height: 1rem;
 }
 
 td:first-child,
@@ -580,7 +577,7 @@ th:first-child {
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header {
-	background-color: #333;
+	background-color: #fefefe !important;
 	border-top: 2px solid #0099d1;
 }
 
@@ -595,13 +592,13 @@ th:first-child {
 .title-area {
 	float: left;
 	padding: 10px 0;
-	width: 600px;
+	width: 1280px;
 }
 
 .header-image .title-area {
 	float: left;
 	margin: 0 auto;
-	max-width: 600px;
+	max-width: 1280px;
 	padding: 0;
 }
 
@@ -622,27 +619,22 @@ th:first-child {
 	color: #333;
 	text-decoration: none;
 	padding: 20px;
-	background-image: url("images/logo.png");
-	background-repeat: no-repeat;
-	background-size: contain;
-
 }
 
 .header-image .site-title > a {
 	background-position: center !important;
 	background-size: contain !important;
 	float: left;
-	min-height: 110px;
+	min-height: 129px;
 	width: 100%;
 }
 
 .site-description {
 	font-size: 16px;
-	font-size: 1.6rem;
 	font-weight: 400;
 	line-height: 1.5;
+	padding-left:  20px;
 }
-
 
 .site-description,
 .site-title {
@@ -655,50 +647,17 @@ th:first-child {
 	text-indent: -9999px;
 }
 
-/* ## Search Form
---------------------------------------------- */
-
-.search-form {
-	overflow: hidden;
-}
-
-.entry-content .search-form,
-.site-header .search-form {
-	margin-bottom: 40px;
-	width: 50%;
-}
-
-.site-header .search-form {
-	float: right;
-	margin: 12px auto 0;
-}
-
-.post-password-form input[type="submit"],
-.search-form input[type="submit"] {
-	margin-top: 10px;
-}
-
-.genesis-nav-menu .search input[type="submit"],
-.widget_search input[type="submit"] {
-	border: 0;
-	clip: rect(0, 0, 0, 0);
-	height: 1px;
-	margin: -1px;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-}
-
 
 /* Structure & Layout
 ---------------------------------------------------------------------------------------------------- */
 
-.site-inner {
+.site-header,
+.site-inner,
+.site-footer {
 	margin: 0 auto;
 	max-width: 1280px;
-
+	background-color: #fefefe;
 }
-
 
 /* ## Site Containers
 --------------------------------------------- */
@@ -719,18 +678,8 @@ th:first-child {
 	max-width: 800px;
 }
 
-/* Breadcrumbs Strip */
 
-.single-ibiology_talk .breadcrumbs-strip {
-		width: 100%;
-		background-color: #111;
-		font-size: 80%;
-		color: #fff;
-}
 
-.single-ibiology_talk .breadcrumbs-strip .wrap{
-	padding: 10px 20px;
-}
 /* Column Widths and Positions
 --------------------------------------------- */
 
@@ -747,6 +696,7 @@ th:first-child {
 
 .full-width-content .content {
 	width: 100%;
+	background-color: #fefefe;
 }
 
 /* ### Primary Sidebar */
@@ -879,6 +829,7 @@ th:first-child {
 .nav-primary {
 	background-color: #222;
 	margin: 0 auto;
+	max-width: 1280px;
 	border-top: 1px solid #333;
 }
 
@@ -944,123 +895,6 @@ th:first-child {
 	color: #eee;
 }
 
-/* ## Videos
---------------------------------------------- */
-
-section.videos.row {
-	background-color: #111;
-	color: #fff;
-	height: 545px;
-	
-}
-
-section.videos.row .wrap{
-	display: flex;
-	flex-wrap: nowrap;
-	justify-content: space-between;
-}
-
-section.videos .videos-container{
-	flex: 1 1 66%;
-	width: 66%;
-	max-width: 800;
-	margin-right: 20px;
-}
-
-section.videos .single-video{
-	width: 100%;
-	max-width: 800px;
-	position: relative;
-	display:none;
-}
-
-.single-video header{
-	position: absolute;
-	bottom: 30px;
-	padding: 10px 20px;
-	background-color: rgba(128, 128, 128, .4);
-	opacity: 1;
-  transition: opacity .25s ease-in-out;
-  -moz-transition: opacity .25s ease-in-out;
-  -webkit-transition: opacity .25s ease-in-out;
-	
-	min-width: 800px;
-
-}
-
-.single-video .title{
-	font-size: 2rem;
-}
-
-.single-video:hover header{
-	opacity: 0;
-}
-
-section.videos .single-video.active{
-	display:block;
-}
-
-section.videos .single-video .footer{
-	clear:both;
-	height: 35px;
-	border-top: 1px solid #999;
-	margin-top: 10px;
-	padding-left: 20px;
-	font-size: 90%;
-}
-
-section.videos .single-video .footer span{
-	font-weight: 100;
-	padding-right: 20px;
-}
-
-section.videos .videos-info{
-	min-width: 250px;
-	flex: 1 1 30%;
-	font-size: 1.2rem;
-	line-height: 1.5rem;
-}
-
-section.videos .videos-info header{
-	font-weight: 100;
-	margin-bottom: 5px;
-}
-
-section.videos .videos-nav li{
-	margin-bottom: 10px;
-	cursor: pointer;
-	clear: both;
-}
-
-section.videos .videos-nav li figure{
-	height: 79px;
-	width: 140px;
-	background-color: #999;
-	overflow: hidden;
-	float: left;
-	margin-right: 10px;
-	margin-bottom: 10px;
-}
-
-section.videos .videos-nav li figure img{
-	width: 100%;
-}
-
-
-.videos-nav {
-	color:  #0099d1;
-}
-
-.videos-nav .active{
-	color: #fff;
-}
-
-.video-part-transcript{
-	overflow: scroll;
-	background-color: #ffffee;
-	height: 400px;
-}
-
 /* ## Entry Meta
 --------------------------------------------- */
 
@@ -1118,7 +952,7 @@ p.entry-meta {
 .archive-pagination a:hover,
 .archive-pagination a:focus,
 .archive-pagination .active a {
-	background-color: #0099d1;
+	background-color: #c3251d;
 	color: #fff;
 }
 
@@ -1181,47 +1015,6 @@ p.entry-meta {
 	display: none;
 }
 
-/* # Entries in Lists 
----------------------------------------------------------------------------------------------------- */
-
-.grid-listing .content{
-  display:flex ;
-  flex-flow: row wrap;
-  justify-content: space-between;
-}
-
-.grid-listing .content .entry{
-  flex: 0 0  200px;
-  padding: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
-}
-
-.grid-listing .content .entry-title{
-  font-size: 14px;
-}
-
-.grid-listing .content .archive-description, 
-.grid-listing .content .pagination, 
-.grid-listing .content .breadcrumb{
-  flex: 0 0 100%;
-}
-
-/* # Entries in smaller grids 
----------------------------------------------------------------------------------------------------- */
-ul.grid {
-	display: flex;
-	flex-flow: row wrap;
-}
-
-ul.grid li{
-	flex: 0 1 300px;
-	list-style-type: none;
-	max-width: 300px;
-	margin: 0 10px 10px 0;
-}
-
-
 
 /* # Sidebars
 ---------------------------------------------------------------------------------------------------- */
@@ -1241,20 +1034,21 @@ ul.grid li{
 /* # Footer Widgets
 ---------------------------------------------------------------------------------------------------- */
 
-.footer-widgets {
-	background-color: #fff;
-	color: #222;
+.footer-widgets .wrap {
+	background-color: #000;
+	color: #fff;
 	margin: 4px auto 0;
 	padding: 20px;
+	width: 1280px;
 }
 
 .footer-widgets .widgettitle {
-	color: #222;
+	color: #fff;
 }
 
 
 .footer-widgets a {
-	color: #222;
+	color: #fff;
 	text-decoration: none;
 	display: inline !important;
 }
@@ -1307,7 +1101,7 @@ ul.grid li{
 	font-size: 24px;
 	margin: 0 auto;
 	min-height: 450px;
-	max-width: 1280px;
+	max-width: 1240px;
 	padding: 40px 100px 0;
 	text-align: center;
 }
@@ -1320,29 +1114,12 @@ ul.grid li{
 	margin: 0 auto;
 	padding: 40px;
 	text-align: left;
-	max-width: 1280px;
+	max-width: 1240px;
 	
 	
 }
 
-/*speaker bio images */
-.circular--portrait {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 50%;
-  border: 4px solid #fbc52c;
-  float: left;
-  text-align: left;
-  margin-right: 16px;
-}
 
-.circular--portrait img {
-  width: 100%;
-  height: auto;
-
-}
 
 /* # Plugins
 ---------------------------------------------------------------------------------------------------- */
@@ -1398,7 +1175,7 @@ ul.grid li{
 /* # Media Queries
 ---------------------------------------------------------------------------------------------------- */
 
-@media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 1340px) {
 
 	.site-inner,
 	.wrap {
@@ -1426,9 +1203,10 @@ ul.grid li{
 		width: 300px;
 	}
 
-	.footer-widgets-1
-	 {
-		width: 100%;
+	.footer-widgets-1,
+	.footer-widgets-2,
+	.footer-widgets-3 {
+		width: 340px;
 	}
 
 	.footer-widgets-1 {
@@ -1462,15 +1240,31 @@ ul.grid li{
 		width: 400px;
 	}
 
-	.footer-widgets-1{
+	.footer-widgets-1,
+	.footer-widgets-2,
+	.footer-widgets-3 {
 		width: 300px;
-		margin-right: 10px;
+	}
+
+	.footer-widgets-1 {
+		margin-right: 30px;
+	}
+
+}
+
+@media only screen and (max-width: 1023px) {
+
+	.site-inner,
+	.wrap {
+		max-width: 800px;
 	}
 
 	.content,
 	.content-sidebar-sidebar .content,
 	.content-sidebar-sidebar .content-sidebar-wrap,
 	.footer-widgets-1,
+	.footer-widgets-2,
+	.footer-widgets-3,
 	.js .genesis-nav-menu .sub-menu a,
 	.js .genesis-nav-menu .sub-menu, 
 	.sidebar-content-sidebar .content,
@@ -1506,7 +1300,6 @@ ul.grid li{
 
 	.site-header .search-form {
 		margin: 16px auto;
-		float: left;
 	}
 
 	.js nav.nav-primary,
@@ -1644,7 +1437,8 @@ ul.grid li{
 		color: #0099d1;
 	}
 
-	.footer-widgets-1 {
+	.footer-widgets-1,
+	.footer-widgets-2 {
 		margin: 0 auto 40px;
 	}
 
@@ -1654,7 +1448,7 @@ ul.grid li{
 
 
 	body {
-		font-size: 16px;
+		font-size: 18px;
 	}
 
 	.site-inner {
@@ -1706,14 +1500,6 @@ ul.grid li{
 	}
 
 }
-
-@media only screen and (max-width: 1023px) {
-	.site-inner,
-	.wrap {
-		max-width: 800px;
-	}
-	
-	}
 
 
 
