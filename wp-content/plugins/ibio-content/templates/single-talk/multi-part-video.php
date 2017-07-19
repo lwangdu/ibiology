@@ -37,7 +37,7 @@ if ( is_array( $videos ) ) {
       $download = isset( $v[ 'video_download_url' ] ) ?  esc_url( $v[ 'video_download_url' ] ) : '';
       $size = isset( $v[ 'download_size' ] ) ?  '<span class="size">' . esc_attr( $v[ 'download_size' ] ) . '</span>' : '';
       $download_link = ! empty ( $download ) ? "<a href='$download'>Download $size</a>" : '';
-      $transcript = isset( $v[ 'transcript' ] ) ? '<span class="transcript toggle" data-toggle="video-part-transcript-'. $counter .'">View Transcript</span><div id="video-part-transcript-'. $counter .'" class="" style="display:none">' . esc_html( $v[ 'transcript' ] ) . '</div>' : '';
+      $transcript = isset( $v[ 'transcript' ] ) ? '<span class="transcript toggle" data-toggle="video-part-transcript-'. $counter .'">View Transcript</span><div id="video-part-transcript-'. $counter .'" class="drawer" style="display:none">' .  $v[ 'transcript' ] . '</div>' : '';
       $video_url = isset( $v[ 'video_url' ] ) ? esc_html( $v[ 'video_url' ] ) : '';
       $video_thumbnail = isset( $v[ 'video_thumbnail' ] ) ? $v[ 'video_thumbnail' ] : '';
       
@@ -78,16 +78,15 @@ if ( is_array( $videos ) ) {
       echo $tabs;
     }  
     $translations = get_field( 'translations' );
-    error_log( serialize( $translations) );
     $languages = '';
     if ( is_array( $translations ) ) {
-      $languages .= '<span class="toggle" data-toggle="translations">Translated Versions</span>';
-      $languages .= '<ul class="translations" style="display:none">';
+      $languages .= '<div class="row"><span class="toggle" data-toggle="translations">Translated Versions</span>';
+      $languages .= '<ul class="translations">';
       foreach( $translations as $t )  {
-        $url = get_permalink( $t->translated_talk );
-        $languages .= "<li><a href='$url'>{$t->language}</a></li>";
+        $url = get_permalink( $t[ 'translated_talk'] );
+        $languages .= "<li><a href='$url'>{$t['language']}</a></li>";
       }
-      $languages .= "</ul>";
+      $languages .= "</ul></div>";
     }
       
     $date_recorded = '';
@@ -100,11 +99,15 @@ if ( is_array( $videos ) ) {
     $year = get_field( 'date_recorded_year' );
 
     if ( !empty( $year ) ){
-      $date_recorded = "<div class='date-recorded'>Recorded:$month $year</div>";
+      $date_recorded = "<div class='date-recorded row'>Recorded:$month $year</div>";
     }
 
     echo $date_recorded;
     echo $languages;
+    
+    echo '<div class="row">';
+    get_template_part('parts/primary-related-category-link');
+    echo '</div>';
     
     echo '</div>';     
   echo '</div></section>';

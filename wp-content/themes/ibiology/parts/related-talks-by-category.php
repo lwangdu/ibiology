@@ -18,15 +18,18 @@
       ) );
       
     if ( $related_talks->have_posts() ) {
-      echo '<div class="related-talks filmstrip"> <h4 class="widgettitle">More Talks in '. $related_category->name .'</h4>';
-      echo '<ul class="related-by-category talks-list grid">';
+    	$category_info = get_term( $related_category, 'category');
+      echo '<div class="related-talks related-items"> <h4 class="widgettitle">More Talks in '. $category_info->name .'</h4>';
+      echo '<ul class="related-by-category talks-list filmstrip">';
       while ( $related_talks->have_posts() ) {
         $related_talks->the_post();
         get_template_part( 'parts/list-talk');
       }
       echo '</ul>';
+      wp_reset_query();
+      get_template_part('parts/primary-related-category-link');
       echo '</div>';
     }      
     
-    wp_reset_query();
+
   }

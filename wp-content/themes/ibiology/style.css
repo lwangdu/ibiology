@@ -306,6 +306,22 @@ figure {
 	margin: 0;
 }
 
+
+/* Buttons and interactive components 
+--------------------------------------------- */
+.toggle {
+	cursor: pointer;
+}
+
+.drawer {
+	background-color: #fefefe;
+	color: #111;
+	max-height: 400px;
+	overflow-y:scroll;
+	box-shadow: 0 2px 2px 5px rgba(128,128,128,.3);
+	padding: 4px;
+}
+
 /* ## Gallery
 --------------------------------------------- */
 
@@ -699,6 +715,11 @@ th:first-child {
 
 }
 
+.row {
+	display: block;
+	clear:both;
+	width: 100%;
+}
 
 /* ## Site Containers
 --------------------------------------------- */
@@ -1021,6 +1042,10 @@ section.videos .videos-info{
 	line-height: 1.5rem;
 }
 
+section.videos .videos-info .row{
+	padding: 4px 0;
+}
+
 section.videos .videos-info header{
 	font-weight: 100;
 	margin-bottom: 5px;
@@ -1059,6 +1084,20 @@ section.videos .videos-nav li figure img{
 	overflow: scroll;
 	background-color: #ffffee;
 	height: 400px;
+}
+
+/* ## Filmstrip
+--------------------------------------------- */
+.filmstrip{
+	display: flex;
+	flex-flow: row nowrap;
+  justify-content: space-between;
+	max-height: 200px;
+}
+
+.filmstrip .item{
+	flex: 0 0 24%;
+	list-style-type: none;
 }
 
 /* ## Entry Meta
