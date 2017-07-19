@@ -1,5 +1,13 @@
 <?php
 
+add_filter('oembed_fetch_url', 'ibio_youtube_url', 10, 3);
+
+function ibio_youtube_url($provider, $url, $args){
+  error_log("Provider: $provider, URL: $url, Args: " . serialize($args) );
+  return $provider;
+    
+}
+
 global $videos;
 
 if ( is_array( $videos ) ) {
@@ -39,7 +47,11 @@ if ( is_array( $videos ) ) {
       }
       
       echo "<div class='single-video part-$counter'><header><h2 class='title'>$title</h2>$speakers</header><div class='content'>";
-      echo wp_oembed_get( $video_url , array( 'height' => 475 ) );
+      $embed = wp_oembed_get( $video_url , array( 'height' => 475 ) );
+      // attach the showinfo parameter to the oembed.      
+      $embed = preg_replace( '/src="(.+)oembed"/', 'src="$1oembed&showinfo=0"', $embed );
+      echo $embed;
+      
       echo '</div><div class="footer"><div class="row controls">';
       echo "<span class='video-length' data-length='$length'>$length</span>";
       echo "<span class='video-part-download'><a href='$download'>Download Hi-Res</a></span>";
@@ -52,7 +64,6 @@ if ( is_array( $videos ) ) {
     
     echo '<div class="videos-info">';
     
-    //var_dump($thumbs);
     
     if ( $num_parts > 1 ){
       echo '<header>Videos in this Talk</header>';
@@ -67,27 +78,33 @@ if ( is_array( $videos ) ) {
       echo $tabs;
     }  
     $translations = get_field( 'translations' );
+    error_log( serialize( $translations) );
     $languages = '';
     if ( is_array( $translations ) ) {
       $languages .= '<span class="toggle" data-toggle="translations">Translated Versions</span>';
       $languages .= '<ul class="translations" style="display:none">';
       foreach( $translations as $t )  {
         $url = get_permalink( $t->translated_talk );
-        $languages = "<li><a href='$url'>{$t->language}</a></li>";
+        $languages .= "<li><a href='$url'>{$t->language}</a></li>";
       }
       $languages .= "</ul>";
     }
       
     $date_recorded = '';
-    $month = get_field( 'date_recorded_month' );
+    $month_field = get_field_object( 'date_recorded_month' );
+    // get the label for the month, rather than the number.
+    // error_log( serialize( $month_field['choices'] ) );
+    
+    $month = $month_field['choices'][$month_field[ 'value' ] ];
+
     $year = get_field( 'date_recorded_year' );
 
     if ( !empty( $year ) ){
-      $date_recorded = "<div class='date-recorded'>Recorded: $month $year</div>";
+      $date_recorded = "<div class='date-recorded'>Recorded:$month $year</div>";
     }
 
     echo $date_recorded;
-    //echo $languages;
+    echo $languages;
     
     echo '</div>';     
   echo '</div></section>';
