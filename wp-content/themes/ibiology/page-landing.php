@@ -2,7 +2,7 @@
 /**
  * iBiology in.
  *
- * This file adds the speakers page template to the iBiology Theme.
+ * This template can be used for a landing page.
  *
  * @package iBiology
  * @author  Lobsang Wangdu
