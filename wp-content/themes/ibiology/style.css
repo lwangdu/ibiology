@@ -681,7 +681,7 @@ th:first-child {
 .entry-content .search-form,
 .site-header .search-form {
 	margin-bottom: 40px;
-	width: 50%;
+	width: 300px;
 }
 
 .site-header .search-form {
