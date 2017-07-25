@@ -48,4 +48,3 @@ function ibio_playlists_talk($talk_id=null){
      ) );
 	
 }
-

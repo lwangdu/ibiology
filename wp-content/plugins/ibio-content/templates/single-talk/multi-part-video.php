@@ -1,13 +1,5 @@
 <?php
 
-add_filter('oembed_fetch_url', 'ibio_youtube_url', 10, 3);
-
-function ibio_youtube_url($provider, $url, $args){
-  error_log("Provider: $provider, URL: $url, Args: " . serialize($args) );
-  return $provider;
-    
-}
-
 global $videos;
 
 if ( is_array( $videos ) ) {

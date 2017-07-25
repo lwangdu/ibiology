@@ -46,10 +46,37 @@ function ibio_talks_videos(){
   global $videos;
   $videos = get_field( 'videos' );
   if ( empty( $videos ) ) return;
+  $qa = get_field( 'questions_answers_list' ); 
+  global $v, $question_content;
+  $counter = 1;
+  $num_parts = count($videos);
   
- foreach ( $videos as $v ) {   
- 		ibio_get_template_part( 'shared/q-and-a' );
+  foreach ( $videos as $vid ) {
+		$v = $vid;
+  	$title = isset( $v[ 'part_title' ] ) ?  esc_attr( $v[ 'part_title' ] ) : '';
+		if ( $num_parts > 1 ){
+			$title = "Part $counter: " . $title;
+			echo "<header><h2 class='title'>$title</h2></header>";
+		}
+
+		$question_content = array_shift($qa);
+		if ( !empty($question_content) ) {	
+		
+			if ( isset( $question_content['questions'] ) ){
+				echo "<h4>Questions</h4><div class='questions'>{$question_content['questions']}</div>";
+			}
+
+
+			if ( isset( $question_content['answers'] ) ){
+				echo "<h4>Answers</h4><div class='questions'>{$question_content['answers']}</div>";
+			}
+		
+		
+	 		//ibio_get_template_part( 'shared/q-and-a' );
+	 	}
+	 	
     ibio_get_template_part( 'shared/single', 'video' );
+    $counter++;
   }
 }
 
@@ -101,7 +128,7 @@ remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 
 remove_action( 'genesis_entry_header', 'genesis_post_info');
 remove_action( 'genesis_entry_footer', 'genesis_post_meta');
-add_action('genesis_after_header', 'ibio_talks_videos', 30);
+add_action('genesis_entry_content', 'ibio_talks_videos', 12);
   
 //add_action('genesis_entry_header', 'ibio_talks_info', 20);
 add_action( 'genesis_entry_content', 'ibio_lecture_header', 5);
