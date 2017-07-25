@@ -1,20 +1,20 @@
 <?php
 
 /**
- * IBioLesson Class
+ * IBioSession Class
  *
- * @class 		IBioLesson
+ * @class 		IBioSession
  * @version		1.0
  * @package		IBiology
  * @category	Class
  * @author 		Tech Liminal
- * @description The Post Type that represents a Lesson for IBiology
+ * @description The Post Type that represents a Session for IBiology
  *
  */
 
-class IBioLesson {
+class IBioSession {
 
-	public static $post_type = 'ibiology_lesson';
+	public static $post_type = 'ibiology_session';
 	private static $prefix = "ibio_";
 
 	// use for any required field names.  These will be saved with the $prefix value
@@ -55,21 +55,21 @@ class IBioLesson {
 		register_post_type( self::$post_type,
 			array(
 				'labels'               => array(
-					'name'                => _x( 'Lessons', 'Post Type General Name', 'ibiology' ),
-					'singular_name'       => _x( 'Lesson', 'Post Type Singular Name', 'ibiology' ),
-					'menu_name'           => __( 'Lessons/Videos', 'ibiology' ),
-					'all_items'           => __( 'All Lessons', 'ibiology' ),
-					'view_item'           => __( 'View Lesson', 'ibiology' ),
-					'add_new_item'        => __( 'Add New Lesson', 'ibiology' ),
-					'add_new'             => __( 'New Lesson', 'ibiology' ),
-					'edit_item'           => __( 'Edit Lesson', 'ibiology' ),
-					'update_item'         => __( 'Update Lesson', 'ibiology' ),
-					'search_items'        => __( 'Search Lessons', 'ibiology' ),
-					'not_found'           => __( 'No Lessons found', 'ibiology' ),
-					'not_found_in_trash'  => __( 'No Lessons found in Trash', 'ibiology' ),
+					'name'                => _x( 'Sessions', 'Post Type General Name', 'ibiology' ),
+					'singular_name'       => _x( 'Session', 'Post Type Singular Name', 'ibiology' ),
+					'menu_name'           => __( 'Sessions/Videos', 'ibiology' ),
+					'all_items'           => __( 'All Sessions', 'ibiology' ),
+					'view_item'           => __( 'View Session', 'ibiology' ),
+					'add_new_item'        => __( 'Add New Session', 'ibiology' ),
+					'add_new'             => __( 'New Session', 'ibiology' ),
+					'edit_item'           => __( 'Edit Session', 'ibiology' ),
+					'update_item'         => __( 'Update Session', 'ibiology' ),
+					'search_items'        => __( 'Search Sessions', 'ibiology' ),
+					'not_found'           => __( 'No Sessions found', 'ibiology' ),
+					'not_found_in_trash'  => __( 'No Sessions found in Trash', 'ibiology' ),
 						),
-				'label'               => __( 'Lessons', 'ibiology' ),
-				'description'         => __( 'IBiology Lesson with one or more Videos.  Used for Flipped courses', 'ibiology' ),
+				'label'               => __( 'Sessions', 'ibiology' ),
+				'description'         => __( 'IBiology Flipped Course Session with one or more Videos.', 'ibiology' ),
 				'supports'						=> $supports,
 				'taxonomies'          => array( 'post_tag', 'category' ),
 				'hierarchical'        => false,
@@ -84,7 +84,7 @@ class IBioLesson {
 				'query_var'           => true,
 				'exclude_from_search' => false,
 				'publicly_queryable'  => true,
-				'rewrite'             => array('slug' => 'Lessons', 'with_front' => false),
+				'rewrite'             => array('slug' => 'sessions', 'with_front' => false),
 				'capability_type'			=> 'post',
 				'map_meta_cap'				=> true,
 				'menu_icon'						=> 'dashicons-video-alt2'
@@ -226,7 +226,7 @@ class IBioLesson {
 
 	function default_title($title){
 		if ( isset( $_REQUEST['post_type']) && self::$post_type == $_REQUEST['post_type'] ) {
-			return "Long title of This Lesson"; 
+			return "Long title of This Session"; 
 		} else {
 			return $title;
 		}
@@ -282,7 +282,7 @@ class IBioLesson {
 
 
 
-	/* --------------------  Check for stuff that needs to be done w/ the Lessons --------------- */
+	/* --------------------  Check for stuff that needs to be done w/ the Sessions --------------- */
 	function parse_request(){
 	
 	

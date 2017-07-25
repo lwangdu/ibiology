@@ -7,7 +7,7 @@ global $talk_speaker;
 
 $talk_speakers = new WP_Query(array(
     'post_type' => 'ibiology_speaker',
-    'connected_type' => 'speaker_to_talk',
+    'connected_type' => 'speaker_to_session',
     'connected_items' => get_queried_object(),
     'nopaging' => true
   ));
@@ -32,7 +32,7 @@ function ibio_talks_info(){
 }
 
 function ibio_lecture_header(){
-  echo "<h2>Lecture Overview</h2>";
+  echo "<h2>Session Overview</h2>";
 }
 
 function ibio_talks_videos(){
@@ -47,10 +47,9 @@ function ibio_talks_videos(){
   $videos = get_field( 'videos' );
   if ( empty( $videos ) ) return;
   
-  if ( count( $videos ) > 1 ){   
-    ibio_get_template_part( 'single-talk/multi-part', 'video' );
-  } else {
-    ibio_get_template_part( 'single-talk/multi-part', 'video' );
+ foreach ( $videos as $v ) {   
+ 		ibio_get_template_part( 'shared/q-and-a' );
+    ibio_get_template_part( 'shared/single', 'video' );
   }
 }
 

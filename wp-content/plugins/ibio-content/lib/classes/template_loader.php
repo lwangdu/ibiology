@@ -53,8 +53,8 @@ class IBio_Template_Loader {
 		if ( $post_type == IBioTalk::$post_type 
 					|| $post_type == IBioSpeaker::$post_type 
 					|| $post_type == IBioPlaylist::$post_type 
-					|| $post_type == IBioResource::$post_type
-					|| $post_type == IBioLesson::$post_type ) {
+					// || $post_type == IBioResource::$post_type
+					|| $post_type == IBioSession::$post_type ) {
         
       if ( is_single() ) {
         $file 	= 'single-'.$post_type.'.php';

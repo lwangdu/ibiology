@@ -50,10 +50,10 @@ class IBioContent{
 
 		/* Post Types and Classes */
 		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/talks.php' );
-		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/course-lesson.php' );
+		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/course-session.php' );
 		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/speakers.php' );
 		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/playlists.php' );
-		include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/educator-resource.php' );
+		//include (  plugin_dir_path( __FILE__ ) . '/lib/post-types/educator-resource.php' );
 	
 		/* Functions */
 		include (  plugin_dir_path( __FILE__ ) . '/lib/functions/content.php' );
@@ -67,9 +67,9 @@ class IBioContent{
 	function init_objects(){
 		$this->speakers = new IBioSpeaker();
 		$this->talks = new IBioTalk();
-		$this->lessons = new IBioLesson();
+		$this->sessions = new IBioSession();
 		$this->playlists = new IBioPlaylist();
-		$this->resources = new IBioResource();
+		//$this->resources = new IBioResource();
 		
 
 	}
@@ -101,12 +101,12 @@ class IBioContent{
         ) );
         
           p2p_register_connection_type( array(
-          'name' => 'speaker_to_lesson',
+          'name' => 'speaker_to_session',
           'from' => IbioSpeaker::$post_type,
-          'to' => IbioLesson::$post_type,
+          'to' => IbioSession::$post_type,
           'cardinality' => 'many-to-many',
           'admin_column' => 'any',
-          'title' => array('from' => "Lessons with this Speaker", 'to' => 'Speakers in this Lesson')
+          'title' => array('from' => "Sessions with this Speaker", 'to' => 'Speakers in this Session')
         ) );
         
 				p2p_register_connection_type( array(
@@ -171,7 +171,7 @@ class IBioContent{
     	
     	$post_types = array ( 'post', 
     	                     IBioTalk::$post_type,
-    	                     IBioLesson::$post_type,
+    	                     IBioSession::$post_type,
     	                     IBioPlaylist::$post_type );
     	                     
 	    register_taxonomy('audience', $post_types, array(
