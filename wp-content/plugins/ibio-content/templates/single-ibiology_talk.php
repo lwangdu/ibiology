@@ -107,7 +107,7 @@ add_action('genesis_after_header', 'ibio_talks_videos', 30);
 //add_action('genesis_entry_header', 'ibio_talks_info', 20);
 add_action( 'genesis_entry_content', 'ibio_lecture_header', 5);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 22);
-add_action('genesis_entry_content', 'ibio_related_content', 24);
+add_action('genesis_after_entry', 'ibio_related_content', 5);
 
 remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
 add_action( 'genesis_sidebar', 'ibio_talk_sidebar' );

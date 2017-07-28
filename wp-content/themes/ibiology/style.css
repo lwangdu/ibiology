@@ -582,6 +582,8 @@ th:first-child {
 .more-link {
     position: relative;
     color: #76893e;
+    margin-left: 20px;
+    font-size: 1.1rem;
 }
 
 .more-link::after{
@@ -1110,16 +1112,23 @@ section.videos .videos-nav li figure img{
 	display: flex;
 	flex-flow: row nowrap;
   justify-content: space-between;
-	margin:20px 0;
+	margin:20px 0 0;
+}
+
+.related-items .footer{
+	margin-bottom: 20px;
+	text-align:right;
+	padding-top: 5px;
 }
 
 .filmstrip .item, ul.filmstrip li{
 	flex: 0 0 24%;
 	list-style-type: none;
-	border: 1px solid #ccc;
-	padding: 10px;
+	background-color: #fff;
 	line-height: 1.4rem;
 	font-size: 1.1rem;
+	padding: 10px;
+  box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
 }
 
 /* ## Entry Meta
@@ -1148,6 +1157,7 @@ p.entry-meta {
 	content: "\2014";
 	margin: 0 6px 0 2px;
 }
+
 
 /* ## Pagination
 --------------------------------------------- */

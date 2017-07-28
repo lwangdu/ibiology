@@ -27,7 +27,9 @@
       }
       echo '</ul>';
       wp_reset_query();
+      echo '<div class="footer">';
       get_template_part('parts/primary-related-category-link');
+      echo '</div>';
       echo '</div>';
     }      
     
