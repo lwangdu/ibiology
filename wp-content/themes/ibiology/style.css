@@ -115,7 +115,17 @@ input[type="search"]{
 	}
 }
 
+/* ## Alignment classes
+--------------------------------------------- */
+.alignleft{
+	float: left;
+	margin: 0 20px 20px 0;
+}
 
+.alignright{
+	float: right;
+	margin: 0 0 20px 20px;
+}	
 
 /* ## Float Clearing
 --------------------------------------------- */
@@ -1397,7 +1407,7 @@ ul.grid li{
 }
 
 /*speaker bio images */
-.circular--portrait {
+.speakers .photo {
   position: relative;
   width: 200px;
   height: 200px;
@@ -1409,7 +1419,7 @@ ul.grid li{
   margin-right: 16px;
 }
 
-.circular--portrait img {
+.speakers .photo img {
   width: 100%;
   height: auto;
 

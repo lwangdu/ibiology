@@ -30,6 +30,9 @@ add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list'
 *
 * @since 1.0.0
 */
+
+add_image_size('square-thumb', 300, 300, TRUE);
+
 function ibiology_setup() {
 	// Define them constants.
 	define( 'CHILD_THEME_NAME', 'iBiology' );
@@ -50,6 +53,8 @@ function ibiology_setup() {
     'header-text'     => false,
     'flex-height'     => true,
   ) );
+	
+
 	
 	// Add them support for accessibility.
 	add_theme_support( 'genesis-accessibility', array(
