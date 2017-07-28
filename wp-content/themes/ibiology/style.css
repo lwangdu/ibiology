@@ -1095,7 +1095,7 @@ section.videos .videos-nav li figure img{
 	max-height: 200px;
 }
 
-.filmstrip .item{
+.filmstrip .item, ul.filmstrip li{
 	flex: 0 0 24%;
 	list-style-type: none;
 }

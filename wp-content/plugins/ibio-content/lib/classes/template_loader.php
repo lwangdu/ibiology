@@ -59,13 +59,13 @@ class IBio_Template_Loader {
       if ( is_single() ) {
         $file 	= 'single-'.$post_type.'.php';
         $find[] = $file;
-        $find[] = $ibiology_content->template_path . $file;
       } else if ( is_archive() ) {
         $file 	= 'archive-'.$post_type.'.php';
-        $find[] = $file;
-        $find[] = $ibiology_content->template_path . $file;      
+        $find[] = $file;    
       }
     }
+    
+    error_log('[template_loader] File options: ' . serialize($find) );
 		if ( $file ) {
 			$template = locate_template( array_unique( $find ) );
 			if ( ! $template ) {

@@ -58,6 +58,8 @@ function ibio_talks_videos(){
 			$title = "Part $counter: " . $title;
 			echo "<header><h2 class='title'>$title</h2></header>";
 		}
+	 	
+    ibio_get_template_part( 'shared/single', 'video' );
 
 		$question_content = array_shift($qa);
 		if ( !empty($question_content) ) {	
@@ -74,8 +76,6 @@ function ibio_talks_videos(){
 		
 	 		//ibio_get_template_part( 'shared/q-and-a' );
 	 	}
-	 	
-    ibio_get_template_part( 'shared/single', 'video' );
     $counter++;
   }
 }
@@ -128,10 +128,10 @@ remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 
 remove_action( 'genesis_entry_header', 'genesis_post_info');
 remove_action( 'genesis_entry_footer', 'genesis_post_meta');
-add_action('genesis_entry_content', 'ibio_talks_videos', 12);
+add_action('genesis_entry_content', 'ibio_talks_videos', 8);
   
 //add_action('genesis_entry_header', 'ibio_talks_info', 20);
-add_action( 'genesis_entry_content', 'ibio_lecture_header', 5);
+add_action( 'genesis_entry_content', 'ibio_lecture_header', 9);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 22);
 add_action('genesis_entry_content', 'ibio_related_content', 24);
 
