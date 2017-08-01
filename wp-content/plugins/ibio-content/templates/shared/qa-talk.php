@@ -11,5 +11,5 @@ if ( !empty( $questions ) ){
 
 
 if ( !empty( $answers ) ){
-	echo "<h4>Answers</h4><a class='toggle' data-toggle='session_answers'>View Answers</a><div id='session_answers'>{$answers}</div>";
+	echo "<h4>Answers</h4><a class='toggle' data-toggle='session_answers'>View Answers</a><div id='session_answers' style='display:none'>{$answers}</div>";
 }

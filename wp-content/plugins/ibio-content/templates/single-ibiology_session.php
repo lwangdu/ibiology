@@ -37,10 +37,6 @@ function ibio_lecture_header(){
 
 function ibio_talks_videos(){
 
-  // Breadcrumbs
-  echo '<aside class="breadcrumbs-strip"><div class="wrap">';
-   genesis_do_breadcrumbs();
-  echo '</div></aside>';  
 
   // get the videos
   global $videos;
@@ -64,12 +60,12 @@ function ibio_talks_videos(){
 		$question_content = array_shift($qa);
 		if ( !empty($question_content) ) {	
 		
-			if ( isset( $question_content['questions'] ) ){
-				echo "<h4>Questions</h4><div class='questions'>{$question_content['questions']}</div>";
+			if ( !empty( $question_content['questions'] ) ){
+				echo "<h4>Discussion Questions</h4><div class='questions'>{$question_content['questions']}</div>";
 			}
 
 
-			if ( isset( $question_content['answers'] ) ){
+			if ( !empty( $question_content['answers'] ) ){
 				echo "<h4>Answers</h4><div class='questions'>{$question_content['answers']}</div>";
 			}
 		
@@ -83,6 +79,14 @@ function ibio_talks_videos(){
 function ibio_ed_resources(){
 	ibio_get_template_part( 'shared/related-resources', 'educator' );
 	
+}
+
+function ibio_related_resources(){
+	ibio_get_template_part( 'shared/related', 'resources' );
+}
+
+function ibio_disucssion_questions(){
+	ibio_get_template_part( 'shared/qa', 'talk' );
 }
 
 function ibio_talks_speaker(){
@@ -107,9 +111,11 @@ remove_action( 'genesis_entry_footer', 'genesis_post_meta');
 add_action('genesis_entry_content', 'ibio_talks_videos', 12);
   
 //add_action('genesis_entry_header', 'ibio_talks_info', 20);
-add_action( 'genesis_entry_content', 'ibio_lecture_header', 9);
+add_action( 'genesis_entry_content', 'ibio_lecture_header', 6);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 22);
-add_action('genesis_entry_content', 'ibio_ed_resources', 14);
+add_action('genesis_entry_content', 'ibio_ed_resources', 11);
+
+add_action('genesis_entry_content', 'ibio_disucssion_questions', 12);
 
 remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
 add_action( 'genesis_sidebar', 'ibio_talk_sidebar' );
