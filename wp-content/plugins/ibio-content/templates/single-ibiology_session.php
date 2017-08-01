@@ -80,8 +80,8 @@ function ibio_talks_videos(){
   }
 }
 
-function ibio_related_content(){
-	ibio_get_template_part( 'shared/related', 'resources' );
+function ibio_ed_resources(){
+	ibio_get_template_part( 'shared/related-resources', 'educator' );
 	
 }
 
@@ -109,7 +109,7 @@ add_action('genesis_entry_content', 'ibio_talks_videos', 8);
 //add_action('genesis_entry_header', 'ibio_talks_info', 20);
 add_action( 'genesis_entry_content', 'ibio_lecture_header', 9);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 22);
-add_action('genesis_entry_content', 'ibio_related_content', 24);
+add_action('genesis_entry_content', 'ibio_ed_resources', 4);
 
 remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
 add_action( 'genesis_sidebar', 'ibio_talk_sidebar' );
