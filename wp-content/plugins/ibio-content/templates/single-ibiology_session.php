@@ -104,12 +104,12 @@ add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
 
 remove_action( 'genesis_entry_header', 'genesis_post_info');
 remove_action( 'genesis_entry_footer', 'genesis_post_meta');
-add_action('genesis_entry_content', 'ibio_talks_videos', 8);
+add_action('genesis_entry_content', 'ibio_talks_videos', 12);
   
 //add_action('genesis_entry_header', 'ibio_talks_info', 20);
 add_action( 'genesis_entry_content', 'ibio_lecture_header', 9);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 22);
-add_action('genesis_entry_content', 'ibio_ed_resources', 4);
+add_action('genesis_entry_content', 'ibio_ed_resources', 14);
 
 remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
 add_action( 'genesis_sidebar', 'ibio_talk_sidebar' );
