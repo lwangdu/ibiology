@@ -98,7 +98,7 @@ if ( is_array( $videos ) ) {
     echo $languages;
     
     echo '<div class="row">';
-    get_template_part('parts/primary-related-category-link');
+    ibio_get_template_part( 'shared/primary-related-category', 'link' );
     echo '</div>';
     
     echo '</div>';     

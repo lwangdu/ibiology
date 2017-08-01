@@ -55,14 +55,10 @@ function ibio_talks_videos(){
 }
 
 function ibio_related_content(){
-	$resources = get_field( 'related_resources' );
-  
-  if( !empty( $resources ) ){
-    	echo "<h2>Related Resources</h2>";
-      echo $resources;
-  }	
 
-	get_template_part("parts/related-talks-by-category");
+  ibio_get_template_part( 'shared/related', 'resources' );
+
+	ibio_get_template_part( 'shared/related', 'talks-by-category' );
 	
 }
 

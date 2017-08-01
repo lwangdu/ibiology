@@ -81,36 +81,12 @@ function ibio_talks_videos(){
 }
 
 function ibio_related_content(){
-	$resources = get_field( 'related_resources' );
-  
-  if( !empty( $resources ) ){
-    	echo "<h2>Related Resources</h2>";
-      echo $resources;
-  }	
-
-	get_template_part("parts/related-talks-by-category");
+	ibio_get_template_part( 'shared/related', 'resources' );
 	
 }
 
 function ibio_talks_speaker(){
-	global $talk_speaker;
-  
-  if ( !empty(  $talk_speaker ) ){
-  	echo "<h2>Speaker Bio</h2>";
-    foreach ($talk_speaker as $s){
-      $url = get_post_permalink($s->ID);
-      setup_postdata( $s );
-      global $post;
-      $post = $s;
-      echo "<h3><a href='$url'>" . $s->post_title . "</a></h3>";
-      echo "<a href='$url' class='alignleft'>";
-      the_post_thumbnail( 'thumbnail' );
-      echo '</a>';
-      the_excerpt();
-    }	
-
-    wp_reset_postdata();
-  }
+	ibio_get_template_part( 'shared/related', 'speaker' );
 }
 
 function ibio_talk_sidebar(){

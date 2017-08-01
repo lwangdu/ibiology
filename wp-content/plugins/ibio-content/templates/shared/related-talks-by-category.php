@@ -1,6 +1,7 @@
 <?php
 
-	// shwow the related talks based on the selected category
+	// shwow the related talks based on the selected category.  This can be applied
+	// to any post type thtt has related resources.
 	  
   $related_category = intval( get_field( 'related_talks' ) );
   
@@ -28,7 +29,7 @@
       echo '</ul>';
       wp_reset_query();
       echo '<div class="footer">';
-      get_template_part('parts/primary-related-category-link');
+      ibio_get_template_part( 'shared/primary-related-category', 'link');
       echo '</div>';
       echo '</div>';
     }      
