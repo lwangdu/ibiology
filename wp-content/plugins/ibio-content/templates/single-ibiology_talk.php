@@ -60,6 +60,8 @@ function ibio_related_content(){
 
 	ibio_get_template_part( 'shared/related', 'talks-by-category' );
 	
+	get_template_part('parts/primary-playlist');
+	
 }
 
 function ibio_talks_speaker(){

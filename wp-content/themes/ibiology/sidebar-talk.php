@@ -21,6 +21,4 @@
     echo '</ul></div>';
   }
   
-  get_template_part('parts/primary-playlist');
-  
   dynamic_sidebar( 'sidebar_talks' );

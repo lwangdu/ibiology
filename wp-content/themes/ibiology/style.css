@@ -1265,21 +1265,25 @@ p.entry-meta {
 /* # Entries in Lists 
 ---------------------------------------------------------------------------------------------------- */
 
-.grid-listing .content{
+.grid-listing .content, ul.grid {
   display:flex ;
   flex-flow: row wrap;
   justify-content: space-between;
 }
 
-.grid-listing .content .entry{
+.grid-listing .content .entry, ul.grid li{
   flex: 0 0  200px;
   padding: 10px;
   margin-bottom: 20px;
   box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
+  list-style-type:none;
 }
 
-.grid-listing .content .entry-title{
+.grid-listing .content .entry-title, .grid .entry-title{
   font-size: 14px;
+  line-height: 1.2;
+  font-weight:700;
+  display:block;
 }
 
 .grid-listing .content .archive-description, 
@@ -1287,21 +1291,6 @@ p.entry-meta {
 .grid-listing .content .breadcrumb{
   flex: 0 0 100%;
 }
-
-/* # Entries in smaller grids 
----------------------------------------------------------------------------------------------------- */
-ul.grid {
-	display: flex;
-	flex-flow: row wrap;
-}
-
-ul.grid li{
-	flex: 0 1 300px;
-	list-style-type: none;
-	max-width: 300px;
-	margin: 0 10px 10px 0;
-}
-
 
 
 /* # Sidebars

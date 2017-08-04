@@ -30,9 +30,7 @@ function ibio_playlist_details(){
 }
 
 function ibio_related_content(){
-	global $acf_fields_helper;
-	echo "<h2>Related Information</h2>";
-	$acf_fields_helper->show_field_group(32376);
+	ibio_get_template_part('shared/related', 'resources');
 }
 
 function ibio_talks_playlist(){
@@ -44,17 +42,24 @@ function ibio_talks_playlist(){
     'nopaging' => true
   ));
   if ( $talks->have_posts( ) ) {
-    foreach ( $talks->posts as $s){
-      $url = get_post_permalink($s->ID);
-      echo "<h3><a href='$url'>" . $s->post_title . "</a></h3>" . get_the_post_thumbnail($s->ID, 'thubmanil');
+  	echo '<ul class="talks grid">';
+    while($talks->have_posts()){
+    	$talks->the_post();
+      get_template_part( 'parts/list-talk');
     }	
+    echo '</ul>';
+    wp_reset_query();
   }
 }
 
 /* -------------------  Page Rendering --------------------------*/
 
+// force content-sidebar layout
+add_filter( 'genesis_site_layout', '__genesis_return_full_width_content' );
+
+
 add_action('genesis_entry_header', 'ibio_playlist_info', 20);
-add_action('genesis_entry_content', 'ibio_talks_playlist', 20);
-add_action('genesis_entry_content', 'ibio_related_content', 21);
+add_action('genesis_after_entry', 'ibio_talks_playlist', 20);
+add_action('genesis_after_entry', 'ibio_related_content', 21);
 
 genesis();
