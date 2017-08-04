@@ -64,6 +64,11 @@ function ibio_related_content(){
 	
 }
 
+function ibio_disucssion_questions(){
+	ibio_get_template_part( 'shared/qa', 'talk' );
+}
+
+
 function ibio_talks_speaker(){
 	global $talk_speaker;
   
@@ -105,6 +110,7 @@ add_action('genesis_after_header', 'ibio_talks_videos', 30);
   
 //add_action('genesis_entry_header', 'ibio_talks_info', 20);
 add_action( 'genesis_entry_content', 'ibio_lecture_header', 5);
+add_action('genesis_entry_content', 'ibio_disucssion_questions', 12);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 22);
 add_action('genesis_after_entry', 'ibio_related_content', 5);
 
