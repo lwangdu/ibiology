@@ -30,7 +30,7 @@ function ibio_talks_speaker(){
 	global $speaker_talks;
 	if (!empty( $speaker_talks )){
 	
-		echo "<section class='related-items'><h2>Talks with this Speaker</h2>";
+		echo "<section class='related-items row'><h2>Talks with this Speaker</h2>";
 	
 		foreach ($speaker_talks as $s){
 			$url = get_post_permalink($s->ID);
