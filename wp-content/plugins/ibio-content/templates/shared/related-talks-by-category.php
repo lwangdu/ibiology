@@ -20,7 +20,7 @@
       
     if ( $related_talks->have_posts() ) {
     	$category_info = get_term( $related_category, 'category');
-      echo '<div class="related-talks related-items"> <h4 class="widgettitle">More Talks in '. $category_info->name .'</h4>';
+      echo '<div class="related-talks related-items row"> <h4 class="widgettitle">More Talks in '. $category_info->name .'</h4>';
       echo '<ul class="related-by-category talks-list filmstrip">';
       while ( $related_talks->have_posts() ) {
         $related_talks->the_post();
