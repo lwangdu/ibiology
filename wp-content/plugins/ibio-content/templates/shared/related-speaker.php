@@ -5,7 +5,7 @@
 	global $talk_speaker;
   
   if ( !empty(  $talk_speaker ) ){
-  	echo '<section class="speakers">';
+  	echo '<section class="speakers row">';
   	echo "<h2>Speaker Bio</h2>";
     foreach ($talk_speaker as $s){
       $url = get_post_permalink($s->ID);
