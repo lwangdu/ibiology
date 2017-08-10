@@ -29,10 +29,6 @@ function ibio_playlist_details(){
 	$acf_fields_helper->show_field_group(32397);
 }
 
-function ibio_related_content(){
-	ibio_get_template_part('shared/related', 'resources');
-}
-
 function ibio_talks_playlist(){
 
   $talks = new WP_Query(array(

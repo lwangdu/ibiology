@@ -16,6 +16,8 @@ function ibio_speaker_info(){
 		));
 	$speaker_talks = $posts->posts;
 	
+	echo get_the_post_thumbnail($s->ID, 'square-thumb', array( 'class' => 'alignleft' ));
+	
 }
 
 function ibio_speaker_details(){
@@ -23,20 +25,20 @@ function ibio_speaker_details(){
 	$acf_fields_helper->show_field_group(32397);
 }
 
-function ibio_related_content(){
-	global $acf_fields_helper;
-	echo "<h2>Related Information</h2>";
-	$acf_fields_helper->show_field_group(32376);
-}
 
 function ibio_talks_speaker(){
 	global $speaker_talks;
-	echo "<h2>Talks with this Speaker</h2>";
+	if (!empty( $speaker_talks )){
 	
-	foreach ($speaker_talks as $s){
-		$url = get_post_permalink($s->ID);
-		echo "<h3><a href='$url'>" . $s->post_title . "</a></h3>" . get_the_post_thumbnail($s->ID, 'thubmanil');
-	}	
+		echo "<section class='related-items'><h2>Talks with this Speaker</h2>";
+	
+		foreach ($speaker_talks as $s){
+			$url = get_post_permalink($s->ID);
+			echo "<h3><a href='$url'>" . $s->post_title . "</a></h3>" . get_the_post_thumbnail($s->ID, 'thumbnail', array( 'class' => 'alignleft' ) );
+			echo $s->post_excerpt;
+		}	
+		echo '</section>';
+	}
 
 }
 

@@ -48,3 +48,13 @@ function ibio_playlists_talk($talk_id=null){
      ) );
 	
 }
+
+function ibio_related_content(){
+
+	ibio_get_template_part( 'shared/related', 'talks-by-category' );
+
+  ibio_get_template_part( 'shared/related', 'resources' );
+	
+	get_template_part('parts/primary-playlist');
+	
+}
