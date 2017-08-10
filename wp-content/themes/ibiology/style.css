@@ -772,16 +772,23 @@ th:first-child {
 
 /* Breadcrumbs Strip */
 
-.single-ibiology_talk .breadcrumbs-strip {
+.single-ibiology_talk .page-header {
 		width: 100%;
 		background-color: #111;
 		font-size: 80%;
 		color: #fff;
 }
 
-.single-ibiology_talk .breadcrumbs-strip .wrap{
+.single-ibiology_talk .page-header h1 {
+		font-weight: 100;
+}
+
+
+.single-ibiology_talk .page-header .wrap{
 	padding: 10px 20px;
 }
+
+
 /* Column Widths and Positions
 --------------------------------------------- */
 
@@ -1001,7 +1008,7 @@ th:first-child {
 section.videos.row {
 	background-color: #111;
 	color: #fff;
-	height: 545px;
+	height: auto;
 	
 }
 
@@ -1027,20 +1034,18 @@ section.videos .single-video{
 
 .single-video header{
 	position: absolute;
-	bottom: 30px;
+	top: 0px;
 	padding: 10px 20px;
-	background-color: rgba(128, 128, 128, .4);
+	background-color: rgba(128, 128, 128, .6);
 	opacity: 1;
   transition: opacity .25s ease-in-out;
   -moz-transition: opacity .25s ease-in-out;
   -webkit-transition: opacity .25s ease-in-out;
-	
-	min-width: 800px;
 
 }
 
 .single-video .title{
-	font-size: 2rem;
+	font-size: 1.5rem;
 }
 
 .single-video:hover header{
@@ -1068,8 +1073,8 @@ section.videos .single-video .footer span{
 section.videos .videos-info{
 	min-width: 250px;
 	flex: 1 1 30%;
-	font-size: 1.2rem;
-	line-height: 1.5rem;
+	font-size: 1rem;
+	line-height: 1.2rem;
 }
 
 section.videos .videos-info .row{
@@ -1468,51 +1473,12 @@ p.entry-meta {
 /* # Media Queries
 ---------------------------------------------------------------------------------------------------- */
 
-@media only screen and (max-width: 1280px) {
-
-	.site-inner,
-	.wrap {
-		max-width: 1140px;
-	}
-
-	.content-sidebar-sidebar .content-sidebar-wrap,
-	.sidebar-content-sidebar .content-sidebar-wrap,
-	.sidebar-sidebar-content .content-sidebar-wrap {
-		width: 920px;
-	}
-
-	.content,
-	.site-header .widget-area {
-		width: 800px;
-	}
-
-	.sidebar-content-sidebar .content,
-	.sidebar-sidebar-content .content,
-	.content-sidebar-sidebar .content {
-		width: 580px;
-	}
-
-	.sidebar-primary {
-		width: 300px;
-	}
-
-	.footer-widgets-1
-	 {
-		width: 100%;
-	}
-
-	.footer-widgets-1 {
-		margin-right: 60px;
-	}
-
-}
-
 
 @media only screen and (max-width: 1200px) {
 
 	.site-inner,
 	.wrap {
-		max-width: 960px;
+		max-width: 1000px;
 	}
 
 	.content-sidebar-sidebar .content-sidebar-wrap,
@@ -1720,6 +1686,37 @@ p.entry-meta {
 
 }
 
+@media only screen and (max-width: 1023px) {
+	.site-inner,
+	.wrap {
+		max-width: 850px;
+		}
+	
+	.content{
+		width: 100%;
+		float:none;
+		display:block;
+	}
+	
+	section.videos .videos-container	{
+		flex: 1 1 100%;
+		width: 100%;
+	}
+		
+	section.videos.row .wrap{
+		display: block;
+	}
+	
+	section.videos .videos-info ul.videos-nav{
+		display: flex;
+		flex-wrap: wrap;
+	}	
+	
+	section.videos .videos-info ul.videos-nav li{
+		flex: 1 1 33%;
+	}
+}
+
 @media only screen and (max-width: 860px) {
 
 
@@ -1775,15 +1772,13 @@ p.entry-meta {
 		width: 100%;
 	}
 
-}
-
-@media only screen and (max-width: 1023px) {
-	.site-inner,
-	.wrap {
-		max-width: 800px;
-	}
+	.single-video header {
 	
 	}
+
+}
+
+
 
 
 

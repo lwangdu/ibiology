@@ -32,15 +32,16 @@ function ibio_talks_info(){
 }
 
 function ibio_lecture_header(){
-  echo "<h2>Lecture Overview</h2>";
+  echo "<h2>Talk Overview</h2>";
 }
 
-function ibio_talks_videos(){
+function ibio_talks_header(){
 
   // Breadcrumbs
-  echo '<aside class="breadcrumbs-strip"><div class="wrap">';
+  echo '<div class="page-header"><div class="wrap">';
    genesis_do_breadcrumbs();
-  echo '</div></aside>';  
+   genesis_do_post_title();
+  echo '</div></div>';  
 
   // get the videos
   global $videos;
@@ -56,9 +57,9 @@ function ibio_talks_videos(){
 
 function ibio_related_content(){
 
-  ibio_get_template_part( 'shared/related', 'resources' );
-
 	ibio_get_template_part( 'shared/related', 'talks-by-category' );
+
+  ibio_get_template_part( 'shared/related', 'resources' );
 	
 	get_template_part('parts/primary-playlist');
 	
@@ -102,16 +103,19 @@ add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
 
 // move the breadcrumbs
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
-//add_action( 'genesis_after_header', 'genesis_do_breadcrumbs', 15 );
+
+add_action('genesis_after_header', 'ibio_talks_header', 30);
 
 remove_action( 'genesis_entry_header', 'genesis_post_info');
-remove_action( 'genesis_entry_footer', 'genesis_post_meta');
-add_action('genesis_after_header', 'ibio_talks_videos', 30);
-  
-//add_action('genesis_entry_header', 'ibio_talks_info', 20);
+add_action( 'genesis_entry_header', 'genesis_do_post_title', 10 );
+
 add_action( 'genesis_entry_content', 'ibio_lecture_header', 5);
 add_action('genesis_entry_content', 'ibio_disucssion_questions', 12);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 22);
+
+
+remove_action( 'genesis_entry_footer', 'genesis_post_meta');
+
 add_action('genesis_after_entry', 'ibio_related_content', 5);
 
 remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );

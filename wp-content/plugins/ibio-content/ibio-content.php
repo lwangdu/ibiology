@@ -76,16 +76,17 @@ class IBioContent{
 
 	/* Load styles and scripts for use in the admin interface */
 	function load_admin_scripts(){
-		wp_enqueue_style('profile-admin', plugin_dir_url( __FILE__ ) . 'assets/css/admin.css' );
+		wp_enqueue_style('ibio-admin', plugin_dir_url( __FILE__ ) . 'assets/css/admin.css' );
 		wp_register_script( 'js-datatables', '//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js', array( 'jquery' ), '1.10.12', true);
-		wp_enqueue_script( 'lbl-profiles', plugin_dir_url( __FILE__ ) . '/assets/js/profiles.js', array( 'jquery' , 'js-datatables' ), '1.0.0' );
+		wp_enqueue_script( 'ibio-app', plugin_dir_url( __FILE__ ) . '/assets/js/ibio.js', array( 'jquery' , 'js-datatables' ), '1.0.0' );
 		wp_enqueue_script( 'js-datatables');
 		wp_enqueue_style( 'js-datatables-css', '//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css');
 	} 
 
 	/* Load display scripts */
 	function load_scripts(){
-
+		wp_enqueue_script('bootstrap', plugin_dir_url( __FILE__ ) . '/assets/js/bootstrap.js', array( 'jquery'), '1.0.0' );
+		//wp_enqueue_style('bootstrap', plugin_dir_url( __FILE__ ) . '/assets/css/bootstrap.css' ); 
 	}
 	
 	/* Create the Post2Posts connection types we will be using */

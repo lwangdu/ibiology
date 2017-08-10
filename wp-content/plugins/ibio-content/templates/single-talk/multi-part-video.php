@@ -4,15 +4,7 @@ global $videos;
 
 if ( is_array( $videos ) ) {
   echo '<section class="videos row"><div class="wrap">';
- 
-    global $talk_speaker;
- 
-    if ( isset( $talk_speaker) ){
-      foreach( $talk_speaker as $s ){
-        $speakers .= "<span class='speaker-name'>{$s->post_title}</span>";
-      }
-    }
-    
+     
     $counter = 1; // count the parts;
     $titles = array();
     $thumbs = array();
@@ -29,17 +21,18 @@ if ( is_array( $videos ) ) {
       $download = isset( $v[ 'video_download_url' ] ) ?  esc_url( $v[ 'video_download_url' ] ) : '';
       $size = isset( $v[ 'download_size' ] ) ?  '<span class="size">' . esc_attr( $v[ 'download_size' ] ) . '</span>' : '';
       $download_link = ! empty ( $download ) ? "<a href='$download'>Download $size</a>" : '';
-      $transcript = isset( $v[ 'transcript' ] ) ? '<span class="transcript toggle" data-toggle="video-part-transcript-'. $counter .'">View Transcript</span><div id="video-part-transcript-'. $counter .'" class="drawer" style="display:none">' .  $v[ 'transcript' ] . '</div>' : '';
+      $transcript = (isset( $v[ 'transcript' ] ) &&  strlen($v[ 'transcript' ]) > 1) ? '<span class="transcript toggle" data-toggle="video-part-transcript-'. $counter .'">View Transcript</span><div id="video-part-transcript-'. $counter .'" class="drawer" style="display:none">' .  $v[ 'transcript' ] . '</div>' : '';
       $video_url = isset( $v[ 'video_url' ] ) ? esc_html( $v[ 'video_url' ] ) : '';
       $video_thumbnail = isset( $v[ 'video_thumbnail' ] ) ? $v[ 'video_thumbnail' ] : '';
+      $subtitle_downloads = !empty( $v[ 'download_subtitled_video'] ) ? $v[ 'download_subtitled_video' ] : null;
       
       // video thumbnail is an array.  Let's grab the thumbnail size of this image.
       if ( is_array( $video_thumbnail ) && isset( $video_thumbnail['sizes'] ) && isset( $video_thumbnail['sizes']['thumbnail'] ) ){
         $thumbs[ $counter ] = $video_thumbnail['sizes']['thumbnail']; 
       }
       
-      echo "<div class='single-video part-$counter'><header><h2 class='title'>$title</h2>$speakers</header><div class='content'>";
-      $embed = wp_oembed_get( $video_url , array( 'height' => 475 ) );
+      echo "<div class='single-video part-$counter'><header><h2 class='title'>$title</h2></header><div class='content'>";
+      $embed = wp_oembed_get( $video_url , array( 'width' => 800 ) );
       // attach the showinfo parameter to the oembed.      
       $embed = preg_replace( '/src="(.+)oembed"/', 'src="$1oembed&showinfo=0"', $embed );
       echo $embed;
@@ -72,7 +65,7 @@ if ( is_array( $videos ) ) {
     $translations = get_field( 'translations' );
     $languages = '';
     if ( is_array( $translations ) ) {
-      $languages .= '<div class="row"><span class="toggle" data-toggle="translations">Translated Versions</span>';
+      $languages .= '<div class="row"><span class="toggle" data-toggle="translations">Watch in:</span>';
       $languages .= '<ul class="translations">';
       foreach( $translations as $t )  {
         $url = get_permalink( $t[ 'translated_talk'] );
@@ -95,6 +88,7 @@ if ( is_array( $videos ) ) {
     }
 
     echo $date_recorded;
+    echo '<div class="duration">Total Duration: 01:00:20</div>';
     echo $languages;
     
     echo '<div class="row">';

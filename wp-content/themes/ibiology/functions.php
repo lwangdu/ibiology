@@ -137,40 +137,21 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 800;
 }
 
-//* work around turning off cusotm fields
-/*
-if ( !defined( 'get_field' ) ){
-  function get_field($field_name, $post_id = null, $format = false){
-    if ( empty( $post_id ) ){
-      global $post;
-      if ( ! empty( $post ) ){
-        $post_id = $post->ID;
-      } 
-    }
-    
-    return get_post_meta( $post_id, $field, true ); 
-  }
-}
-*/
+/* ----------------  Content ---------------- */
 
-/* For SearchWP - until we disable the http protection */
+// default behavior for excerpts
 
-function ibio_searchwp_basic_auth_creds() {
-	
-	// NOTE: this needs to be your HTTP BASIC AUTH login
-	//
-	//                 *** NOT *** your WordPress login
-	//
-	//
-	$credentials = array( 
-		'username' => 'iobiology2017', // the HTTP BASIC AUTH username
-		'password' => 'ronvale'  // the HTTP BASIC AUTH password
-	);
-	
-	return $credentials;
+add_filter('excerpt_more', 'ibio_excerpt_more');
+function ibio_excerpt_more(){
+	return '...';
 }
 
-add_filter( 'searchwp_basic_auth_creds', 'ibio_searchwp_basic_auth_creds' );
+// add a "more" link to all excerpts.
+add_filter('the_excerpt', 'ibio_add_more_link', 1, 2);
+function ibio_add_more_link($excerpt){
+	return $excerpt . ' <a class="morelink" href="'. get_permalink( get_the_ID() ) . '">[Read More]</a>';
+}
+
 
 
 // customize embed settings 
