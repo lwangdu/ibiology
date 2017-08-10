@@ -84,9 +84,9 @@ function ibio_talks_speaker(){
       echo "<figure class='alignleft photo'><a href='$url'>";
       the_post_thumbnail( 'square-thumb' );
       echo '</a></figure>';
-      the_excerpt();
-      echo '</section>';
+      the_excerpt();  
     }	
+    echo '</section>';
 
     wp_reset_postdata();
   }
