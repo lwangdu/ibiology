@@ -592,8 +592,8 @@ th:first-child {
 .more-link {
     position: relative;
     color: #76893e;
-    margin-left: 20px;
-    font-size: 1.1rem;
+    margin-left: 0px;
+    font-size: 1.3rem;
 }
 
 .more-link::after{
