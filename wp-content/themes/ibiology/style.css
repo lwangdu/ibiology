@@ -282,16 +282,16 @@ h6 {
 }
 
 h1 {
-	font-size: 36px;
+	font-size: 30px;
 	
 }
 
 h2 {
-	font-size: 30px;
+	font-size: 26px;
 }
 
 h3 {
-	font-size: 24px;
+	font-size: 22px;
 }
 
 h4 {
@@ -780,7 +780,7 @@ th:first-child {
 }
 
 .single-ibiology_talk .page-header h1 {
-		font-weight: 100;
+		font-weight: 400;
 }
 
 
