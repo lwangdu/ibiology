@@ -868,9 +868,10 @@ th:first-child {
 }
 
 .genesis-nav-menu .sub-menu a {
-	background-color: #0099d1;
+	background-color: #fff;
 	border: 1px solid #eee;
 	border-top: 0;
+	color: #0099d1;
 	font-size: 14px;
 	padding: 20px;
 	position: relative;
