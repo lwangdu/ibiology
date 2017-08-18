@@ -868,7 +868,7 @@ th:first-child {
 }
 
 .genesis-nav-menu .sub-menu a {
-	background-color: #fff;
+	background-color: #0099d1;
 	border: 1px solid #eee;
 	border-top: 0;
 	font-size: 14px;
@@ -1271,30 +1271,37 @@ p.entry-meta {
 ---------------------------------------------------------------------------------------------------- */
 
 .grid-listing .content, ul.grid {
-  display:flex ;
-  flex-flow: row wrap;
-  justify-content: space-between;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+  	align-items: stretch;
 }
 
 .grid-listing .content .entry, ul.grid li{
-  flex: 0 0  200px;
-  padding: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
-  list-style-type:none;
+  flex: 0 0 190px;
+  margin: 6px;
+    box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
+ 
 }
+
+ .grid-listing .content .entry, ul.grid li img {
+    max-width: 100%;
+  }
+
 
 .grid-listing .content .entry-title, .grid .entry-title{
   font-size: 14px;
   line-height: 1.2;
   font-weight:700;
   display:block;
+  padding: 0 10px 10px;
 }
 
 .grid-listing .content .archive-description, 
 .grid-listing .content .pagination, 
 .grid-listing .content .breadcrumb{
-  flex: 0 0 100%;
+ flex: 0 0 100%;
 }
 
 
