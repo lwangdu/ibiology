@@ -24,7 +24,17 @@ if ( is_array( $videos ) ) {
       $transcript = (isset( $v[ 'transcript' ] ) &&  strlen($v[ 'transcript' ]) > 1) ? '<span class="transcript toggle" data-toggle="video-part-transcript-'. $counter .'">View Transcript</span><div id="video-part-transcript-'. $counter .'" class="drawer" style="display:none">' .  $v[ 'transcript' ] . '</div>' : '';
       $video_url = isset( $v[ 'video_url' ] ) ? esc_html( $v[ 'video_url' ] ) : '';
       $video_thumbnail = isset( $v[ 'video_thumbnail' ] ) ? $v[ 'video_thumbnail' ] : '';
+      
       $subtitle_downloads = !empty( $v[ 'download_subtitled_video'] ) ? $v[ 'download_subtitled_video' ] : null;
+
+      $subtitles = '';
+      if ( is_array( $subtitle_downloads ) ){
+        $subtitles = "<span class='toggle subtitles' data-toggle='subtitle-downloads-$counter'>Download Subtitled Version</span><div id='subtitle-downloads-$counter' class='drawer' style='display:none'><ul>";
+        foreach ( $subtitle_downloads as $d ){
+          $subtitles .= "<li><a href='{$d['video_download_url']}'>{$d['language']}</a></li>";
+        }    
+        $subtitles .= '</ul></div>';
+      } 
       
       // video thumbnail is an array.  Let's grab the thumbnail size of this image.
       if ( is_array( $video_thumbnail ) && isset( $video_thumbnail['sizes'] ) && isset( $video_thumbnail['sizes']['thumbnail'] ) ){
@@ -35,12 +45,18 @@ if ( is_array( $videos ) ) {
       $embed = wp_oembed_get( $video_url , array( 'width' => 800 ) );
       // attach the showinfo parameter to the oembed.      
       $embed = preg_replace( '/src="(.+)oembed"/', 'src="$1oembed&showinfo=0"', $embed );
+      
+      if ( empty( $embed ) ){
+        $embbed = '<div class="empty-video">We were unable to retrieve the video</div>';
+      }
+      
       echo $embed;
       
       echo '</div><div class="footer"><div class="row controls">';
       echo "<span class='video-length' data-length='$length'>$length</span>";
       echo "<span class='video-part-download'><a href='$download'>Download Hi-Res</a></span>";
       echo $transcript;
+      echo $subtitles;
       echo '</div></div></div>';
       $counter++;
       

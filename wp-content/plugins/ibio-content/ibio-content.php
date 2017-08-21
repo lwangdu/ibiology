@@ -40,6 +40,8 @@ class IBioContent{
 		add_action( 'wp_enqueue_scripts', array( &$this, 'load_scripts' ) );
 		add_action('wp_loaded', array(&$this, 'create_connection_types'), 10);
 		add_action ('init', array(&$this, 'create_taxonomies' ), 10 );
+		
+		add_filter( 'rewrite_rules_array', array( &$this, 'rewrite_rules' ) );
 	}
 
 

@@ -1022,12 +1022,14 @@ section.videos .videos-container{
 	flex: 1 1 66%;
 	width: 66%;
 	max-width: 800;
+
 	margin-right: 20px;
 }
 
 section.videos .single-video{
 	width: 100%;
 	max-width: 800px;
+	min-height: 300px;
 	position: relative;
 	display:none;
 }
@@ -1042,6 +1044,10 @@ section.videos .single-video{
   -moz-transition: opacity .25s ease-in-out;
   -webkit-transition: opacity .25s ease-in-out;
 
+}
+
+.single-video .content {
+	min-height: 200px;
 }
 
 .single-video .title{
@@ -1471,6 +1477,8 @@ p.entry-meta {
 }
 
 
+/* # Bootstrap Section
+---------------------------------------------------------------------------------------------------- */
 
 
 

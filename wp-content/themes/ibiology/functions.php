@@ -168,3 +168,14 @@ function ibio_youtube_embed($code){
 
 add_filter('embed_handler_html', 'ibio_youtube_embed', 200);
 add_filter('embed_oembed_html', 'ibio_youtube_embed', 200);
+
+remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
+add_action( 'genesis_before_loop', 'ibio_breadcrumbs');
+
+function ibio_breadcrumbs(){
+	if ( function_exists('yoast_breadcrumb') ) {
+		yoast_breadcrumb('<p id="breadcrumbs">','</p>');
+	} else{
+	   genesis_do_breadcrumbs();
+	}
+}
