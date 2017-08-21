@@ -99,7 +99,7 @@ remove_action( 'genesis_before_loop', 'ibio_breadcrumbs');
 add_action('genesis_after_header', 'ibio_talks_header', 30);
 
 remove_action( 'genesis_entry_header', 'genesis_post_info');
-add_action( 'genesis_entry_header', 'genesis_do_post_title', 10 );
+remove_action( 'genesis_entry_header', 'genesis_do_post_title', 10 );
 
 add_action( 'genesis_entry_content', 'ibio_lecture_header', 5);
 add_action('genesis_entry_content', 'ibio_disucssion_questions', 12);

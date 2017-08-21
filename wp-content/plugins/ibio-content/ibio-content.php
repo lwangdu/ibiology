@@ -206,6 +206,15 @@ class IBioContent{
     
     
 	}
+	
+	function rewrite_rules( $rules_array ) {
+		$new = array();
+		
+		$new[ 'talks/([^/]+/(.+)/?$' ] = 'index.php?ibiology_talk=$matches[2]';
+		//$new[ 'talks/
+		
+		return array_merge( $new, $rules_array );
+	}
 
 }
 

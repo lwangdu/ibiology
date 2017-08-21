@@ -5,11 +5,11 @@ global $videos;
 if ( is_array( $videos ) ) {
   echo '<section class="videos row"><div class="wrap">';
      
-    $counter = 1; // count the parts;
     $titles = array();
     $thumbs = array();
-
-    $num_parts = count( $videos );
+    $num_parts = count( $videos ); // count the parts;
+    $counter = 1;
+    
     echo '<div class="videos-container">';
     foreach( $videos as $v ){
       $title = isset( $v[ 'part_title' ] ) ?  esc_attr( $v[ 'part_title' ] ) : '';
@@ -43,11 +43,12 @@ if ( is_array( $videos ) ) {
       
       echo "<div class='single-video part-$counter'><header><h2 class='title'>$title</h2></header><div class='content'>";
       $embed = wp_oembed_get( $video_url , array( 'width' => 800 ) );
+      
       // attach the showinfo parameter to the oembed.      
       $embed = preg_replace( '/src="(.+)oembed"/', 'src="$1oembed&showinfo=0"', $embed );
       
-      if ( empty( $embed ) ){
-        $embbed = '<div class="empty-video">We were unable to retrieve the video</div>';
+      if ( $embed == false ){
+        $embed = '<div class="empty-video">We were unable to retrieve the video</div>';
       }
       
       echo $embed;
