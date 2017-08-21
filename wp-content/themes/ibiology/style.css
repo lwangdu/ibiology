@@ -1034,7 +1034,7 @@ section.videos .single-video{
 	display:none;
 }
 
-.single-video header{
+section.videos .single-video header{
 	position: absolute;
 	top: 0px;
 	padding: 10px 20px;
@@ -1054,7 +1054,7 @@ section.videos .single-video{
 	font-size: 1.5rem;
 }
 
-.single-video:hover header{
+section.videos .single-video:hover header{
 	opacity: 0;
 }
 

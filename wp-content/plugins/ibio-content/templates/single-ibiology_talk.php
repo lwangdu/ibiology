@@ -40,19 +40,11 @@ function ibio_talks_header(){
   // Breadcrumbs
   echo '<div class="page-header"><div class="wrap">';
   ibio_breadcrumbs();
-   genesis_do_post_title();
+  genesis_do_post_title();
   echo '</div></div>';  
-
-  // get the videos
-  global $videos;
-  $videos = get_field( 'videos' );
-  if ( empty( $videos ) ) return;
   
-  if ( count( $videos ) > 1 ){   
-    ibio_get_template_part( 'single-talk/multi-part', 'video' );
-  } else {
-    ibio_get_template_part( 'single-talk/multi-part', 'video' );
-  }
+  ibio_get_template_part( 'single-talk/videos', 'container' );
+  
 }
 
 function ibio_disucssion_questions(){

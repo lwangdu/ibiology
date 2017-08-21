@@ -43,17 +43,18 @@ function ibio_talks_videos(){
   $videos = get_field( 'videos' );
   if ( empty( $videos ) ) return;
   $qa = get_field( 'questions_answers_list' ); 
-  global $v, $question_content;
+  global $current_video, $question_content;
   $counter = 1;
   $num_parts = count($videos);
+
+	$current_video[ 'num_parts' ] =  $num_parts;
+	$counter = 1;
+
   
-  foreach ( $videos as $vid ) {
-		$v = $vid;
-  	$title = isset( $v[ 'part_title' ] ) ?  esc_attr( $v[ 'part_title' ] ) : '';
-		if ( $num_parts > 1 ){
-			$title = "Part $counter: " . $title;
-			echo "<header><h2 class='title'>$title</h2></header>";
-		}
+  foreach ( $videos as $v ) {
+
+    $current_video['video'] = $v;
+    $current_video['counter'] = $counter;
 	 	
     ibio_get_template_part( 'shared/single', 'video' );
 
