@@ -12,6 +12,7 @@ if ( is_array( $videos ) ) {
     $num_parts = count( $videos ); // count the parts;    
     global $current_video;
     $current_video[ 'num_parts' ] =  $num_parts;
+    $current_video[ 'total_duration' ] = 0;
     $counter = 1;
     
     echo '<div class="videos-container">';
@@ -38,8 +39,7 @@ if ( is_array( $videos ) ) {
     echo '</div>';
     
     echo '<div class="videos-info">';
-    
-    
+
     if ( $num_parts > 1 ){
       echo '<header>Videos in this Talk</header>';
       $tabs = '<ul class="videos-nav">';
@@ -51,7 +51,12 @@ if ( is_array( $videos ) ) {
       }
       $tabs .= "</ul>";
       echo $tabs;
-    }  
+      
+      echo '<div class="duration">Total Duration: 01:00:20</div>';
+
+      
+    }
+    
     $translations = get_field( 'translations' );
     $languages = '';
     if ( is_array( $translations ) ) {
@@ -67,10 +72,7 @@ if ( is_array( $videos ) ) {
     $date_recorded = '';
     $month_field = get_field_object( 'date_recorded_month' );
     // get the label for the month, rather than the number.
-    // error_log( serialize( $month_field['choices'] ) );
-    
     $month = $month_field['choices'][$month_field[ 'value' ] ];
-
     $year = get_field( 'date_recorded_year' );
 
     if ( !empty( $year ) ){
@@ -78,10 +80,13 @@ if ( is_array( $videos ) ) {
     }
 
     echo $date_recorded;
-    echo '<div class="duration">Total Duration: 01:00:20</div>';
     echo $languages;
     
     echo '<div class="row">';
+    if ( $num_parts == 1 ){
+      ibio_get_template_part( 'single-talk/related-talks', 'sidebar' );
+    }
+    echo '</div><div class="row">';
     ibio_get_template_part( 'shared/primary-related-category', 'link' );
     echo '</div>';
     

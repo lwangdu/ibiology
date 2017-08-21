@@ -5,8 +5,6 @@
 
 global $post;
 
-global $post;
-
 $short_title = get_field( 'short_title' );
 
 $title = empty( $short_title ) ? $post->post_title : $short_title;

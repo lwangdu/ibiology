@@ -1092,13 +1092,20 @@ section.videos .videos-info header{
 	margin-bottom: 5px;
 }
 
+section.videos .videos-info .related-items{
+	border-top: 1px solid #ccc;
+	background-color: #222;
+	padding: 4px 8px;
+}
+
 section.videos .videos-nav li{
 	margin-bottom: 10px;
 	cursor: pointer;
 	clear: both;
 }
 
-section.videos .videos-nav li figure{
+section.videos .videos-nav li figure,
+.stack li figure{
 	height: 79px;
 	width: 140px;
 	background-color: #999;
@@ -1108,11 +1115,13 @@ section.videos .videos-nav li figure{
 	margin-bottom: 10px;
 }
 
-section.videos .videos-nav li figure img{
+section.videos .videos-nav li figure img,
+.stack li figure img{
 	width: 100%;
 }
-
-
+.stack li {
+	clear:both;
+}
 .videos-nav {
 	color:  #0099d1;
 }
@@ -1120,6 +1129,8 @@ section.videos .videos-nav li figure img{
 .videos-nav .active{
 	color: #fff;
 }
+
+
 
 .video-part-transcript{
 	overflow: scroll;
@@ -1302,7 +1313,6 @@ p.entry-meta {
 .grid-listing .content .breadcrumb{
   flex: 0 0 100%;
 }
-
 
 /* # Sidebars
 ---------------------------------------------------------------------------------------------------- */
