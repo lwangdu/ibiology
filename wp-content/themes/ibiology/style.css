@@ -282,16 +282,16 @@ h6 {
 }
 
 h1 {
-	font-size: 36px;
+	font-size: 30px;
 	
 }
 
 h2 {
-	font-size: 30px;
+	font-size: 24px;
 }
 
 h3 {
-	font-size: 24px;
+	font-size: 22px;
 }
 
 h4 {
@@ -592,8 +592,8 @@ th:first-child {
 .more-link {
     position: relative;
     color: #76893e;
-    margin-left: 20px;
-    font-size: 1.1rem;
+    margin-left: 0px;
+    font-size: 1.3rem;
 }
 
 .more-link::after{
@@ -780,7 +780,7 @@ th:first-child {
 }
 
 .single-ibiology_talk .page-header h1 {
-		font-weight: 100;
+		font-weight: 400;
 }
 
 
@@ -871,6 +871,7 @@ th:first-child {
 	background-color: #fff;
 	border: 1px solid #eee;
 	border-top: 0;
+	color: #0099d1;
 	font-size: 14px;
 	padding: 20px;
 	position: relative;
@@ -1072,7 +1073,7 @@ section.videos .single-video .footer{
 }
 
 section.videos .single-video .footer span{
-	font-weight: 100;
+	font-weight: 400;
 	padding-right: 20px;
 }
 
@@ -1088,8 +1089,8 @@ section.videos .videos-info .row{
 }
 
 section.videos .videos-info header{
-	font-weight: 100;
-	margin-bottom: 5px;
+	font-weight: 700;
+	margin-bottom: 10px;
 }
 
 section.videos .videos-info .related-items{
@@ -1288,30 +1289,37 @@ p.entry-meta {
 ---------------------------------------------------------------------------------------------------- */
 
 .grid-listing .content, ul.grid {
-  display:flex ;
-  flex-flow: row wrap;
-  justify-content: space-between;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
+  	align-items: stretch;
 }
 
 .grid-listing .content .entry, ul.grid li{
-  flex: 0 0  200px;
-  padding: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
-  list-style-type:none;
+  flex: 0 0 190px;
+  margin: 6px;
+    box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
+ 
 }
+
+ .grid-listing .content .entry, ul.grid li img {
+    max-width: 100%;
+  }
+
 
 .grid-listing .content .entry-title, .grid .entry-title{
   font-size: 14px;
   line-height: 1.2;
   font-weight:700;
   display:block;
+  padding: 0 10px 10px;
 }
 
 .grid-listing .content .archive-description, 
 .grid-listing .content .pagination, 
 .grid-listing .content .breadcrumb{
-  flex: 0 0 100%;
+ flex: 0 0 100%;
 }
 
 /* # Sidebars
