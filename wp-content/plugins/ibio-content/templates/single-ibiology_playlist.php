@@ -37,6 +37,11 @@ function ibio_talks_playlist(){
     'connected_items' => get_queried_object(),
     'nopaging' => true
   ));
+  
+	echo '<pre>';
+	var_dump($talks);
+	echo '</pre>';  
+  
   if ( $talks->have_posts( ) ) {
   	echo '<ul class="talks grid">';
     while($talks->have_posts()){

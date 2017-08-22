@@ -117,27 +117,16 @@ class IBioContent{
           'from' => IbioPlaylist::$post_type,
           'to' => IbioTalk::$post_type,
           'cardinality' => 'many-to-many',
-          'admin_column' => 'any',
+          'admin_column' => 'to',
+          'fields' => array(
+						'order' => array(
+							'title' => 'Order',
+							'type'	=> 'text'
+						)
+					),
           'title' => array('from' => "Talks on Playlist", 'to' => 'Playlists')
         ) );
         
-        /*p2p_register_connection_type( array(
-          'name' => 'tool_to_talk',
-          'from' => IbioPlaylist::$post_type,
-          'to' => IbioTalk::$post_type,
-          'cardinality' => 'one-to-one',
-          'admin_column' => 'any',
-          'title' => array('from' => "Teaching Tools for This Talk", 'to' => 'Talk')
-        ) ); */
-        
-				/* p2p_register_connection_type( array(
-          'name' => 'playlist_to_talks',
-          'from' => IbioPlaylist::$post_type,
-          'to' => IbioTalk::$post_type,
-          'cardinality' => 'one-to-many',
-          'admin_column' => 'any',
-          'title' => array('from' => "Talks on Playlist", 'to' => 'Playlists')
-        ) );*/
                 
       } else {
       	error_log('Posts 2 Posts is not loaded yet.');
@@ -145,33 +134,6 @@ class IBioContent{
 	}
 	
 	function create_taxonomies(){
-	    /* register_taxonomy('length', 'post', array(
-        'hierarchical' => true,
-        'labels' => array(
-            'name' => 'Length',
-            'singlur_name' => 'length',
-            'all_items' => 'All Lengths',
-            'edit_item' => 'Edit Length',
-            'view_item' => 'View Length',
-            'update_item' => 'Update Length',
-            'add_new_item' => 'Add New Length',
-            'new_item_name' => 'New Length Name',
-            'parent_item' => 'Parent Length',
-            'parent_item_colon' => "Parent Length: ",
-            'search_items' => 'Search Lengths',
-            'popular_items' => 'Populuar Lengths',
-            'separate_items_with_commas' => 'Separate lengths with commas',
-            'add_or_remove_items' => 'Add or remove lengths',
-            'choose_from_most_used' => 'Choose from most used lengths',
-            'not_found' => 'No lengths found.',
-            'menu_name' => 'Length',
-        ),
-        'rewrite' => array(
-            'slug' => 'length',
-            'hierarchical' => true,
-        )
-    ));*/
-    	
     	$post_types = array ( 'post', 
     	                     IBioTalk::$post_type,
     	                     IBioSession::$post_type,
