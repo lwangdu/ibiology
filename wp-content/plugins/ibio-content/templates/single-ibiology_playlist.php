@@ -39,7 +39,7 @@ function ibio_talks_playlist(){
   ));
   
 	echo '<pre>';
-	var_dump($talks);
+	//var_dump($talks);
 	echo '</pre>';  
   
   if ( $talks->have_posts( ) ) {
