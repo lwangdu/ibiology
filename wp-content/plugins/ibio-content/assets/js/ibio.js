@@ -1,12 +1,16 @@
 jQuery(document).ready(function($) {
 
-	//find the first video and make it active (but we will need to check for the parameter value to make the right one active later)
-	$( '.videos .part-1' ).addClass( 'active' );
+	//find the selected part and make it active.
+	var part = window.location.hash.substr(1);
+	if ( part == '' ){ part = 'part-1'; }
+	
+	$( '.videos .' + part ).addClass( 'active' );
 	
 	$( '.videos-nav li').click( function( e ) {
 		e.preventDefault();	
 		$( '.videos .active').removeClass('active');
 		$( '.videos .' + $(this).data('select') ).addClass ('active');
+		window.location.hash = '#' + $(this).data('select');
 	} );
 	
 	$( '.toggle' ).click( function( e ) {
