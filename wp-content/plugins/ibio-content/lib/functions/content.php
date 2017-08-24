@@ -5,6 +5,9 @@
 //* content filters (move to its own place soon)
 
 function ibio_content_archive_setup(){
+	remove_action( 'genesis_before_loop', 'ibio_breadcrumbs');
+	add_action( 'genesis_before_loop', 'ibio_breadcrumbs', 8);
+  
   add_action( 'body_class', 'ibio_grid_body_class' );
   add_filter( 'genesis_post_title_text', 'ibio_talk_short_title' );
   remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
