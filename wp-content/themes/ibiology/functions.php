@@ -179,3 +179,21 @@ function ibio_breadcrumbs(){
 	   genesis_do_breadcrumbs();
 	}
 }
+
+// pull talks in category pages
+
+add_action( 'pre_get_posts', 'ibio_category_page_talks' );
+
+function ibio_category_page_talks( $query ) {
+	
+	$post_type = get_post_type();
+	
+	if ( !is_category() ) return;
+	
+  if( $query->is_main_query() ) {    
+    /* $query->query_vars['orderby'] = 'name';
+    $query->query_vars['order'] = 'ASC'; */
+    $query->query_vars['post_type'] =  IBioTalk::$post_type;
+  }
+
+}
