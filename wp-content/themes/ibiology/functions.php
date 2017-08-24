@@ -180,7 +180,7 @@ function ibio_breadcrumbs(){
 	}
 }
 
-// pull talks in category pages
+// pull talks in category pages -- 
 
 add_action( 'pre_get_posts', 'ibio_category_page_talks' );
 
@@ -197,3 +197,26 @@ function ibio_category_page_talks( $query ) {
   }
 
 }
+
+
+// for filtering display posts shortcode items
+
+function ibio_display_posts_with_short_title( $output, $original_atts, $image, $title, $date, $excerpt, $inner_wrapper, $content, $class ) {
+ 
+ error_log('short code filter');
+ 
+	// Create a new title
+	$short_title = get_field( 'short_title' );
+	if ( $short_title > '' ) {
+		$title = $short_title;
+	}
+	
+	$url = get_the_permalink();	
+	$title = "<h3 class='entry-title'><a href='$url'>$title</a></h3>";	
+	// Now let's rebuild the output
+	$output = '<' . $inner_wrapper . ' class="' . implode( ' ', $class ) . '">' . $image . $title . $date . $author . $excerpt . $content . '</' . $inner_wrapper . '>';
+ 
+	// Finally we'll return the modified output
+	return $output;
+}
+add_filter( 'display_posts_shortcode_output', 'ibio_display_posts_with_short_title', 10, 9 );
