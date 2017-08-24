@@ -182,20 +182,27 @@ function ibio_breadcrumbs(){
 
 // pull talks in category pages -- 
 
-add_action( 'pre_get_posts', 'ibio_category_page_talks' );
+add_action( 'pre_get_posts', 'ibio_prepare_query' );
 
-function ibio_category_page_talks( $query ) {
+function ibio_prepare_query( $query ) {
 	
 	$post_type = get_post_type();
 	
-	if ( !is_category() ) return;
+	if ( !$query->is_main_query() ) return;
 	
-  if( $query->is_main_query() ) {    
-    /* $query->query_vars['orderby'] = 'name';
-    $query->query_vars['order'] = 'ASC'; */
-    $query->query_vars['post_type'] =  IBioTalk::$post_type;
-  }
-
+	if ( is_post_type_archive(IBioPlaylist::$post_type) || is_post_type_archive(IBioSpeaker::$post_type) ){
+		$query->query_vars['orderby'] = 'name';
+		$query->query_vars['order'] = 'ASC'; 
+		$query->query_vars['posts_per_page'] = -1;
+		return;
+	}
+	
+	if ( is_category() ) {
+		/* $query->query_vars['orderby'] = 'name';
+		$query->query_vars['order'] = 'ASC'; */
+		$query->query_vars['post_type'] =  IBioTalk::$post_type;
+		return;
+	}
 }
 
 
