@@ -16,13 +16,8 @@ function ibio_speaker_info(){
 		));
 	$speaker_talks = $posts->posts;
 	
-	echo get_the_post_thumbnail($s->ID, 'square-thumb', array( 'class' => 'alignleft' ));
+	echo get_the_post_thumbnail($s->ID, 'square-thumb', array( 'class' => 'alignleft photo' ));
 	
-}
-
-function ibio_speaker_details(){
-	global $acf_fields_helper;
-	$acf_fields_helper->show_field_group(32397);
 }
 
 
@@ -42,11 +37,19 @@ function ibio_talks_speaker(){
 
 }
 
+function ibio_speaker_body_class($classes){
+	$classes[] = 'speaker';
+	return $classes;
+}
+
 /* -------------------  Page Rendering --------------------------*/
 
+add_filter( 'body_class', 'ibio_speaker_body_class');
 add_action('genesis_entry_header', 'ibio_speaker_info', 20);
 add_action('genesis_entry_content', 'ibio_speaker_details', 15);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 20);
-add_action('genesis_entry_content', 'ibio_related_content', 21);
+
+
+add_action('genesis_after_entry', 'ibio_related_content', 5);
 
 genesis();
