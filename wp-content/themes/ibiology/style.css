@@ -1293,19 +1293,22 @@ p.entry-meta {
 	display: -ms-flexbox;
 	display: flex;
 	flex-wrap: wrap;
-  	align-items: stretch;
+  align-items: stretch;
+	list-style-type: none;  
+	margin:0;
 }
 
 .grid-listing .content .entry, ul.grid li{
   flex: 0 0 190px;
   margin: 6px;
-    box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
- 
+  box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
+  list-style-type: none;  
+  padding: 10px;
 }
 
- .grid-listing .content .entry, ul.grid li img {
+.grid-listing .content .entry, ul.grid li img {
     max-width: 100%;
-  }
+}
 
 
 .grid-listing .content .entry-title, .grid .entry-title{
@@ -1313,7 +1316,7 @@ p.entry-meta {
   line-height: 1.2;
   font-weight:700;
   display:block;
-  padding: 0 10px 10px;
+  /*padding: 0 10px 10px;*/
 }
 
 .grid-listing .content .archive-description, 
