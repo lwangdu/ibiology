@@ -49,6 +49,11 @@ function ibio_playlists_talk($talk_id=null){
 	
 }
 
+function ibio_ed_resources(){
+	ibio_get_template_part( 'shared/related-resources', 'educator' );
+	
+}
+
 function ibio_related_content(){
 
 	ibio_get_template_part( 'shared/related', 'talks-by-category' );

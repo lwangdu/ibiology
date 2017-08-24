@@ -77,10 +77,6 @@ function ibio_talks_videos(){
   }
 }
 
-function ibio_ed_resources(){
-	ibio_get_template_part( 'shared/related-resources', 'educator' );
-	
-}
 
 function ibio_related_resources(){
 	ibio_get_template_part( 'shared/related', 'resources' );

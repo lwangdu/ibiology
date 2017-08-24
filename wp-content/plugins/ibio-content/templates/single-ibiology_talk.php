@@ -94,6 +94,7 @@ remove_action( 'genesis_entry_header', 'genesis_post_info');
 remove_action( 'genesis_entry_header', 'genesis_do_post_title', 10 );
 
 add_action( 'genesis_entry_content', 'ibio_lecture_header', 5);
+add_action('genesis_entry_content', 'ibio_ed_resources', 11);
 add_action('genesis_entry_content', 'ibio_disucssion_questions', 12);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 22);
 
