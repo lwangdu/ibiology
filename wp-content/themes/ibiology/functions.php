@@ -190,8 +190,14 @@ function ibio_prepare_query( $query ) {
 	
 	if ( !$query->is_main_query() ) return;
 	
-	if ( is_post_type_archive(IBioPlaylist::$post_type) || is_post_type_archive(IBioSpeaker::$post_type) ){
+	if ( is_post_type_archive(IBioPlaylist::$post_type) ){
 		$query->query_vars['orderby'] = 'name';
+		$query->query_vars['order'] = 'ASC'; 
+		$query->query_vars['posts_per_page'] = -1;
+		return;
+	}	else if ( is_post_type_archive(IBioSpeaker::$post_type) ){
+		$query->query_vars['orderby'] = 'meta_value';
+		$query->query_vars['meta_key'] = 'last_name';
 		$query->query_vars['order'] = 'ASC'; 
 		$query->query_vars['posts_per_page'] = -1;
 		return;
