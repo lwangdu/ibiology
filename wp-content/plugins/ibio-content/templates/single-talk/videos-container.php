@@ -58,6 +58,7 @@ if ( is_array( $videos ) ) {
     /* Videos in this talk */
     
     if ( $num_parts > 1 ){
+      /* multi-part talk */
       echo '<header>Videos in this Talk</header>';
       $tabs = '<ul class="videos-nav">';
       for( $i = 1 ; $i < $counter ; $i++ ){
@@ -71,9 +72,24 @@ if ( is_array( $videos ) ) {
       $tabs .= "</ul>";
       echo $tabs;
       
-      echo '<div class="duration">Total Duration: 01:00:20</div>';
+      echo '<div class="duration row">Total Duration: 01:00:20</div>';
 
-      
+    } else {
+      /* single part talk */
+       echo '<header>This Talk</header>';  
+       
+       $this_talk = get_queried_object();
+       
+       $audience_list = wp_get_post_terms( $this_talk->ID, 'audience' );
+       
+       if ( !empty($audience_list) && is_array( $audience_list ) ){
+        echo '<div class="row">Audience: <ul class="audiences">';
+        foreach ( $audience_list as $a ){
+           echo "<li class='audience {$a->slug}'><span>{$a->name}</span></li> ";
+        }
+        echo "</ul></div>";       
+       }
+          
     }
     
     $translations = get_field( 'translations' );

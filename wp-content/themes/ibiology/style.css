@@ -1557,7 +1557,7 @@ section.videos .audiences li.audience {
 	color: #ddd;
 }
 
-.audiences .general-pulic::before{
+.audiences .general-public::before{
 	content: "P";	
 }
 
