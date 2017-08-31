@@ -13,6 +13,6 @@ $title = empty( $short_title ) ? $post->post_title : $short_title;
 ?>
 
 <li class='talk-list-item item'>
-<figure class="post-image"><?php the_post_thumbnail(); ?></figure>
+<figure class="post-image"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a></figure>
 <span class="entry-title"><a href="<?php the_permalink(); ?>"><?php echo $title; ?></a></span>
 </li>
