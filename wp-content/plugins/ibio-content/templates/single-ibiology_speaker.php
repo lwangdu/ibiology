@@ -25,7 +25,7 @@ function ibio_talks_speaker(){
 	global $speaker_talks;
 	if (!empty( $speaker_talks )){
 		global $post;	
-		echo "<section class='related-items col-2 alignright'><h2 class='widget-title'>Talks with this Speaker</h2>";
+		echo "<section class='related-items narrow column alignright'><h2 class='widget-title'>Talks with this Speaker</h2>";
 		echo '<ul class="related-talks talks-list stack">';
 		foreach($speaker_talks as $post) {
 			setup_postdata($post);

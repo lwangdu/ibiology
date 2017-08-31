@@ -752,6 +752,11 @@ th:first-child {
 	width: 100%;
 }
 
+.column.narrow{
+	width: 360px;
+	padding: 0;
+}
+
 /* ## Site Containers
 --------------------------------------------- */
 
@@ -1140,6 +1145,15 @@ section.videos .videos-nav li figure img,
 	height: 400px;
 }
 
+/* ## Lists of Talks and other objects
+--------------------------------------------- */
+.related-items ul > li {
+	list-style-type:none;
+	font-size: 1rem;
+	line-height: 1.2rem;
+}
+
+
 /* ## Filmstrip
 --------------------------------------------- */
 .filmstrip, .entry-content ul.filmstrip{
@@ -1163,6 +1177,12 @@ section.videos .videos-nav li figure img,
 	font-size: 1.1rem;
 	padding: 10px;
   box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
+}
+
+/* ## Stack
+--------------------------------------------- */
+ul.stack{
+	margin:0;
 }
 
 /* ## Entry Meta
