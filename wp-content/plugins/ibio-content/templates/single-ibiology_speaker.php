@@ -16,10 +16,35 @@ function ibio_speaker_info(){
 		));
 	$speaker_talks = $posts->posts;
 	
-	echo get_the_post_thumbnail($s->ID, 'square-thumb', array( 'class' => 'alignleft photo' ));
+	// get the speaker affiliation and awards.
+	
+ $affiliation = get_field( 'affiliation' );
+ $awards = get_field( 'awards' );
+ 
+ if ( empty( $affiliation ) && empty( $awards ) ) return;
+ 
+ echo '<p class="entry-meta">';
+ 
+ if (!empty( $affiliation ) ){
+ 	echo "<span class='affiliation'>$affiliation</span><br/>";
+ }
+ 
+ if (!empty( $awards ) && is_array($awards) ){ 
+	$awards_list = get_field_object( 'awards' );
+	 echo '<span class="awards">Awards: ';
+	 foreach ( $awards as $a ){
+ 			echo '<span>' . $awards_list['choices'][$a] . '</span> ';
+ 		}
+ 	echo '</span>';
+ }
+ 
+ echo '</p>';
 	
 }
 
+function ibio_speaker_image(){
+	echo get_the_post_thumbnail($s->ID, 'square-thumb', array( 'class' => 'alignleft photo' ));
+}
 
 function ibio_talks_speaker(){
 	global $speaker_talks;
@@ -47,12 +72,14 @@ function ibio_speaker_body_class($classes){
 
 add_filter( 'body_class', 'ibio_speaker_body_class');
 // force content-sidebar layout
-add_filter( 'genesis_site_layout', '__genesis_return_full_width_content' );
+//add_filter( 'genesis_site_layout', '__genesis_return_full_width_content' );
+add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
 
-
-add_action('genesis_entry_header', 'ibio_speaker_info', 20);
+add_action('genesis_before_entry', 'ibio_speaker_image');
+add_action('genesis_entry_header', 'ibio_speaker_info', 12);
 add_action('genesis_entry_content', 'ibio_speaker_details', 15);
-add_action('genesis_entry_content', 'ibio_talks_speaker', 9);
+//add_action('genesis_entry_content', 'ibio_talks_speaker', 9);
+add_action('genesis_sidebar', 'ibio_talks_speaker', 9);
 
 add_action('genesis_after_entry', 'ibio_related_content', 5);
 

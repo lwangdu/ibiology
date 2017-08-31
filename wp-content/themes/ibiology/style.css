@@ -1212,6 +1212,13 @@ p.entry-meta {
 	margin: 0 6px 0 2px;
 }
 
+.awards span::after{
+	content: ', ';
+}
+
+.awards span:last-child::after{
+	content: '';
+}
 
 /* ## Pagination
 --------------------------------------------- */
