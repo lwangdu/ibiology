@@ -14,6 +14,7 @@ if ( is_array( $videos ) ) {
     $current_video[ 'num_parts' ] =  $num_parts;
     $current_video[ 'total_duration' ] = 0;
     $counter = 1;
+    $part_audiences = array();
     
     echo '<div class="videos-container">';
     foreach( $videos as $v ){
@@ -33,6 +34,19 @@ if ( is_array( $videos ) ) {
       }
       ibio_get_template_part('shared/single', 'video');
      
+     
+      $audiences = $v['target_audience'];
+      $audience = '';
+      if ( !empty($audiences) && is_array($audiences) ){
+        $audience .= '<br/>Audience: <ul class="audiences">';
+        foreach( $audiences as $a ){
+          $audience .= "<li class='audience {$a->slug}'><span>{$a->name}</span></li> ";
+        }
+        $audience .= '</ul>';
+      }
+
+      $part_audiences[ $counter ] = $audience;
+      
       $counter++;
       
     }
@@ -40,6 +54,9 @@ if ( is_array( $videos ) ) {
     
     echo '<div class="videos-info">';
 
+
+    /* Videos in this talk */
+    
     if ( $num_parts > 1 ){
       echo '<header>Videos in this Talk</header>';
       $tabs = '<ul class="videos-nav">';
@@ -47,7 +64,9 @@ if ( is_array( $videos ) ) {
         $title =  $titles[ $i ];
         $thumb = isset( $thumbs[ $i] ) ? '<img src="'. $thumbs[ $i] .'" alt="' . $title . '"/>' : '';
         
-        $tabs .= "<li class='part-$i' data-select='part-$i'><figure>$thumb</figure>$title</li>";
+        $tabs .= "<li class='part-$i' data-select='part-$i'><figure>$thumb</figure>$title ";
+        $tabs .=  $part_audiences[ $i ] . '</li>';
+        
       }
       $tabs .= "</ul>";
       echo $tabs;

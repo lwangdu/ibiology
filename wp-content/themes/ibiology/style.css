@@ -49,6 +49,7 @@ Text Domain: iBiology
 	- Plugins
 	- Search sidebar
 	- Widgets
+	- Icons
 	- Media Queries 
 
 Blue: #009ad2
@@ -1288,7 +1289,7 @@ p.entry-meta {
 /* # Entries in Lists 
 ---------------------------------------------------------------------------------------------------- */
 
-.grid-listing .content, ul.grid {
+.grid-listing .content, .facetwp-template, ul.grid {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
@@ -1298,7 +1299,7 @@ p.entry-meta {
 	margin:0;
 }
 
-.grid-listing .content .entry, ul.grid li{
+.grid-listing .content .entry, .facetwp-template .entry, ul.grid li{
   flex: 0 0 190px;
   margin: 6px;
   box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
@@ -1306,7 +1307,7 @@ p.entry-meta {
   padding: 10px;
 }
 
-.grid-listing .content .entry, ul.grid li img {
+.grid-listing .content .entry img, .facetwp-template .entry img, ul.grid li img {
     max-width: 100%;
 }
 
@@ -1503,6 +1504,55 @@ p.entry-meta {
 	margin: 0 0 0 30px;
 	padding: 0;
 }
+
+
+/* # Icons
+---------------------------------------------------------------------------------------------------- */
+
+ul.audiences {
+	list-style-type: none;
+	display:inline-block;
+}
+
+section.videos .audiences li.audience {
+	list-style-type: none;
+	overflow: hidden;
+	display: inline-block;
+	margin:0;
+}
+
+.audiences li span{
+	display:none;
+}
+
+.audiences li::before{
+	display: inline-block;
+	color: #ddd;
+}
+
+.audiences .general-pulic::before{
+	content: "P";	
+}
+
+
+.audiences .student::before{
+	content: "S";	
+}
+
+.audiences .researcher::before{
+	content: "R";	
+}
+
+.audiences .educator-1::before{
+	content: "E1";	
+}
+
+
+.audiences .educator-2::before{
+	content: "E2";	
+}
+
+
 
 
 /* # Bootstrap Section

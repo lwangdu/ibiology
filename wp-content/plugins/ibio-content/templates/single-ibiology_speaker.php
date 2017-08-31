@@ -24,14 +24,15 @@ function ibio_speaker_info(){
 function ibio_talks_speaker(){
 	global $speaker_talks;
 	if (!empty( $speaker_talks )){
-	
-		echo "<section class='related-items row'><h2>Talks with this Speaker</h2>";
-	
-		foreach ($speaker_talks as $s){
-			$url = get_post_permalink($s->ID);
-			echo "<div class='entry'><h3><a href='$url'>" . $s->post_title . "</a></h3>" . get_the_post_thumbnail($s->ID, 'thumbnail', array( 'class' => 'alignleft' ) );
-			echo $s->post_excerpt . '</div>';
-		}	
+		global $post;	
+		echo "<section class='related-items col-2 alignright'><h2 class='widget-title'>Talks with this Speaker</h2>";
+		echo '<ul class="related-talks talks-list stack">';
+		foreach($speaker_talks as $post) {
+			setup_postdata($post);
+			get_template_part( 'parts/list-talk');
+		}
+		echo '</ul>';
+		wp_reset_query();
 		echo '</section>';
 	}
 
@@ -45,10 +46,13 @@ function ibio_speaker_body_class($classes){
 /* -------------------  Page Rendering --------------------------*/
 
 add_filter( 'body_class', 'ibio_speaker_body_class');
+// force content-sidebar layout
+add_filter( 'genesis_site_layout', '__genesis_return_full_width_content' );
+
+
 add_action('genesis_entry_header', 'ibio_speaker_info', 20);
 add_action('genesis_entry_content', 'ibio_speaker_details', 15);
-add_action('genesis_entry_content', 'ibio_talks_speaker', 20);
-
+add_action('genesis_entry_content', 'ibio_talks_speaker', 9);
 
 add_action('genesis_after_entry', 'ibio_related_content', 5);
 
