@@ -423,10 +423,8 @@ textarea {
 	background-color: #fff;
 	border: 1px solid #ddd;
 	color: #333;
-	font-size: 18px;
 	font-weight: 400;
-	padding: 16px;
-	width: 100%;
+	padding: 3px;
 }
 
 input:focus,
@@ -1184,6 +1182,21 @@ section.videos .videos-nav li figure img,
 ul.stack{
 	margin:0;
 }
+
+
+/* ## Filters
+--------------------------------------------- */
+
+.filter {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.filter-field{
+	flex: 1 1 33%;
+	width: 33%;
+}
+
 
 /* ## Entry Meta
 --------------------------------------------- */

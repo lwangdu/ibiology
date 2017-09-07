@@ -98,11 +98,17 @@ add_theme_support( 'genesis-footer-widgets', 1 );
  *
  *  Widget Areas
  */
+ 
+ genesis_register_sidebar( array(
+	'id'          => 'sidebar_talks_filter',
+	'name'        => __( 'Talks Filter', 'ibiology' ),
+	'description' => __( 'Used on Explore page, maybe others?', 'ibiology' ),
+) );
 
 genesis_register_sidebar( array(
 	'id'          => 'sidebar_talks',
-	'name'        => __( 'Individual Talk', 'metro' ),
-	'description' => __( 'This is the sidebar for an individual talk', 'metro' ),
+	'name'        => __( 'Individual Talk', 'ibiology' ),
+	'description' => __( 'This is the sidebar for an individual talk', 'ibiology' ),
 ) );
 
 
@@ -215,8 +221,6 @@ function ibio_prepare_query( $query ) {
 // for filtering display posts shortcode items
 
 function ibio_display_posts_with_short_title( $output, $original_atts, $image, $title, $date, $excerpt, $inner_wrapper, $content, $class ) {
- 
- error_log('short code filter');
  
 	// Create a new title
 	$short_title = get_field( 'short_title' );
