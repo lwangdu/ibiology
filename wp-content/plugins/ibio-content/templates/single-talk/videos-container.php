@@ -92,7 +92,7 @@ if ( is_array( $videos ) ) {
           
     }
     
-    $translations = get_field( 'translations' );
+    $translations = get_field( 'talks_in_other_languages' );
     $languages = '';
     if ( is_array( $translations ) ) {
       $languages .= '<div class="row"><span class="toggle" data-toggle="translations">Watch in:</span>';
