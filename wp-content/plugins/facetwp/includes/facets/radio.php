@@ -174,7 +174,7 @@ class FacetWP_Facet_Radio_Core
         $this.find('.facet-count').val(obj.count);
     });
 
-    wp.hooks.addFilter('facetwp/save/radio', function($this, obj) {
+    wp.hooks.addFilter('facetwp/save/radio', function(obj, $this) {
         obj['source'] = $this.find('.facet-source').val();
         obj['parent_term'] = $this.find('.facet-parent-term').val();
         obj['orderby'] = $this.find('.facet-orderby').val();

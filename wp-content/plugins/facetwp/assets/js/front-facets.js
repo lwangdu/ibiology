@@ -270,7 +270,17 @@
     });
 
     $(document).on('fs:changed', function(e, wrap) {
-        FWP.autoload();
+        if (wrap.classList.contains('multiple')) {
+            var facet_name = wrap.parentNode.getAttribute('data-name');
+            FWP.static_facet = facet_name;
+            FWP.autoload();
+        }
+    });
+
+    $(document).on('fs:closed', function(e, wrap) {
+        if (! wrap.classList.contains('multiple')) {
+            FWP.autoload();
+        }
     });
 
     /* ======== Hierarchy ======== */
@@ -353,7 +363,7 @@
             $input.wrap('<span class="location-wrap"></span>');
             $input.before('<i class="locate-me"></i>');
 
-            var options = FWP_JSON['autocomplete_options'];
+            var options = FWP_JSON['proximity']['autocomplete_options'];
             var autocomplete = new google.maps.places.Autocomplete(pac_input, options);
 
             google.maps.event.addListener(autocomplete, 'place_changed', function() {
@@ -441,7 +451,7 @@
     });
 
     wp.hooks.addFilter('facetwp/selections/proximity', function(label, params) {
-        return 'Clear location';
+        return FWP_JSON['proximity']['clearText'];
     });
 
     /* ======== Search ======== */

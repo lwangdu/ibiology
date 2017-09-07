@@ -197,7 +197,7 @@ class FacetWP_Facet_Hierarchy
         $this.find('.facet-count').val(obj.count);
     });
 
-    wp.hooks.addFilter('facetwp/save/hierarchy', function($this, obj) {
+    wp.hooks.addFilter('facetwp/save/hierarchy', function(obj, $this) {
         obj['source'] = $this.find('.facet-source').val();
         obj['orderby'] = $this.find('.facet-orderby').val();
         obj['count'] = $this.find('.facet-count').val();

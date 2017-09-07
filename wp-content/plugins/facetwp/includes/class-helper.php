@@ -94,6 +94,9 @@ final class FacetWP_Helper
         if ( ! isset( $settings['settings']['decimal_separator'] ) ) {
             $settings['settings']['decimal_separator'] = '.';
         }
+        if ( ! isset( $settings['settings']['prefix'] ) ) {
+            $settings['settings']['prefix'] = 'fwp_';
+        }
 
         // Store raw facet & template names
         $raw_names = array();

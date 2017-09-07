@@ -47,7 +47,7 @@ var FWP = FWP || {};
 
 
     FWP.helper.get_url_var = function(name) {
-        var name = 'fwp_' + name;
+        var name = FWP_JSON.prefix + name;
         var query_string = FWP.build_query_string();
         var url_vars = query_string.split('&');
         for (var i = 0; i < url_vars.length; i++) {
@@ -218,14 +218,14 @@ var FWP = FWP || {};
         var get_str = window.location.search.replace('?', '').split('&');
         $.each(get_str, function(idx, val) {
             var param_name = val.split('=')[0];
-            if ('fwp' !== param_name.substr(0, 3)) {
+            if (0 !== param_name.indexOf(FWP_JSON.prefix)) {
                 hash.push(val);
             }
         });
         hash = hash.join('&');
 
         // FacetWP URL variables
-        var fwp_vars = FWP.helper.serialize(FWP.facets, 'fwp_');
+        var fwp_vars = FWP.helper.serialize(FWP.facets, FWP_JSON.prefix);
 
         if ('' !== hash) {
             query_string += hash;
@@ -263,8 +263,8 @@ var FWP = FWP || {};
         var get_str = window.location.search.replace('?', '').split('&');
         $.each(get_str, function(idx, val) {
             var param_name = val.split('=')[0];
-            if ('fwp' === param_name.substr(0, 3)) {
-                hash.push(val.replace('fwp_', ''));
+            if (0 === param_name.indexOf(FWP_JSON.prefix)) {
+                hash.push(val.replace(FWP_JSON.prefix, ''));
             }
         });
         hash = hash.join('&');
@@ -400,7 +400,7 @@ var FWP = FWP || {};
                 }
                 else {
                     // Fallback until "loop_no_results" action is added to WP core
-                    var inject = 'No results found.';
+                    var inject = FWP_JSON['no_results_text'];
                 }
             }
         }

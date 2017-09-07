@@ -78,7 +78,7 @@ class FacetWP_Facet_Dropdown
         $values = (array) $params['values'];
         $selected_values = (array) $params['selected_values'];
 
-        if ( isset( $facet['hierarchical'] ) && 'yes' == $facet['hierarchical'] ) {
+        if ( FWP()->helper->facet_is( $facet, 'hierarchical', 'yes' ) ) {
             $values = FWP()->helper->sort_taxonomy_values( $params['values'], $facet['orderby'] );
         }
 
@@ -145,7 +145,7 @@ class FacetWP_Facet_Dropdown
         $this.find('.facet-count').val(obj.count);
     });
 
-    wp.hooks.addFilter('facetwp/save/dropdown', function($this, obj) {
+    wp.hooks.addFilter('facetwp/save/dropdown', function(obj, $this) {
         obj['source'] = $this.find('.facet-source').val();
         obj['label_any'] = $this.find('.facet-label-any').val();
         obj['parent_term'] = $this.find('.facet-parent-term').val();

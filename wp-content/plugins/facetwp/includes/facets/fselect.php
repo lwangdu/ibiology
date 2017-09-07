@@ -88,11 +88,11 @@ class FacetWP_Facet_fSelect
         $values = (array) $params['values'];
         $selected_values = (array) $params['selected_values'];
 
-        $multiple = '';
-        if ( isset( $facet['multiple'] ) && 'yes' == $facet['multiple'] ) {
-            $multiple = ' multiple="multiple"';
+        if ( FWP()->helper->facet_is( $facet, 'hierarchical', 'yes' ) ) {
+            $values = FWP()->helper->sort_taxonomy_values( $params['values'], $facet['orderby'] );
         }
 
+        $multiple = FWP()->helper->facet_is( $facet, 'multiple', 'yes' ) ? ' multiple="multiple"' : '';
         $label_any = empty( $facet['label_any'] ) ? __( 'Any', 'fwp' ) : $facet['label_any'];
         $label_any = facetwp_i18n( $label_any );
 
@@ -190,16 +190,18 @@ class FacetWP_Facet_fSelect
         $this.find('.facet-label-any').val(obj.label_any);
         $this.find('.facet-parent-term').val(obj.parent_term);
         $this.find('.facet-orderby').val(obj.orderby);
+        $this.find('.facet-hierarchical').val(obj.hierarchical);
         $this.find('.facet-operator').val(obj.operator);
         $this.find('.facet-count').val(obj.count);
     });
 
-    wp.hooks.addFilter('facetwp/save/fselect', function($this, obj) {
+    wp.hooks.addFilter('facetwp/save/fselect', function(obj, $this) {
         obj['source'] = $this.find('.facet-source').val();
         obj['multiple'] = $this.find('.facet-multiple').val();
         obj['label_any'] = $this.find('.facet-label-any').val();
         obj['parent_term'] = $this.find('.facet-parent-term').val();
         obj['orderby'] = $this.find('.facet-orderby').val();
+        obj['hierarchical'] = $this.find('.facet-hierarchical').val();
         obj['operator'] = $this.find('.facet-operator').val();
         obj['count'] = $this.find('.facet-count').val();
         return obj;
@@ -273,6 +275,21 @@ class FacetWP_Facet_fSelect
                     <option value="count"><?php _e( 'Highest Count', 'fwp' ); ?></option>
                     <option value="display_value"><?php _e( 'Display Value', 'fwp' ); ?></option>
                     <option value="raw_value"><?php _e( 'Raw Value', 'fwp' ); ?></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <?php _e('Hierarchical', 'fwp'); ?>:
+                <div class="facetwp-tooltip">
+                    <span class="icon-question">?</span>
+                    <div class="facetwp-tooltip-content"><?php _e( 'Is this a hierarchical taxonomy?', 'fwp' ); ?></div>
+                </div>
+            </td>
+            <td>
+                <select class="facet-hierarchical">
+                    <option value="no"><?php _e( 'No', 'fwp' ); ?></option>
+                    <option value="yes"><?php _e( 'Yes', 'fwp' ); ?></option>
                 </select>
             </td>
         </tr>

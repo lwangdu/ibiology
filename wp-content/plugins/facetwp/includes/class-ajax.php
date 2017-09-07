@@ -52,14 +52,15 @@ class FacetWP_Ajax
         // Store some variables
         $this->is_refresh = ( 'facetwp_refresh' == $action );
         $this->first_load = ( 'facetwp_refresh' != $action );
+        $prefix = FWP()->helper->get_setting( 'prefix' );
 
         // Pageload
         if ( $this->first_load ) {
             foreach ( $_GET as $key => $val ) {
 
                 // Store relevant GET variables
-                if ( 'fwp_' == substr( $key, 0, 4 ) ) {
-                    $new_key = substr( $key, 4 );
+                if ( 0 === strpos( $key, $prefix ) ) {
+                    $new_key = substr( $key, strlen( $prefix ) );
                     $this->url_vars[ $new_key ] = $val;
                 }
             }
@@ -92,13 +93,18 @@ class FacetWP_Ajax
      */
     function update_query_vars( $query ) {
 
-        // Template shortcode
+        // Only run once
+        if ( isset( $this->query_vars ) ) {
+            return;
+        }
+
+        // Skip shortcode template
         if ( $this->is_shortcode ) {
             return;
         }
 
-        // Only run once
-        if ( isset( $this->query_vars ) ) {
+        // Skip admin
+        if ( is_admin() && ! wp_doing_ajax() ) {
             return;
         }
 
@@ -111,7 +117,7 @@ class FacetWP_Ajax
             // Set the flag
             $query->set( 'facetwp', true );
 
-            // Skip if no URL variables
+            // No URL variables
             if ( $this->first_load && empty( $this->url_vars ) ) {
                 return;
             }
@@ -194,7 +200,7 @@ class FacetWP_Ajax
 
         // Throw an error
         if ( empty( $this->output['settings'] ) ) {
-            $html = __( 'FacetWP was unable to auto-detect the post listing', 'fwp' );
+            //$html = __( 'FacetWP was unable to auto-detect the post listing', 'fwp' );
         }
         // Grab the <body> contents
         else {

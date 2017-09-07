@@ -73,9 +73,12 @@ class FacetWP_Facet_Date_Range
         /**
          * Exact match
          */
-        elseif ( 'exact' == $facet['fields'] ) {
+        if ( 'exact' == $facet['fields'] && '' == $where ) {
             if ( $start ) {
                 $where .= " AND LEFT(facet_value, 10) = '$start'";
+            }
+            if ( $end ) {
+                $where .= " AND LEFT(facet_display_value, 10) = '$end'";
             }
         }
 
@@ -83,7 +86,7 @@ class FacetWP_Facet_Date_Range
          * Basic compare
          * The post's range must be fully inside the user-defined range
          */
-        else {
+        if ( '' == $where ) {
             if ( $start ) {
                 $where .= " AND LEFT(facet_value, 10) >= '$start'";
             }
@@ -114,7 +117,7 @@ class FacetWP_Facet_Date_Range
         $this.find('.facet-format').val(obj.format);
     });
 
-    wp.hooks.addFilter('facetwp/save/date_range', function($this, obj) {
+    wp.hooks.addFilter('facetwp/save/date_range', function(obj, $this) {
         obj['source'] = $this.find('.facet-source').val();
         obj['source_other'] = $this.find('.facet-source-other').val();
         obj['compare_type'] = $this.find('.facet-compare-type').val();

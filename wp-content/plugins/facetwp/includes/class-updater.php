@@ -32,32 +32,42 @@ class FacetWP_Updater
             return $transient;
         }
 
-        $request = wp_remote_post( 'http://api.facetwp.com', array(
-            'body' => array(
-                'action'    => 'version',
-                'slug'      => $this->slug,
-                'license'   => $this->license,
-                'host'      => FWP()->helper->get_http_host(),
-                'php_v'     => phpversion(),
-            )
-        ) );
+        // Use cache?
+        $now = strtotime( 'now' );
+        $response = get_option( 'facetwp_updater_response', '' );
+        $ts = (int) get_option( 'facetwp_updater_last_checked' );
 
-        if ( ! is_wp_error( $request ) || 200 == wp_remote_retrieve_response_code( $request ) ) {
-            $response = unserialize( $request['body'] );
+        if ( $ts + 1800 < $now || empty( $response ) ) {
+            $request = wp_remote_post( 'http://api.facetwp.com', array(
+                'body' => array(
+                    'action'    => 'version',
+                    'slug'      => $this->slug,
+                    'license'   => $this->license,
+                    'host'      => FWP()->helper->get_http_host(),
+                    'php_v'     => phpversion(),
+                )
+            ) );
 
-            if ( ! empty( $response ) ) {
-                if ( version_compare( $this->version, $response->version, '<' ) ) {
-                    $transient->response['facetwp/index.php'] = (object) array(
-                        'slug'          => $this->slug,
-                        'plugin'        => FACETWP_BASENAME,
-                        'new_version'   => $response->version,
-                        'url'           => $response->url,
-                        'package'       => $response->package,
-                    );
-                }
-
-                update_option( 'facetwp_activation', json_encode( $response->activation ) );
+            if ( ! is_wp_error( $request ) || 200 == wp_remote_retrieve_response_code( $request ) ) {
+                $response = unserialize( $request['body'] );
             }
+
+            update_option( 'facetwp_updater_response', $response );
+            update_option( 'facetwp_updater_last_checked', $now );
+        }
+
+        if ( ! empty( $response ) ) {
+            if ( version_compare( $this->version, $response->version, '<' ) ) {
+                $transient->response['facetwp/index.php'] = (object) array(
+                    'slug'          => $this->slug,
+                    'plugin'        => FACETWP_BASENAME,
+                    'new_version'   => $response->version,
+                    'url'           => $response->url,
+                    'package'       => $response->package,
+                );
+            }
+
+            update_option( 'facetwp_activation', json_encode( $response->activation ) );
         }
 
         return $transient;

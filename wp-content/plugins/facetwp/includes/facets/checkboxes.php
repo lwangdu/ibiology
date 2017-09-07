@@ -172,11 +172,16 @@ class FacetWP_Facet_Checkboxes
         $selected_values = (array) $params['selected_values'];
         $values = FWP()->helper->sort_taxonomy_values( $params['values'], $facet['orderby'] );
 
-        $last_depth = 0;
+        $init_depth = -1;
+        $last_depth = -1;
+
         foreach ( $values as $result ) {
             $depth = (int) $result['depth'];
 
-            if ( $depth > $last_depth ) {
+            if ( -1 == $last_depth ) {
+                $init_depth = $depth;
+            }
+            elseif ( $depth > $last_depth ) {
                 $output .= '<div class="facetwp-depth">';
             }
             elseif ( $depth < $last_depth ) {
@@ -194,7 +199,7 @@ class FacetWP_Facet_Checkboxes
             $last_depth = $depth;
         }
 
-        for ( $i = $last_depth; $i > 0; $i-- ) {
+        for ( $i = $last_depth; $i > $init_depth; $i-- ) {
             $output .= '</div>';
         }
 
@@ -259,7 +264,7 @@ class FacetWP_Facet_Checkboxes
         $this.find('.facet-soft-limit').val(obj.soft_limit);
     });
 
-    wp.hooks.addFilter('facetwp/save/checkboxes', function($this, obj) {
+    wp.hooks.addFilter('facetwp/save/checkboxes', function(obj, $this) {
         obj['source'] = $this.find('.facet-source').val();
         obj['parent_term'] = $this.find('.facet-parent-term').val();
         obj['orderby'] = $this.find('.facet-orderby').val();

@@ -128,6 +128,8 @@ class FacetWP_Display
 
             // Set the loading animation
             $this->json['loading_animation'] = FWP()->helper->get_setting( 'loading_animation' );
+            $this->json['prefix'] = FWP()->helper->get_setting( 'prefix' );
+            $this->json['no_results_text'] = __( 'No results found', 'fwp' );
             $this->json['ajaxurl'] = $ajaxurl;
 
             ob_start();
