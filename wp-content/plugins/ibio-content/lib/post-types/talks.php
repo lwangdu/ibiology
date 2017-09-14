@@ -264,7 +264,7 @@ class IBioTalk {
 		
 
 		// re-hook this function
-		add_action( 'save_post', array( &$this, 'save_post' ), 10, 2  );
+		add_action( 'save_post', array( &$this, 'save_post' ), 100, 2  );
 		
 		
 	}
