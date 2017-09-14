@@ -33,7 +33,7 @@ class IBioTalk {
 		add_filter('admin_body_class', array( &$this, 'admin_body_class' ) );
 		add_filter( 'enter_title_here', array( &$this,'default_title') );
 	
-		add_action( 'save_post', array( &$this, 'save_post' ), 10, 2 );
+		add_action( 'save_post', array( &$this, 'save_post' ), 100, 2 );
 		//add_action( 'acf/save_post', array( &$this, 'acf_save_post' ), 10, 2 );
 
 		
@@ -84,7 +84,7 @@ class IBioTalk {
 				'query_var'           => true,
 				'exclude_from_search' => false,
 				'publicly_queryable'  => true,
-				'rewrite'             => array('slug' => 'talks', 'with_front' => false),
+				'rewrite'             => array('slug' => 'talks', 'with_front' => true),
 				'capability_type'			=> 'post',
 				'map_meta_cap'				=> true,
 				'menu_icon'						=> 'dashicons-video-alt2'
@@ -182,19 +182,19 @@ class IBioTalk {
 		
 		$post = get_post($post_id);
 
+
+		
   	if (!isset($post->post_type) || self::$post_type != $post->post_type ) {
+						error_log( $post->post_type);
+
     	    return;
 		}
+		
+		error_log('Safe_post filred Post');
 
-    // Check permissions
-    if ( self::$post_type == $_POST['post_type'] )
-    {
-      if ( !current_user_can( 'edit_' . self::$post_type, $post_id ) )
-          return;
-    }
 
 		// unhook this function so it doesn't loop infinitely
-		remove_action( 'save_post', array( &$this, 'save_post' ) );
+		remove_action( 'save_post', array( &$this, 'save_post' ), 100 );
 
 		// do stuff that might trigger another Save
 
@@ -203,19 +203,63 @@ class IBioTalk {
 		
 		if ( function_exists( 'get_field' ) ){
 			$videos = get_field( 'videos' );
+			$seo_description = get_post_meta($post_id, '_yoast_wpseo_metadesc', true);
+			$post->post_excerpt = '';
 			
-			error_log('Got Video and Count') ;
-
+			ob_start();
 			
-			if ( is_array( 'videos' ) && count( $videos ) > 1 ){
+			if ( !empty( $seo_description ) ){
+				echo $seo_description;
+			}
+			
+			
+			//error_log('Got Video and Count') ;
+			
+			if ( is_array( $videos ) && count( $videos ) > 1 ){
 				// we have a multi-part talk;
-				
-				$post->post_excerpt = "multi-part talk";
+				echo '<ul class="videos-list">';
+				$counter = 1;
+				foreach( $videos as $v ){
+								
+						// ---------
+					$title = isset( $v[ 'part_title' ] ) ?  esc_attr( $v[ 'part_title' ] ) : '';
+					$title = "Part $counter: " . $title;
+					
+					$video_thumbnail = isset( $v[ 'video_thumbnail' ] ) ? $v[ 'video_thumbnail' ] : '';
+					 // video thumbnail is an array.  Let's grab the thumbnail size of this image.
+					if ( is_array( $video_thumbnail ) && isset( $video_thumbnail['sizes'] ) && isset( $video_thumbnail['sizes']['thumbnail'] ) ){
+						$thumbnail_src = $video_thumbnail['sizes']['thumbnail']; 
+						$thumb = "<img src='$thumbnail_src' alt='$title'/>";
+					} else {
+						$thumbnail_html = ''; 
+					}
+		      $audiences = $v['target_audience'];
+    		  $audience = '';
+      		if ( !empty($audiences) && is_array($audiences) ){
+						$audience .= '<br/>Audience: <ul class="audiences">';
+						foreach( $audiences as $a ){
+							$audience .= "<li class='audience {$a->slug}'><span>{$a->name}</span></li> ";
+						}
+						$audience .= '</ul>';
+					}
+					
+    			echo "<li class='part-$i' data-select='part-$i'><figure>$thumb</figure>$title ";
+    
+    			
+      	  $counter++;
+      
+    		}
+    		echo '</ul>';
 				
 			} else {
 			
 				$post->post_excerpt = "single part talk";		
 			}
+			
+			$post->post_excerpt = ob_get_contents();
+			error_log($post->post_excerpt);
+			
+			ob_end_clean();
 			
 			wp_update_post( $post );
 		}
