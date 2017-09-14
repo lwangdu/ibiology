@@ -1180,7 +1180,7 @@ section.videos .videos-nav li figure img,
 
 /* ## Search Results  */
 
-.search-results ul.videos_list{
+.search-results ul.videos-list{
 	display: flex;
 	justify-content: flex-start;
 	flex-flow: row nowrap;	
@@ -1189,7 +1189,7 @@ section.videos .videos-nav li figure img,
 	margin: 0;
 }
 
-.search-results ul.videos_list li{
+.search-results ul.videos-list li{
 	flex: 1 1 auto;
 	width: 100px;
 	
