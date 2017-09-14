@@ -189,9 +189,7 @@ class IBioTalk {
 
     	    return;
 		}
-		
-		error_log('Safe_post filred Post');
-
+	
 
 		// unhook this function so it doesn't loop infinitely
 		remove_action( 'save_post', array( &$this, 'save_post' ), 100 );
@@ -217,6 +215,7 @@ class IBioTalk {
 			
 			if ( is_array( $videos ) && count( $videos ) > 1 ){
 				// we have a multi-part talk;
+				$url = get_post_permalink( $post_id );
 				echo '<ul class="videos-list row">';
 				$counter = 1;
 				foreach( $videos as $v ){
@@ -241,7 +240,7 @@ class IBioTalk {
 						$audience .= '</ul>';
 					}
 					
-    			echo "<li class='part-$counter' data-select='part-$counter'><figure>$thumb</figure>$title ";
+    			echo "<li class='part-$counter'><a href='$url#part-$counter'><figure>$thumb</figure>$title</a></li> ";
     
     			
       	  $counter++;
