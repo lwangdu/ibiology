@@ -217,11 +217,9 @@ class IBioTalk {
 			
 			if ( is_array( $videos ) && count( $videos ) > 1 ){
 				// we have a multi-part talk;
-				echo '<ul class="videos-list">';
+				echo '<ul class="videos-list row">';
 				$counter = 1;
 				foreach( $videos as $v ){
-								
-						// ---------
 					$title = isset( $v[ 'part_title' ] ) ?  esc_attr( $v[ 'part_title' ] ) : '';
 					$title = "Part $counter: " . $title;
 					
@@ -243,7 +241,7 @@ class IBioTalk {
 						$audience .= '</ul>';
 					}
 					
-    			echo "<li class='part-$i' data-select='part-$i'><figure>$thumb</figure>$title ";
+    			echo "<li class='part-$counter' data-select='part-$counter'><figure>$thumb</figure>$title ";
     
     			
       	  $counter++;
