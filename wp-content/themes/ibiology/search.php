@@ -19,8 +19,13 @@ function ibio_setup_result(){
 	}  // should we do this for sessions?
 }
 	
+function ibio_search_sidebar(){
+	 dynamic_sidebar( 'sidebar_search' );
+}	
 	
 /* ------------------------  Page Rendering -----------------*/
 
 add_action( 'genesis_entry_header', 'ibio_setup_result', 5);	
+remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
+add_action( 'genesis_sidebar', 'ibio_search_sidebar' );
 genesis();

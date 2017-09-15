@@ -59,7 +59,8 @@ class IBioContent{
 	
 		/* Functions */
 		include (  plugin_dir_path( __FILE__ ) . '/lib/functions/content.php' );
-		
+		//include (  plugin_dir_path( __FILE__ ) . '/lib/functions/import.php' );
+				
 		/* Classes */
 		require_once ( plugin_dir_path( __FILE__ ) . '/lib/classes/template_loader.php' );
 		require_once ( plugin_dir_path( __FILE__ ) . '/lib/classes/fields_display_helper.php' );

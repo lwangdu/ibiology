@@ -111,6 +111,11 @@ genesis_register_sidebar( array(
 	'description' => __( 'This is the sidebar for an individual talk', 'ibiology' ),
 ) );
 
+genesis_register_sidebar( array(
+	'id'          => 'sidebar_search',
+	'name'        => __( 'Search Results Page', 'ibiology' ),
+	'description' => __( 'This is the sidebar for the Search Results Page', 'ibiology' ),
+) );
 
 
 /**
