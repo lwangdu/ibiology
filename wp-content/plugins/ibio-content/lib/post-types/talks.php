@@ -185,11 +185,10 @@ class IBioTalk {
 
 		
   	if (!isset($post->post_type) || self::$post_type != $post->post_type ) {
-						error_log( $post->post_type);
+        return;
+    }
 
-    	    return;
-		}
-	
+    error_log('Saving a talk');
 
 		// unhook this function so it doesn't loop infinitely
 		remove_action( 'save_post', array( &$this, 'save_post' ), 100 );
@@ -209,52 +208,51 @@ class IBioTalk {
 			if ( !empty( $seo_description ) ){
 				echo $seo_description;
 			}
-			
-			
-			//error_log('Got Video and Count') ;
+
+			// calculate total video duration in minutes.  Update a custom field.
+			$duration = 0;
 			
 			if ( is_array( $videos ) && count( $videos ) > 1 ){
 				// we have a multi-part talk;
 				$url = get_post_permalink( $post_id );
 				echo '<ul class="videos-list row">';
 				$counter = 1;
-				foreach( $videos as $v ){
-					$title = isset( $v[ 'part_title' ] ) ?  esc_attr( $v[ 'part_title' ] ) : '';
-					$title = "Part $counter: " . $title;
-					
-					$video_thumbnail = isset( $v[ 'video_thumbnail' ] ) ? $v[ 'video_thumbnail' ] : '';
-					 // video thumbnail is an array.  Let's grab the thumbnail size of this image.
-					if ( is_array( $video_thumbnail ) && isset( $video_thumbnail['sizes'] ) && isset( $video_thumbnail['sizes']['thumbnail'] ) ){
-						$thumbnail_src = $video_thumbnail['sizes']['thumbnail']; 
-						$thumb = "<img src='$thumbnail_src' alt='$title'/>";
-					} else {
-						$thumbnail_html = ''; 
-					}
-		      $audiences = $v['target_audience'];
-    		  $audience = '';
-      		if ( !empty($audiences) && is_array($audiences) ){
-						$audience .= '<br/>Audience: <ul class="audiences">';
-						foreach( $audiences as $a ){
-							$audience .= "<li class='audience {$a->slug}'><span>{$a->name}</span></li> ";
-						}
-						$audience .= '</ul>';
-					}
-					
-    			echo "<li class='part-$counter'><a href='$url#part-$counter'><figure>$thumb</figure>$title</a></li> ";
-    
-    			
-      	  $counter++;
-      
-    		}
-    		echo '</ul>';
-				
+				foreach( $videos as $v ) {
+                    $title = isset($v['part_title']) ? esc_attr($v['part_title']) : '';
+                    $title = "Part $counter: " . $title;
+
+                    $video_thumbnail = isset($v['video_thumbnail']) ? $v['video_thumbnail'] : '';
+                    // video thumbnail is an array.  Let's grab the thumbnail size of this image.
+                    if (is_array($video_thumbnail) && isset($video_thumbnail['sizes']) && isset($video_thumbnail['sizes']['thumbnail'])) {
+                        $thumbnail_src = $video_thumbnail['sizes']['thumbnail'];
+                        $thumb = "<img src='$thumbnail_src' alt='$title'/>";
+                    } else {
+                        $thumbnail_html = '';
+                    }
+                    $audiences = $v['target_audience'];
+                    $audience = '';
+                    if (!empty($audiences) && is_array($audiences)) {
+                        $audience .= '<br/>Audience: <ul class="audiences">';
+                        foreach ($audiences as $a) {
+                            $audience .= "<li class='audience {$a->slug}'><span>{$a->name}</span></li> ";
+                        }
+                        $audience .= '</ul>';
+                    }
+
+                    echo "<li class='part-$counter'><a href='$url#part-$counter'><figure>$thumb</figure>$title</a> $audience</li> ";
+
+                    $part_duration = explode(":", $v['video_length']);
+                    errror_log("Video LEngth: " . $v['video_length'] . " and " . serialize($part_duration));
+
+                    $counter++;
+                }
+                echo '</ul>';
 			} else {
-			
-				$post->post_excerpt = "single part talk";		
-			}
+			    // single-part talk
+
+            }
 			
 			$post->post_excerpt = ob_get_contents();
-			error_log($post->post_excerpt);
 			
 			ob_end_clean();
 			

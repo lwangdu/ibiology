@@ -1,12 +1,5 @@
 <?php
 
-function ibio_facet_start(){
-	echo '<div class="facetwp-template">';
-}
-
-function ibio_facet_end(){
-	echo '</div><!--Facet Container -->';
-}
 
 function ibio_talks_filter_widget_area(){
 	dynamic_sidebar( 'sidebar_talks_filter' );

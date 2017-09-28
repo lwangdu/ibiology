@@ -1,8 +1,5 @@
 <?php
 
-global $acf_fields_helper;
-$acf_fields_helper = new IBio_Fields_Display_Helper();
-
 global $talk_speaker;
 
 $talk_speakers = new WP_Query(array(

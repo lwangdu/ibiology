@@ -17,21 +17,17 @@ include_once( get_template_directory() . '/lib/init.php' );
 load_child_theme_textdomain( 'ibiology' );
 define( 'CHILD_THEME_VERSION', '1.0' );
 
-add_action( 'genesis_setup', 'ibiology_setup',15 );
-
-//* Add HTML5 markup structure
-add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+add_action( 'init', 'ibiology_setup',15 );
 
 
 /**
 *
 * Theme setup.
-* Attach all of the site-wide functions to the correct hooks and filters. All the function themselves are defind below this setup function
+* Attach all of the site-wide functions to the correct hooks and filters.
 *
 * @since 1.0.0
 */
 
-add_image_size('square-thumb', 300, 300, TRUE);
 
 function ibiology_setup() {
 	// Define them constants.
@@ -44,17 +40,17 @@ function ibiology_setup() {
 	
 	//Add viwport meta ag for mobile browsers.
 	add_theme_support( 'genesis-responsive-viewport' );
-	
-	//* Add support for custom header
-  add_theme_support( 'custom-header', array(
+
+    add_image_size('square-thumb', 300, 300, TRUE);
+
+    //* Add support for custom header
+    add_theme_support( 'custom-header', array(
     'width'           => 600,
     'height'          => 160,
     'header-selector' => '.site-title a',
     'header-text'     => false,
     'flex-height'     => true,
   ) );
-	
-
 	
 	// Add them support for accessibility.
 	add_theme_support( 'genesis-accessibility', array(
@@ -78,8 +74,6 @@ function ibiology_setup() {
 	
 	// Add theme widget areas.
 	include_once( get_stylesheet_directory() .'/includes/widget-areas.php' );
-	
-	
 }
 /**
  *
@@ -106,34 +100,6 @@ function ibiology_enqueue_scripts_styles()
 }
 
 
-//* Add support for 3-column footer widgets
-add_theme_support( 'genesis-footer-widgets', 1 );
-
-
-/** 
- *
- *  Widget Areas
- */
- 
- genesis_register_sidebar( array(
-	'id'          => 'sidebar_talks_filter',
-	'name'        => __( 'Talks Filter', 'ibiology' ),
-	'description' => __( 'Used on Explore page, maybe others?', 'ibiology' ),
-) );
-
-genesis_register_sidebar( array(
-	'id'          => 'sidebar_talks',
-	'name'        => __( 'Individual Talk', 'ibiology' ),
-	'description' => __( 'This is the sidebar for an individual talk', 'ibiology' ),
-) );
-
-genesis_register_sidebar( array(
-	'id'          => 'sidebar_search',
-	'name'        => __( 'Search Results Page', 'ibiology' ),
-	'description' => __( 'This is the sidebar for the Search Results Page', 'ibiology' ),
-) );
-
-
 //* Customize the footer credits
 	add_filter('genesis_footer_creds_text', 'ibiology_footer_creds_filter');
 	function ibiology_footer_creds_filter( $creds ) {
@@ -157,7 +123,7 @@ function ibio_excerpt_more(){
 // add a "more" link to all excerpts.
 add_filter('the_excerpt', 'ibio_add_more_link', 1, 2);
 function ibio_add_more_link($excerpt){
-	return $excerpt . ' <a class="morelink" href="'. get_permalink( get_the_ID() ) . '">[Read More]</a>';
+	return $excerpt . ' <a class="more-link" href="'. get_permalink( get_the_ID() ) . '">Read More</a>';
 }
 
 
@@ -215,6 +181,7 @@ function ibio_prepare_query( $query ) {
 		/* $query->query_vars['orderby'] = 'name';
 		$query->query_vars['order'] = 'ASC'; */
 		$query->query_vars['post_type'] =  IBioTalk::$post_type;
+        $query->query_vars['posts_per_page'] = -1;
 		return;
 	}
 }
