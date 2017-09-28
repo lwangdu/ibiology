@@ -434,4 +434,15 @@ final class FacetWP_Helper
 
         return ( $a['weight'] < $b['weight'] ) ? -1 : 1;
     }
+
+
+    /**
+     * Grab the license key
+     * @since 3.0.3
+     */
+    function get_license_key() {
+        $license_key = defined( 'FACETWP_LICENSE_KEY' ) ? FACETWP_LICENSE_KEY : get_option( 'facetwp_license' );
+        $license_key = apply_filters( 'facetwp_license_key', $license_key );
+        return sanitize_text_field( trim( $license_key ) );
+    }
 }

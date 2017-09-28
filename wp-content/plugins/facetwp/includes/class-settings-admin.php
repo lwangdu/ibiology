@@ -94,8 +94,9 @@ class FacetWP_Settings_Admin
         ob_start();
 
         if ( 'license_key' == $setting_name ) {
+            $disabled = defined( 'FACETWP_LICENSE_KEY' ) ? ' disabled' : '';
 ?>
-        <input type="text" class="facetwp-license" style="width:300px" value="<?php echo get_option( 'facetwp_license' ); ?>" />
+        <input type="text" class="facetwp-license" style="width:300px" value="<?php echo FWP()->helper->get_license_key(); ?>"<?php echo $disabled; ?> />
         <input type="button" class="button button-small facetwp-activate" value="<?php _e( 'Activate', 'fwp' ); ?>" />
         <div class="facetwp-activation-status field-notes"><?php echo $this->get_activation_status(); ?></div>
 <?php

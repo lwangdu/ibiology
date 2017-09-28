@@ -443,13 +443,26 @@ var FWP = FWP || {};
     }
 
 
-    FWP.reset = function() {
+    FWP.reset = function(facet_name) {
         FWP.parse_facets();
+
+        if ('undefined' !== typeof facet_name) {
+            FWP.facets[facet_name] = [];
+
+            if ('undefined' !== typeof FWP.used_facets) {
+                delete FWP.used_facets[facet_name];
+            }
+        }
+        else {
+            $.each(FWP.facets, function(f) {
+                FWP.facets[f] = [];
+            });
+
+            FWP.extras.sort = 'default';
+            FWP.used_facets = {};
+        }
+
         FWP.is_reset = true;
-        $.each(FWP.facets, function(f) {
-            FWP.facets[f] = [];
-        });
-        FWP.used_facets = {};
         FWP.refresh();
     }
 
@@ -565,6 +578,7 @@ var FWP = FWP || {};
             if ('undefined' !== typeof FWP.used_facets) {
                 delete FWP.used_facets[facet_name]; // slider support
             }
+
             delete FWP.facets['paged']; // remove "paged" from URL
             FWP.refresh();
         });
