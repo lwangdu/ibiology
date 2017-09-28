@@ -83,6 +83,9 @@ function ibio_talk_sidebar(){
 // force content-sidebar layout
 add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
 
+// add filter to make the_content into expandable sections.
+add_filter( 'the_content', 'ibio_expandable_section', 200, 1);
+
 // move the breadcrumbs
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 remove_action( 'genesis_before_loop', 'ibio_breadcrumbs');

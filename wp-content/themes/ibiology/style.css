@@ -596,7 +596,8 @@ th:first-child {
 }
 
 .more-link::after{
-	content:'\00BB';
+	font-family: FontAwesome;
+	content:'\f101';
 	padding-left: 5px;
 	color: #76893e;
 	font-weight: 700;
@@ -1617,8 +1618,57 @@ section.videos .audiences li.audience {
 
 /* # Bootstrap Section
 ---------------------------------------------------------------------------------------------------- */
+.expandable {
+	height: 200px;
+	position: relative;
+	overflow: hidden;
+	-webkit-transition: all .5s ease-in-out;
+	-moz-transition: all .5s ease-in-out;
+	-o-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+	padding-bottom: 20px;
+}
+
+.expandable.expanded{
+	height:auto;
+}
+
+.expandable .control{
+	position: absolute;
+	bottom: 0;
+	padding-top: 30px;
+    padding-left: 10px;
+	width: 100%;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,eeeeee+46,eeeeee+100&0+0,0.75+46,1+100 */
+	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.75) 36%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0.75) 36%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.75) 36%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00eeeeee', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
+}
+
+.expandable .more-link{
+	display: block;
+    font-size: 1.0rem;
+
+}
+
+.expandable .more-link::after {
+	content: '\f0da';
+	padding-left: 5px;
+	color: #76893e;
+	font-weight: 700;
+	padding-top:5px;
 
 
+
+}
+
+.expandable.expanded .more-link::after {
+	content: '\f0d7';
+	padding-left: 5px;
+	color: #76893e;
+	font-weight: 700;
+}
 
 /* # Media Queries
 ---------------------------------------------------------------------------------------------------- */

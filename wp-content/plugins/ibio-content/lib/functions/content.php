@@ -66,3 +66,13 @@ function ibio_related_content(){
 	get_template_part('parts/primary-playlist');
 	
 }
+
+/*
+ * ibio_expandable_section
+ * @param $content Input content
+ * @returns the content wrapped in HTML to create an expandable section later.
+*/
+function ibio_expandable_section( $content )
+{
+    return '<div class="expandable">' . $content . '</div>';
+}

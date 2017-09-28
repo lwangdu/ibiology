@@ -81,12 +81,28 @@ function ibiology_setup() {
 	
 	
 }
+/**
+ *
+ *  Global Enqueues
+ */
 
-// Google font stylesheet
-add_action( 'wp_enqueue_scripts', 'ibiology_enqueue_styles' );
-function ibiology_enqueue_styles() {
-	wp_enqueue_style( 'google-fonts','https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:400,500' );
-	wp_enqueue_style( 'ionicons', '//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css', array(), CHILD_THEME_VERSION );
+//* Enqueue Scripts and Styles
+add_action( 'wp_enqueue_scripts', 'ibiology_enqueue_scripts_styles' );
+function ibiology_enqueue_scripts_styles()
+{
+
+    wp_enqueue_script('ibiology-responsive-menu', get_stylesheet_directory_uri() . '/assets/js/responsive-menu.js', array('jquery'), '1.0.0', true);
+    $output = array(
+        'mainMenu' => __('Menu', 'ibiology'),
+        'subMenu' => __('Menu', 'ibiology'),
+    );
+    wp_localize_script('ibiology-responsive-menu', 'ibiologyL10n', $output);
+
+    wp_enqueue_script('ibiology-content', get_stylesheet_directory_uri() . '/assets/js/ibio-theme.js', array('jquery'), '1.0.0', true);
+
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:400,500');
+    wp_enqueue_style('font-awesome', get_stylesheet_directory_uri() . '/assets/css/font-awesome.min.css');
+
 }
 
 
@@ -117,25 +133,6 @@ genesis_register_sidebar( array(
 	'description' => __( 'This is the sidebar for the Search Results Page', 'ibiology' ),
 ) );
 
-
-/**
- * Global enqueues
- *
- */
-//* Enqueue Scripts and Styles
-add_action( 'wp_enqueue_scripts', 'ibiology_enqueue_scripts_styles' );
-function ibiology_enqueue_scripts_styles() {
-
-	wp_enqueue_script( 'ibiology-responsive-menu', get_stylesheet_directory_uri() . '/js/responsive-menu.js', array( 'jquery' ), '1.0.0', true );
-	$output = array(
-		'mainMenu' => __( 'Menu', 'ibiology' ),
-		'subMenu'  => __( 'Menu', 'ibiology' ),
-	);
-	wp_localize_script( 'ibiology-responsive-menu', 'ibiologyL10n', $output );
-	
-	wp_enqueue_script( 'ibiology-content', get_stylesheet_directory_uri() . '/js/ibio-theme.js', array( 'jquery' ), '1.0.0', true );
-	
-}
 
 //* Customize the footer credits
 	add_filter('genesis_footer_creds_text', 'ibiology_footer_creds_filter');
