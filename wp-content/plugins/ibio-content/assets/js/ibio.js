@@ -24,6 +24,8 @@ jQuery(document).ready(function($) {
 		$(this).append('<div class="control"><a class="expand more-link" data-target="#expandable-' + i +'">See More</a></div>');
     });
 
+	/****  Create Expandable sections ****/
+
 	$( '.expand').click( function(e){
 		e.preventDefault();
         e.stopPropagation();

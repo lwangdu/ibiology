@@ -56,7 +56,7 @@ function ibio_talks_speaker(){
 	global $talk_speaker;
   
   if ( !empty(  $talk_speaker ) ){
-  	echo "<section class='speakers'><h2>Speaker Bio</h2>";
+  	echo "<section class='speakers expandable'><h2>Speaker Bio</h2>";
     foreach ($talk_speaker as $s){
       $url = get_post_permalink($s->ID);
       setup_postdata( $s );

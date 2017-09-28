@@ -2,6 +2,7 @@
 ############
 
 .htaccess
+.idea
 custom/
 googlee1401ea114578e70.html
 googleplus.html
@@ -14,6 +15,7 @@ index.htm
 short_clips/
 *.zip
 speakers/
+test-rewrite.php
 	
 # wpengine #
 ############
@@ -85,6 +87,7 @@ wp-content/plugins/autoptimize/
 wp-content/plugins/breadcrumb-navxt/
 wp-content/plugins/cptui-extended/
 wp-content/plugins/custom-post-type-ui/
+wp-content/plugins/display-posts-shortcode/
 wp-content/plugins/footable/
 wp-content/plugins/featured-videos-for-genesis/
 wp-content/plugins/genesis-404-page/
