@@ -30,6 +30,8 @@ genesis_register_sidebar( array(
     'description' => __( 'This is the sidebar for the Search Results Page', 'ibiology' ),
 ) );
 
+
+
 genesis_register_sidebar( array(
     'id'           => 	'homeoage-1',
     'name'         => 	__( 'Homepage Feature 1', 'ibiology' ),

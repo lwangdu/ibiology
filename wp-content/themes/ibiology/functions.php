@@ -65,7 +65,7 @@ function ibiology_setup() {
 			'skip-links',
 		) );
 	// Add them support for footer widgets
-	add_theme_support( 'genesis-footer-widgets', 1 );
+	add_theme_support( 'genesis-footer-widgets', 2 );
 	
 	// Unregister other site layouts
 	genesis_unregister_layout( 'content-sidebar-sidebar' );
@@ -101,14 +101,6 @@ function ibiology_enqueue_scripts_styles()
     wp_enqueue_style('font-awesome', get_stylesheet_directory_uri() . '/assets/css/font-awesome.min.css');
 
 }
-
-
-//* Customize the footer credits
-	add_filter('genesis_footer_creds_text', 'ibiology_footer_creds_filter');
-	function ibiology_footer_creds_filter( $creds ) {
-		$creds = '[footer_copyright] &middot; <a href="https://www.ibiology.org">iBiology</a> &middot; <a href="https://www.ibiology.org/about" title="About Us">About Us</a>';
-		return $creds;
-	}
 
 if ( ! isset( $content_width ) ) {
 	$content_width = 800;

@@ -1420,7 +1420,6 @@ p.entry-meta {
 .footer-widgets a {
 	color: #222;
 	text-decoration: none;
-	display: inline !important;
 }
 
 
@@ -1430,16 +1429,10 @@ p.entry-meta {
 	color: #0099d1;
 }
 
-.footer-widgets .widget-area {
-	float: left;
-	padding-right:  5%;
-	width: 30%;
-}
 
 
-.footer-widgets .footer-widgets-1 {
+.footer-widgets .footer-widgets-1, .footer-widgets .footer-widget-2 {
 	width: 100%;
-	float: left;
 }
 
 .footer-widgets .search-form input[type="submit"] {
@@ -1454,7 +1447,6 @@ p.entry-meta {
 .site-footer {
 	background-color: #f6f6f6;
 	border-top: 4px solid #0099d1;
-	color: #333 !important;
 	font-size: 14px;
 	line-height: 1;
 	padding: 20px 0;
