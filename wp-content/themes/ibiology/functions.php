@@ -16,8 +16,15 @@ include_once( get_template_directory() . '/lib/init.php' );
 // load child theme textdomain.
 load_child_theme_textdomain( 'ibiology' );
 define( 'CHILD_THEME_VERSION', '1.0' );
+define( 'CHILD_THEME_NAME', 'iBiology' );
+define( 'CHILD_THEME_URL', 'http://github.com/lwangdu/ibiology' );
 
-add_action( 'init', 'ibiology_setup',15 );
+
+ibiology_setup();
+
+// Add theme widget areas.
+include_once( get_stylesheet_directory() .'/includes/widget-areas.php' );
+
 
 
 /**
@@ -30,11 +37,7 @@ add_action( 'init', 'ibiology_setup',15 );
 
 
 function ibiology_setup() {
-	// Define them constants.
-	define( 'CHILD_THEME_NAME', 'iBiology' );
-	define( 'CHILD_THEME_URL', 'http://github.com/lwangdu/ibiology' );
-	define( 'CHILD_THEME_VERSION', '0.1.0' );
-	
+
 	// Add HTML5 makup structure.
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption'  ) );
 	
@@ -72,9 +75,9 @@ function ibiology_setup() {
 	//* Unregister secondary sidebar
 	unregister_sidebar( 'sidebar-alt' );
 	
-	// Add theme widget areas.
-	include_once( get_stylesheet_directory() .'/includes/widget-areas.php' );
 }
+
+
 /**
  *
  *  Global Enqueues

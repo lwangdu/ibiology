@@ -18,7 +18,7 @@ function ibio_talks_playlist(){
     }
 
     usort( $talks->posts, 'ibio_compare_playlist_posts' );
-    
+
     if ( $talks->have_posts( ) ) {
         echo '<ul class="talks grid">';
         foreach($talks->posts as $t){
