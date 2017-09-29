@@ -18,6 +18,12 @@ function ibio_content_archive_setup(){
   remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 }
 
+// removes the hooks for post meta and post info on pages where this is called.
+function ibio_setup_single(){
+    remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
+    remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
+}
+
 function ibio_talk_short_title($title){
 
   global $post;

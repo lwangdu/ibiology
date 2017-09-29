@@ -32,6 +32,10 @@ function ibio_playlist_info(){
 add_filter( 'genesis_site_layout', '__genesis_return_full_width_content' );
 
 
+
+// clean up post info and post meta
+add_action( 'genesis_header', 'ibio_setup_single');
+
 add_action('genesis_entry_header', 'ibio_playlist_info', 20);
 add_action('genesis_after_entry', 'ibio_talks_playlist', 20);
 add_action('genesis_after_entry', 'ibio_related_content', 21);

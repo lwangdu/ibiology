@@ -1358,6 +1358,7 @@ p.entry-meta {
   align-items: stretch;
 	list-style-type: none;  
 	margin:0;
+
 }
 
 .grid-listing .content .entry, .facetwp-template .entry, ul.grid li{
@@ -1366,6 +1367,7 @@ p.entry-meta {
   box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
   list-style-type: none;  
   padding: 10px;
+    background-color: #fff;
 }
 
 .grid-listing .content .entry img, .facetwp-template .entry img, ul.grid li img {
