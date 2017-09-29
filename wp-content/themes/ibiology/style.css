@@ -1433,6 +1433,7 @@ p.entry-meta {
 
 .footer-widgets .footer-widgets-1, .footer-widgets .footer-widget-2 {
 	width: 100%;
+    margin-bottom:40px;
 }
 
 .footer-widgets .search-form input[type="submit"] {
@@ -1440,6 +1441,16 @@ p.entry-meta {
 	width: 100%;
 }
 
+.footer-widgets .footer-widgets-2{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-widgets .footer-widgets-2 .widget{
+    flex: 1 1 auto;
+    min-width: 220px;
+}
 
 /* # Site Footer
 ---------------------------------------------------------------------------------------------------- */
