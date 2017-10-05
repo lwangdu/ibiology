@@ -11,10 +11,9 @@ if ( !empty( $primary_playlist ) ){
 		'connected_type' => 'playlist_to_talks',
 		'connected_items' => $primary_playlist->ID,
 		//'post__not_in' => array($post->ID),
-		'posts_per_page' => -1
+		'posts_per_page' => 4
 	));
 
-	// get the other talks on the playlist and order them as needed
 
 	if ( $talks->have_posts() ){
 		echo "<div class='related-items'><h3 class='widgettitle'>Playlist: {$primary_playlist->post_title}</h3>";
@@ -32,6 +31,5 @@ if ( !empty( $primary_playlist ) ){
 	}
 	
 	wp_reset_query();
-
 
 }
