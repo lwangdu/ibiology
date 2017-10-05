@@ -71,8 +71,16 @@ if ( is_array( $videos ) ) {
       }
       $tabs .= "</ul>";
       echo $tabs;
+      global $post;
+
+      $total_duration = get_post_meta( $post->ID, 'total_duration', true );
+
+      $hours = floor($total_duration /60 );
+      $minutes = $total_duration % 60;
+
+      $duration_string = sprintf ("<div class='duration row'>Total Duration: %02d:%02d:00</div>", $hours, $minutes);
+      echo $duration_string;
       
-      echo '<div class="duration row">Total Duration: 01:00:20</div>';
 
     } else {
       /* single part talk */
