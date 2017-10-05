@@ -1181,6 +1181,17 @@ section.videos .videos-nav li figure img,
 
 /* ## Search Results  */
 
+.post-type-label{
+	font-weight: 100;
+	font-size: 1rem;
+	text-transform: capitalize;
+
+}
+
+.search-results .entry-content .post-image{
+	max-width: 300px;
+}
+
 .search-results ul.videos-list{
 	display: flex;
 	justify-content: flex-start;
@@ -1417,7 +1428,6 @@ p.entry-meta {
 .footer-widgets .widgettitle {
 	color: #222;
 }
-
 
 .footer-widgets a {
 	color: #222;
