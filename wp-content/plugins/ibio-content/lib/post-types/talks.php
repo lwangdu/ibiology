@@ -242,7 +242,7 @@ class IBioTalk {
                     echo "<li class='part-$counter'><a href='$url#part-$counter'><figure>$thumb</figure>$title</a> $audience</li> ";
 
                     $part_duration = explode(":", $v['video_length']);
-                    errror_log("Video LEngth: " . $v['video_length'] . " and " . serialize($part_duration));
+                    //error_log("Video LEngth: " . $v['video_length'] . " and " . serialize($part_duration));
 
                     $counter++;
                 }
