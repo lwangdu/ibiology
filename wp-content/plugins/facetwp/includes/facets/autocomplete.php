@@ -1,6 +1,6 @@
 <?php
 
-class FacetWP_Facet_Autocomplete
+class FacetWP_Facet_Autocomplete extends FacetWP_Facet
 {
 
     function __construct() {

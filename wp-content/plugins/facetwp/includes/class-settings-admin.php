@@ -8,6 +8,7 @@ class FacetWP_Settings_Admin
      * @since 3.0.0
      */
     function get_settings() {
+
         $defaults = array(
             'general' => array(
                 'label' => __( 'General', 'fwp' ),
@@ -93,59 +94,49 @@ class FacetWP_Settings_Admin
     function get_field_html( $setting_name, $field_type = 'text', $atts = array() ) {
         ob_start();
 
-        if ( 'license_key' == $setting_name ) {
-            $disabled = defined( 'FACETWP_LICENSE_KEY' ) ? ' disabled' : '';
-?>
-        <input type="text" class="facetwp-license" style="width:300px" value="<?php echo FWP()->helper->get_license_key(); ?>"<?php echo $disabled; ?> />
+        if ( 'license_key' == $setting_name ) : ?>
+
+        <input type="text" class="facetwp-license" style="width:300px" value="<?php echo FWP()->helper->get_license_key(); ?>"<?php echo defined( 'FACETWP_LICENSE_KEY' ) ? ' disabled' : ''; ?> />
         <input type="button" class="button button-small facetwp-activate" value="<?php _e( 'Activate', 'fwp' ); ?>" />
         <div class="facetwp-activation-status field-notes"><?php echo $this->get_activation_status(); ?></div>
-<?php
-        }
-        elseif ( 'gmaps_api_key' == $setting_name ) {
-?>
+
+<?php elseif ( 'gmaps_api_key' == $setting_name ) : ?>
+
         <input type="text" class="facetwp-setting" data-name="gmaps_api_key" style="width:300px" />
         <a href="https://developers.google.com/maps/documentation/javascript/get-api-key#step-1-get-an-api-key-from-the-google-api-console" target="_blank">Get an API key</a>
-<?php
-        }
-        elseif ( 'separators' == $setting_name ) {
-?>
+
+<?php elseif ( 'separators' == $setting_name ) : ?>
+
         34
         <input type="text" style="width:20px" class="facetwp-setting" data-name="thousands_separator" />
         567
         <input type="text" style="width:20px" class="facetwp-setting" data-name="decimal_separator" />
         89
-<?php  
-        }
-        elseif ( 'export' == $setting_name ) {
-?>
+
+<?php elseif ( 'export' == $setting_name ) : ?>
+
         <select class="export-items" multiple="multiple" style="width:250px; height:100px">
             <?php foreach ( $this->get_export_choices() as $val => $label ) : ?>
             <option value="<?php echo $val; ?>"><?php echo $label; ?></option>
             <?php endforeach; ?>
         </select>
         <a class="button export-submit"><?php _e( 'Export', 'fwp' ); ?></a>
-<?php
-        }
-        elseif ( 'import' == $setting_name ) {
-?>
+
+<?php elseif ( 'import' == $setting_name ) : ?>
+
         <div><textarea class="import-code" placeholder="<?php _e( 'Paste the import code here', 'fwp' ); ?>"></textarea></div>
         <div><input type="checkbox" class="import-overwrite" /> <?php _e( 'Overwrite existing items?', 'fwp' ); ?></div>
         <div style="margin-top:5px"><a class="button import-submit"><?php _e( 'Import', 'fwp' ); ?></a></div>
-<?php
-        }
-        elseif ( 'text' == $field_type ) {
-?>
-<?php
-        }
-        elseif ( 'dropdown' == $field_type ) {
-?>
+
+<?php elseif ( 'dropdown' == $field_type ) : ?>
+
         <select class="facetwp-setting slim" data-name="<?php echo $setting_name; ?>">
             <?php foreach ( $atts['choices'] as $val => $label ) : ?>
             <option value="<?php echo $val; ?>"><?php echo $label; ?></option>
             <?php endforeach; ?>
         </select>
-<?php
-        }
+
+<?php endif;
 
         return ob_get_clean();
     }

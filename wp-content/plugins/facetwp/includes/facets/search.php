@@ -1,6 +1,6 @@
 <?php
 
-class FacetWP_Facet_Search
+class FacetWP_Facet_Search extends FacetWP_Facet
 {
 
     function __construct() {

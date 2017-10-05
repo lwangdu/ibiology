@@ -263,7 +263,12 @@
             $(this).fSelect({
                 placeholder: settings.placeholder,
                 overflowText: settings.overflowText,
-                searchText: settings.searchText
+                searchText: settings.searchText,
+                optionFormatter: function(row) {
+                    row = row.replace(/{{/g, '<span class="facetwp-counter">');
+                    row = row.replace(/}}/g, '<span>');
+                    return row;
+                }
             });
             $(this).addClass('ready');
         });

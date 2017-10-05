@@ -51,7 +51,8 @@ function ibio_post_type_label(){
 
 /* ------------------------  Page Rendering -----------------*/
 
-add_action( 'genesis_entry_header', 'ibio_setup_result', 5);	
+add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
+add_action( 'genesis_entry_header', 'ibio_setup_result', 5);
 remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
 add_action( 'genesis_sidebar', 'ibio_search_sidebar' );
 //remove_action( 'genesis_loop', 'genesis_do_loop');

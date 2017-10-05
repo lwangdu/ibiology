@@ -1,6 +1,6 @@
 <?php
 
-class FacetWP_Facet_Date_Range
+class FacetWP_Facet_Date_Range extends FacetWP_Facet
 {
 
     function __construct() {

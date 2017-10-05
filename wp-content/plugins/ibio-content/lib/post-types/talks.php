@@ -49,7 +49,8 @@ class IBioTalk {
 			'editor',
 			'author',
 			'genesis-cpt-archives-settings',
-			'comments'
+			'comments',
+            //'custom-fields'
 		);
 
 		register_post_type( self::$post_type,
@@ -188,8 +189,6 @@ class IBioTalk {
         return;
     }
 
-    error_log('Saving a talk');
-
 		// unhook this function so it doesn't loop infinitely
 		remove_action( 'save_post', array( &$this, 'save_post' ), 100 );
 
@@ -208,6 +207,7 @@ class IBioTalk {
 			if ( !empty( $seo_description ) ){
 				echo $seo_description;
 			}
+            $subtitles = array();
 
 			// calculate total video duration in minutes.  Update a custom field.
 			$duration = 0;
@@ -241,22 +241,80 @@ class IBioTalk {
 
                     echo "<li class='part-$counter'><a href='$url#part-$counter'><figure>$thumb</figure>$title</a> $audience</li> ";
 
-                    $part_duration = explode(":", $v['video_length']);
-                    //error_log("Video LEngth: " . $v['video_length'] . " and " . serialize($part_duration));
+                    $part_duration = array_reverse (explode(":", $v['video_length']) );
+
+                    if ( isset( $part_duration[1]) ){
+                        $duration += intval( $part_duration[1] );
+                    }
+
+                    if ( isset( $part_duration[2]) ) {
+                        $duration += intval( $part_duration[2] ) * 60;
+                    }
+
+                    $subtitle_downloads = !empty( $v[ 'download_subtitled_video'] ) ? $v[ 'download_subtitled_video' ] : null;
+
+                    if ( is_array( $subtitle_downloads ) ){
+                        foreach ( $subtitle_downloads as $d ) {
+                            $idx = strtolower( $d['language'] );
+                            $subtitles[ $idx ] = $d['language'];
+                        }
+                    }
+
 
                     $counter++;
                 }
                 echo '</ul>';
 			} else {
-			    // single-part talk
+			    $v = array_shift( $videos );
+                $subtitle_downloads = !empty( $v[ 'download_subtitled_video'] ) ? $v[ 'download_subtitled_video' ] : null;
+
+                if ( is_array( $subtitle_downloads ) ){
+                    foreach ( $subtitle_downloads as $d ) {
+                        $idx = strtolower( $d['language'] );
+                        $subtitles[ $idx ] = $d['language'];
+                    }
+                }
+
+                $part_duration = array_reverse (explode(":", $v['video_length']) );
+
+                if ( isset( $part_duration[1]) ){
+                    $duration += intval( $part_duration[1] );
+                }
+
+                if ( isset( $part_duration[2]) ) {
+                    $duration += intval( $part_duration[2] ) * 60;
+                }
 
             }
-			
+
 			$post->post_excerpt = ob_get_contents();
-			
+
 			ob_end_clean();
 			
 			wp_update_post( $post );
+
+			// enable filters for adding postmeta;
+            add_filter( 'update_post_metadata', function(){return null;});
+
+			// check for educator resources
+            $er = get_post_meta($post->ID, 'educator_resources', true);
+            if ( strlen($er) ) {
+                $meta_id = update_post_meta($post->ID, 'has_educator_resources', 'Educator Resources');
+            } else {
+                $res = delete_post_meta($post->ID, 'has_educator_resources');
+            }
+
+            // update the subtitles
+            delete_post_meta( $post->ID, 'subtitle_language');
+            foreach ( $subtitles as $s ){
+               $meta_id = add_post_meta( $post->ID, 'subtitle_language', $s);
+            }
+
+            // update the duration
+
+            $meta_id = update_post_meta( $post->ID, 'total_duration', $duration );
+
+
 		}
 		
 
