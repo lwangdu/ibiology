@@ -14,8 +14,6 @@ if ( !empty( $primary_playlist ) ){
 		'posts_per_page' => -1
 	));
 
-	var_dump($playlists);
-
 	// get the other talks on the playlist and order them as needed
 
 	if ( $talks->have_posts() ){

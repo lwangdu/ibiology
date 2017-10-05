@@ -36,7 +36,7 @@ function ibio_talks_header(){
 
   // Breadcrumbs
   echo '<div class="page-header"><div class="wrap">';
-  ibio_breadcrumbs();
+  genesis_do_breadcrumbs();
   genesis_do_post_title();
   echo '</div></div>';  
   
@@ -85,7 +85,7 @@ add_filter( 'the_content', 'ibio_expandable_section', 200, 1);
 
 // move the breadcrumbs
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
-remove_action( 'genesis_before_loop', 'ibio_breadcrumbs');
+
 
 
 add_action('genesis_after_header', 'ibio_talks_header', 30);

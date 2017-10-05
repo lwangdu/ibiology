@@ -23,7 +23,10 @@ define( 'CHILD_THEME_URL', 'http://github.com/lwangdu/ibiology' );
 ibiology_setup();
 
 // Add theme widget areas.
-include_once( get_stylesheet_directory() .'/includes/widget-areas.php' );
+require_once( get_stylesheet_directory() .'/includes/widget-areas.php' );
+
+// add other functions
+require_once( get_stylesheet_directory() .'/includes/breadcrumbs.php' );
 
 
 
@@ -138,16 +141,6 @@ function ibio_youtube_embed($code){
 add_filter('embed_handler_html', 'ibio_youtube_embed', 200);
 add_filter('embed_oembed_html', 'ibio_youtube_embed', 200);
 
-remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
-add_action( 'genesis_before_loop', 'ibio_breadcrumbs');
-
-function ibio_breadcrumbs(){
-	if ( function_exists('yoast_breadcrumb') ) {
-		yoast_breadcrumb('<p id="breadcrumbs">','</p>');
-	} else{
-	   genesis_do_breadcrumbs();
-	}
-}
 
 // pull talks in category pages -- 
 

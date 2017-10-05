@@ -1,11 +1,18 @@
 <?php
 
-function ibio_talks_playlist(){
+/* Get the talks on a playlist */
+
+function ibio_talks_playlist($playlist = null, $maxitems = 0){
+
+    if ( !$playlist ){
+        $playlist = get_queried_object();
+
+    }
 
     $talks = new WP_Query(array(
         'post_type' => 'ibiology_talk',
         'connected_type' => 'playlist_to_talks',
-        'connected_items' => get_queried_object(),
+        'connected_items' => $playlist,
         'nopaging' => true
     ));
 
@@ -18,6 +25,7 @@ function ibio_talks_playlist(){
     }
 
     usort( $talks->posts, 'ibio_compare_playlist_posts' );
+
 
     if ( $talks->have_posts( ) ) {
         echo '<ul class="talks grid">';
