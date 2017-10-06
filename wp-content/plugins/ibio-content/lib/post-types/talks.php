@@ -314,6 +314,12 @@ class IBioTalk {
 
             $meta_id = update_post_meta( $post->ID, 'total_duration', $duration );
 
+            // Date Recorded as a single field
+            $recorded_year =  get_field( 'date_recorded_year' );
+            $recorded_month = get_field( 'date_recorded_month' );
+
+            $recorded_date = $recorded_year.$recorded_month;
+            $meta_id = update_post_meta( $post->ID, 'recorded_date', $recorded_date);
 
 		}
 		
