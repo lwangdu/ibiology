@@ -198,7 +198,7 @@ class IBioTalk {
 		// grab the parts and put them in the excerpt.
 		
 		if ( function_exists( 'get_field' ) ){
-			$videos = get_field( 'videos' );
+			$videos = get_field( 'videos', $post->ID);
 			$seo_description = get_post_meta($post_id, '_yoast_wpseo_metadesc', true);
 			$post->post_excerpt = '';
 			
