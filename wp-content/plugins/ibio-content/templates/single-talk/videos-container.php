@@ -80,7 +80,7 @@ if ( is_array( $videos ) ) {
 
       $duration_string = sprintf ("<div class='duration row'>Total Duration: %02d:%02d:00</div>", $hours, $minutes);
       echo $duration_string;
-      
+
 
     } else {
       /* single part talk */
@@ -97,7 +97,6 @@ if ( is_array( $videos ) ) {
         }
         echo "</ul></div>";       
        }
-          
     }
     
     $translations = get_field( 'talks_in_other_languages' );

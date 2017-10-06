@@ -34,6 +34,7 @@ Text Domain: iBiology
 	- Site Navigation
 	- Accessible Menu
 	- Site Header Navigation
+	- Internal Navigation
 	- After Header Navigation
 	- Footer Navigation
 	- Sidebar Widgets
@@ -946,6 +947,24 @@ th:first-child {
 	border-top: 1px solid #333;
 }
 
+/* ## Internal Navigation
+--------------------------------------------- */
+
+ul.horizontal li{
+	display: inline-table;
+	padding: 13px;
+}
+
+ul.quicklinks{
+	background-color: #fbc52c;
+	padding: 0 10px;
+	text-align:center;
+}
+
+.quicklinks a{
+	color: white;
+}
+
 /* ## Footer Navigation
 --------------------------------------------- */
 
@@ -1366,10 +1385,14 @@ p.entry-meta {
 	display: -ms-flexbox;
 	display: flex;
 	flex-wrap: wrap;
-  align-items: stretch;
+    align-items: stretch;
 	list-style-type: none;  
 	margin:0;
 
+}
+
+.speakers.grid-listing .content{
+	justify-items: space-between;
 }
 
 .grid-listing .content .entry, .facetwp-template .entry, ul.grid li{
@@ -1380,6 +1403,19 @@ p.entry-meta {
   padding: 10px;
     background-color: #fff;
 }
+
+.speakers.grid-listing .content .entry{
+	flex: 1 1 auto;
+	margin: 6px;
+	box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
+	list-style-type: none;
+	padding: 10px;
+	background-color: #fff;
+	min-width: 200px;
+	max-width: 240px;
+}
+
+
 
 .grid-listing .content .entry img, .facetwp-template .entry img, ul.grid li img {
     max-width: 100%;
@@ -1396,7 +1432,8 @@ p.entry-meta {
 
 .grid-listing .content .archive-description, 
 .grid-listing .content .pagination, 
-.grid-listing .content .breadcrumb{
+.grid-listing .content .breadcrumb,
+.grid-listing .content h2{
  flex: 0 0 100%;
 }
 
