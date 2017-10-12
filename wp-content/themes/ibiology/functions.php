@@ -151,7 +151,16 @@ function ibio_prepare_query( $query ) {
 	$post_type = get_post_type();
 	
 	if ( !$query->is_main_query() ) return;
-	
+
+    /*if ( is_page('explore') ){
+        error_log('page template: Explore Page');
+        unset ( $query->query_vars['pagename']);
+        $query->query_vars['post_type'] =  IBioTalk::$post_type;
+        $query->query_vars['posts_per_page'] = 50;
+        error_log( serialize ($query->query_vars ));
+        return;
+    }*/
+
 	if ( is_post_type_archive(IBioPlaylist::$post_type) ){
 		$query->query_vars['orderby'] = 'name';
 		$query->query_vars['order'] = 'ASC'; 
@@ -169,9 +178,10 @@ function ibio_prepare_query( $query ) {
 		/* $query->query_vars['orderby'] = 'name';
 		$query->query_vars['order'] = 'ASC'; */
 		$query->query_vars['post_type'] =  IBioTalk::$post_type;
-        $query->query_vars['posts_per_page'] = -1;
+        //$query->query_vars['posts_per_page'] = -1;
 		return;
 	}
+
 }
 
 

@@ -24,7 +24,7 @@ add_action( 'wp_head', 'ibio_content_archive_setup' );
 remove_action('genesis_archive_title_descriptions', 'genesis_do_archive_headings_intro_text', 12);
 add_action('genesis_archive_title_descriptions', 'ibio_archive_description', 12, 3);
 
-add_action( 'genesis_archive_title_descriptions', 'ibio_talks_filter_widget_area', 14);
+// add_action( 'genesis_archive_title_descriptions', 'ibio_talks_filter_widget_area', 14);
 
 add_action( 'genesis_before_loop', 'ibio_facet_start', 100);
 add_action( 'genesis_after_loop', 'ibio_facet_end' );
