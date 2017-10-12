@@ -45,7 +45,7 @@ class IBio_Template_Loader {
 
 		global $ibiology_content;
 	
-		if ( is_embed() ) {
+		if ( is_embed() || is_search() ) {
 			return $template;
 		}
 
