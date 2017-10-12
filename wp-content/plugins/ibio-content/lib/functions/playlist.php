@@ -2,20 +2,36 @@
 
 /* Get the talks on a playlist */
 
-function ibio_talks_playlist($playlist = null, $maxitems = 0){
+function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null){
 
     if ( !$playlist ){
         $playlist = get_queried_object();
 
     }
 
-    $talks = new WP_Query(array(
+    $args = array(
         'post_type' => 'ibiology_talk',
         'connected_type' => 'playlist_to_talks',
         'connected_items' => $playlist,
+        'post_status' => 'publish',
         'nopaging' => true
-    ));
+    );
 
+
+    if ( !empty($audience) ) {
+        error_log('shortcode audience not empty: ' . $audience);
+        $audience_query = array(
+            'taxonomy' => 'audience',
+            'field' => 'slug',
+            'terms' => $audience
+        );
+
+        $args['tax_query'] = array($audience_query);
+    }
+
+
+    $talks = new WP_Query($args);
+    
     // loop through to get the item order.
 
     $ordered_talks = array();
@@ -69,13 +85,15 @@ function ibio_playlist_shortcode($atts){
     $atts = shortcode_atts( array (
         'id' => null,
         'numtalks' => 4,
-        'start_index' => 0
+        'start_index' => 0,
+        'audience' => null
         ) , $atts, 'ibio_playlist');
 
 
     if (empty( $atts['id'])) {
         return '<span style="color\:red">Please supply a playlist ID to retrieve talks</span>';
     }
+
 
     $playlist = get_post($atts['id']);
     if ( empty($playlist) || $playlist->post_type != IBioPlaylist::$post_type ){
@@ -84,7 +102,7 @@ function ibio_playlist_shortcode($atts){
 
     ob_start();
 
-    ibio_talks_playlist($playlist, $atts['numtalks']);
+    ibio_talks_playlist( $playlist, $atts['numtalks'], $atts['audience'] );
 
     $playlist = ob_get_clean();
 
