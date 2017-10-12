@@ -91,7 +91,7 @@ function ibio_search_loop() {
     if ($post_type) {
         $args['post_type'] = array($post_type);
     }
-    
+
     $results = new SWP_Query( $args );
 
     // Display a message if there are no results.
