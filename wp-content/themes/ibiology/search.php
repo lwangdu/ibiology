@@ -161,11 +161,11 @@ function ibio_searchwp_pagination( $query, $page ) {
     <!-- begin pagination -->
     <div class="archive-pagination pagination">
         <div class="pagination-count"><?php echo "Page $page of " .$query->max_num_pages ; ?> </div>
-        <? if( $next ) { ?>
+        <?php if( $next ) : ?>
             <div class="pagination-next alignright">
                 <a href="<?php echo $nav_link . $next; ?>"><?php _e( 'Next Page &raquo;', 'textdomain' ); ?></a>
             </div>
-        <?php } ?>
+        <?php endif; ?>
         <?php if( $prev ) : ?>
             <div class="pagination-prev alignright">
                 <a href="<?php echo $nav_link . $prev; ?>"><?php _e( '&laquo; Previous Page', 'textdomain' ); ?></a>
@@ -195,7 +195,10 @@ function ibio_search_results_heading(){
 /* ------------------------  Page Rendering -----------------*/
 
 add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
+
 add_action( 'genesis_entry_header', 'ibio_setup_result', 5);
+
+remove_action( 'genesis_before_loop', 'genesis_do_cpt_archive_title_description');
 add_action ('genesis_loop', 'ibio_search_results_heading', 8);
 
 remove_action( 'genesis_loop', 'genesis_do_loop');
