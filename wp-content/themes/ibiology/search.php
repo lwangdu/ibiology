@@ -161,11 +161,11 @@ function ibio_searchwp_pagination( $query, $page ) {
     <!-- begin pagination -->
     <div class="archive-pagination pagination">
         <div class="pagination-count"><?php echo "Page $page of " .$query->max_num_pages ; ?> </div>
-        <? if( $next ) : ?>
+        <? if( $next ) { ?>
             <div class="pagination-next alignright">
                 <a href="<?php echo $nav_link . $next; ?>"><?php _e( 'Next Page &raquo;', 'textdomain' ); ?></a>
             </div>
-        <?php endif; ?>
+        <?php } ?>
         <?php if( $prev ) : ?>
             <div class="pagination-prev alignright">
                 <a href="<?php echo $nav_link . $prev; ?>"><?php _e( '&laquo; Previous Page', 'textdomain' ); ?></a>
