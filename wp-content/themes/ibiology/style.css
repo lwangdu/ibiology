@@ -1461,18 +1461,19 @@ p.entry-meta {
 ---------------------------------------------------------------------------------------------------- */
 
 .footer-widgets {
-	background-color: #fff;
-	color: #222;
+	background-color: #222;
+	color: #fff;
+	font-size: 16px;
 	margin: 4px auto 0;
 	padding: 20px;
 }
 
 .footer-widgets .widgettitle {
-	color: #222;
+	color: #fff;
 }
 
 .footer-widgets a {
-	color: #222;
+	color: #fff;
 	text-decoration: none;
 }
 
@@ -1482,8 +1483,6 @@ p.entry-meta {
 .footer-widgets .current-menu-item > a {
 	color: #0099d1;
 }
-
-
 
 .footer-widgets .footer-widgets-1, .footer-widgets .footer-widget-2 {
 	width: 100%;
