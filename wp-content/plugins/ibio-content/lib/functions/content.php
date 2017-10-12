@@ -18,6 +18,12 @@ function ibio_content_archive_setup(){
   remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 }
 
+// removes the hooks for post meta and post info on pages where this is called.
+function ibio_setup_single(){
+    remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
+    remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
+}
+
 function ibio_talk_short_title($title){
 
   global $post;
@@ -31,38 +37,48 @@ function ibio_grid_body_class($classes){
   return $classes;
 }
 
-// Get the playlists for a talk.  Returns an array of playlists.
-
-function ibio_playlists_talk($talk_id=null){
-	if ( empty( $talk_id ) ) {
-		$talk = get_queried_object();
-		if ( isset( $talk->ID ) ){
-			$talk_id = $talk->ID;
-		} else {
-			return null;
-		}
-	}
-	
-	
-  $playlist_talks = new WP_Query( array (
-        'post_type' => IbioPLaylist::$post_type,
-        'posts_per_page'  => 4,
-        'connected_type' => 'playlist_to_talks'
-     ) );
-	
-}
-
 function ibio_ed_resources(){
 	ibio_get_template_part( 'shared/related-resources', 'educator' );
 	
 }
 
+// show the "related content" items, usually grouped together after a talk.
 function ibio_related_content(){
 
-	ibio_get_template_part( 'shared/related', 'talks-by-category' );
+    if (is_singular(IBioTalk::$post_type)){
+        $primary_related_category = get_field('related_talks');
+        if ( !$primary_related_category ){
+            ibio_get_template_part('shared/primary', 'playlist');
+        } else {
+            ibio_get_template_part( 'shared/related', 'talks-by-category' );
+        }
+        ibio_get_template_part( 'shared/related', 'resources' );
+    } else {
 
-  ibio_get_template_part( 'shared/related', 'resources' );
-	
-	get_template_part('parts/primary-playlist');
-	
+        ibio_get_template_part( 'shared/related', 'talks-by-category' );
+        ibio_get_template_part( 'shared/related', 'resources' );
+        ibio_get_template_part('shared/primary', 'playlist');
+    }
+
+
+}
+
+/*
+ * ibio_expandable_section
+ * @param $content Input content
+ * @returns the content wrapped in HTML to create an expandable section later.
+*/
+function ibio_expandable_section( $content )
+{
+    return '<div class="expandable">' . $content . '</div>';
+}
+
+/*******  FACET-WP items ****************/
+
+function ibio_facet_start(){
+    echo '<div class="facetwp-template">';
+}
+
+function ibio_facet_end(){
+    echo '</div><!--Facet Container -->';
 }

@@ -130,8 +130,13 @@ var FWP = FWP || {};
             FWP.set_hash();
         }
 
-        // Send request to server
-        FWP.fetch_data();
+        // Preload?
+        if (! FWP.loaded && ! FWP.is_bfcache && 'undefined' !== typeof FWP_JSON.preload_data) {
+            FWP.render(FWP_JSON.preload_data);
+        }
+        else {
+            FWP.fetch_data();
+        }
 
         // Cleanup
         FWP.paged = 1;
@@ -348,25 +353,6 @@ var FWP = FWP || {};
                         console.log(response);
                     }
                 }
-
-                // WP Playlist support
-                if ('function' === typeof WPPlaylistView) {
-                    $('.facetwp-template .wp-playlist').each(function() {
-                        return new WPPlaylistView({ el: this });
-                    });
-                }
-
-                // Fire a notification event
-                $(document).trigger('facetwp-loaded');
-
-                // Allow final actions
-                wp.hooks.doAction('facetwp/loaded');
-
-                // Detect "back-forward" cache
-                FWP.is_bfcache = true;
-
-                // Done loading?
-                FWP.loaded = true;
             }
         });
     }
@@ -417,12 +403,13 @@ var FWP = FWP || {};
         });
 
         // Populate the counts
-        $('.facetwp-counts').html(response.counts);
+        if ('undefined' !== typeof response.counts) {
+            $('.facetwp-counts').html(response.counts);
+        }
 
-        // Populate the sort box
-        if ('undefined' !== typeof response.sort) {
-            $('.facetwp-sort').html(response.sort);
-            $('.facetwp-sort-select').val(FWP.extras.sort);
+        // Populate the pager
+        if ('undefined' !== typeof response.pager) {
+            $('.facetwp-pager').html(response.pager);
         }
 
         // Populate the "per page" box
@@ -433,23 +420,58 @@ var FWP = FWP || {};
             }
         }
 
-        // Populate the pager
-        $('.facetwp-pager').html(response.pager);
+        // Populate the sort box
+        if ('undefined' !== typeof response.sort) {
+            $('.facetwp-sort').html(response.sort);
+            $('.facetwp-sort-select').val(FWP.extras.sort);
+        }
 
         // Populate the settings object (iterate to preserve static facet settings)
         $.each(response.settings, function(key, val) {
             FWP.settings[key] = val;
         });
+
+        // WP Playlist support
+        if ('function' === typeof WPPlaylistView) {
+            $('.facetwp-template .wp-playlist').each(function() {
+                return new WPPlaylistView({ el: this });
+            });
+        }
+
+        // Fire a notification event
+        $(document).trigger('facetwp-loaded');
+
+        // Allow final actions
+        wp.hooks.doAction('facetwp/loaded');
+
+        // Detect "back-forward" cache
+        FWP.is_bfcache = true;
+
+        // Done loading?
+        FWP.loaded = true;
     }
 
 
-    FWP.reset = function() {
+    FWP.reset = function(facet_name) {
         FWP.parse_facets();
+
+        if ('undefined' !== typeof facet_name) {
+            FWP.facets[facet_name] = [];
+
+            if ('undefined' !== typeof FWP.used_facets) {
+                delete FWP.used_facets[facet_name];
+            }
+        }
+        else {
+            $.each(FWP.facets, function(f) {
+                FWP.facets[f] = [];
+            });
+
+            FWP.extras.sort = 'default';
+            FWP.used_facets = {};
+        }
+
         FWP.is_reset = true;
-        $.each(FWP.facets, function(f) {
-            FWP.facets[f] = [];
-        });
-        FWP.used_facets = {};
         FWP.refresh();
     }
 
@@ -565,6 +587,7 @@ var FWP = FWP || {};
             if ('undefined' !== typeof FWP.used_facets) {
                 delete FWP.used_facets[facet_name]; // slider support
             }
+
             delete FWP.facets['paged']; // remove "paged" from URL
             FWP.refresh();
         });

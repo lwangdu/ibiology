@@ -17,5 +17,31 @@ jQuery(document).ready(function($) {
 			//console.log( e.target );
 		  $( "#" + $(e.target).data('toggle') ).toggle(500);
 	});
-	
+
+	$( '.expandable' ).each( function( i, v ) {
+
+		$(this).attr('id', 'expandable-' + i);
+		$(this).append('<div class="control"><a class="expand more-link" data-target="#expandable-' + i +'">See More</a></div>');
+    });
+
+	/****  Create Expandable sections ****/
+
+	$( '.expand').click( function(e){
+		e.preventDefault();
+        e.stopPropagation();
+        if ($(this).hasClass('isopen')) {
+            $(e.target).text('See More');
+            $($(e.target).data('target')).animate({height:'200px'}, 500, function(t) {
+            	$(this).toggleClass('expanded');
+            });
+        } else {
+            $(e.target).text('See Less');
+            $($(e.target).data('target')).animate({height: '600px'}, 500, function (t) {
+                $(this).height('auto');
+                $(this).toggleClass('expanded');
+            });
+        }
+		$(this).toggleClass('isopen');
+    })
+
 });

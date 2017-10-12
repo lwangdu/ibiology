@@ -16,45 +16,47 @@ include_once( get_template_directory() . '/lib/init.php' );
 // load child theme textdomain.
 load_child_theme_textdomain( 'ibiology' );
 define( 'CHILD_THEME_VERSION', '1.0' );
+define( 'CHILD_THEME_NAME', 'iBiology' );
+define( 'CHILD_THEME_URL', 'http://github.com/lwangdu/ibiology' );
 
-add_action( 'genesis_setup', 'ibiology_setup',15 );
 
-//* Add HTML5 markup structure
-add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+ibiology_setup();
+
+// Add theme widget areas.
+require_once( get_stylesheet_directory() .'/includes/widget-areas.php' );
+
+// add other functions
+require_once( get_stylesheet_directory() .'/includes/breadcrumbs.php' );
+
 
 
 /**
 *
 * Theme setup.
-* Attach all of the site-wide functions to the correct hooks and filters. All the function themselves are defind below this setup function
+* Attach all of the site-wide functions to the correct hooks and filters.
 *
 * @since 1.0.0
 */
 
-add_image_size('square-thumb', 300, 300, TRUE);
 
 function ibiology_setup() {
-	// Define them constants.
-	define( 'CHILD_THEME_NAME', 'iBiology' );
-	define( 'CHILD_THEME_URL', 'http://github.com/lwangdu/ibiology' );
-	define( 'CHILD_THEME_VERSION', '0.1.0' );
-	
+
 	// Add HTML5 makup structure.
 	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption'  ) );
 	
 	//Add viwport meta ag for mobile browsers.
 	add_theme_support( 'genesis-responsive-viewport' );
-	
-	//* Add support for custom header
-  add_theme_support( 'custom-header', array(
+
+    add_image_size('square-thumb', 300, 300, TRUE);
+
+    //* Add support for custom header
+    add_theme_support( 'custom-header', array(
     'width'           => 600,
     'height'          => 160,
     'header-selector' => '.site-title a',
     'header-text'     => false,
     'flex-height'     => true,
   ) );
-	
-
 	
 	// Add them support for accessibility.
 	add_theme_support( 'genesis-accessibility', array(
@@ -66,7 +68,7 @@ function ibiology_setup() {
 			'skip-links',
 		) );
 	// Add them support for footer widgets
-	add_theme_support( 'genesis-footer-widgets', 1 );
+	add_theme_support( 'genesis-footer-widgets', 2 );
 	
 	// Unregister other site layouts
 	genesis_unregister_layout( 'content-sidebar-sidebar' );
@@ -76,62 +78,32 @@ function ibiology_setup() {
 	//* Unregister secondary sidebar
 	unregister_sidebar( 'sidebar-alt' );
 	
-	// Add theme widget areas.
-	include_once( get_stylesheet_directory() .'/includes/widget-areas.php' );
-	
-	
 }
-
-// Google font stylesheet
-add_action( 'wp_enqueue_scripts', 'ibiology_enqueue_styles' );
-function ibiology_enqueue_styles() {
-	wp_enqueue_style( 'google-fonts','https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:400,500' );
-	wp_enqueue_style( 'ionicons', '//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css', array(), CHILD_THEME_VERSION );
-}
-
-
-//* Add support for 3-column footer widgets
-add_theme_support( 'genesis-footer-widgets', 1 );
-
-
-/** 
- *
- *  Widget Areas
- */
-
-genesis_register_sidebar( array(
-	'id'          => 'sidebar_talks',
-	'name'        => __( 'Individual Talk', 'metro' ),
-	'description' => __( 'This is the sidebar for an individual talk', 'metro' ),
-) );
-
 
 
 /**
- * Global enqueues
  *
+ *  Global Enqueues
  */
+
 //* Enqueue Scripts and Styles
 add_action( 'wp_enqueue_scripts', 'ibiology_enqueue_scripts_styles' );
-function ibiology_enqueue_scripts_styles() {
+function ibiology_enqueue_scripts_styles()
+{
 
-	wp_enqueue_script( 'ibiology-responsive-menu', get_stylesheet_directory_uri() . '/js/responsive-menu.js', array( 'jquery' ), '1.0.0', true );
-	$output = array(
-		'mainMenu' => __( 'Menu', 'ibiology' ),
-		'subMenu'  => __( 'Menu', 'ibiology' ),
-	);
-	wp_localize_script( 'ibiology-responsive-menu', 'ibiologyL10n', $output );
-	
-	wp_enqueue_script( 'ibiology-content', get_stylesheet_directory_uri() . '/js/ibio-theme.js', array( 'jquery' ), '1.0.0', true );
-	
+    wp_enqueue_script('ibiology-responsive-menu', get_stylesheet_directory_uri() . '/assets/js/responsive-menu.js', array('jquery'), '1.0.0', true);
+    $output = array(
+        'mainMenu' => __('Menu', 'ibiology'),
+        'subMenu' => __('Menu', 'ibiology'),
+    );
+    wp_localize_script('ibiology-responsive-menu', 'ibiologyL10n', $output);
+
+    wp_enqueue_script('ibiology-content', get_stylesheet_directory_uri() . '/assets/js/ibio-theme.js', array('jquery'), '1.0.0', true);
+
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:400,500');
+    wp_enqueue_style('font-awesome', get_stylesheet_directory_uri() . '/assets/css/font-awesome.min.css');
+
 }
-
-//* Customize the footer credits
-	add_filter('genesis_footer_creds_text', 'ibiology_footer_creds_filter');
-	function ibiology_footer_creds_filter( $creds ) {
-		$creds = '[footer_copyright] &middot; <a href="https://www.ibiology.org">iBiology</a> &middot; <a href="https://www.ibiology.org/about" title="About Us">About Us</a>';
-		return $creds;
-	}
 
 if ( ! isset( $content_width ) ) {
 	$content_width = 800;
@@ -149,7 +121,7 @@ function ibio_excerpt_more(){
 // add a "more" link to all excerpts.
 add_filter('the_excerpt', 'ibio_add_more_link', 1, 2);
 function ibio_add_more_link($excerpt){
-	return $excerpt . ' <a class="morelink" href="'. get_permalink( get_the_ID() ) . '">[Read More]</a>';
+	return $excerpt . ' <a class="more-link" href="'. get_permalink( get_the_ID() ) . '">Read More</a>';
 }
 
 
@@ -169,16 +141,6 @@ function ibio_youtube_embed($code){
 add_filter('embed_handler_html', 'ibio_youtube_embed', 200);
 add_filter('embed_oembed_html', 'ibio_youtube_embed', 200);
 
-remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
-add_action( 'genesis_before_loop', 'ibio_breadcrumbs');
-
-function ibio_breadcrumbs(){
-	if ( function_exists('yoast_breadcrumb') ) {
-		yoast_breadcrumb('<p id="breadcrumbs">','</p>');
-	} else{
-	   genesis_do_breadcrumbs();
-	}
-}
 
 // pull talks in category pages -- 
 
@@ -207,6 +169,7 @@ function ibio_prepare_query( $query ) {
 		/* $query->query_vars['orderby'] = 'name';
 		$query->query_vars['order'] = 'ASC'; */
 		$query->query_vars['post_type'] =  IBioTalk::$post_type;
+        $query->query_vars['posts_per_page'] = -1;
 		return;
 	}
 }
@@ -215,8 +178,6 @@ function ibio_prepare_query( $query ) {
 // for filtering display posts shortcode items
 
 function ibio_display_posts_with_short_title( $output, $original_atts, $image, $title, $date, $excerpt, $inner_wrapper, $content, $class ) {
- 
- error_log('short code filter');
  
 	// Create a new title
 	$short_title = get_field( 'short_title' );

@@ -10,10 +10,11 @@ if ( !empty( $primary_playlist ) ){
 		'post_type' => 'ibiology_talk',
 		'connected_type' => 'playlist_to_talks',
 		'connected_items' => $primary_playlist->ID,
-		'post__not_in' => array($post->ID),
+		//'post__not_in' => array($post->ID),
 		'posts_per_page' => 4
 	));
-	
+
+
 	if ( $talks->have_posts() ){
 		echo "<div class='related-items'><h3 class='widgettitle'>Playlist: {$primary_playlist->post_title}</h3>";
 		echo '<ul class="related_playlist related_items filmstrip">';
@@ -30,6 +31,5 @@ if ( !empty( $primary_playlist ) ){
 	}
 	
 	wp_reset_query();
-
 
 }

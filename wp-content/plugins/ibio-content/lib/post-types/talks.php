@@ -33,7 +33,7 @@ class IBioTalk {
 		add_filter('admin_body_class', array( &$this, 'admin_body_class' ) );
 		add_filter( 'enter_title_here', array( &$this,'default_title') );
 	
-		add_action( 'save_post', array( &$this, 'save_post' ), 10, 2 );
+		add_action( 'save_post', array( &$this, 'save_post' ), 100, 2 );
 		//add_action( 'acf/save_post', array( &$this, 'acf_save_post' ), 10, 2 );
 
 		
@@ -49,7 +49,8 @@ class IBioTalk {
 			'editor',
 			'author',
 			'genesis-cpt-archives-settings',
-			'comments'
+			'comments',
+            //'custom-fields'
 		);
 
 		register_post_type( self::$post_type,
@@ -84,7 +85,7 @@ class IBioTalk {
 				'query_var'           => true,
 				'exclude_from_search' => false,
 				'publicly_queryable'  => true,
-				'rewrite'             => array('slug' => 'talks', 'with_front' => false),
+				'rewrite'             => array('slug' => 'talks', 'with_front' => true),
 				'capability_type'			=> 'post',
 				'map_meta_cap'				=> true,
 				'menu_icon'						=> 'dashicons-video-alt2'
@@ -182,19 +183,14 @@ class IBioTalk {
 		
 		$post = get_post($post_id);
 
-  	if (!isset($post->post_type) || self::$post_type != $post->post_type ) {
-    	    return;
-		}
 
-    // Check permissions
-    if ( self::$post_type == $_POST['post_type'] )
-    {
-      if ( !current_user_can( 'edit_' . self::$post_type, $post_id ) )
-          return;
+		
+  	if (!isset($post->post_type) || self::$post_type != $post->post_type ) {
+        return;
     }
 
 		// unhook this function so it doesn't loop infinitely
-		remove_action( 'save_post', array( &$this, 'save_post' ) );
+		remove_action( 'save_post', array( &$this, 'save_post' ), 100 );
 
 		// do stuff that might trigger another Save
 
@@ -202,27 +198,134 @@ class IBioTalk {
 		// grab the parts and put them in the excerpt.
 		
 		if ( function_exists( 'get_field' ) ){
-			$videos = get_field( 'videos' );
+			$videos = get_field( 'videos', $post->ID);
+			$seo_description = get_post_meta($post_id, '_yoast_wpseo_metadesc', true);
+			$post->post_excerpt = '';
 			
-			error_log('Got Video and Count') ;
-
+			ob_start();
 			
-			if ( is_array( 'videos' ) && count( $videos ) > 1 ){
-				// we have a multi-part talk;
-				
-				$post->post_excerpt = "multi-part talk";
-				
-			} else {
-			
-				$post->post_excerpt = "single part talk";		
+			if ( !empty( $seo_description ) ){
+				echo $seo_description;
 			}
+            $subtitles = array();
+
+			// calculate total video duration in minutes.  Update a custom field.
+			$duration = 0;
+			
+			if ( is_array( $videos ) && count( $videos ) > 1 ){
+				// we have a multi-part talk;
+				$url = get_post_permalink( $post_id );
+				echo '<ul class="videos-list row">';
+				$counter = 1;
+				foreach( $videos as $v ) {
+                    $title = isset($v['part_title']) ? esc_attr($v['part_title']) : '';
+                    $title = "Part $counter: " . $title;
+
+                    $video_thumbnail = isset($v['video_thumbnail']) ? $v['video_thumbnail'] : '';
+                    // video thumbnail is an array.  Let's grab the thumbnail size of this image.
+                    if (is_array($video_thumbnail) && isset($video_thumbnail['sizes']) && isset($video_thumbnail['sizes']['thumbnail'])) {
+                        $thumbnail_src = $video_thumbnail['sizes']['thumbnail'];
+                        $thumb = "<img src='$thumbnail_src' alt='$title'/>";
+                    } else {
+                        $thumbnail_html = '';
+                    }
+                    $audiences = $v['target_audience'];
+                    $audience = '';
+                    if (!empty($audiences) && is_array($audiences)) {
+                        $audience .= '<br/>Audience: <ul class="audiences">';
+                        foreach ($audiences as $a) {
+                            $audience .= "<li class='audience {$a->slug}'><span>{$a->name}</span></li> ";
+                        }
+                        $audience .= '</ul>';
+                    }
+
+                    echo "<li class='part-$counter'><a href='$url#part-$counter'><figure>$thumb</figure>$title</a> $audience</li> ";
+
+                    $part_duration = array_reverse (explode(":", $v['video_length']) );
+
+                    if ( isset( $part_duration[1]) ){
+                        $duration += intval( $part_duration[1] );
+                    }
+
+                    if ( isset( $part_duration[2]) ) {
+                        $duration += intval( $part_duration[2] ) * 60;
+                    }
+
+                    $subtitle_downloads = !empty( $v[ 'download_subtitled_video'] ) ? $v[ 'download_subtitled_video' ] : null;
+
+                    if ( is_array( $subtitle_downloads ) ){
+                        foreach ( $subtitle_downloads as $d ) {
+                            $idx = strtolower( $d['language'] );
+                            $subtitles[ $idx ] = $d['language'];
+                        }
+                    }
+
+
+                    $counter++;
+                }
+                echo '</ul>';
+			} else {
+			    $v = array_shift( $videos );
+                $subtitle_downloads = !empty( $v[ 'download_subtitled_video'] ) ? $v[ 'download_subtitled_video' ] : null;
+
+                if ( is_array( $subtitle_downloads ) ){
+                    foreach ( $subtitle_downloads as $d ) {
+                        $idx = strtolower( $d['language'] );
+                        $subtitles[ $idx ] = $d['language'];
+                    }
+                }
+
+                $part_duration = array_reverse (explode(":", $v['video_length']) );
+
+                if ( isset( $part_duration[1]) ){
+                    $duration += intval( $part_duration[1] );
+                }
+
+                if ( isset( $part_duration[2]) ) {
+                    $duration += intval( $part_duration[2] ) * 60;
+                }
+
+            }
+
+			$post->post_excerpt = ob_get_contents();
+
+			ob_end_clean();
 			
 			wp_update_post( $post );
+
+			// enable filters for adding postmeta;
+            add_filter( 'update_post_metadata', function(){return null;});
+
+			// check for educator resources
+            $er = get_post_meta($post->ID, 'educator_resources', true);
+            if ( strlen($er) ) {
+                $meta_id = update_post_meta($post->ID, 'has_educator_resources', 'Educator Resources');
+            } else {
+                $res = delete_post_meta($post->ID, 'has_educator_resources');
+            }
+
+            // update the subtitles
+            delete_post_meta( $post->ID, 'subtitle_language');
+            foreach ( $subtitles as $s ){
+               $meta_id = add_post_meta( $post->ID, 'subtitle_language', $s);
+            }
+
+            // update the duration
+
+            $meta_id = update_post_meta( $post->ID, 'total_duration', $duration );
+
+            // Date Recorded as a single field
+            $recorded_year =  get_field( 'date_recorded_year' );
+            $recorded_month = get_field( 'date_recorded_month' );
+
+            $recorded_date = $recorded_year.$recorded_month;
+            $meta_id = update_post_meta( $post->ID, 'recorded_date', $recorded_date);
+
 		}
 		
 
 		// re-hook this function
-		add_action( 'save_post', array( &$this, 'save_post' ), 10, 2  );
+		add_action( 'save_post', array( &$this, 'save_post' ), 100, 2  );
 		
 		
 	}

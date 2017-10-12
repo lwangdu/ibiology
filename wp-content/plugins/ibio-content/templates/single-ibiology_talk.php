@@ -1,8 +1,5 @@
 <?php
 
-global $acf_fields_helper;
-$acf_fields_helper = new IBio_Fields_Display_Helper();
-
 global $talk_speaker;
 
 $talk_speakers = new WP_Query(array(
@@ -39,7 +36,7 @@ function ibio_talks_header(){
 
   // Breadcrumbs
   echo '<div class="page-header"><div class="wrap">';
-  ibio_breadcrumbs();
+  genesis_do_breadcrumbs();
   genesis_do_post_title();
   echo '</div></div>';  
   
@@ -83,15 +80,18 @@ function ibio_talk_sidebar(){
 // force content-sidebar layout
 add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
 
+// add filter to make the_content into expandable sections.
+add_filter( 'the_content', 'ibio_expandable_section', 200, 1);
+
 // move the breadcrumbs
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
-remove_action( 'genesis_before_loop', 'ibio_breadcrumbs');
+
 
 
 add_action('genesis_after_header', 'ibio_talks_header', 30);
 
-remove_action( 'genesis_entry_header', 'genesis_post_info');
-remove_action( 'genesis_entry_header', 'genesis_do_post_title', 10 );
+// clean up post info and post meta
+add_action( 'genesis_header', 'ibio_setup_single');
 
 add_action( 'genesis_entry_content', 'ibio_lecture_header', 5);
 add_action('genesis_entry_content', 'ibio_ed_resources', 11);

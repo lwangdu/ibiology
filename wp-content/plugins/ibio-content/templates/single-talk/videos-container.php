@@ -71,8 +71,16 @@ if ( is_array( $videos ) ) {
       }
       $tabs .= "</ul>";
       echo $tabs;
-      
-      echo '<div class="duration row">Total Duration: 01:00:20</div>';
+      global $post;
+
+      $total_duration = get_post_meta( $post->ID, 'total_duration', true );
+
+      $hours = floor($total_duration /60 );
+      $minutes = $total_duration % 60;
+
+      $duration_string = sprintf ("<div class='duration row'>Total Duration: %02d:%02d:00</div>", $hours, $minutes);
+      echo $duration_string;
+
 
     } else {
       /* single part talk */
@@ -89,7 +97,6 @@ if ( is_array( $videos ) ) {
         }
         echo "</ul></div>";       
        }
-          
     }
     
     $translations = get_field( 'talks_in_other_languages' );

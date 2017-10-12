@@ -75,6 +75,10 @@ add_filter( 'body_class', 'ibio_speaker_body_class');
 //add_filter( 'genesis_site_layout', '__genesis_return_full_width_content' );
 add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
 
+// clean up post info and post meta
+add_action( 'genesis_header', 'ibio_setup_single');
+
+
 add_action('genesis_before_entry', 'ibio_speaker_image');
 add_action('genesis_entry_header', 'ibio_speaker_info', 12);
 add_action('genesis_entry_content', 'ibio_speaker_details', 15);

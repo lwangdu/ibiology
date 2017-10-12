@@ -1,6 +1,6 @@
 <?php
 
-class FacetWP_Facet_fSelect
+class FacetWP_Facet_fSelect extends FacetWP_Facet
 {
 
     function __construct() {
@@ -48,16 +48,7 @@ class FacetWP_Facet_fSelect
         }
 
         // Orderby
-        $orderby = 'counter DESC, f.facet_display_value ASC';
-        if ( 'display_value' == $facet['orderby'] ) {
-            $orderby = 'f.facet_display_value ASC';
-        }
-        elseif ( 'raw_value' == $facet['orderby'] ) {
-            $orderby = 'f.facet_value ASC';
-        }
-
-        // Sort by depth just in case
-        $orderby = "f.depth, $orderby";
+        $orderby = $this->get_orderby( $facet );
 
         // Limit
         $limit = ctype_digit( $facet['count'] ) ? $facet['count'] : 10;
@@ -112,7 +103,7 @@ class FacetWP_Facet_fSelect
             $show_counts = apply_filters( 'facetwp_facet_dropdown_show_counts', true, array( 'facet' => $facet ) );
 
             if ( $show_counts ) {
-                $display_value .= ' (' . $result['counter'] . ')';
+                $display_value .= ' {{(' . $result['counter'] . ')}}';
             }
 
             $output .= '<option value="' . esc_attr( $result['facet_value'] ) . '"' . $selected . '>' . $display_value . '</option>';
@@ -275,6 +266,7 @@ class FacetWP_Facet_fSelect
                     <option value="count"><?php _e( 'Highest Count', 'fwp' ); ?></option>
                     <option value="display_value"><?php _e( 'Display Value', 'fwp' ); ?></option>
                     <option value="raw_value"><?php _e( 'Raw Value', 'fwp' ); ?></option>
+                    <option value="term_order"><?php _e( 'Term Order', 'fwp' ); ?></option>
                 </select>
             </td>
         </tr>

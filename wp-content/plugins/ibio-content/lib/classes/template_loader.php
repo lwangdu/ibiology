@@ -50,7 +50,7 @@ class IBio_Template_Loader {
 		}
 
 		$post_type = get_post_type();
-		error_log( '[template_loader] post_type = ' . serialize($post_type) );
+		//error_log( '[template_loader] post_type = ' . serialize($post_type) );
 		if ( $post_type == IBioTalk::$post_type || $post_type == IBioSpeaker::$post_type || $post_type == IBioPlaylist::$post_type || $post_type == IBioSession::$post_type ) {      
       if ( is_single() ) {
         $file 	= 'single-'.$post_type.'.php';
@@ -90,7 +90,7 @@ IBio_Template_Loader::init();
  */
 function ibio_get_template_part( $slug, $name = '' ) {
 
-		error_log("[ibio_get_template_part] slug: $slug ; name: $name ");
+		//error_log("[ibio_get_template_part] slug: $slug ; name: $name ");
 
 		global $ibiology_content;
 		
@@ -111,7 +111,7 @@ function ibio_get_template_part( $slug, $name = '' ) {
         $template = locate_template( array( "{$slug}.php",  $ibiology_content->template_path_slug . "/{$slug}.php" ) );
     }
 
-		error_log("[ibio_get_template_part] template: $template");
+		//error_log("[ibio_get_template_part] template: $template");
 
     if ( $template ) {
         load_template( $template, false );

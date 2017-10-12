@@ -1,6 +1,6 @@
 <?php
 
-class FacetWP_Facet_Proximity_Core
+class FacetWP_Facet_Proximity_Core extends FacetWP_Facet
 {
 
     /**

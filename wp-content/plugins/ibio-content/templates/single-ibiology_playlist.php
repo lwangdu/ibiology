@@ -24,40 +24,17 @@ function ibio_playlist_info(){
 	} 
 }
 
-function ibio_playlist_details(){
-	global $acf_fields_helper;
-	$acf_fields_helper->show_field_group(32397);
-}
 
-function ibio_talks_playlist(){
-
-  $talks = new WP_Query(array(
-    'post_type' => 'ibiology_talk',
-    'connected_type' => 'playlist_to_talks',
-    'connected_items' => get_queried_object(),
-    'nopaging' => true
-  ));
-  
-	echo '<pre>';
-	//var_dump($talks);
-	echo '</pre>';  
-  
-  if ( $talks->have_posts( ) ) {
-  	echo '<ul class="talks grid">';
-    while($talks->have_posts()){
-    	$talks->the_post();
-      get_template_part( 'parts/list-talk');
-    }	
-    echo '</ul>';
-    wp_reset_query();
-  }
-}
 
 /* -------------------  Page Rendering --------------------------*/
 
 // force content-sidebar layout
 add_filter( 'genesis_site_layout', '__genesis_return_full_width_content' );
 
+
+
+// clean up post info and post meta
+add_action( 'genesis_header', 'ibio_setup_single');
 
 add_action('genesis_entry_header', 'ibio_playlist_info', 20);
 add_action('genesis_after_entry', 'ibio_talks_playlist', 20);

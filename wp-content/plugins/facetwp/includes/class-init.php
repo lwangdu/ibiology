@@ -33,7 +33,7 @@ class FacetWP_Init
         // core
         include( FACETWP_DIR . '/includes/class-helper.php' );
         include( FACETWP_DIR . '/includes/class-ajax.php' );
-        include( FACETWP_DIR . '/includes/class-facet.php' );
+        include( FACETWP_DIR . '/includes/class-renderer.php' );
         include( FACETWP_DIR . '/includes/class-indexer.php' );
         include( FACETWP_DIR . '/includes/class-display.php' );
         include( FACETWP_DIR . '/includes/class-overrides.php' );
@@ -46,7 +46,7 @@ class FacetWP_Init
         new FacetWP_API_Fetch();
 
         FWP()->helper       = new FacetWP_Helper();
-        FWP()->facet        = new FacetWP_Facet();
+        FWP()->facet        = new FacetWP_Renderer();
         FWP()->indexer      = new FacetWP_Indexer();
         FWP()->display      = new FacetWP_Display();
         FWP()->ajax         = new FacetWP_Ajax();

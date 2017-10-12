@@ -34,6 +34,7 @@ Text Domain: iBiology
 	- Site Navigation
 	- Accessible Menu
 	- Site Header Navigation
+	- Internal Navigation
 	- After Header Navigation
 	- Footer Navigation
 	- Sidebar Widgets
@@ -423,10 +424,8 @@ textarea {
 	background-color: #fff;
 	border: 1px solid #ddd;
 	color: #333;
-	font-size: 18px;
 	font-weight: 400;
-	padding: 16px;
-	width: 100%;
+	padding: 3px;
 }
 
 input:focus,
@@ -598,7 +597,8 @@ th:first-child {
 }
 
 .more-link::after{
-	content:'\00BB';
+	font-family: FontAwesome;
+	content:'\f101';
 	padding-left: 5px;
 	color: #76893e;
 	font-weight: 700;
@@ -947,6 +947,24 @@ th:first-child {
 	border-top: 1px solid #333;
 }
 
+/* ## Internal Navigation
+--------------------------------------------- */
+
+ul.horizontal li{
+	display: inline-table;
+	padding: 13px;
+}
+
+ul.quicklinks{
+	background-color: #fbc52c;
+	padding: 0 10px;
+	text-align:center;
+}
+
+.quicklinks a{
+	color: white;
+}
+
 /* ## Footer Navigation
 --------------------------------------------- */
 
@@ -1179,11 +1197,57 @@ section.videos .videos-nav li figure img,
   box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
 }
 
+
+/* ## Search Results  */
+
+.post-type-label{
+	font-weight: 100;
+	font-size: 1rem;
+	text-transform: capitalize;
+
+}
+
+.search-results .entry-content .post-image{
+	max-width: 300px;
+}
+
+.search-results ul.videos-list{
+	display: flex;
+	justify-content: flex-start;
+	flex-flow: row nowrap;	
+	
+	list-style-type: none;
+	margin: 0;
+}
+
+.search-results ul.videos-list li{
+	flex: 1 1 auto;
+	width: 100px;
+	
+	list-style-type: none;
+}
+
+
 /* ## Stack
 --------------------------------------------- */
 ul.stack{
 	margin:0;
 }
+
+
+/* ## Filters
+--------------------------------------------- */
+
+.filter {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.filter-field{
+	flex: 1 1 33%;
+	width: 33%;
+}
+
 
 /* ## Entry Meta
 --------------------------------------------- */
@@ -1321,9 +1385,14 @@ p.entry-meta {
 	display: -ms-flexbox;
 	display: flex;
 	flex-wrap: wrap;
-  align-items: stretch;
+    align-items: stretch;
 	list-style-type: none;  
 	margin:0;
+
+}
+
+.speakers.grid-listing .content{
+	justify-items: space-between;
 }
 
 .grid-listing .content .entry, .facetwp-template .entry, ul.grid li{
@@ -1332,7 +1401,21 @@ p.entry-meta {
   box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
   list-style-type: none;  
   padding: 10px;
+    background-color: #fff;
 }
+
+.speakers.grid-listing .content .entry{
+	flex: 1 1 auto;
+	margin: 6px;
+	box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
+	list-style-type: none;
+	padding: 10px;
+	background-color: #fff;
+	min-width: 200px;
+	max-width: 240px;
+}
+
+
 
 .grid-listing .content .entry img, .facetwp-template .entry img, ul.grid li img {
     max-width: 100%;
@@ -1349,8 +1432,14 @@ p.entry-meta {
 
 .grid-listing .content .archive-description, 
 .grid-listing .content .pagination, 
-.grid-listing .content .breadcrumb{
+.grid-listing .content .breadcrumb,
+.grid-listing .content h2{
  flex: 0 0 100%;
+}
+
+.grid-listing .content h2{
+	padding-left: 10px;
+	margin-top: 30px;
 }
 
 /* # Sidebars
@@ -1382,11 +1471,9 @@ p.entry-meta {
 	color: #222;
 }
 
-
 .footer-widgets a {
 	color: #222;
 	text-decoration: none;
-	display: inline !important;
 }
 
 
@@ -1396,16 +1483,11 @@ p.entry-meta {
 	color: #0099d1;
 }
 
-.footer-widgets .widget-area {
-	float: left;
-	padding-right:  5%;
-	width: 30%;
-}
 
 
-.footer-widgets .footer-widgets-1 {
+.footer-widgets .footer-widgets-1, .footer-widgets .footer-widget-2 {
 	width: 100%;
-	float: left;
+    margin-bottom:40px;
 }
 
 .footer-widgets .search-form input[type="submit"] {
@@ -1413,6 +1495,16 @@ p.entry-meta {
 	width: 100%;
 }
 
+.footer-widgets .footer-widgets-2{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-widgets .footer-widgets-2 .widget{
+    flex: 1 1 auto;
+    min-width: 220px;
+}
 
 /* # Site Footer
 ---------------------------------------------------------------------------------------------------- */
@@ -1420,7 +1512,6 @@ p.entry-meta {
 .site-footer {
 	background-color: #f6f6f6;
 	border-top: 4px solid #0099d1;
-	color: #333 !important;
 	font-size: 14px;
 	line-height: 1;
 	padding: 20px 0;
@@ -1555,6 +1646,7 @@ section.videos .audiences li.audience {
 .audiences li::before{
 	display: inline-block;
 	color: #ddd;
+    padding-top: 2px;
 }
 
 .audiences .general-public::before{
@@ -1584,8 +1676,59 @@ section.videos .audiences li.audience {
 
 /* # Bootstrap Section
 ---------------------------------------------------------------------------------------------------- */
+.expandable {
+	height: 200px;
+	position: relative;
+	overflow: hidden;
+	-webkit-transition: all .5s ease-in-out;
+	-moz-transition: all .5s ease-in-out;
+	-o-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+	padding-bottom: 20px;
+}
+
+.expandable.expanded{
+	height:auto;
+}
+
+.expandable .control{
+	position: absolute;
+	bottom: 0;
+	padding-top: 30px;
+    padding-left: 10px;
+	width: 100%;
+    text-align:right;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,eeeeee+46,eeeeee+100&0+0,0.75+46,1+100 */
+	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.75) 36%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0.75) 36%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.75) 36%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00eeeeee', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
+}
+
+.expandable .more-link{
+	display: block;
+    font-size: 1.0rem;
+    color: #666;
+
+}
+
+.expandable .more-link::after {
+	content: '\f0da';
+	padding-left: 5px;
+	color: #76893e;
+	font-weight: 700;
+	padding-top:5px;
 
 
+
+}
+
+.expandable.expanded .more-link::after {
+	content: '\f0d7';
+	padding-left: 5px;
+	color: #76893e;
+	font-weight: 700;
+}
 
 /* # Media Queries
 ---------------------------------------------------------------------------------------------------- */

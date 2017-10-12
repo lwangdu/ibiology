@@ -1,6 +1,6 @@
 <?php
 
-class FacetWP_Facet_Number_Range
+class FacetWP_Facet_Number_Range extends FacetWP_Facet
 {
 
     function __construct() {

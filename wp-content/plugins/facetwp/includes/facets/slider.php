@@ -1,6 +1,6 @@
 <?php
 
-class FacetWP_Facet_Slider
+class FacetWP_Facet_Slider extends FacetWP_Facet
 {
 
     function __construct() {

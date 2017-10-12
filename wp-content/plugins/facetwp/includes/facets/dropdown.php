@@ -1,6 +1,6 @@
 <?php
 
-class FacetWP_Facet_Dropdown
+class FacetWP_Facet_Dropdown extends FacetWP_Facet
 {
 
     function __construct() {
@@ -40,15 +40,8 @@ class FacetWP_Facet_Dropdown
         $from_clause = $wpdb->prefix . 'facetwp_index f';
 
         // Orderby
-        $orderby = 'counter DESC, f.facet_display_value ASC';
-        if ( 'display_value' == $facet['orderby'] ) {
-            $orderby = 'f.facet_display_value ASC';
-        }
-        elseif ( 'raw_value' == $facet['orderby'] ) {
-            $orderby = 'f.facet_value ASC';
-        }
+        $orderby = $this->get_orderby( $facet );
 
-        $orderby = "f.depth, $orderby";
         $orderby = apply_filters( 'facetwp_facet_orderby', $orderby, $facet );
         $from_clause = apply_filters( 'facetwp_facet_from', $from_clause, $facet );
         $where_clause = apply_filters( 'facetwp_facet_where', $where_clause, $facet );
@@ -201,6 +194,7 @@ class FacetWP_Facet_Dropdown
                     <option value="count"><?php _e( 'Highest Count', 'fwp' ); ?></option>
                     <option value="display_value"><?php _e( 'Display Value', 'fwp' ); ?></option>
                     <option value="raw_value"><?php _e( 'Raw Value', 'fwp' ); ?></option>
+                    <option value="term_order"><?php _e( 'Term Order', 'fwp' ); ?></option>
                 </select>
             </td>
         </tr>
