@@ -76,6 +76,7 @@ function ibio_search_loop() {
     $post_type = isset( $_REQUEST['post_type'] ) ? $_REQUEST['post_type'] : null;
 
 
+
     // Do nothing if no search has been performed.
     if ( empty( $query ) ) {
         return;
@@ -89,7 +90,10 @@ function ibio_search_loop() {
     );
 
     if ($post_type) {
-        $args['post_type'] = array($post_type);
+        if (!is_array($post_type)){
+            $post_type = array( $post_type );
+        }
+        $args['post_type'] = $post_type;
     }
 
     $results = new SWP_Query( $args );

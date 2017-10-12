@@ -31,7 +31,7 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null){
 
 
     $talks = new WP_Query($args);
-    
+
     // loop through to get the item order.
 
     $ordered_talks = array();
