@@ -15,8 +15,11 @@ if ( is_array( $videos ) ) {
     $current_video[ 'total_duration' ] = 0;
     $counter = 1;
     $part_audiences = array();
-    
-    echo '<div class="videos-container">';
+
+    $container_class = $num_parts > 1 ? " multi-part" : " single-part";
+
+    echo "<div class='videos-container $container_class'>";
+
     foreach( $videos as $v ){
       $current_video['video'] = $v;
       $current_video['counter'] = $counter;
@@ -36,14 +39,7 @@ if ( is_array( $videos ) ) {
      
      
       $audiences = $v['target_audience'];
-      $audience = '';
-      if ( !empty($audiences) && is_array($audiences) ){
-        $audience .= '<br/>Audience: <ul class="audiences">';
-        foreach( $audiences as $a ){
-          $audience .= "<li class='audience {$a->slug}'><span>{$a->name}</span></li> ";
-        }
-        $audience .= '</ul>';
-      }
+      $audience = ibio_display_audiences( $audiences );
 
       $part_audiences[ $counter ] = $audience;
       
@@ -74,13 +70,7 @@ if ( is_array( $videos ) ) {
       global $post;
 
       $total_duration = get_post_meta( $post->ID, 'total_duration', true );
-
-      $hours = floor($total_duration /60 );
-      $minutes = $total_duration % 60;
-
-      $duration_string = sprintf ("<div class='duration row'>Total Duration: %02d:%02d:00</div>", $hours, $minutes);
-      echo $duration_string;
-
+      echo "<div class='duration row'>Total Duration: " . ibio_pretty_duration( $total_duration ) . '</div>';
 
     } else {
       /* single part talk */
@@ -90,13 +80,8 @@ if ( is_array( $videos ) ) {
        
        $audience_list = wp_get_post_terms( $this_talk->ID, 'audience' );
        
-       if ( !empty($audience_list) && is_array( $audience_list ) ){
-        echo '<div class="row">Audience: <ul class="audiences">';
-        foreach ( $audience_list as $a ){
-           echo "<li class='audience {$a->slug}'><span>{$a->name}</span></li> ";
-        }
-        echo "</ul></div>";       
-       }
+       echo ibio_display_audiences( $audience_list );
+
     }
     
     $translations = get_field( 'talks_in_other_languages' );
@@ -118,7 +103,7 @@ if ( is_array( $videos ) ) {
     $year = get_field( 'date_recorded_year' );
 
     if ( !empty( $year ) ){
-      $date_recorded = "<div class='date-recorded row'>Recorded:$month $year</div>";
+      $date_recorded = "<div class='date-recorded row'>Recorded: $month $year</div>";
     }
 
     echo $date_recorded;

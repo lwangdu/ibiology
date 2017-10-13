@@ -82,3 +82,26 @@ function ibio_facet_start(){
 function ibio_facet_end(){
     echo '</div><!--Facet Container -->';
 }
+
+// convert a number of minutes into a nice display hh:mm (no seconds)
+function ibio_pretty_duration( $total_duration ){
+    $hours = floor($total_duration / 60 );
+    $minutes = $total_duration % 60;
+
+    return sprintf ("%d:%02d", $hours, $minutes);
+}
+
+// display a list of audiences
+// takes in an array of terms
+function ibio_display_audiences( $audiences ){
+    $audience = '';
+    if (!empty($audiences) && is_array($audiences)) {
+        $audience .= '<div>Audience: <ul class="audiences">';
+        foreach ($audiences as $a) {
+            $audience .= "<li class='audience {$a->slug}'><span>{$a->name}</span></li> ";
+        }
+        $audience .= '</ul></div>';
+    }
+
+    return $audience;
+}

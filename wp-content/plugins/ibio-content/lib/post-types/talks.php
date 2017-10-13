@@ -201,18 +201,17 @@ class IBioTalk {
 			$videos = get_field( 'videos', $post->ID);
 			$seo_description = get_post_meta($post_id, '_yoast_wpseo_metadesc', true);
 			$post->post_excerpt = '';
-			
-			ob_start();
-			
-			if ( !empty( $seo_description ) ){
-				echo $seo_description;
-			}
+
             $subtitles = array();
 
 			// calculate total video duration in minutes.  Update a custom field.
 			$duration = 0;
-			
-			if ( is_array( $videos ) && count( $videos ) > 1 ){
+
+			// capture video information
+
+            ob_start();
+
+            if ( is_array( $videos ) && count( $videos ) > 1 ){
 				// we have a multi-part talk;
 				$url = get_post_permalink( $post_id );
 				echo '<ul class="videos-list row">';
@@ -229,17 +228,12 @@ class IBioTalk {
                     } else {
                         $thumbnail_html = '';
                     }
-                    $audiences = $v['target_audience'];
-                    $audience = '';
-                    if (!empty($audiences) && is_array($audiences)) {
-                        $audience .= '<br/>Audience: <ul class="audiences">';
-                        foreach ($audiences as $a) {
-                            $audience .= "<li class='audience {$a->slug}'><span>{$a->name}</span></li> ";
-                        }
-                        $audience .= '</ul>';
-                    }
 
-                    echo "<li class='part-$counter'><a href='$url#part-$counter'><figure>$thumb</figure>$title</a> $audience</li> ";
+
+                    $audiences = $v['target_audience'];
+                    $audience = ibio_display_audiences( $audiences );
+
+                    echo "<li class='part-$counter'><a href='$url#part-$counter'><figure>$thumb</figure>$title</a>$audience <span class='time'>{$v['video_length']}</span></li> ";
 
                     $part_duration = array_reverse (explode(":", $v['video_length']) );
 
@@ -265,8 +259,14 @@ class IBioTalk {
                 }
                 echo '</ul>';
 			} else {
+
+                echo get_the_post_thumbnail( $post_id, 'thumbnail', array( 'class' => 'alignleft' ) );
 			    $v = array_shift( $videos );
                 $subtitle_downloads = !empty( $v[ 'download_subtitled_video'] ) ? $v[ 'download_subtitled_video' ] : null;
+
+                $audiences = $v['target_audience'];
+                echo ibio_display_audiences( $audiences );
+                echo $v['video_length'];
 
                 if ( is_array( $subtitle_downloads ) ){
                     foreach ( $subtitle_downloads as $d ) {
@@ -287,11 +287,25 @@ class IBioTalk {
 
             }
 
-			$post->post_excerpt = ob_get_contents();
+			$video_parts_summary = ob_get_clean();
+            $post->post_excerpt .= '<p class="description">';
 
-			ob_end_clean();
-			
-			wp_update_post( $post );
+            if ( !empty( $seo_description ) ){
+                $post->post_excerpt .=  $seo_description;
+            }
+
+
+            $recorded_year =  get_field( 'date_recorded_year' );
+            $recorded_month = get_field( 'date_recorded_month' );
+
+            $month_field = get_field_object( 'date_recorded_month' );
+            // get the label for the month, rather than the number.
+            $month_name = $month_field['choices'][$month_field[ 'value' ] ];
+
+            $post->post_excerpt .= " (Talk recorded in $month_name $recorded_year)</p>";
+            $post->post_excerpt .= $video_parts_summary;
+
+            wp_update_post( $post );
 
 			// enable filters for adding postmeta;
             add_filter( 'update_post_metadata', function(){return null;});
@@ -315,8 +329,6 @@ class IBioTalk {
             $meta_id = update_post_meta( $post->ID, 'total_duration', $duration );
 
             // Date Recorded as a single field
-            $recorded_year =  get_field( 'date_recorded_year' );
-            $recorded_month = get_field( 'date_recorded_month' );
 
             $recorded_date = $recorded_year.$recorded_month;
             $meta_id = update_post_meta( $post->ID, 'recorded_date', $recorded_date);

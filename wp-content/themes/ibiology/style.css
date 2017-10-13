@@ -1628,13 +1628,13 @@ p.entry-meta {
 
 ul.audiences {
 	list-style-type: none;
-	display:inline-block;
+	display:inline;
 }
 
-section.videos .audiences li.audience {
+ .audiences li.audience {
 	list-style-type: none;
 	overflow: hidden;
-	display: inline-block;
+	display: inline;
 	margin:0;
 }
 
@@ -1644,30 +1644,32 @@ section.videos .audiences li.audience {
 
 .audiences li::before{
 	display: inline-block;
-	color: #ddd;
     padding-top: 2px;
+	font-family: FontAwesome;
+	font-size:90%;
+
 }
 
 .audiences .general-public::before{
-	content: "P";	
+	content: "\f2c0";
 }
 
 
 .audiences .student::before{
-	content: "S";	
+	content: "\f19d";
 }
 
 .audiences .researcher::before{
-	content: "R";	
+	content: "\f0c3";
 }
 
 .audiences .educator-1::before{
-	content: "E1";	
+	content: "\f02d";
 }
 
 
 .audiences .educator-2::before{
-	content: "E2";	
+	content: "\f040";
 }
 
 
