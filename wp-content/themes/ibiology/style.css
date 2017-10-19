@@ -1177,13 +1177,16 @@ section.videos .videos-nav li figure img,
 
 .filmstrip-wrapper {
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
 	align-items: center;
 }
 
 .filmstrip-wrapper a.more-link{
 	flex: 1 1 auto;
 	min-width: 150px;
+	max-width:190px;
+	line-height: 1.1;
+	padding-right: 20px;
 }
 
 
