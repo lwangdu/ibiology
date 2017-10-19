@@ -47,7 +47,9 @@ function ibio_related_content(){
 
     if (is_singular(IBioTalk::$post_type)){
         $primary_related_category = get_field('related_talks');
-        if ( !$primary_related_category ){
+        $primary_related_playlist = get_field( '$primary_playlist');
+
+        if ( !$primary_related_playlist ){
             ibio_get_template_part('shared/primary', 'playlist');
         } else {
             ibio_get_template_part( 'shared/related', 'talks-by-category' );

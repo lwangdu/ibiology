@@ -92,6 +92,7 @@ add_action('genesis_after_header', 'ibio_talks_header', 30);
 
 // clean up post info and post meta
 add_action( 'genesis_header', 'ibio_setup_single');
+remove_action( 'genesis_entry_header', 'genesis_do_post_title');
 
 add_action( 'genesis_entry_content', 'ibio_lecture_header', 5);
 add_action('genesis_entry_content', 'ibio_ed_resources', 11);
