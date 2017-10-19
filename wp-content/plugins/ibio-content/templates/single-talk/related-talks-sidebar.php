@@ -1,5 +1,5 @@
 <?php
-// shwow the related talks based on the selected category. 
+// Show the related talks based on the selected category.
 // Use this in the single talk page when there's only one video 
 
 $related_category = intval( get_field( 'related_talks' ) );

@@ -111,7 +111,14 @@ if ( is_array( $videos ) ) {
     
     echo '<div class="row">';
     if ( $num_parts == 1 ){
-      ibio_get_template_part( 'single-talk/related-talks', 'sidebar' );
+        $primary_related_category = get_field('related_talks');
+        $primary_playlist = get_field( 'primary_playlist' );
+        if ( !$primary_related_category && $primary_playlist ) {
+            ibio_get_template_part( 'single-talk/related-playlist', 'sidebar');
+        } else {
+            ibio_get_template_part( 'single-talk/related-talks', 'sidebar' );
+        }
+
     }
     echo '</div><div class="row">';
     ibio_get_template_part( 'shared/primary-related-category', 'link' );
