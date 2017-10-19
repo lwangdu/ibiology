@@ -208,10 +208,9 @@ add_filter( 'display_posts_shortcode_output', 'ibio_display_posts_with_short_tit
 
 // FacetWP Sort options
 function ibio_facetwp_sort_options( $options, $params ) {
-    error_log('facet options '.  serialize($options ));
-    error_log ('parameters: '. serialize($params) );
-    $options['date_recorded'] = array(
-        'label' => 'Date Recorded',
+
+    $options['date_desc'] = array(
+        'label' => 'Date Recorded (Newest)',
         'query_args' => array(
             'orderby' => 'meta_value', // sort by numerical custom field
             'meta_key' => 'recorded_date', // required when sorting by custom fields
@@ -219,20 +218,37 @@ function ibio_facetwp_sort_options( $options, $params ) {
         )
 
     );
-    $options['alpha-shortaz'] = array(
-        'label' => 'By Short Title (A-Z)',
+    $options['date_asc'] = array(
+        'label' => 'Date Recorded (Oldest)',
+        'query_args' => array(
+            'orderby' => 'meta_value', // sort by numerical custom field
+            'meta_key' => 'recorded_date', // required when sorting by custom fields
+            'order' => 'ASC', // descending order
+        )
+
+    );
+    $options['title_asc'] = array(
+        'label' => 'By Title (A-Z)',
         'query_args' => array(
             'orderby' => 'meta_value', // sort by numerical custom field
             'meta_key' => 'short_title', // required when sorting by custom fields
             'order' => 'ASC', // descending order
         )
     );
-    $options['alpha-shortza'] = array(
-        'label' => 'By Short Title (Z-A)',
+    $options['title_desc'] = array(
+        'label' => 'By Title (Z-A)',
         'query_args' => array(
             'orderby' => 'meta_value', // sort by numerical custom field
             'meta_key' => 'short_title', // required when sorting by custom fields
             'order' => 'DESC', // descending order
+        )
+    );
+    $options['duration-s'] = array(
+        'label' => 'Duration (shortest first)',
+        'query_args' => array(
+            'orderby' => 'meta_value', // sort by numerical custom field
+            'meta_key' => 'short_title', // required when sorting by custom fields
+            'order' => 'ASC', // descending order
         )
     );
     return $options;
