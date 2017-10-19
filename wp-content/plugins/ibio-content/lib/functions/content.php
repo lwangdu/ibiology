@@ -46,7 +46,7 @@ function ibio_ed_resources(){
 function ibio_related_content(){
 
     if (is_singular(IBioTalk::$post_type)){
-        $primary_related_category = get_field('related_talks');
+        // $primary_related_category = get_field('related_talks');
         $primary_related_playlist = get_field( '$primary_playlist');
 
         if ( !$primary_related_playlist ){
