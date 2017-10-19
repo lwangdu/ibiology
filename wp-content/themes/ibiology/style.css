@@ -950,7 +950,7 @@ th:first-child {
 /* ## Internal Navigation
 --------------------------------------------- */
 
-ul.horizontal li{
+.horizontal li{
 	display: inline-table;
 	padding: 13px;
 }
