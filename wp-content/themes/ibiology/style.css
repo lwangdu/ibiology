@@ -1169,6 +1169,8 @@ section.videos .videos-nav li figure img,
 	list-style-type:none;
 	font-size: 1rem;
 	line-height: 1.2rem;
+	min-width: 21px;
+	max-width: 220px;
 }
 
 
@@ -1183,10 +1185,11 @@ section.videos .videos-nav li figure img,
 
 .filmstrip-wrapper a.more-link{
 	flex: 1 1 auto;
-	min-width: 150px;
-	max-width:190px;
+	min-width: 21px;
+	max-width: 220px;
 	line-height: 1.1;
-	padding-right: 20px;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 
