@@ -285,7 +285,6 @@ h6 {
 
 h1 {
 	font-size: 30px;
-	
 }
 
 h2 {
@@ -1120,7 +1119,8 @@ section.videos .videos-info header{
 section.videos .videos-info .related-items{
 	border-top: 1px solid #ccc;
 	background-color: #222;
-	padding: 4px 8px;
+	margin-top: 1rem;
+	padding: .75rem 8px;
 }
 
 section.videos .videos-nav li{
@@ -1169,8 +1169,6 @@ section.videos .videos-nav li figure img,
 	list-style-type:none;
 	font-size: 1rem;
 	line-height: 1.2rem;
-	min-width: 210px;
-	max-width: 220px;
 }
 
 
@@ -1207,13 +1205,14 @@ section.videos .videos-nav li figure img,
 }
 
 .filmstrip .item, ul.filmstrip li{
-	flex: 0 0 24%;
+	flex: 0 0 32%;
 	list-style-type: none;
 	background-color: #fff;
 	line-height: 1.4rem;
 	font-size: 1.1rem;
 	padding: 10px;
-  box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
+	min-width: 210px;
+  	box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
 }
 
 

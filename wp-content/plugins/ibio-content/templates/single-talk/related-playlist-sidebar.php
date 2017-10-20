@@ -10,11 +10,11 @@ if ( !empty( $primary_playlist ) ){
 
     echo '<div class="related-items row"><header>More Talks in '. $primary_playlist->post_title .'</header>';
 
-    ibio_talks_playlist($primary_playlist, 4);
+    ibio_talks_playlist($primary_playlist, 4, null, 0, 'stack');
 
     $url = get_permalink($primary_playlist);
 
-    echo "<a href='$url' class='more-link'>All Talks in {$primary_playlist->post_title}</a>";
+    echo "<div class='row'><a href='$url' class='more-link'>All Talks in {$primary_playlist->post_title}</a></div>";
 
     return;
 

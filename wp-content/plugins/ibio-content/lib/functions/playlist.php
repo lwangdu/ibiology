@@ -2,7 +2,7 @@
 
 /* Get the talks on a playlist */
 
-function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, $start = 0){
+function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, $start = 0, $style='grid'){
 
     if ( !$playlist ){
         $playlist = get_queried_object();
@@ -44,7 +44,7 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
 
     if ( $talks->have_posts( ) ) {
         $counter = 0;
-        echo '<ul class="talks grid">';
+        echo "<ul class='talks $style'>";
         foreach($talks->posts as $t){
             if ( $maxitems > 0 && $counter >= $maxitems) break;
             if ( $start > 0 && $counter < $start ) { $counter++; continue; }
