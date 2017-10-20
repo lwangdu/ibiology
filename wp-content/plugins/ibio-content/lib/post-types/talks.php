@@ -233,7 +233,7 @@ class IBioTalk {
                     $audiences = $v['target_audience'];
                     $audience = ibio_display_audiences( $audiences );
 
-                    echo "<li class='part-$counter'><a href='$url#part-$counter'><figure>$thumb</figure>$title</a>$audience <span class='time'>{$v['video_length']}</span></li> ";
+                    echo "<li class='part-$counter'><a href='$url#part-$counter'><figure>$thumb</figure>$title</a>$audience <div class='row'>Duration: <span class='time'> {$v['video_length']}</span></div></li> ";
 
                     $part_duration = array_reverse (explode(":", $v['video_length']) );
 
@@ -266,7 +266,7 @@ class IBioTalk {
 
                 $audiences = $v['target_audience'];
                 echo ibio_display_audiences( $audiences );
-                echo $v['video_length'];
+                echo "<div class='row'>Duration: <span class='time'> {$v['video_length']}</span></div>";
 
                 if ( is_array( $subtitle_downloads ) ){
                     foreach ( $subtitle_downloads as $d ) {

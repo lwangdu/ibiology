@@ -197,6 +197,9 @@ function ibio_search_results_heading(){
 
 add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
 
+// disable automated paragraph in excerpts.
+remove_filter( 'the_excerpt', 'wpautop' );
+
 add_action( 'genesis_entry_header', 'ibio_setup_result', 5);
 
 remove_action( 'genesis_before_loop', 'genesis_do_cpt_archive_title_description');

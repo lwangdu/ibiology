@@ -100,7 +100,7 @@ function ibio_display_audiences( $audiences ){
     if (!empty($audiences) && is_array($audiences)) {
         $audience .= '<div>Audience: <ul class="audiences">';
         foreach ($audiences as $a) {
-            $audience .= "<li class='audience {$a->slug}'><span>{$a->name}</span></li> ";
+            $audience .= "<li title='{$a->name}' class='audience {$a->slug}'><span>{$a->name}</span></li> ";
         }
         $audience .= '</ul></div>';
     }
