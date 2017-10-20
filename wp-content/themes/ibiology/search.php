@@ -19,10 +19,7 @@ function ibio_setup_result(){
 
     global $post;
 	if ( $post->post_type == IBioTalk::$post_type ){
-		$videos = get_field( 'videos' );
-		if ( is_array( $videos ) && count( $videos ) > 1 ){
-			remove_action( 'genesis_entry_content', 'genesis_do_post_image' , 8 );
-		} 
+        remove_action( 'genesis_entry_content', 'genesis_do_post_image' , 8 );
 	}  // should we do this for sessions?
 }
 	
