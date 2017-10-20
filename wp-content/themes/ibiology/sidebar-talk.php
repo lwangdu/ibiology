@@ -32,5 +32,12 @@
     
     echo '</ul></div>';
   }
-  
+
+  $audiences  = get_terms( array(
+    'taxonomy' => 'audience',
+    'hide_empty' => false,
+) );
+
+  echo ibio_display_audiences($audiences);
+
   dynamic_sidebar( 'sidebar_talks' );

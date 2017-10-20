@@ -1645,9 +1645,10 @@ p.entry-meta {
 /* # Icons
 ---------------------------------------------------------------------------------------------------- */
 
-ul.audiences {
+ul.audiences{
 	list-style-type: none;
 	display:inline;
+	margin:0;
 }
 
  .audiences li.audience {
