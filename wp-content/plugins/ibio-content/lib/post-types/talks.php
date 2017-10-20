@@ -266,7 +266,7 @@ class IBioTalk {
 
                 $audiences = $v['target_audience'];
                 echo ibio_display_audiences( $audiences );
-                echo "<div class='row'>Duration: <span class='time'> {$v['video_length']}</span></div>";
+                echo "<div>Duration: <span class='time'> {$v['video_length']}</span></div>";
 
                 if ( is_array( $subtitle_downloads ) ){
                     foreach ( $subtitle_downloads as $d ) {
