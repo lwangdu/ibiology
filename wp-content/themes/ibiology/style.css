@@ -1658,7 +1658,11 @@ ul.audiences{
 	margin:0;
 }
 
- .audiences.key li span{
+.audiences.key li.audience{
+	display: block;
+}
+
+.audiences.key li span{
 	 display: inline;
  }
 

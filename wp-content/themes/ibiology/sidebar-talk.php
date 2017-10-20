@@ -3,7 +3,7 @@
   // Add some information for site admins and content migration folks.
   
   
-  if ( current_user_can( 'edit_post' ) ){
+  if ( current_user_can( 'edit_post' ) and WP_DEBUG ){
     $post = get_queried_object();
     $migration_status = get_field( 'migration_status' );
     $original_url = get_field( 'original_url' );
@@ -32,12 +32,5 @@
     
     echo '</ul></div>';
   }
-
-  $audiences  = get_terms( array(
-    'taxonomy' => 'audience',
-    'hide_empty' => false,
-) );
-
-  echo ibio_display_audiences($audiences);
 
   dynamic_sidebar( 'sidebar_talks' );

@@ -104,7 +104,7 @@ function ibio_search_loop() {
     }
 
     // Display pagination.
-    ibio_searchwp_pagination( $results, $page );
+    //ibio_searchwp_pagination( $results, $page );
 
     echo'<div class="searchwp-results">';
 
