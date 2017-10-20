@@ -259,3 +259,28 @@ function ibio_facetwp_sort_options( $options, $params ) {
 }
 
 add_filter( 'facetwp_sort_options', 'ibio_facetwp_sort_options', 10, 2 );
+
+// change the indexing for facetwp so that it saves duration groups instead of numbers.
+add_filter( 'facetwp_index_row', 'ibio_index_facet_duration', 10, 2);
+function ibio_index_facet_duration( $params, $class ){
+    // bail if it's not a duration
+    if ( $params[ 'facet_name' ] != 'duration') return $params;
+
+    $duration = $params['facet_value'];
+
+    if ($duration < 15) {
+        $params[ 'facet_value'] = '15';
+        $params[ 'facet_display_value'] = "under 15 minutes";
+
+    } else if ( $duration < 30 ) {
+        $params[ 'facet_value'] = '30';
+        $params[ 'facet_display_value'] = "15-30 minutes";
+
+    } else {
+        $params[ 'facet_value'] = '60';
+        $params[ 'facet_display_value'] = "Over 30 minutes";
+    }
+
+    return $params;
+
+}
