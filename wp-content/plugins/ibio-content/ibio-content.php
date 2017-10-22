@@ -113,8 +113,8 @@ class IBioContent{
           'admin_column' => 'any',
           'title' => array('from' => "Sessions with this Speaker", 'to' => 'Speakers in this Session')
         ) );
-        
-				p2p_register_connection_type( array(
+
+          p2p_register_connection_type( array(
           'name' => 'playlist_to_talks',
           'from' => IbioPlaylist::$post_type,
           'to' => IbioTalk::$post_type,
@@ -128,6 +128,21 @@ class IBioContent{
 					),
           'title' => array('from' => "Talks on Playlist", 'to' => 'Playlists')
         ) );
+
+          p2p_register_connection_type( array(
+                'name' => 'playlist_to_session',
+                'from' => IbioPlaylist::$post_type,
+                'to' => IBioSession::$post_type,
+                'cardinality' => 'many-to-many',
+                'admin_column' => 'to',
+                'fields' => array(
+                    'order' => array(
+                        'title' => 'Order',
+                        'type'	=> 'text'
+                    )
+                ),
+                'title' => array('from' => "Sessions on Playlist", 'to' => 'Playlists')
+            ) );
         
                 
       } else {
