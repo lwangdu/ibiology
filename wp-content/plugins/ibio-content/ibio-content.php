@@ -42,6 +42,7 @@ class IBioContent{
 		add_action ('init', array(&$this, 'create_taxonomies' ), 10 );
 		
 		add_filter( 'rewrite_rules_array', array( &$this, 'rewrite_rules' ) );
+		add_filter( 'post_type_link', array( &$this, 'ibio_permalink') , 20, 4 );
 	}
 
 
@@ -146,7 +147,7 @@ class IBioContent{
         
                 
       } else {
-      	error_log('Posts 2 Posts is not loaded yet.');
+      	error_log('[ibio-content plugin] Posts 2 Posts is not loaded yet.');
       }
 	}
 	
@@ -186,8 +187,10 @@ class IBioContent{
     
 	}
 
-	// Rewrite rules for individual talks
-
+	/* Rewrite Rules for Talks
+	 *
+	 *  the rewrite rule format for talks should be /category/subcategory/talk.  No talks will appear directly in the category.
+	 */
 	function rewrite_rules( $rules_array ) {
 		$new = array();
 
@@ -223,6 +226,39 @@ class IBioContent{
 		return array_merge( $new, $rules_array );
 	}
 
+    /* get_permalink - generate a permalink for a talk that includes the category hierarhcy.
+     *
+     *  the rewrite rule format for talks should be /category/subcategory/talk.  No talks will appear directly in the category.
+     */
+
+    function ibio_permalink($post_link, $post, $leavename, $sample){
+        // bail if it's not a talk.
+        if ( $post->post_type != IBioTalk::$post_type ) return $post_link;
+
+        // get the categories for the post
+        $cats = get_the_category( $post->ID );
+
+        if ( empty($cats) ) return $post_link;
+
+        // more than one means getting the primary one
+        if ( count($cats) > 1 ){
+            $primary_cat = get_post_meta( $post->ID, '_yoast_wpseo_primary_category', true);
+
+            if ( empty($primary_cat) ) {
+                $primary_cat = array_shift( $cats );
+            } else {
+                $primary_cat = get_term( $primary_cat, 'category');
+            }
+        } else {
+            $primary_cat = array_shift( $cats );
+        }
+
+        // ends in '/'
+        $cat_link = get_term_link( $primary_cat);
+
+        return $cat_link  . $post->post_name;
+
+    }
 }
 
 global $ibiology_content;
