@@ -81,7 +81,7 @@ add_action( 'genesis_header', 'ibio_setup_single');
 
 add_action('genesis_before_entry', 'ibio_speaker_image');
 add_action('genesis_entry_header', 'ibio_speaker_info', 12);
-add_action('genesis_entry_content', 'ibio_speaker_details', 15);
+//add_action('genesis_entry_content', 'ibio_speaker_details', 15);
 //add_action('genesis_entry_content', 'ibio_talks_speaker', 9);
 add_action('genesis_sidebar', 'ibio_talks_speaker', 9);
 
