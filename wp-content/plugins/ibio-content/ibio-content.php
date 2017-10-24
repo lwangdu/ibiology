@@ -265,7 +265,9 @@ class IBioContent{
         }
 
         // ends in '/'
-        $cat_link = get_term_link( $primary_cat);
+        //$cat_link = get_term_link( $primary_cat);
+
+        $cat_link = get_bloginfo('home') . '/' . $primary_cat->slug . '/';
 
         return $cat_link  . $post->post_name;
 
