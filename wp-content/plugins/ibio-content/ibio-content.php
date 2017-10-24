@@ -203,16 +203,26 @@ class IBioContent{
 
         // extract the parents and build the array for generating the rules
         $cr = array();
-        foreach ($cats as $c){
-            if ( $c->parent == 0 ) {
-                $cr[ $c->term_id ] = array( 'slug' => $c->slug, 'rewrite' => false ) ;
-            } else {
-                $cr[$c->term_id] = array( 'slug' => $cr[$c->parent]['slug'] . '/' . $c->slug, 'rewrite' => true);
+        foreach ($cats as $c) {
+            $cr[$c->term_id] = array('slug' => $c->slug, 'rewrite' => 2);
+        }
+
+        foreach($cats as $c){
+            if ( $c->parent != 0 ) {
+                $cr[$c->term_id] = array( 'slug' => $cr[$c->parent]['slug'] . '/' . $c->slug, 'rewrite' => 1);
             }
         }
 
+
         foreach ($cr as $c){
-            if ($c['rewrite']) {
+            if ($c['rewrite'] == 1) {
+                $match = $c['slug'] . '/(.+)?$';
+                $new[$match] = 'index.php?ibiology_talk=$matches[1]';
+            }
+        }
+
+        foreach ($cr as $c) {
+            if ($c['rewrite'] == 2) {
                 $match = $c['slug'] . '/(.+)?$';
                 $new[$match] = 'index.php?ibiology_talk=$matches[1]';
             }
