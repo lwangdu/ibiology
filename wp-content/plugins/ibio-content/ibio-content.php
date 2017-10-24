@@ -209,7 +209,8 @@ class IBioContent{
 
         foreach($cats as $c){
             if ( $c->parent != 0 ) {
-                $cr[$c->term_id] = array( 'slug' => $cr[$c->parent]['slug'] . '/' . $c->slug, 'rewrite' => 1);
+               // $cr[$c->term_id] = array( 'slug' => $cr[$c->parent]['slug'] . '/' . $c->slug, 'rewrite' => 1);
+                $cr[$c->term_id] = array( 'slug' => $c->slug, 'rewrite' => 1);
             }
         }
 
