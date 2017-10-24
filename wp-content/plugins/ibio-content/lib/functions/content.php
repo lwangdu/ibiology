@@ -5,7 +5,7 @@
 //* content filters (move to its own place soon)
 
 function ibio_content_archive_setup(){
-	remove_action( 'genesis_before_loop', 'ibio_breadcrumbs');
+	remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs');
 	add_action( 'genesis_before_loop', 'ibio_breadcrumbs', 8);
   
   add_action( 'body_class', 'ibio_grid_body_class' );

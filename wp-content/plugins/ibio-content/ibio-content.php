@@ -189,7 +189,7 @@ class IBioContent{
 
 	/* Rewrite Rules for Talks
 	 *
-	 *  the rewrite rule format for talks should be /category/subcategory/talk.  No talks will appear directly in the category.
+	 *  the rewrite rule format for talks should be /subcategory/talk.  No talks will appear directly in the category (Except archive)
 	 */
 	function rewrite_rules( $rules_array ) {
 		$new = array();
@@ -207,8 +207,9 @@ class IBioContent{
             $cr[$c->term_id] = array('slug' => $c->slug, 'rewrite' => 2);
         }
 
+        // set up the children that will be rewritten.
         foreach($cats as $c){
-            if ( $c->parent != 0 ) {
+            if ( $c->parent != 0 || $c->slug === 'archive') {
                // $cr[$c->term_id] = array( 'slug' => $cr[$c->parent]['slug'] . '/' . $c->slug, 'rewrite' => 1);
                 $cr[$c->term_id] = array( 'slug' => $c->slug, 'rewrite' => 1);
             }
@@ -217,10 +218,12 @@ class IBioContent{
 
         foreach ($cr as $c){
             if ($c['rewrite'] == 1) {
-                $match = $c['slug'] . '/(.+)?$';
+                $match = '^' . $c['slug'] . '/(.+)?$';
                 $new[$match] = 'index.php?ibiology_talk=$matches[1]';
             }
         }
+
+
 
         /* foreach ($cr as $c) {
             if ($c['rewrite'] == 2) {
@@ -229,11 +232,24 @@ class IBioContent{
             }
         }*/
 
-		//$new[ 'research-talks/cell-biology/(.+)?$']  = 'index.php?ibiology_talk=$matches[1]';
+        // Specific rules for top-level category pages.  The Array is keyed from category ID and has a page ID.
 
-		//$new[ 'talks/([^/]+/(.+)/?$' ] = 'index.php?ibiology_talk=$matches[2]';
-		//$new[ 'talks/
-		
+        $map_categories = array(
+            32 => 35409, // research talks
+            33 => 33374, // careers
+            34 => 35422 //stories
+        );
+
+        foreach ($map_categories as $c=>$p){
+            $cat = get_term( $c, 'category');
+            $page = get_post( $p);
+
+            if ( empty($cat) || empty($page) ) continue;
+            $match = '^' . $cat->slug . '/?$';
+
+            $new[ $match ] = "index.php?pagename={$page->post_name}";
+        }
+
 		return array_merge( $new, $rules_array );
 	}
 

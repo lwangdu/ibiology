@@ -3,7 +3,7 @@
   // Add some information for site admins and content migration folks.
   
   
-  if ( current_user_can( 'edit_post' ) and WP_DEBUG ){
+  if (  WP_DEBUG ){
     $post = get_queried_object();
     $migration_status = get_field( 'migration_status' );
     $original_url = get_field( 'original_url' );
