@@ -221,12 +221,12 @@ class IBioContent{
             }
         }
 
-        foreach ($cr as $c) {
+        /* foreach ($cr as $c) {
             if ($c['rewrite'] == 2) {
                 $match = $c['slug'] . '/(.+)?$';
                 $new[$match] = 'index.php?ibiology_talk=$matches[1]';
             }
-        }
+        }*/
 
 		//$new[ 'research-talks/cell-biology/(.+)?$']  = 'index.php?ibiology_talk=$matches[1]';
 
