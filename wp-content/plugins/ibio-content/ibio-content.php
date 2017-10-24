@@ -185,11 +185,39 @@ class IBioContent{
     
     
 	}
-	
+
+	// Rewrite rules for individual talks
+
 	function rewrite_rules( $rules_array ) {
 		$new = array();
-		
-		$new[ 'talks/([^/]+/(.+)/?$' ] = 'index.php?ibiology_talk=$matches[2]';
+
+
+		//get the list of categories and create a rewrite rules for each.
+        // We get them in order by parent so that we can quickly build the array we need.
+        $cats = get_terms( array( 'taxonomy' => 'category', 'hide_empty' => false, 'hierarchical' => true, 'fields' => 'all', 'orderby' => 'parent'));
+
+        //$cats = get_categories( array( 'taxonomy' => 'category', 'hide_empty' => false, 'hierarchical' => true, 'fields' => 'all', 'orderby' => 'parent'));
+
+        // extract the parents and build the array for generating the rules
+        $cr = array();
+        foreach ($cats as $c){
+            if ( $c->parent == 0 ) {
+                $cr[ $c->term_id ] = array( 'slug' => $c->slug, 'rewrite' => false ) ;
+            } else {
+                $cr[$c->term_id] = array( 'slug' => $cr[$c->parent]['slug'] . '/' . $c->slug, 'rewrite' => true);
+            }
+        }
+
+        foreach ($cr as $c){
+            if ($c['rewrite']) {
+                $match = $c['slug'] . '/(.+)?$';
+                $new[$match] = 'index.php?ibiology_talk=$matches[1]';
+            }
+        }
+
+		//$new[ 'research-talks/cell-biology/(.+)?$']  = 'index.php?ibiology_talk=$matches[1]';
+
+		//$new[ 'talks/([^/]+/(.+)/?$' ] = 'index.php?ibiology_talk=$matches[2]';
 		//$new[ 'talks/
 		
 		return array_merge( $new, $rules_array );

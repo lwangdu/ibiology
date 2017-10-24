@@ -73,7 +73,9 @@ function ibiology_add_playlist() {
 	
 }
 
+// display the homepage widget area.
 function ibio_home_widgets(){
+    if ( !is_active_sidebar( 'homepage-1') ) return;
 
     echo '<section class="homepage-1 videos row"><div class="wrap">';
     dynamic_sidebar('homepage-1');
