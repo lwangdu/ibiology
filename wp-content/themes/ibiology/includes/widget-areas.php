@@ -33,7 +33,7 @@ genesis_register_sidebar( array(
 
 
 genesis_register_sidebar( array(
-    'id'           => 	'homeoage-1',
+    'id'           => 	'homepage-1',
     'name'         => 	__( 'Homepage Feature 1', 'ibiology' ),
     'description'  => 	__( 'This is a home widget area that show on the front page', 'ibiology' ),
 ) );

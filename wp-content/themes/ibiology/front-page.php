@@ -72,4 +72,13 @@ function ibiology_add_playlist() {
 	);
 	
 }
+
+function ibio_home_widgets(){
+
+    echo '<section class="homepage-1 videos row"><div class="wrap">';
+    dynamic_sidebar('homepage-1');
+    echo '</div></section>';
+}
+
+add_action( 'genesis_after_header', 'ibio_home_widgets',20);
 genesis();
