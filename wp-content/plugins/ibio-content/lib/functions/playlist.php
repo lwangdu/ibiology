@@ -1,17 +1,12 @@
 <?php
 
-/* Get the talks on a playlist */
+/* Get the items on a playlist */
 
-function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, $start = 0, $style='grid'){
-
-    if ( !$playlist ){
-        $playlist = get_queried_object();
-
-    }
+function ibio_playlist_items($playlist, $connected_type='playlist_to_talks', $audience=null ) {
 
     $args = array(
         'post_type' => 'ibiology_talk',
-        'connected_type' => 'playlist_to_talks',
+        'connected_type' => $connected_type,
         'connected_items' => $playlist,
         'post_status' => 'publish',
         'nopaging' => true
@@ -29,17 +24,31 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
     }
 
 
-    $talks = new WP_Query($args);
+    $items = new WP_Query($args);
 
     // loop through to get the item order.
 
-    $ordered_talks = array();
-    foreach($talks->posts as $t){
+    foreach($items->posts as $t){
         $playlist_order = p2p_get_meta($t->p2p_id, 'order', true);
         $t->menu_order = intval($playlist_order);
     }
 
-    usort( $talks->posts, 'ibio_compare_playlist_posts' );
+    usort( $items->posts, 'ibio_compare_playlist_posts' );
+
+    wp_reset_query();
+
+    return $items;
+
+}
+
+function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, $start = 0, $style='grid'){
+
+    if ( !$playlist ){
+        $playlist = get_queried_object();
+
+    }
+
+    $talks = ibio_playlist_items( $playlist, 'playlist_to_talks',  $audience);
 
 
     if ( $talks->have_posts( ) ) {
@@ -56,7 +65,24 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
         }
         echo '</ul>';
     }
-    wp_reset_query();
+
+    $sessions = ibio_playlist_items( $playlist, 'playlist_to_session',  $audience);
+    if ( $sessions->have_posts( ) ) {
+        $counter = 0;
+        echo "<ul class='sessions $style'>";
+        foreach($sessions->posts as $t){
+            if ( $maxitems > 0 && $counter >= $maxitems) break;
+            if ( $start > 0 && $counter < $start ) { $counter++; continue; }
+            global $post;
+            $post = $t;
+            setup_postdata($post);
+            get_template_part( 'parts/list-talk');
+            $counter++;
+        }
+        echo '</ul>';
+    }
+
+    wp_reset_postdata();
 }
 
 function ibio_compare_playlist_posts( $a, $b){
