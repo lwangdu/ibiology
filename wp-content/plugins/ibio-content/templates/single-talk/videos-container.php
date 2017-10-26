@@ -113,15 +113,15 @@ if ( is_array( $videos ) ) {
     if ( $num_parts == 1 ){
         $primary_related_category = get_field('related_talks');
         $primary_playlist = get_field( 'primary_playlist' );
-        if ( !$primary_related_category && $primary_playlist ) {
+        if ( $primary_playlist ) {
             ibio_get_template_part( 'single-talk/related-playlist', 'sidebar');
         } else {
             ibio_get_template_part( 'single-talk/related-talks', 'sidebar' );
+            ibio_get_template_part( 'shared/primary-related-category', 'link' );
         }
 
     }
-    echo '</div><div class="row">';
-    ibio_get_template_part( 'shared/primary-related-category', 'link' );
+
     echo '</div>';
     
     echo '</div>';     

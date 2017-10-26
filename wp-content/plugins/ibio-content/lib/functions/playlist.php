@@ -43,6 +43,7 @@ function ibio_playlist_items($playlist, $connected_type='playlist_to_talks', $au
 
 function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, $start = 0, $style='grid'){
 
+    $start = 0;
     if ( !$playlist ){
         $playlist = get_queried_object();
 
@@ -58,8 +59,7 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
             if ( $maxitems > 0 && $counter >= $maxitems) break;
             // should we start displaying items?
             if ( $start > 0 && $start != $t->ID ) {
-                $counter++; continue;
-            } else {
+                $counter++;
                 $start = 0;
                 continue;
             }
