@@ -1030,7 +1030,7 @@ ul.quicklinks{
 --------------------------------------------- */
 
 section.videos.row {
-	background-color: #111;
+	background-color: #000000;
 	color: #fff;
 	height: auto;
 	
@@ -1165,6 +1165,10 @@ section.videos .videos-nav li figure img,
 
 /* ## Lists of Talks and other objects
 --------------------------------------------- */
+.content .related-items{
+    margin-bottom: 2em;
+}
+
 .related-items ul > li {
 	list-style-type:none;
 	font-size: 1rem;
