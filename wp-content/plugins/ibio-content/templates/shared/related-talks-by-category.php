@@ -29,7 +29,7 @@ if ( !empty( $related_category ) ){
 		}
 		echo '</ul>';
 		wp_reset_query();
-		ibio_get_template_part( 'shared/primary-related-category', 'link');
+		//ibio_get_template_part( 'shared/primary-related-category', 'link');
 		echo '</div>';
 		echo '</div>';
 	}      

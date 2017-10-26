@@ -36,7 +36,13 @@ if ( $download_link || $subtitles ){
 	$download_lael = '';
 }
 
-echo "<div class='single-video part-$counter'><header><h2 class='title'>$title</h2></header><div class='content'>";
+echo "<div class='single-video part-$counter'>";
+
+if ( $num_parts > 1) {
+    echo "<header><h2 class='title'>$title</h2></header>";
+}
+echo '<div class="content">';
+
 $embed = wp_oembed_get( $video_url , array( 'width' => 800 ) );
 
 // attach the showinfo parameter to the oembed.      
