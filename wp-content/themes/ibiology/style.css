@@ -1219,7 +1219,7 @@ section.videos .videos-nav li figure img,
 .filmstrip .item, ul.filmstrip li{
 	flex: 0 0 24%;
 	list-style-type: none;
-	background-color: #fff;
+	background-color: #fafafa;
 	line-height: 1.4rem;
 	font-size: 1.1rem;
 	padding: 10px;
