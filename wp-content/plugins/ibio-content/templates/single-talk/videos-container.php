@@ -120,6 +120,10 @@ if ( is_array( $videos ) ) {
             ibio_get_template_part( 'shared/primary-related-category', 'link' );
         }
 
+    } else {
+        echo '<div class="row">';
+        ibio_get_template_part( 'shared/primary-related-category', 'link' );
+        echo '</div>';
     }
 
     echo '</div>';

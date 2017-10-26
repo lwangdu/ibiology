@@ -48,7 +48,7 @@ function ibio_related_content(){
     if (is_singular(IBioTalk::$post_type)){
 
         $primary_related_category = get_field('related_talks');
-        $primary_related_playlist = get_field( '$primary_playlist');
+        $primary_related_playlist = get_field( 'primary_playlist');
         $videos = get_field( 'videos');
 
         if (count($videos) > 1){
