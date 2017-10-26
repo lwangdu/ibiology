@@ -14,13 +14,14 @@ if ( !empty( $related_category ) ){
 	$related_talks = new WP_Query( array (
 			'post_type' => IbioTalk::$post_type,
 			'cat'       => $related_category,
-			'posts_per_page'  => 3,
+			'posts_per_page'  => 4,
 			'post__not_in'    => array( $talk->ID )
 		) );
 		
 	if ( $related_talks->have_posts() ) {
 		$category_info = get_term( $related_category, 'category');
-		echo '<div class="related-talks related-items row"> <h4 class="widgettitle">More Talks in '. $category_info->name .'</h4>';
+		$url = get_term_link( $category_info);
+		echo "<div class='related-talks related-items row'> <h4 class='widgettitle'><a href='$url'>More Talks in {$category_info->name}</a></h4>";
 		echo '<div class="filmstrip-wrapper"><ul class="related-by-category talks-list filmstrip">';
 		while ( $related_talks->have_posts() ) {
 			$related_talks->the_post();

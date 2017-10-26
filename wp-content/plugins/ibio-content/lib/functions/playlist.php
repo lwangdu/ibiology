@@ -56,7 +56,13 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
         echo "<ul class='talks $style'>";
         foreach($talks->posts as $t){
             if ( $maxitems > 0 && $counter >= $maxitems) break;
-            if ( $start > 0 && $counter < $start ) { $counter++; continue; }
+            // should we start displaying items?
+            if ( $start > 0 && $start != $t->ID ) {
+                $counter++; continue;
+            } else {
+                $start = 0;
+                continue;
+            }
             global $post;
             $post = $t;
             setup_postdata($post);

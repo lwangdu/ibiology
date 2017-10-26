@@ -46,14 +46,29 @@ function ibio_ed_resources(){
 function ibio_related_content(){
 
     if (is_singular(IBioTalk::$post_type)){
-        // $primary_related_category = get_field('related_talks');
-        $primary_related_playlist = get_field( '$primary_playlist');
 
-        if ( !$primary_related_playlist ){
-            ibio_get_template_part('shared/primary', 'playlist');
+        $primary_related_category = get_field('related_talks');
+        $primary_related_playlist = get_field( '$primary_playlist');
+        $videos = get_field( 'videos');
+
+        if (count($videos) > 1){
+            if ( $primary_related_playlist ){
+                ibio_get_template_part('shared/primary', 'playlist');
+            } else {
+                ibio_get_template_part( 'shared/related', 'talks-by-category' );
+            }
         } else {
-            ibio_get_template_part( 'shared/related', 'talks-by-category' );
+            if ( empty( $primary_related_category ) ){
+                ibio_get_template_part('shared/primary', 'playlist');
+            } else {
+                ibio_get_template_part( 'shared/related', 'talks-by-category' );
+            }
+
         }
+
+
+
+
         ibio_get_template_part( 'shared/related', 'resources' );
     } else {
 

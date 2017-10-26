@@ -78,7 +78,7 @@ function ibio_content_crumb($crumb, $args){
 
             } else {
                 // more than one means getting the primary one
-                $primary_cat = get_post_meta( $post->ID, '_yoast_wpseo_primary_category', true);
+                $primary_cat = get_post_meta( $current_post->ID, '_yoast_wpseo_primary_category', true);
 
                 if ( empty($primary_cat) ) {
                     $primary_cat = array_shift( $cats );
