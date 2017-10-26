@@ -13,7 +13,7 @@ if ( $num_parts > 1 ){
 }
 $length = isset( $v[ 'video_length' ] ) ?  '<span class="length">Duration: ' . esc_attr( $v[ 'video_length' ] ) . '</span>' : '';
 $download = isset( $v[ 'video_download_url' ] ) ?  esc_url( $v[ 'video_download_url' ] ) : '';
-$download_link = !empty($download) ? "<span class='video-part-download'><a href='$download' target='_blank'>Hi-Res</a></span>" : '';
+$download_link = !empty($download) ? "<span class='video-part-download'><a href='$download' target='_blank' download>Hi-Res</a></span>" : '';
 
 $size = isset( $v[ 'download_size' ] ) ?  '<span class="size">' . esc_attr( $v[ 'download_size' ] ) . '</span>' : '';
 $transcript = (isset( $v[ 'transcript' ] ) &&  strlen($v[ 'transcript' ]) > 1) ? '<span class="transcript toggle" data-toggle="video-part-transcript-'. $counter .'">View Transcript</span><div id="video-part-transcript-'. $counter .'" class="drawer" style="display:none">' .  $v[ 'transcript' ] . '</div>' : '';
@@ -25,7 +25,7 @@ $subtitles = '';
 if ( is_array( $subtitle_downloads ) ){
 	$subtitles = "<span class='toggle subtitles' data-toggle='subtitle-downloads-$counter'>Subtitled Version</span><div id='subtitle-downloads-$counter' class='drawer' style='display:none'><ul>";
 	foreach ( $subtitle_downloads as $d ){
-		$subtitles .= "<li><a href='{$d['video_download_url']}'>{$d['language']}</a></li>";
+		$subtitles .= "<li><a href='{$d['video_download_url']}' download  target='_blank'>{$d['language']}</a></li>";
 	}    
 	$subtitles .= '</ul></div>';
 } 
