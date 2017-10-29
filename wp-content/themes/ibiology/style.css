@@ -453,7 +453,7 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"],
 .button {
-	background-color: #333;
+	background-color: #0099d1;
 	border: 0;
 	color: #fff;
 	cursor: pointer;
@@ -476,7 +476,7 @@ input:focus[type="button"],
 input:focus[type="reset"],
 input:focus[type="submit"],
 .button:focus  {
-	background-color: #0099d1;
+	background-color: #333;
 	color: #fff;
 }
 
@@ -1231,6 +1231,19 @@ section.videos .videos-nav li figure img,
   	box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
 }
 
+/*Bottom related talks media query */
+
+@media only screen and (max-width: 480px) {
+.filmstrip, .entry-content ul.filmstrip{
+	display: flex;
+	display: block;
+	flex-flow: nowrap;
+	margin:10px 0 0 10px;
+}
+
+}
+
+
 
 /* ## Search Results  */
 
@@ -1608,6 +1621,16 @@ p.entry-meta {
 .speakers h3{
 	clear:both;
 }
+
+/*speaker media query */
+
+@media only screen and (max-width: 480px) {
+.speakers .photo {
+  width: 300px;
+  height: 300px;
+}
+}
+
 
 /* # Plugins
 ---------------------------------------------------------------------------------------------------- */
