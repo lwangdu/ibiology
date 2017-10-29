@@ -426,6 +426,7 @@ textarea {
 	color: #333;
 	font-weight: 400;
 	padding: 20px;
+	width: 100%;
 }
 
 input:focus,
@@ -454,14 +455,14 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"],
 .button {
-	background-color: #0099d1;
+	background-color: #666;
 	border: 0;
 	color: #fff;
 	cursor: pointer;
 	font-size: 16px;
-	font-size: 1.6rem;
-	font-weight: 700;
-	padding: 16px 24px;
+	font-size: 1.2rem;
+	font-weight: 400;
+	padding: 10px 20px;
 	text-decoration: none;
 	white-space: normal;
 	width: auto;
@@ -997,11 +998,11 @@ ul.quicklinks{
 
 .entry {
 	background-color: #fff;
-	margin-bottom: 40px;
+	margin-bottom: 10px;
 	padding-top: 10px;
     padding-right: 10px;
     padding-bottom: 0;
-    padding-left: 20px;
+    padding-left: 0;
 }
 
 .entry-content ol,
