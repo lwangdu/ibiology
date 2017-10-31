@@ -1008,7 +1008,7 @@ ul.quicklinks{
 .entry-content ol,
 .entry-content ul {
 	margin-bottom: 28px;
-	margin-left: 40px;
+	margin-left: 0;
 }
 
 .entry-content ol > li {
@@ -1613,6 +1613,7 @@ p.entry-meta {
   border-radius: 50%;
   border: 4px solid #fbc52c;
   margin-right: 16px;
+  margin-top: 20px;
 }
 
 .speakers .photo img {
