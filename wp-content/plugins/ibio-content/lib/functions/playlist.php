@@ -41,7 +41,7 @@ function ibio_playlist_items($playlist, $connected_type='playlist_to_talks', $au
 
 }
 
-function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, $start = 0, $style='grid'){
+function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, $start = 0, $style='grid', $orderby=''){
 
     $start = 0;
     if ( !$playlist ){
