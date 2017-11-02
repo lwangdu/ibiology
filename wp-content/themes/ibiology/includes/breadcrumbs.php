@@ -59,10 +59,10 @@ function ibio_content_crumb($crumb, $args){
     // Talks
     switch ($current_post->post_type){
         case IBioTalk::$post_type:
-            // get the categories for the talks
+            // get the categories for the talk
             $cats = get_the_category( $current_post->ID );
 
-            if ( empty($cats) ){
+            if ( empty($cats) || is_wp_error( $cats ) ){
                 $page_parent = get_post_meta( $current_post->ID, 'parent_page', true);
                 $page = get_post( $page_parent );
                 if ( empty($page)) return $link;
@@ -87,12 +87,17 @@ function ibio_content_crumb($crumb, $args){
                 }
                 $url = get_term_link( $primary_cat, 'category');
 
-                $link = sprintf( '<a href="%s"%s><span%s>%s</span></a>', esc_attr( $url ), $itemprop_item, $itemprop_name, esc_html( $primary_cat->name) );
+                // sometimes the yoast primary category is no longer there... So the URL will be a problem.
 
-                while ( $primary_cat->parent ){
-                    $primary_cat = get_term($primary_cat->parent, 'category' );
-                    $url = get_term_link( $primary_cat, 'category');
-                    $link = sprintf( '<a href="%s"%s><span%s>%s</span></a>%s%s', esc_attr( $url ), $itemprop_item, $itemprop_name, esc_html( $primary_cat->name ), $args['sep'], $link );
+                if ( !is_wp_error($url)) {
+
+                    $link = sprintf('<a href="%s"%s><span%s>%s</span></a>', $url, $itemprop_item, $itemprop_name, esc_html($primary_cat->name));
+
+                    while ($primary_cat->parent) {
+                        $primary_cat = get_term($primary_cat->parent, 'category');
+                        $url = get_term_link($primary_cat, 'category');
+                        $link = sprintf('<a href="%s"%s><span%s>%s</span></a>%s%s', esc_attr($url), $itemprop_item, $itemprop_name, esc_html($primary_cat->name), $args['sep'], $link);
+                    }
                 }
             }
 

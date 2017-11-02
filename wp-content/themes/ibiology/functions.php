@@ -202,12 +202,15 @@ function ibio_display_posts_with_short_title( $output, $original_atts, $image, $
 	$url = get_the_permalink();	
 	$title = "<h3 class='entry-title'><a href='$url'>$title</a></h3>";	
 	// Now let's rebuild the output
-	$output = '<' . $inner_wrapper . ' class="' . implode( ' ', $class ) . '">' . $image . $title . $date . $author . $excerpt . $content . '</' . $inner_wrapper . '>';
+	$output = '<' . $inner_wrapper . ' class="' . implode( ' ', $class ) . '">' . $image . $title . $date . $excerpt . $content . '</' . $inner_wrapper . '>';
  
 	// Finally we'll return the modified output
 	return $output;
 }
+
 add_filter( 'display_posts_shortcode_output', 'ibio_display_posts_with_short_title', 10, 9 );
+
+
 
 
 // FacetWP Sort options

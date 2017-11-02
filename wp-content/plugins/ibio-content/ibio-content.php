@@ -199,8 +199,6 @@ class IBioContent{
         // We get them in order by parent so that we can quickly build the array we need.
         $cats = get_terms( array( 'taxonomy' => 'category', 'hide_empty' => false, 'hierarchical' => true, 'fields' => 'all', 'orderby' => 'parent'));
 
-        //$cats = get_categories( array( 'taxonomy' => 'category', 'hide_empty' => false, 'hierarchical' => true, 'fields' => 'all', 'orderby' => 'parent'));
-
         // extract the parents and build the array for generating the rules
         $cr = array();
         foreach ($cats as $c) {
@@ -222,15 +220,6 @@ class IBioContent{
                 $new[$match] = 'index.php?ibiology_talk=$matches[1]';
             }
         }
-
-
-
-        /* foreach ($cr as $c) {
-            if ($c['rewrite'] == 2) {
-                $match = $c['slug'] . '/(.+)?$';
-                $new[$match] = 'index.php?ibiology_talk=$matches[1]';
-            }
-        }*/
 
         // Specific rules for top-level category pages.  The Array is keyed from category ID and has a page ID.
 

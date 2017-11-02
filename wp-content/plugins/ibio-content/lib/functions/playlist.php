@@ -9,7 +9,8 @@ function ibio_playlist_items($playlist, $connected_type='playlist_to_talks', $au
         'connected_type' => $connected_type,
         'connected_items' => $playlist,
         'post_status' => 'publish',
-        'nopaging' => true
+        'nopaging' => true,
+        //'orderby' => 'random'
     );
 
 
@@ -41,13 +42,18 @@ function ibio_playlist_items($playlist, $connected_type='playlist_to_talks', $au
 
 }
 
-function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, $start = 0, $style='grid', $orderby=''){
+function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, $current_talk = 0, $style='grid', $orderby=''){
 
-    $start = 0;
+
+    if ( $orderby == 'menu_order' || $orderby == 'rand')
+    
+    $start = $current_talk;
+
     if ( !$playlist ){
         $playlist = get_queried_object();
 
     }
+
 
     $talks = ibio_playlist_items( $playlist, 'playlist_to_talks',  $audience);
 
@@ -58,11 +64,7 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
         foreach($talks->posts as $t){
             if ( $maxitems > 0 && $counter >= $maxitems) break;
             // should we start displaying items?
-            if ( $start > 0 && $start != $t->ID ) {
-                $counter++;
-                $start = 0;
-                continue;
-            }
+            if ( $start > 0 && $t->ID != $start ) { continue; } else if ( $start > 0 && $t->ID == $start )  { $start = 0; continue; }
             global $post;
             $post = $t;
             setup_postdata($post);
@@ -78,7 +80,7 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
         echo "<ul class='sessions $style'>";
         foreach($sessions->posts as $t){
             if ( $maxitems > 0 && $counter >= $maxitems) break;
-            if ( $start > 0 && $counter < $start ) { $counter++; continue; }
+            if ( $start > 0 && $t->ID != $start ) { continue; } else if ( $start > 0 && $t->ID == $start )  { $start = 0; continue; }
             global $post;
             $post = $t;
             setup_postdata($post);

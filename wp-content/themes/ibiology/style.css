@@ -813,6 +813,8 @@ th:first-child {
 
 .full-width-content .content {
 	width: 100%;
+	max-width: 1200px;
+	margin:auto;
 }
 
 /* ### Primary Sidebar */
@@ -1018,8 +1020,7 @@ ul.quicklinks{
 .entry-content ol,
 .entry-content ul {
 	margin-bottom: 28px;
-	margin-left: 0;
-	list-style-position:  inside;
+	margin-left: 1.5rem;
 }
 
 .entry-content ol > li {
@@ -1028,6 +1029,10 @@ ul.quicklinks{
 
 .entry-content ul > li {
 	list-style-type: disc;
+}
+
+.entry-content li li {
+	margin-left: 2rem;
 }
 
 .entry-content ol ol,
