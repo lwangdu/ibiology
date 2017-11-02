@@ -66,9 +66,6 @@ function ibio_related_content(){
 
         }
 
-
-
-
         ibio_get_template_part( 'shared/related', 'resources' );
     } else {
 
@@ -100,12 +97,14 @@ function ibio_facet_end(){
     echo '</div><!--Facet Container -->';
 }
 
-// convert a number of minutes into a nice display hh:mm (no seconds)
+// convert a number of minutes into a nice display hh:mm:ss
 function ibio_pretty_duration( $total_duration ){
-    $hours = floor($total_duration / 60 );
-    $minutes = $total_duration % 60;
+    $hours = floor($total_duration / 3600 );
+    $total_duration -= $hours * 3600;
+    $minutes = floor($total_duration / 60 );
+    $seconds = $total_duration % 60;
 
-    return sprintf ("%d:%02d", $hours, $minutes);
+    return sprintf ("%d:%02d:%02d", $hours, $minutes, $seconds);
 }
 
 // display a list of audiences
@@ -121,4 +120,29 @@ function ibio_display_audiences( $audiences ){
     }
 
     return $audience;
+}
+
+// output a list of speakers for a talk, with links to their respective pages.
+function ibio_talk_speakers_list(){
+    global $talk_speaker;
+    if ( empty ($talk_speaker)  ) return;
+
+    $num =  count( $talk_speaker );
+
+    if ( $num > 1 ){
+        $heading = 'Speakers';
+    } else {
+        $heading = "Speaker";
+    }
+
+    echo "<div class='row'>$heading: ";
+    $out = array();
+
+    foreach ( $talk_speaker as $t ){
+        $surl = get_post_permalink( $t->ID) ;
+        $out[] =  "<a href='$surl' title='{$t->post_title}'>{$t->post_title}</a>";
+    }
+
+    echo implode( ', ', $out);
+    echo '</div>';
 }

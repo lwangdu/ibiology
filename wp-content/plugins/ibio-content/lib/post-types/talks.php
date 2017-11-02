@@ -237,12 +237,17 @@ class IBioTalk {
 
                     $part_duration = array_reverse (explode(":", $v['video_length']) );
 
+                    // seconds
+                    $duration += $part_duration[0];
+
+                    // minutes
                     if ( isset( $part_duration[1]) ){
-                        $duration += intval( $part_duration[1] );
+                        $duration += intval( $part_duration[1] ) * 60;
                     }
 
+                    // hours
                     if ( isset( $part_duration[2]) ) {
-                        $duration += intval( $part_duration[2] ) * 60;
+                        $duration += intval( $part_duration[2] ) * 3600;
                     }
 
                     $subtitle_downloads = !empty( $v[ 'download_subtitled_video'] ) ? $v[ 'download_subtitled_video' ] : null;
@@ -275,14 +280,18 @@ class IBioTalk {
                     }
                 }
 
-                $part_duration = array_reverse (explode(":", $v['video_length']) );
 
+                // seconds
+                $duration += $part_duration[0];
+
+                // minutes
                 if ( isset( $part_duration[1]) ){
-                    $duration += intval( $part_duration[1] );
+                    $duration += intval( $part_duration[1] ) * 60;
                 }
 
+                // hours
                 if ( isset( $part_duration[2]) ) {
-                    $duration += intval( $part_duration[2] ) * 60;
+                    $duration += intval( $part_duration[2] ) * 3600;
                 }
 
             }

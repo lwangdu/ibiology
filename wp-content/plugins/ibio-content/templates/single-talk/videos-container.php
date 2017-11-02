@@ -56,6 +56,7 @@ if ( is_array( $videos ) ) {
     if ( $num_parts > 1 ){
       /* multi-part talk */
       echo '<header>Videos in this Talk</header>';
+
       $tabs = '<ul class="videos-nav">';
       for( $i = 1 ; $i < $counter ; $i++ ){
         $title =  $titles[ $i ];
@@ -67,6 +68,9 @@ if ( is_array( $videos ) ) {
       }
       $tabs .= "</ul>";
       echo $tabs;
+
+      ibio_talk_speakers_list();
+
       global $post;
 
       $total_duration = get_post_meta( $post->ID, 'total_duration', true );
@@ -74,8 +78,10 @@ if ( is_array( $videos ) ) {
 
     } else {
       /* single part talk */
-       echo '<header>This Talk</header>';  
-       
+        echo '<header>This Talk</header>';
+
+        ibio_talk_speakers_list();
+
        $this_talk = get_queried_object();
        
        $audience_list = wp_get_post_terms( $this_talk->ID, 'audience' );
@@ -83,7 +89,9 @@ if ( is_array( $videos ) ) {
        echo ibio_display_audiences( $audience_list );
 
     }
-    
+
+
+
     $translations = get_field( 'talks_in_other_languages' );
     $languages = '';
     if ( is_array( $translations ) ) {
@@ -110,9 +118,10 @@ if ( is_array( $videos ) ) {
     echo $languages;
     
     echo '<div class="row">';
+    $primary_related_category = get_field('related_talks');
+    $primary_playlist = get_field( 'primary_playlist' );
+
     if ( $num_parts == 1 ){
-        $primary_related_category = get_field('related_talks');
-        $primary_playlist = get_field( 'primary_playlist' );
         if ( $primary_playlist ) {
             ibio_get_template_part( 'single-talk/related-playlist', 'sidebar');
         } else {
@@ -121,13 +130,16 @@ if ( is_array( $videos ) ) {
         }
 
     } else {
-        echo '<div class="row">';
-        ibio_get_template_part( 'shared/primary-related-category', 'link' );
-        echo '</div>';
+        if ( $primary_related_category ) {
+            ibio_get_template_part('shared/primary-related-category', 'link');
+        } else {
+            ibio_get_template_part('shared/primary-related-playlist', 'link');
+        }
+
     }
 
     echo '</div>';
     
     echo '</div>';     
   echo '</div></section>';
-} 
+}

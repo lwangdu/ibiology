@@ -8,7 +8,7 @@ global $post;
 $resources = get_field( 'related_resources' );
 
 if ( $resources ) {
-	echo '<section class="related-resources row expandable"><h3>Related Resources</h3>';
+	echo '<section class="related-resources row"><h3>Related Resources</h3>';
 	echo $resources;
 	echo '</section>';
 }
