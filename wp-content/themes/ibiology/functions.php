@@ -271,17 +271,17 @@ function ibio_index_facet_duration( $params, $class ){
 
     $duration = $params['facet_value'];
 
-    if ($duration < 15) {
+    if ($duration < ( 15 * 60)) {
         $params[ 'facet_value'] = '15';
-        $params[ 'facet_display_value'] = "under 15 minutes";
+        $params[ 'facet_display_value'] = "0 - 15 minutes";
 
-    } else if ( $duration < 30 ) {
+    } else if ( $duration < ( 30 * 60) ) {
         $params[ 'facet_value'] = '30';
-        $params[ 'facet_display_value'] = "15-30 minutes";
+        $params[ 'facet_display_value'] = "15 - 30 minutes";
 
     } else {
         $params[ 'facet_value'] = '60';
-        $params[ 'facet_display_value'] = "Over 30 minutes";
+        $params[ 'facet_display_value'] = "30+ minutes";
     }
 
     return $params;
