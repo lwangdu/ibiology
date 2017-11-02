@@ -8,7 +8,7 @@ if ( !empty( $primary_playlist ) ){
 	$url = get_post_permalink( $primary_playlist) ;
 
     echo "<div class='related-items'><h3 class='widgettitle'><a href='$url'>Playlist: {$primary_playlist->post_title}</a></h3>";
-    ibio_talks_playlist( $primary_playlist, 4, null, $post->ID, 'filmstrip');
+    ibio_talks_playlist( $primary_playlist, 4, null, $post->ID, 'filmstrip', 'menu_order');
     //echo "<a href='$url' class='more-link'>All Talks in {$primary_playlist->post_title}</a>";
     echo '</div>';
 

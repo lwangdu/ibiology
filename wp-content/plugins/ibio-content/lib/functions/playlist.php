@@ -42,12 +42,19 @@ function ibio_playlist_items($playlist, $connected_type='playlist_to_talks', $au
 
 }
 
+/*
+
+
+    @param: $orderby = 'rand', 'next', 'menu_order'
+
+*/
+
 function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, $current_talk = 0, $style='grid', $orderby=''){
 
 
-    if ( $orderby == 'menu_order' || $orderby == 'rand') {}
-
     $start = $current_talk;
+
+    if ($orderby == 'rand') $start = 0;
 
     if ( !$playlist ){
         $playlist = get_queried_object();
@@ -55,9 +62,10 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
     }
 
 
-    $talks = ibio_playlist_items( $playlist, 'playlist_to_talks',  $audience);
+    $talks = ibio_playlist_items( $playlist, 'playlist_to_talks',  $audience, $orderby);
 
     $skipped_talks = array();
+    $prev_tak = null;
 
     if ( $talks->have_posts( ) ) {
         $counter = 0;
@@ -65,15 +73,22 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
         foreach($talks->posts as $t){
             if ( $maxitems > 0 && $counter >= $maxitems) break;
             // should we start displaying items?
+            global $post;
             if ( $start > 0 && $t->ID != $start ) {
                 $skipped_talks[] = $t; // save them just in case we have to show some of the beginning talks.
+                $prev_talk = $t;
                 continue;
             } else if ( $start > 0 && $t->ID == $start ) {
                 $start = 0;
-                continue;
+                if ($orderby === 'menu_order' ){
+                    $post = $prev_talk; // show a link to the previous post.
+                } else {
+                    continue;
+                }
+
+            } else {
+                $post = $t;
             }
-            global $post;
-            $post = $t;
             setup_postdata($post);
             get_template_part( 'parts/list-talk');
             $counter++;
