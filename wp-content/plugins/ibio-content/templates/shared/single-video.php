@@ -33,7 +33,7 @@ if ( is_array( $subtitle_downloads ) ){
 if ( $download_link || $subtitles ){
 	$download_label = 'Download: ' ;
 } else {
-	$download_lael = '';
+	$download_label = '';
 }
 
 echo "<div class='single-video part-$counter'>";
@@ -44,9 +44,10 @@ if ( $num_parts > 1) {
 echo '<div class="content">';
 
 $embed = wp_oembed_get( $video_url , array( 'width' => 800 ) );
+$vid_id = " id='vtframe-$counter'";
 
 // attach the showinfo parameter to the oembed.      
-$embed = preg_replace( '/src="(.+)oembed"/', 'src="$1oembed&showinfo=0"', $embed );
+$embed = preg_replace( '/src="(.+)oembed"/', 'src="$1oembed&showinfo=0" '.$vid_id, $embed );
 
 if ( $embed == false ){
 	$embed = '<div class="empty-video">We were unable to retrieve the video</div>';

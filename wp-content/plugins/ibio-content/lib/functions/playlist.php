@@ -2,7 +2,7 @@
 
 /* Get the items on a playlist */
 
-function ibio_playlist_items($playlist, $connected_type='playlist_to_talks', $audience=null ) {
+function ibio_playlist_items($playlist, $connected_type='playlist_to_talks', $audience=null, $orderby='rand' ) {
 
     $args = array(
         'post_type' => 'ibiology_talk',
@@ -10,7 +10,7 @@ function ibio_playlist_items($playlist, $connected_type='playlist_to_talks', $au
         'connected_items' => $playlist,
         'post_status' => 'publish',
         'nopaging' => true,
-        //'orderby' => 'random'
+        'orderby' => 'rand'
     );
 
 

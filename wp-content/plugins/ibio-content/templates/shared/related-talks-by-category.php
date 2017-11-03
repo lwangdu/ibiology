@@ -12,11 +12,12 @@ if ( !empty( $related_category ) ){
 	//var_dump( $talk->ID );
 	
 	$related_talks = new WP_Query( array (
-			'post_type' => IbioTalk::$post_type,
-			'cat'       => $related_category,
-			'posts_per_page'  => 4,
-			'post__not_in'    => array( $talk->ID )
-		) );
+        'post_type' => IbioTalk::$post_type,
+        'cat'       => $related_category,
+        'posts_per_page'  => 4,
+        'post__not_in'    => array( $talk->ID ),
+        'orderby' => 'rand'
+    ) );
 		
 	if ( $related_talks->have_posts() ) {
 		$category_info = get_term( $related_category, 'category');

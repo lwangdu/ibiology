@@ -13,7 +13,8 @@ if ( !empty( $related_category ) ){
 			'post_type' => IbioTalk::$post_type,
 			'cat'       => $related_category,
 			'posts_per_page'  => 3,
-			'post__not_in'    => array( $talk->ID )
+			'post__not_in'    => array( $talk->ID ),
+            'orderby' => 'rand'
 		) );
 		
 	if ( $related_talks->have_posts() ) {

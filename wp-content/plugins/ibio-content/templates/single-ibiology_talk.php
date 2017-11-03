@@ -75,6 +75,13 @@ function ibio_talk_sidebar(){
   get_sidebar( 'talk' );
 }
 
+// include the YouTube iFrame API code in the page.  We should probably do this w/ wp_enqueue_script but it's
+// not possible to include it with async defined yet.
+
+function ibio_youtube_api(){
+    echo '<script src="https://www.youtube.com/iframe_api" type="text/javascript"></script>';
+}
+
 /* -------------------  Page Rendering --------------------------*/
 
 // force content-sidebar layout
@@ -106,5 +113,6 @@ add_action('genesis_after_entry', 'ibio_related_content', 5);
 
 remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
 add_action( 'genesis_sidebar', 'ibio_talk_sidebar' );
+add_action( 'wp_footer', 'ibio_youtube_api');
 
 genesis();
