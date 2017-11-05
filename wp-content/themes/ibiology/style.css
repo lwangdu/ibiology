@@ -1468,6 +1468,9 @@ p.entry-meta {
   list-style-type: none;  
   padding: 10px;
   background-color: #fafafa;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight:700;
 }
 
 .speakers.grid-listing .content .entry{
