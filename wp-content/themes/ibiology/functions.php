@@ -122,7 +122,7 @@ function ibio_excerpt_more(){
 add_filter('the_excerpt', 'ibio_add_more_link', 1, 2);
 function ibio_add_more_link($excerpt){
     if ( !is_search()) {
-        return $excerpt . ' <a class="more-link" href="' . get_permalink(get_the_ID()) . '">Read More</a>';
+        return $excerpt . ' <a class="more-link" href="' . get_permalink(get_the_ID()) . '">Continue Reading </a>';
     } else {
         return $excerpt;
     }

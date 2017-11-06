@@ -6,16 +6,7 @@ $acf_fields_helper = new IBio_Fields_Display_Helper();
 global $speaker_talks;
 
 function ibio_speaker_info(){
-	global $speaker_talks;
-	
-	$posts = new WP_Query(array(
-			'post_type' => 'ibiology_talk',
-			'connected_type' => 'speaker_to_talk',
-			'connected_items' => get_queried_object(),
-  		'nopaging' => true
-		));
-	$speaker_talks = $posts->posts;
-	
+
 	// get the speaker affiliation and awards.
 	
  $affiliation = get_field( 'affiliation' );
@@ -31,7 +22,7 @@ function ibio_speaker_info(){
  
  if (!empty( $awards ) && is_array($awards) ){ 
 	$awards_list = get_field_object( 'awards' );
-	 echo '<span class="awards">Awards: ';
+	 echo '<span class="awards">';
 	 foreach ( $awards as $a ){
  			echo '<span>' . $awards_list['choices'][$a] . '</span> ';
  		}
@@ -46,26 +37,46 @@ function ibio_speaker_image(){
 	echo get_the_post_thumbnail($s->ID, 'square-thumb', array( 'class' => 'alignleft photo' ));
 }
 
+
 function ibio_talks_speaker(){
-	global $speaker_talks;
-	if (!empty( $speaker_talks )){
-		global $post;	
-		echo "<section class='related-items narrow column alignright'><h2 class='widget-title'>Talks with this Speaker</h2>";
-		echo '<ul class="related-talks talks-list stack">';
-		foreach($speaker_talks as $post) {
-			setup_postdata($post);
-			get_template_part( 'parts/list-talk');
-		}
-		echo '</ul>';
-		wp_reset_query();
-		echo '</section>';
-	}
+    // re-using the loop from search gets us some extra stuff we have to remove.
+    remove_action('genesis_before_entry', 'ibio_speaker_image');
+    remove_action('genesis_entry_header', 'ibio_speaker_info', 12);
+    remove_action('genesis_after_entry', 'ibio_talks_speaker', 5);
+    remove_action( 'genesis_entry_header', 'genesis_do_post_title');
+    add_action('genesis_entry_header', 'ibio_talk_title_link');
 
+    $speaker_talks = new WP_Query(array(
+        'post_type' => 'ibiology_talk',
+        'connected_type' => 'speaker_to_talk',
+        'connected_items' => get_queried_object(),
+        'nopaging' => true
+    ));
+
+
+    if ( $speaker_talks->have_posts() ) {
+        echo "<section class='related-items'><h2>Talks with this Speaker</h2>";
+        while($speaker_talks->have_posts()) {
+            $speaker_talks->the_post();
+            ibio_get_template_part( "shared/talk", "with-excerpt");
+        }
+        echo '</section>';
+    }
+
+    wp_reset_query();
 }
-
 function ibio_speaker_body_class($classes){
 	$classes[] = 'speaker';
 	return $classes;
+}
+
+function ibio_talk_title_link(){
+    global $post;
+
+    $title_tag = sprintf( "<h3><a href='%s'>%s</a></h3>", get_the_permalink(), $post->post_title );
+
+    echo $title_tag;
+
 }
 
 /* -------------------  Page Rendering --------------------------*/
@@ -83,8 +94,8 @@ add_action('genesis_before_entry', 'ibio_speaker_image');
 add_action('genesis_entry_header', 'ibio_speaker_info', 12);
 //add_action('genesis_entry_content', 'ibio_speaker_details', 15);
 //add_action('genesis_entry_content', 'ibio_talks_speaker', 9);
-add_action('genesis_sidebar', 'ibio_talks_speaker', 9);
+add_action('genesis_after_entry', 'ibio_talks_speaker', 5);
 
-add_action('genesis_after_entry', 'ibio_related_content', 5);
+add_action('genesis_after_entry', 'ibio_related_content', 15);
 
 genesis();

@@ -1276,7 +1276,7 @@ section.videos .videos-nav li figure img,
 	max-width: 300px;
 }
 
-.search-results ul.videos-list{
+.entry-content ul.videos-list{
 	display: flex;
 	justify-content: flex-start;
 	flex-flow: row nowrap;	
@@ -1285,7 +1285,7 @@ section.videos .videos-nav li figure img,
 	margin: 0;
 }
 
-.search-results ul.videos-list li{
+.entry-content ul.videos-list li{
 	flex: 1 1 auto;
 	width: 100px;
 	

@@ -32,7 +32,7 @@ function ibio_talks_info(){
 }
 
 function ibio_lecture_header(){
-  echo "<h2>Session Overview</h2>";
+  echo "<h2>Overview</h2>";
 }
 
 function ibio_talks_videos(){
@@ -96,8 +96,8 @@ function ibio_talk_sidebar(){
 
 /* -------------------  Page Rendering --------------------------*/
 
-// force content-sidebar layout
-add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
+// force content-sidebar layout - comment out to enable control at the post type or post level
+//add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
 
 // move the breadcrumbs
 //remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );

@@ -54,6 +54,7 @@ function ibio_related_content(){
         if (count($videos) > 1){
             if ( $primary_related_playlist ){
                 ibio_get_template_part('shared/primary', 'playlist');
+
             } else {
                 ibio_get_template_part( 'shared/related', 'talks-by-category' );
             }
