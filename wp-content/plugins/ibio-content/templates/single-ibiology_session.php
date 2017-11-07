@@ -22,7 +22,7 @@ function ibio_talks_info(){
 	
 	// put the speaker info in the page title
 	if ( ! empty ($talk_speaker) ) {
-	  echo '<div class="post-info">With: ';
+	  echo '<div class="entry-meta">With ';
   	foreach ($talk_speaker as $s){
 	  	$url = get_post_permalink($s->ID);
 		  echo "<a class='speaker-link' href='$url'>" . $s->post_title . "</a>";
@@ -62,12 +62,12 @@ function ibio_talks_videos(){
 		if ( !empty($question_content) ) {	
 		
 			if ( !empty( $question_content['questions'] ) ){
-				echo "<h4>Discussion Questions</h4><div class='questions'>{$question_content['questions']}</div>";
+				echo "<h3>Discussion Questions</h3><div class='questions'>{$question_content['questions']}</div>";
 			}
 
 
 			if ( !empty( $question_content['answers'] ) ){
-				echo "<h4>Answers</h4><div class='questions'>{$question_content['answers']}</div>";
+				echo "<h3>Answers</h3><div class='questions'>{$question_content['answers']}</div>";
 			}
 		
 		
@@ -108,7 +108,7 @@ function ibio_talk_sidebar(){
 add_action( 'genesis_header', 'ibio_setup_single');
 
 
-//add_action('genesis_entry_header', 'ibio_talks_info', 20);
+add_action('genesis_entry_header', 'ibio_talks_info', 12);
 add_action( 'genesis_entry_content', 'ibio_lecture_header', 6);
 add_action('genesis_entry_content', 'ibio_ed_resources', 11);
 add_action('genesis_entry_content', 'ibio_talks_videos', 12);

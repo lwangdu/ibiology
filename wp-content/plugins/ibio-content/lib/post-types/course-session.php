@@ -49,7 +49,8 @@ class IBioSession {
 			'editor',
 			'author',
 			'genesis-cpt-archives-settings',
-			'comments'
+			'comments',
+            'genesis-layouts'
 		);
 
 		register_post_type( self::$post_type,

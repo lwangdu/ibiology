@@ -59,6 +59,7 @@ function ibio_content_crumb($crumb, $args){
     // Talks
     switch ($current_post->post_type){
         case IBioTalk::$post_type:
+        case IBioSession::$post_type:
             // get the categories for the talk
             $cats = get_the_category( $current_post->ID );
 

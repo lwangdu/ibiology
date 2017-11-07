@@ -44,7 +44,8 @@ class IBioPlaylist {
 			'excerpt',
 			'editor',
 			'author',
-			'genesis-cpt-archives-settings'
+			'genesis-cpt-archives-settings',
+            'genesis-layouts'
 		);
 
 		register_post_type( self::$post_type,
