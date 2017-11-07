@@ -34,7 +34,8 @@ function ibio_speaker_info(){
 }
 
 function ibio_speaker_image(){
-	echo get_the_post_thumbnail($s->ID, 'square-thumb', array( 'class' => 'alignleft photo' ));
+    global $post;
+	echo get_the_post_thumbnail($post->ID, 'square-thumb', array( 'class' => 'alignleft photo' ));
 }
 
 
@@ -42,7 +43,7 @@ function ibio_talks_for_speaker(){
     // re-using the loop from search gets us some extra stuff we have to remove.
     remove_action('genesis_before_entry', 'ibio_speaker_image');
     remove_action('genesis_entry_header', 'ibio_speaker_info', 12);
-    remove_action('genesis_after_entry', 'ibio_talks_speaker', 5);
+    remove_action('genesis_after_entry', 'ibio_talks_for_speaker', 5);
     remove_action( 'genesis_entry_header', 'genesis_do_post_title');
     add_action('genesis_entry_header', 'ibio_talk_title_link');
 
@@ -93,7 +94,6 @@ add_action( 'genesis_header', 'ibio_setup_single');
 add_action('genesis_before_entry', 'ibio_speaker_image');
 add_action('genesis_entry_header', 'ibio_speaker_info', 12);
 //add_action('genesis_entry_content', 'ibio_speaker_details', 15);
-//add_action('genesis_entry_content', 'ibio_talks_speaker', 9);
 add_action('genesis_after_entry', 'ibio_talks_for_speaker', 5);
 
 add_action('genesis_after_entry', 'ibio_related_content', 15);
