@@ -677,7 +677,6 @@ th:first-child {
 }
 
 .header-image .site-title > a {
-	background-position: center !important;
 	background-size: contain !important;
 	float: left;
 	min-height: 110px;
@@ -718,7 +717,7 @@ th:first-child {
 
 .site-header .search-form {
 	float: right;
-	margin: 12px auto 0;
+	margin: 20px auto 0;
 }
 
 .post-password-form input[type="submit"],
@@ -1108,7 +1107,7 @@ section.videos .single-video.active{
 	display:block;
 }
 
-.single-video .footer{
+section.videos .single-video .footer{
 	clear:both;
 	height: 35px;
 	border-top: 1px solid #999;
@@ -1117,7 +1116,7 @@ section.videos .single-video.active{
 	font-size: 90%;
 }
 
-.single-video .footer span{
+section.videos .single-video .footer span{
 	font-weight: 400;
 	padding-right: 20px;
 }
@@ -1183,10 +1182,6 @@ section.videos .videos-nav li figure img,
 	overflow: scroll;
 	background-color: #ffffee;
 	height: 400px;
-}
-
-.entry-content .single-video{
-	margin-bottom: 1.5rem;
 }
 
 /* ## Lists of Talks and other objects
@@ -1285,7 +1280,7 @@ section.videos .videos-nav li figure img,
 	max-width: 300px;
 }
 
-.entry-content ul.videos-list{
+.search-results ul.videos-list{
 	display: flex;
 	justify-content: flex-start;
 	flex-flow: row nowrap;	
@@ -1294,7 +1289,7 @@ section.videos .videos-nav li figure img,
 	margin: 0;
 }
 
-.entry-content ul.videos-list li{
+.search-results ul.videos-list li{
 	flex: 1 1 auto;
 	width: 100px;
 	
