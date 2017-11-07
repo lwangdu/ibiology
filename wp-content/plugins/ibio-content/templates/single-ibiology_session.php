@@ -86,10 +86,6 @@ function ibio_disucssion_questions(){
 	ibio_get_template_part( 'shared/qa', 'talk' );
 }
 
-function ibio_talks_speaker(){
-	ibio_get_template_part( 'shared/related', 'speaker' );
-}
-
 function ibio_talk_sidebar(){
   get_sidebar( 'talk' );
 }

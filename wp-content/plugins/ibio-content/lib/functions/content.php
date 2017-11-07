@@ -147,3 +147,7 @@ function ibio_talk_speakers_list(){
     echo implode( ', ', $out);
     echo '</div>';
 }
+
+function ibio_talks_speaker(){
+    ibio_get_template_part( 'shared/related', 'speaker' );
+}
