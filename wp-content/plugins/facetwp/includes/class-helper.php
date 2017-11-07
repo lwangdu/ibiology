@@ -195,6 +195,7 @@ final class FacetWP_Helper
                 return $facet;
             }
         }
+
         return false;
     }
 
@@ -211,6 +212,7 @@ final class FacetWP_Helper
                 return $template;
             }
         }
+
         return false;
     }
 
@@ -294,6 +296,39 @@ final class FacetWP_Helper
 
 
     /**
+     * Sanitize SQL data
+     * @return mixed The sanitized value(s)
+     * @since 3.0.7
+     */
+    function sanitize( $input ) {
+        global $wpdb;
+
+        if ( is_array( $input ) ) {
+            $output = array();
+
+            foreach ( $input as $key => $val ) {
+                $output[ $key ] = $this->sanitize( $val );
+            }
+        }
+        else {
+            if ( $wpdb->dbh ) {
+                if ( $wpdb->use_mysqli ) {
+                    $output = mysqli_real_escape_string( $wpdb->dbh, $input );
+                }
+                else {
+                    $output = mysql_real_escape_string( $input, $wpdb->dbh );
+                }
+            }
+            else {
+                $output = addslashes( $input );
+            }
+        }
+
+        return $output;
+    }
+
+
+    /**
      * Does an active facet with the specified setting exist?
      * @return boolean
      * @since 1.4.0
@@ -304,6 +339,7 @@ final class FacetWP_Helper
                 return true;
             }
         }
+
         return false;
     }
 
@@ -339,6 +375,7 @@ final class FacetWP_Helper
                 $value = md5( $value );
             }
         }
+
         $value = str_replace( ' ', '-', strtolower( $value ) );
         return preg_replace( '/[-]{2,}/', '-', $value );
     }

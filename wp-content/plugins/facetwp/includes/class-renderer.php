@@ -21,8 +21,11 @@ class FacetWP_Renderer
     /* (array) HTTP parameters from the original page (URI, GET) */
     public $http_params;
 
-    /* (boolean) Whether search is active */
+    /* (boolean) Is search active? */
     public $is_search = false;
+
+    /* (boolean) Are we preloading? */
+    public $is_preload = false;
 
     /* (array) Data for the sort box dropdown */
     public $sort_options;
@@ -79,7 +82,7 @@ class FacetWP_Renderer
                     $f['selected_values'] = $this->http_params['url_vars'][ $name ];
                 }
 
-                $facet['selected_values'] = esc_sql( $f['selected_values'] );
+                $facet['selected_values'] = FWP()->helper->sanitize( $f['selected_values'] );
                 $this->facets[ $name ] = $facet;
             }
         }

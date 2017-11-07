@@ -113,6 +113,7 @@ class FacetWP_Ajax
 
         $is_main_query = ( $query->is_archive || $query->is_search || ( $query->is_main_query() && ! $query->is_singular ) );
         $is_main_query = ( wp_doing_ajax() && ! $this->is_refresh ) ? false : $is_main_query;
+        $is_main_query = ( $query->is_feed ) ? false : $is_main_query;
         $is_main_query = apply_filters( 'facetwp_is_main_query', $is_main_query, $query );
 
         if ( $is_main_query ) {

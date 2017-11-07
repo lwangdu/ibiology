@@ -3,6 +3,7 @@
 
 .htaccess
 .idea
+delete*
 custom/
 googlee1401ea114578e70.html
 googleplus.html
@@ -67,19 +68,11 @@ wp-content/db.php
 wp-content/ewww/
 wp-content/mysql.sql
 
+wp-content/plugins/aweber-wp/
 
 wp-content/plugins/force-regenerate-thumbnails/
-wp-content/plugins/post-type-switcher/
-wp-content/plugins/posts-to-posts/
-wp-content/plugins/query-monitor/
-wp-content/plugins/wordpress-importer/
-wp-content/plugins/wp-all-export-pro/
-wp-content/plugins/wp-all-import-pro/
-wp-content/plugins/wpai-acf-add-on/
-
-wp-content/plugins/aweber-wp/
+wp-content/plugins/codepress-admin-columns/
 wp-content/plugins/advanced-custom-fields-pro/
-wp-content/plugins/Post-Parents-master/
 wp-content/plugins/acf-theme-code-pro/
 wp-content/plugins/addthis/
 wp-content/plugins/akismet/
@@ -105,7 +98,14 @@ wp-content/plugins/html-on-pages/
 wp-content/plugins/hyperdb-1-1/
 wp-content/plugins/hyperdb/
 wp-content/plugins/old_s2member-pro/
+wp-content/plugins/page-links-to/
 wp-content/plugins/piklist/
+wp-content/plugins/post-type-switcher/
+wp-content/plugins/Post-Parents-master/
+wp-content/plugins/posts-to-posts/
+wp-content/plugins/query-monitor/
+wp-content/plugins/rewrite-rules-inspector/
+wp-content/plugins/searchwp/
 wp-content/plugins/real-time-find-and-replace/
 wp-content/plugins/relevanssi-premium-ibiology-widgets/
 wp-content/plugins/relevanssi-premium/
@@ -119,6 +119,10 @@ wp-content/plugins/simple-custom-css/
 wp-content/plugins/simple-social-icons/
 wp-content/plugins/tinymce-advanced/
 wp-content/plugins/widget-context/
+wp-content/plugins/wordpress-importer/
+wp-content/plugins/wp-all-export-pro/
+wp-content/plugins/wp-all-import-pro/
+wp-content/plugins/wpai-acf-add-on/
 wp-content/plugins/wordpress-seo/
 wp-content/plugins/wp-recaptcha/
 wp-content/plugins/wp-show-ids/
