@@ -1100,6 +1100,10 @@ section.videos .single-video:hover header{
 	opacity: 0;
 }
 
+.single-video.playing header{
+	display:none;
+}
+
 section.videos .single-video.active{
 	display:block;
 }
