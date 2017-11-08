@@ -44,32 +44,45 @@ jQuery(document).ready(function($) {
             });
         }
         $(this).toggleClass('isopen');
-    })
-
-    // Prep YouTube videos in iFrames on the single talk page
-    var playerCurrentlyPlaying = null;
-    window.onYouTubeIframeAPIReady = function () {
-        $('.single-video .content').each(function () {
-            var player_id = $(this).children('iframe').attr("id");
-            player = new YT.Player(player_id, {
-                events:
-                    {
-                        'onStateChange': function (event) {
-							console.log( event );
-                            if (event.data == YT.PlayerState.PLAYING) {
-                                if (playerCurrentlyPlaying != null &&
-                                    playerCurrentlyPlaying != player_id)
-                                    callPlayer(playerCurrentlyPlaying, 'pauseVideo');
-                                playerCurrentlyPlaying = player_id;
-
-                            }
-
-                        }
-                    }
-            });
-        });
-    };
+    });
 
 });
 
 
+// Prep YouTube videos in iFrames on the single talk page
+var playerCurrentlyPlaying = null;
+var players = new Array();
+
+window.onYouTubeIframeAPIReady = function(){
+    jQuery('.single-video .content').each(function () {
+        var player_id = jQuery(this).children('iframe').attr("id");
+        players[player_id] = new YT.Player(player_id, {
+           events:{
+               'onStateChange' : function(event){
+                   console.log(event.data);
+                   if (event.data == YT.PlayerState.PLAYING) {
+                       if (playerCurrentlyPlaying != null && playerCurrentlyPlaying != player_id) {
+                           jQuery('#'+playerCurrentlyPlaying).parents('.single-video').removeClass('playing');
+                           players[playerCurrentlyPlaying].pauseVideo();
+                       }
+                       playerCurrentlyPlaying = player_id;
+                       // hide the title so it doesn't display on top of the video
+                        jQuery('#'+player_id).parents('.single-video').addClass('playing');
+
+
+
+                   }
+               },
+               'onReady': function(){
+                   console.log( "REady with the video player #" + player_id)
+               }
+
+           }
+
+        });
+
+
+         console.log(jQuery(this).children('iframe').attr("id"));
+
+    });
+}
