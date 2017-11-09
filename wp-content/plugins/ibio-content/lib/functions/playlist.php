@@ -89,9 +89,20 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
             } else {
                 $post = $t;
             }
+
             setup_postdata($post);
             get_template_part( 'parts/list-talk');
             $counter++;
+        }
+        // loop back around to the beginning and show a few more talks
+        if ( $maxitems > $counter ){
+            $talks->rewind_posts();
+            while($talks->have_posts() &&  $maxitems > $counter ){
+                $talks->the_post();
+                get_template_part( 'parts/list-talk');
+                $counter++;
+
+            }
         }
         echo '</ul>';
     }
