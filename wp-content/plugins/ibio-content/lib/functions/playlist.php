@@ -74,6 +74,7 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
             if ( $maxitems > 0 && $counter >= $maxitems) break;
             // should we start displaying items?
             global $post;
+            $post = null;
             if ( $start > 0 && $t->ID != $start ) {
                 $skipped_talks[] = $t; // save them just in case we have to show some of the beginning talks.
                 $prev_talk = $t;
