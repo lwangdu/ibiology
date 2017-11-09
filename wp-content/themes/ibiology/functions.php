@@ -188,6 +188,7 @@ function ibio_prepare_query( $query ) {
 
 }
 
+/* ------------------------  Display Posts Section -----------------------------*/
 
 // for filtering display posts shortcode items
 
@@ -211,8 +212,29 @@ function ibio_display_posts_with_short_title( $output, $original_atts, $image, $
 add_filter( 'display_posts_shortcode_output', 'ibio_display_posts_with_short_title', 10, 9 );
 
 
+/**
+ * Exclude displayed posts from DPS query
+ *
+ */
+function ibio_dps_exclude_displayed_posts( $args ) {
+    global $_genesis_displayed_ids;
+    $args['post__not_in'] = !empty( $args['post__not_in'] ) ? array_merge( $args['post__not_in'], $_genesis_displayed_ids ) : $_genesis_displayed_ids;
+    return $args;
+}
+add_filter( 'display_posts_shortcode_args', 'ibio_dps_exclude_displayed_posts' );
+/**
+ * Add DPS posts to exclusion list
+ *
+ */
+function ibio_dps_add_posts_to_exclusion_list( $output ) {
+    global $_genesis_displayed_ids;
+    $_genesis_displayed_ids[] = get_the_ID();
+    return $output;
+}
+add_filter( 'display_posts_shortcode_output', 'ibio_dps_add_posts_to_exclusion_list' );
 
 
+/* ------------------------  FACETWP Section -----------------------------*/
 // FacetWP Sort options
 function ibio_facetwp_sort_options( $options, $params ) {
 
