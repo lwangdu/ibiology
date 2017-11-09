@@ -84,6 +84,8 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
                 if ($orderby === 'menu_order' ){
                     if ($prev_talk) {
                         $post = $prev_talk; // show a link to the previous post.
+                    } else {
+                        continue ;
                     }
                 } else {
                     continue;
