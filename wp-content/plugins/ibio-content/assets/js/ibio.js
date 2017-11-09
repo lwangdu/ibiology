@@ -1,3 +1,9 @@
+
+// Prep YouTube videos in iFrames on the single talk page
+var playerCurrentlyPlaying = null;
+var players = new Array();
+
+
 jQuery(document).ready(function($) {
 
     //find the selected part and make it active.
@@ -13,6 +19,10 @@ jQuery(document).ready(function($) {
         $('.videos .active').removeClass('active');
         $('.videos .' + $(this).data('select')).addClass('active');
         window.location.hash = '#' + $(this).data('select');
+        if ( playerCurrentlyPlaying ){
+            players[playerCurrentlyPlaying].pauseVideo();
+            playerCurrentlyPlaying = null;
+        }
     });
 
     $('.toggle').click(function (e) {
@@ -48,18 +58,12 @@ jQuery(document).ready(function($) {
 
 });
 
-
-// Prep YouTube videos in iFrames on the single talk page
-var playerCurrentlyPlaying = null;
-var players = new Array();
-
 window.onYouTubeIframeAPIReady = function(){
     jQuery('.single-video .content').each(function () {
         var player_id = jQuery(this).children('iframe').attr("id");
         players[player_id] = new YT.Player(player_id, {
            events:{
                'onStateChange' : function(event){
-                   console.log(event.data);
                    if (event.data == YT.PlayerState.PLAYING) {
                        if (playerCurrentlyPlaying != null && playerCurrentlyPlaying != player_id) {
                            jQuery('#'+playerCurrentlyPlaying).parents('.single-video').removeClass('playing');
@@ -74,15 +78,13 @@ window.onYouTubeIframeAPIReady = function(){
                    }
                },
                'onReady': function(){
-                   console.log( "REady with the video player #" + player_id)
+
                }
 
            }
 
         });
 
-
-         console.log(jQuery(this).children('iframe').attr("id"));
 
     });
 }
