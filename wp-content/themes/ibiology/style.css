@@ -1114,12 +1114,9 @@ section.videos .single-video .footer{
 	margin-top: 10px;
 	padding-left: 20px;
 	font-size: 90%;
+	position: relative;
 }
 
-section.videos .single-video .footer span{
-	font-weight: 400;
-	padding-right: 20px;
-}
 
 section.videos .videos-info{
 	min-width: 250px;
@@ -1174,14 +1171,6 @@ section.videos .videos-nav li figure img,
 
 .videos-nav .active{
 	color: #fff;
-}
-
-
-
-.video-part-transcript{
-	overflow: scroll;
-	background-color: #ffffee;
-	height: 400px;
 }
 
 /* ## Lists of Talks and other objects
@@ -1851,6 +1840,154 @@ ul.audiences{
 .embed-responsive-4by3 {
 	padding-bottom: 75%;
 }
+
+
+/* Navigation controls for single videos */
+.controls .nav {
+	padding-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+}
+.controls  .nav > li {
+	position: relative;
+	display: block;
+	padding: 0 8px;
+}
+.controls  .nav > li > a {
+	position: relative;
+	display: block;
+
+}
+
+.controls a.download::after{
+	font-family: "FontAwesome";
+	content: '\f019';
+	padding-left: 5px;
+
+}
+
+.controls .dropdown-toggle .caret::after{
+	font-family: "FontAwesome";
+	content: '\f0da';
+	padding-left: 5px;
+	text-decoration:none;
+	width: 20px;
+}
+
+.controls .open .dropdown-toggle .caret::after{
+	font-family: "FontAwesome";
+	content: '\f0d7';
+	padding-left: 5px;
+	text-decoration:none;
+	width: 20px;
+}
+
+.nav-tabs > li {
+	float: left;
+	margin-bottom: -1px;
+}
+
+.tab-content > .tab-pane {
+	display: none;
+	height: 400px;
+	background-color: #fefefe;
+	color: #ccc;
+	overflow: scroll;
+	position: absolute;
+	top: 40px;
+}
+
+
+.tab-content > .active {
+	display: block;
+}
+
+
+.nav-tabs .dropdown-menu {
+	margin-top: -1px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+/* Dropdown Menu */
+.dropdown {
+	position: relative;
+}
+.dropdown-toggle:focus {
+	outline: 0;
+}
+.dropdown-menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	display: none;
+	float: left;
+	min-width: 160px;
+	padding: 5px 0;
+	margin: 2px 0 0;
+	font-size: 14px;
+	text-align: left;
+	list-style: none;
+	background-color: #fff;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0, 0, 0, .15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.dropdown-menu.pull-right {
+	right: 0;
+	left: auto;
+}
+.dropdown-menu .divider {
+	height: 1px;
+	margin: 9px 0;
+	overflow: hidden;
+	background-color: #e5e5e5;
+}
+.dropdown-menu > li > a {
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.42857143;
+	color: #333;
+	white-space: nowrap;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+	color: #262626;
+	text-decoration: none;
+	background-color: #f5f5f5;
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+	color: #fff;
+	text-decoration: none;
+	background-color: #337ab7;
+	outline: 0;
+}
+.dropdown-menu > .disabled > a,
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
+	color: #777;
+}
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
+	text-decoration: none;
+	cursor: not-allowed;
+	background-color: transparent;
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.open > .dropdown-menu {
+	display: block;
+}
+
 
 /* # Media Queries
 ---------------------------------------------------------------------------------------------------- */

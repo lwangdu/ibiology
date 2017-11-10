@@ -26,9 +26,10 @@ jQuery(document).ready(function($) {
     });
 
     $('.toggle').click(function (e) {
-        //console.log( e.target );
         $("#" + $(e.target).data('toggle')).toggle(500);
     });
+
+    //$('[data-toggle="tab"]').tab();
 
     $('.expandable').each(function (i, v) {
 
