@@ -26,8 +26,26 @@ jQuery(document).ready(function($) {
     });
 
     $('.toggle').click(function (e) {
-        $("#" + $(e.target).data('toggle')).toggle(500);
+        e.preventDefault();
+        $("#" + $(e.target).data('toggle')).toggle(250, function(data) {
+            var api = $("#" + $(e.target).data('toggle') +' .scroll-pane').data('jsp');
+            if (api) api.reinitialise();
+            $(e.target).toggleClass('open');
+        });
+        console.log( e.target );
     });
+
+    $('.scroll-pane').jScrollPane({
+        showArrows: true,
+        horizontalGutter: 10,
+        contentWidth: 500
+    }).bind(
+        'mousewheel',
+        function(e)
+        {
+            e.preventDefault();
+        }
+    );;
 
     //$('[data-toggle="tab"]').tab();
 

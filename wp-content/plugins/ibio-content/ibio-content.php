@@ -90,7 +90,8 @@ class IBioContent{
 	/* Load display scripts */
 	function load_scripts(){
 		wp_enqueue_script('bootstrap', plugin_dir_url( __FILE__ ) . '/assets/js/bootstrap.js', array( 'jquery'), '1.0.0' );
-		wp_enqueue_script( 'ibio-app', plugin_dir_url( __FILE__ ) . '/assets/js/ibio.js', array( 'jquery' ), '1.0.0' );
+        wp_enqueue_script('ibio-plugins', plugin_dir_url( __FILE__ ) . '/assets/js/plugins.js', array( 'jquery'), '1.0.0' );
+        wp_enqueue_script( 'ibio-app', plugin_dir_url( __FILE__ ) . '/assets/js/ibio.js', array( 'jquery' ), '1.0.0' );
 		//wp_enqueue_style('bootstrap', plugin_dir_url( __FILE__ ) . '/assets/css/bootstrap.css' ); 
 	}
 	

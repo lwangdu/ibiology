@@ -19,6 +19,8 @@ $size = isset( $v[ 'download_size' ] ) ?  '<span class="size">' . esc_attr( $v[ 
 // feature tabs.
 $feature_tabs = array();
 
+$helptext = 'title="Right-click to save media file directly."';
+
 $length = isset( $v[ 'video_length' ] ) ?  '<span class="length">Duration: ' . esc_attr( $v[ 'video_length' ] ) . '</span>' : '';
 if ( !empty($length) ) {
     $feature_tabs['duration'] = array(
@@ -29,7 +31,7 @@ if ( !empty($length) ) {
     );
 }
 
-$download_link = !empty($download) ? "<span class='video-part-download'><a href='$download' target='_blank' class='download'>Hi-Res</a></span>" : '';
+$download_link = !empty($download) ? "<span class='video-part-download'><a href='$download' target='_blank' download class='download' $helptext>Hi-Res</a></span>" : '';
 if ( !empty($download_link)){
     $feature_tabs['download'] = array(
         "tab_title" => null,
@@ -45,7 +47,7 @@ if ( is_array( $subtitle_downloads ) ){
 
     $subtitles = "<ul class='dropdown-menu'>";
     foreach ( $subtitle_downloads as $d ){
-        $subtitles .= "<li><a href='{$d['video_download_url']}' download  class='download' target='_blank'>{$d['language']}</a></li>";
+        $subtitles .= "<li><a href='{$d['video_download_url']}' download $helptext class='download' target='_blank'>{$d['language']}</a></li>";
     }
     $subtitles .= '</ul>';
 
@@ -57,7 +59,7 @@ if ( is_array( $subtitle_downloads ) ){
     );
 }
 
-$transcript = (isset( $v[ 'transcript' ] ) &&  strlen($v[ 'transcript' ]) > 1) ?   $v[ 'transcript' ] : '';
+$transcript = (isset( $v[ 'transcript' ] ) &&  strlen($v[ 'transcript' ]) > 1) ?   "<div class=\"scroll-pane\">{$v[ 'transcript' ]}</div>" : '';
 
 if ($transcript){
     $feature_tabs['transcript'] = array(
@@ -109,14 +111,18 @@ if ( !empty( $feature_tabs ) ) {
             $pane = '';
         } else if ( $tab['tab_style'] == 'dropdown'){
             $button =  "<li role=\"presentation\" class=\"dropdown\">";
-            $button .= "<a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\"> {$tab['tab_title']} <span class=\"caret\"></span></a>";
+            $button .= "<a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\"> {$tab['tab_title']}</a>";
             $button .= $tab['tab_content'];
             $button .= "</li>";
             $pane = '';
-
+        } else if ( $tab['tab_style'] == 'toggle'){
+            $button =  "<li role=\"presentation\" class=\"dropdown\">";
+            $button .= "<a class=\"dropdown-toggle toggle\" data-toggle=\"{$tab['target']}\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\"> {$tab['tab_title']}</a>";
+            $button .= '</li>';
+            $pane = "<div id=\"{$tab['target']}\" class=\"tab-pane\" tabindex=\"-1\" >{$tab['tab_content']}</div>";
         } else {
-            $button = "<li class=\"{$tab['tab_style']} $key \"><a href=\"#{$tab['target']}\" data-toggle=\"tab\">{$tab['tab_title']}<span class=\"caret\"></span></a></li>";
-            $pane = "<div id=\"{$tab['target']}\" class=\"tab-pane\">{$tab['tab_content']}</div>";
+            $button = "<li class=\"{$tab['tab_style']} $key \"><a href=\"#\" data-target='{$tab['target']}'>{$tab['tab_title']}</a></li>";
+            $pane = "<div id=\"{$tab['target']}\" class=\"tab-pane\" tabindex=\"-1\" >{$tab['tab_content']}</div>";
         }
 
         $tab_nav .= $button;
