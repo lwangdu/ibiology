@@ -425,7 +425,8 @@ textarea {
 	border: 1px solid #ddd;
 	color: #333;
 	font-weight: 400;
-	padding: 20px;
+	padding: 8px 10px;
+	padding: 8px 10px;
 	width: 100%;
 }
 
@@ -736,6 +737,14 @@ th:first-child {
 	width: 1px;
 }
 
+.widget.search label{
+	display: block;
+	padding-left:20px;
+}
+
+.widget.search label input[type="checkbox"]{
+	margin-right: 8px;
+}
 
 /* Structure & Layout
 ---------------------------------------------------------------------------------------------------- */
@@ -1265,13 +1274,17 @@ section.videos .videos-nav li figure img,
 
 }
 
+.search-results .entry{
+	margin-bottom: 2rem;
+}
+
 .search-results .entry-content .post-image{
 	max-width: 300px;
 }
 
 .search-results ul.videos-list{
 	display: flex;
-	justify-content: flex-start;
+	justify-content: space-evenly;
 	flex-flow: row nowrap;	
 	
 	list-style-type: none;
@@ -1280,8 +1293,9 @@ section.videos .videos-nav li figure img,
 
 .search-results ul.videos-list li{
 	flex: 1 1 auto;
-	width: 100px;
-	
+	max-width: 31%;
+	line-height: 1.2rem;
+	font-size: 1.1rem;
 	list-style-type: none;
 }
 
