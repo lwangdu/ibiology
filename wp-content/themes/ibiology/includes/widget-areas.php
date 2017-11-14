@@ -15,7 +15,7 @@
 genesis_register_sidebar( array(
     'id'          => 'sidebar_talks_filter',
     'name'        => __( 'Talks Filter', 'ibiology' ),
-    'description' => __( 'Used on Explore page, maybe others?', 'ibiology' ),
+    'description' => __( 'Used on pages with the "explore" template', 'ibiology' ),
 ) );
 
 genesis_register_sidebar( array(

@@ -256,7 +256,7 @@ function ibio_facetwp_sort_options( $options, $params ) {
         )
 
     );
-    $options['title_asc'] = array(
+    /* $options['title_asc'] = array(
         'label' => 'By Title (A-Z)',
         'query_args' => array(
             'orderby' => 'meta_value', // sort by numerical custom field
@@ -271,7 +271,12 @@ function ibio_facetwp_sort_options( $options, $params ) {
             'meta_key' => 'short_title', // required when sorting by custom fields
             'order' => 'DESC', // descending order
         )
-    );
+    );*/
+
+    // hide the sort by title options
+    unset ( $options['title_asc'] );
+    unset ( $options['title_desc'] );
+
     $options['duration-s'] = array(
         'label' => 'Duration (shortest first)',
         'query_args' => array(
@@ -284,6 +289,8 @@ function ibio_facetwp_sort_options( $options, $params ) {
 }
 
 add_filter( 'facetwp_sort_options', 'ibio_facetwp_sort_options', 10, 2 );
+
+add_filter( 'facetwp_facet_dropdown_show_counts', '__return_false' );
 
 // change the indexing for facetwp so that it saves duration groups instead of numbers.
 add_filter( 'facetwp_index_row', 'ibio_index_facet_duration', 10, 2);

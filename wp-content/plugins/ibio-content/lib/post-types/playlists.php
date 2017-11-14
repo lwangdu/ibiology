@@ -190,6 +190,15 @@ class IBioPlaylist {
 
 		// do stuff that might trigger another Save
 
+        // check and update the hide_playlists site option.
+
+        global $wpdb;
+
+        $query = 'select post_id from %s where meta_key="hide_on_archive" and meta_value like "\%hide\%""';
+
+        $results = $wpdb->prepare( $query, $wpdb->postmeta );
+
+        
 
 		// re-hook this function
 		add_action( 'save_post', array( &$this, 'save_post' ), 10, 2  );
