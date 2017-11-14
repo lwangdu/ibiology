@@ -56,7 +56,7 @@ function ibio_talks_for_speaker(){
 
 
     if ( $speaker_talks->have_posts() ) {
-        echo "<section class='related-items'><h2>Talks with this Speaker</h2>";
+        echo "<section class='related-items speaker-talks'><h2>Talks with this Speaker</h2>";
         while($speaker_talks->have_posts()) {
             $speaker_talks->the_post();
             ibio_get_template_part( "shared/talk", "with-excerpt");

@@ -1274,15 +1274,18 @@ section.videos .videos-nav li figure img,
 
 }
 
-.search-results .entry{
+.search-results .entry,
+.speaker-talks .entry{
 	margin-bottom: 2rem;
 }
 
-.search-results .entry-content .post-image{
+.search-results .entry-content .post-image,
+.speaker-talks .entry-content .post-image {
 	max-width: 300px;
 }
 
-.search-results ul.videos-list{
+.search-results ul.videos-list,
+.speaker-talks ul.videos-list{
 	display: flex;
 	justify-content: space-evenly;
 	flex-flow: row nowrap;	
@@ -1291,7 +1294,8 @@ section.videos .videos-nav li figure img,
 	margin: 0;
 }
 
-.search-results ul.videos-list li{
+.search-results ul.videos-list li,
+.speaker-talks ul.videos-list li{
 	flex: 1 1 auto;
 	max-width: 31%;
 	line-height: 1.2rem;
@@ -1931,6 +1935,7 @@ ul.audiences{
 	border-radius: 4px;
 	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 	box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+	z-index: 10;
 
 }
 
