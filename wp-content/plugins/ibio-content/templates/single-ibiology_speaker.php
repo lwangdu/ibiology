@@ -96,6 +96,6 @@ add_action('genesis_entry_header', 'ibio_speaker_info', 12);
 //add_action('genesis_entry_content', 'ibio_speaker_details', 15);
 add_action('genesis_after_loop', 'ibio_talks_for_speaker', 5);
 
-//add_action('genesis_after_loop', 'ibio_related_content', 15);
+add_action('genesis_after_loop', 'ibio_related_content', 15);
 
 genesis();
