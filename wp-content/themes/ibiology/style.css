@@ -1098,6 +1098,7 @@ section.videos .single-video header{
 
 .single-video .content {
 	min-height: 200px;
+	float:none;
 }
 
 .single-video .title{

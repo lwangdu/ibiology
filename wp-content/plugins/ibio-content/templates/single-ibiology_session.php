@@ -55,13 +55,17 @@ function ibio_talks_videos(){
 
     $current_video['video'] = $v;
     $current_video['counter'] = $counter;
-	 	
+
+    echo '<section class="row video">';
+
     ibio_get_template_part( 'shared/single', 'video' );
 
-		$question_content = array_shift($qa);
-		if ( !empty($question_content) ) {	
-		
-			if ( !empty( $question_content['questions'] ) ){
+    echo "</section>";
+
+    $question_content = array_shift($qa);
+      if ( !empty($question_content) ) {
+          echo '<section class="row">';
+          if ( !empty( $question_content['questions'] ) ){
 				echo "<h3>Discussion Questions</h3><div class='questions'>{$question_content['questions']}</div>";
 			}
 
@@ -69,8 +73,8 @@ function ibio_talks_videos(){
 			if ( !empty( $question_content['answers'] ) ){
 				echo "<h3>Answers</h3><div class='questions'>{$question_content['answers']}</div>";
 			}
-		
-		
+            echo '</section>';
+
 	 		//ibio_get_template_part( 'shared/q-and-a' );
 	 	}
     $counter++;
