@@ -72,7 +72,7 @@ function ibio_related_content(){
 
         ibio_get_template_part( 'shared/related', 'talks-by-category' );
         ibio_get_template_part( 'shared/related', 'resources' );
-        ibio_get_template_part('shared/primary', 'playlist');
+        //ibio_get_template_part('shared/primary', 'playlist');
     }
 
 
