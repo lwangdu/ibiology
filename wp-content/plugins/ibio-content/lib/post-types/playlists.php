@@ -29,7 +29,7 @@ class IBioPlaylist {
 		add_filter('admin_body_class', array( &$this, 'admin_body_class' ) );
 		add_filter( 'enter_title_here', array( &$this,'default_title') );
 	
-		//add_action( 'save_post', array( &$this, 'save_post' ), 10, 2 );
+		add_action( 'save_post', array( &$this, 'save_post' ), 10, 2 );
 		//add_action( 'acf/save_post', array( &$this, 'acf_save_post' ), 10, 2 );
 
 		
@@ -194,11 +194,13 @@ class IBioPlaylist {
 
         global $wpdb;
 
-        $query = 'select post_id from %s where meta_key="hide_on_archive" and meta_value like "\%hide\%""';
+        $query = "select post_id from {$wpdb->postmeta} where meta_key='hide_on_archive' and meta_value like '%hide%'";
 
-        $results = $wpdb->prepare( $query, $wpdb->postmeta );
+        $results = $wpdb->get_col( $query );
 
-        
+        $success = update_option('hidden_playlists', $results, true);
+
+
 
 		// re-hook this function
 		add_action( 'save_post', array( &$this, 'save_post' ), 10, 2  );

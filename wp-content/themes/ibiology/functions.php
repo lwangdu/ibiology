@@ -169,6 +169,10 @@ function ibio_prepare_query( $query ) {
 		$query->query_vars['orderby'] = 'name';
 		$query->query_vars['order'] = 'ASC'; 
 		$query->query_vars['posts_per_page'] = -1;
+        $hidden = get_option( 'hidden_playlists');
+        if ( is_array($hidden) ) {
+            $query->query_vars['post__not_in'] = $hidden;
+        }
 		return;
 	}	else if ( is_post_type_archive(IBioSpeaker::$post_type) ){
 		$query->query_vars['orderby'] = 'meta_value';
@@ -176,7 +180,7 @@ function ibio_prepare_query( $query ) {
 		$query->query_vars['order'] = 'ASC'; 
 		$query->query_vars['posts_per_page'] = -1;
 		return;
-	}
+	} 
 	
 	if ( is_category() ) {
 		/* $query->query_vars['orderby'] = 'name';
