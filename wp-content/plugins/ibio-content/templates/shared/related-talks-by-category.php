@@ -5,7 +5,7 @@
 	
 $related_category = intval( get_field( 'related_talks' ) );
 
-if ( !empty( $related_category ) ){
+if ( $related_category  > 0 ){
 
 	$talk = get_queried_object();  
 	
