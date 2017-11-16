@@ -1757,19 +1757,28 @@ p.entry-meta {
 .facetwp-filters .button{
 	min-width: 4rem;
 	padding: 8px 15px;
+	margin-left: 20px;
 	background-color: #cecece;
 	color: #000;
 }
 
 .facetwp-filters button::before,
-.facetwp-filters button::after{
+.facetwp-filters button::after,
+.facetwp-filters .button::before,
+.facetwp-filters .button::after{
 	content: none;
 	position: inherit;
 
 }
 
-.facetwp-filters a.button:hover{
+.facetwp-filters a.button:hover {
 	text-decoration: none;
+}
+
+.facetwp-filters a.button:active {
+	text-decoration: none;
+	background-color: #0099d1;
+	color:#fff;
 }
 
 .facetwp-filters select{
