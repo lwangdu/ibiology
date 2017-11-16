@@ -1,7 +1,11 @@
 <?php
 
-global $acf_fields_helper;
-$acf_fields_helper = new IBio_Fields_Display_Helper();
+
+function ibio_session_body_class( $classes ){
+    $classes[] = 'single-session';
+    return $classes;
+
+}
 
 global $talk_speaker;
 
@@ -106,6 +110,8 @@ function ibio_talk_sidebar(){
 
 // clean up post info and post meta
 add_action( 'genesis_header', 'ibio_setup_single');
+
+add_filter( 'body_class', 'ibio_session_body_class');
 
 
 add_action('genesis_entry_header', 'ibio_talks_info', 12);

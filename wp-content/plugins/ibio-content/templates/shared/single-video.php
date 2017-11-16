@@ -110,19 +110,19 @@ if ( !empty( $feature_tabs ) ) {
             $button = "<li class=\"{$tab['tab_style']} $key\">{$tab['tab_content']}</li>";
             $pane = '';
         } else if ( $tab['tab_style'] == 'dropdown'){
-            $button =  "<li role=\"presentation\" class=\"dropdown\">";
+            $button =  "<li role=\"presentation\" class=\"dropdown {$key}\">";
             $button .= "<a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\"> {$tab['tab_title']}</a>";
             $button .= $tab['tab_content'];
             $button .= "</li>";
             $pane = '';
         } else if ( $tab['tab_style'] == 'toggle'){
-            $button =  "<li role=\"presentation\" class=\"dropdown\">";
+            $button =  "<li role=\"presentation\" class=\"dropdown {$key}\">";
             $button .= "<a class=\"dropdown-toggle toggle\" data-toggle=\"{$tab['target']}\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\"> {$tab['tab_title']}</a>";
             $button .= '</li>';
-            $pane = "<div id=\"{$tab['target']}\" class=\"tab-pane\" tabindex=\"-1\" >{$tab['tab_content']}</div>";
+            $pane = "<div id=\"{$tab['target']}\" class=\"tab-pane {$key}\" tabindex=\"-1\" >{$tab['tab_content']}</div>";
         } else {
             $button = "<li class=\"{$tab['tab_style']} $key \"><a href=\"#\" data-target='{$tab['target']}'>{$tab['tab_title']}</a></li>";
-            $pane = "<div id=\"{$tab['target']}\" class=\"tab-pane\" tabindex=\"-1\" >{$tab['tab_content']}</div>";
+            $pane = "<div id=\"{$tab['target']}\" class=\"tab-pane {$key}\" tabindex=\"-1\" >{$tab['tab_content']}</div>";
         }
 
         $tab_nav .= $button;

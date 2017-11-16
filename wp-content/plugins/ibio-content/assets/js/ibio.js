@@ -25,6 +25,8 @@ jQuery(document).ready(function($) {
         }
     });
 
+    $('.collapse').collapse();
+
     $('.toggle').click(function (e) {
         e.preventDefault();
         $("#" + $(e.target).data('toggle')).toggle(250, function(data) {

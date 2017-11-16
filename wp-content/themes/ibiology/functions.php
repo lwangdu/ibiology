@@ -180,7 +180,7 @@ function ibio_prepare_query( $query ) {
 		$query->query_vars['order'] = 'ASC'; 
 		$query->query_vars['posts_per_page'] = -1;
 		return;
-	} 
+	}
 	
 	if ( is_category() ) {
 		/* $query->query_vars['orderby'] = 'name';

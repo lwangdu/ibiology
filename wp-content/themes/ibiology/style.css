@@ -1117,7 +1117,7 @@ section.videos .single-video.active{
 	display:block;
 }
 
-section.videos .single-video .footer{
+.single-video .footer{
 	clear:both;
 	height: 35px;
 	border-top: 1px solid #999;
@@ -1180,6 +1180,32 @@ section.videos .videos-nav li figure img,
 }
 
 .videos-nav .active{
+	color: #fff;
+}
+
+/* Videos on Session Pages */
+
+.single-session section.video.row{
+	margin-top: 1rem;
+	margin-bottom: 2rem;
+}
+
+.single-session section.video.row header h2{
+	margin-bottom: .5rem;
+	font-size: 1.8rem;
+}
+
+.single-session .single-video .content {
+	width: 100%;
+	padding: 10px;
+	background-color: #222;
+
+}
+
+.single-session .single-video .footer{
+	margin-top:0;
+	border-top: 0;
+	background-color: #222;
 	color: #fff;
 }
 
@@ -1715,8 +1741,49 @@ p.entry-meta {
 
 
 .facetwp-filters {
-	background-color: #fefefe;
-	min-height: 40px;
+	background-color: #eeeeee;
+	padding: 1rem;
+}
+
+.facetwp-filters .row{
+	display: flex;
+	justify-content: center;
+	flex-wrap: nowrap;
+	align-items: center;
+	overflow:hidden;
+}
+
+.facetwp-filters button,
+.facetwp-filters .button{
+	min-width: 4rem;
+	padding: 8px 15px;
+	background-color: #cecece;
+	color: #000;
+}
+
+.facetwp-filters button::before,
+.facetwp-filters button::after{
+	content: none;
+	position: inherit;
+
+}
+
+.facetwp-filters a.button:hover{
+	text-decoration: none;
+}
+
+.facetwp-filters select{
+	width: auto;
+}
+
+.facetwp-filters  .facetwp-facet,
+.facetwp-filters .facetwp-sort{
+	display: inline-block;
+	margin:20px 5px 20px;
+}
+
+.facetwp-counter {
+	display: none;
 }
 
 /* # Icons
@@ -1955,9 +2022,13 @@ ul.audiences{
 	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 	box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 	z-index: 10;
-
 }
 
+
+.tab-pane .transcript{
+	font-size: 1rem;
+	line-height: 1.4rem;
+}
 
 .tab-content > .active {
 	display: block;
