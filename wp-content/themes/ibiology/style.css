@@ -2471,6 +2471,15 @@ ul.audiences{
 	
 	}
 
+	.filmstrip .item, ul.filmstrip{
+		flex-wrap:wrap;
+		justify-items: space-between;
+	}
+
+	.filmstrip .item, ul.filmstrip li{
+		flex: 0 0 48%;
+	}
+
 }
 
 @media only screen and (max-width: 600px){
