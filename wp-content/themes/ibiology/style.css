@@ -1877,8 +1877,18 @@ ul.audiences{
 	content: "\f040";
 }
 
+.dashicons-menu::before{
+	font-family: FontAwesome;
+	content: "\f0c9";
+}
 
-
+.dashicons-arrow-down::before{
+	font-family: FontAwesome;
+	content: "\f0d7";
+}
+.sub-menu-toggle.activated::before{
+	content: "\f0d8";
+}
 
 /* # Bootstrap Section
 ---------------------------------------------------------------------------------------------------- */
@@ -2296,7 +2306,12 @@ ul.audiences{
 	}
 
 	.sub-menu-toggle.activated:before {
-		content: "\f142";
+		font-family: "FontAwesome";
+		content: "\f0d8";
+	}
+
+	.genesis-nav-menu .sub-menu a{
+		background-color: #222;
 	}
 
 	.js .nav-primary .genesis-nav-menu .menu-item,
