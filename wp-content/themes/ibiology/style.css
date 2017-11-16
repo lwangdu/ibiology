@@ -2482,6 +2482,18 @@ ul.audiences{
 		font-size: 1rem;
 	}
 
+	.search-results ul.videos-list li, .speaker-talks ul.videos-list li{
+		font-size: .9rem;
+	}
+
+	.facetwp-filters .row {
+		flex-wrap: wrap;
+		padding-right: 1rem;
+	}
+
+	.facetwp-filters .facetwp-facet, .facetwp-filters .facetwp-sort {
+		margin-bottom: .5rem;
+	}
 
 
 }
