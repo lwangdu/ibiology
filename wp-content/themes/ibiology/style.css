@@ -1499,7 +1499,7 @@ p.entry-meta {
 }
 
 .grid-listing .content .entry, .facetwp-template .entry, ul.grid li{
-  flex: 0 0 190px;
+  flex: 0 1 185px;
   margin: 6px;
   box-shadow: 0 2px 0 0 rgba(128,128,128,.3);
   list-style-type: none;  
