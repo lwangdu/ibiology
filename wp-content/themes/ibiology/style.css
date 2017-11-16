@@ -634,7 +634,7 @@ th:first-child {
 }
 
 .site-header > .wrap {
-	padding: 10px 0;
+	padding: 10px 20px;
 }
 
 
@@ -777,7 +777,7 @@ th:first-child {
 
 .site-inner {
 	clear: both;
-	padding-top: 40px;
+	padding: 40px 20px;
 	word-wrap: break-word;
 }
 
@@ -2503,6 +2503,12 @@ ul.audiences{
 	.single-video .controls li.transcript{
 		display:none;
 	}
+	.facetwp-filters button, .facetwp-filters .button {
+		margin-left: auto;
+		padding: 4px 10px;
+
+	}
+
 
 }
 
