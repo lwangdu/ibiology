@@ -812,7 +812,7 @@ th:first-child {
 
 .content {
 	float: right;
-	width: 880px;
+	width: 840px;
 }
 
 .content-sidebar .content {
@@ -828,7 +828,7 @@ th:first-child {
 
 .sidebar-primary {
 	float: right;
-	width: 360px;
+	width: 320px;
 }
 
 .sidebar-content .sidebar-primary {
