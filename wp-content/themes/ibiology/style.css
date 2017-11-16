@@ -1784,8 +1784,13 @@ p.entry-meta {
 
 .facetwp-filters a.button:hover {
 	text-decoration: none;
+	background-color: #76893e;
+	color: #fff;
 }
-
+.facetwp-filters a.button:hover::after{
+	text-decoration: none;
+	color: #fff;
+}
 .facetwp-filters a.button.more-link:hover{
 	text-decoration: underline;
 }
