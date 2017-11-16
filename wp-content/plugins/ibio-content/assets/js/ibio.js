@@ -106,14 +106,14 @@ window.onYouTubeIframeAPIReady = function(){
 
         });
         var iframe = jQuery(this).children('iframe');
-        var width = iframe.width();
+        var width = 800;
         var height = iframe.height();
 
         var newwidth = jQuery('.single-video').width();
         var newheight = (newwidth * height) / width;
 
         iframe.width(newwidth).height(newheight);
-        
+
 
     });
 }
