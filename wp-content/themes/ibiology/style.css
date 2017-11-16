@@ -2400,8 +2400,13 @@ ul.audiences{
 		
 	section.videos.row .wrap{
 		display: block;
+		padding-bottom: 1rem;
 	}
-	
+
+	section.videos .videos-info{
+		margin-top: 1rem;
+	}
+
 	section.videos .videos-info ul.videos-nav{
 		display: flex;
 		flex-wrap: wrap;
@@ -2410,6 +2415,12 @@ ul.audiences{
 	section.videos .videos-info ul.videos-nav li{
 		flex: 1 1 33%;
 	}
+
+	section.videos .videos-info ul.videos-nav li figure{
+		float: none;
+		margin-right:0;
+	}
+
 }
 
 @media only screen and (max-width: 860px) {
@@ -2467,22 +2478,19 @@ ul.audiences{
 		width: 100%;
 	}
 
-	.single-video header {
-	
+	.single-video header h2.title {
+		font-size: 1rem;
 	}
 
-	.filmstrip .item, ul.filmstrip{
-		flex-wrap:wrap;
-		justify-items: space-between;
-	}
 
-	.filmstrip .item, ul.filmstrip li{
-		flex: 0 0 48%;
-	}
 
 }
 
 @media only screen and (max-width: 600px){
+
+	.single-video .controls li.transcript{
+		display:none;
+	}
 
 }
 
