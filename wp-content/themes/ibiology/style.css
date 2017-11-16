@@ -1983,7 +1983,7 @@ ul.audiences{
 	text-decoration: none;
 }
 
-.controls .dropdown-toggle::after{
+ .dropdown-toggle::after{
 	font-family: "FontAwesome";
 	content: '\f0da';
 	padding-left: 5px;
@@ -1991,8 +1991,8 @@ ul.audiences{
 	width: 20px;
 }
 
-.controls .open .dropdown-toggle::after,
-.controls .open.dropdown-toggle::after{
+ .open .dropdown-toggle::after,
+ .open.dropdown-toggle::after{
 	font-family: "FontAwesome";
 	content: '\f0d7';
 	padding-left: 5px;
