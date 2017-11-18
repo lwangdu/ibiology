@@ -1828,7 +1828,7 @@ ul.audiences{
 	list-style-type: none;
 	overflow: hidden;
 	display: inline;
-	margin:0;
+	margin:4px;
 }
 
 .audiences.key li.audience{
