@@ -280,7 +280,8 @@ class IBioTalk {
                     }
                 }
 
-
+                $part_duration = array_reverse (explode(":", $v['video_length']) );
+                
                 // seconds
                 $duration += $part_duration[0];
 
