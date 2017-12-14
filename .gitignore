@@ -17,6 +17,8 @@ short_clips/
 *.zip
 speakers/
 test-rewrite.php
+_notes/
+
 	
 # wpengine #
 ############
