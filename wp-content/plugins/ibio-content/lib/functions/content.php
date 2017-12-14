@@ -124,7 +124,7 @@ function ibio_display_audiences( $audiences ){
 }
 
 // output a list of speakers for a talk, with links to their respective pages.
-function ibio_talk_speakers_list(){
+function ibio_talk_speakers_list( $label = null ){
     global $talk_speaker;
     if ( empty ($talk_speaker)  ) return;
 

@@ -8,7 +8,7 @@ $counter 	= $current_video['counter'];
 $num_parts 	= $current_video['num_parts'];
 
 $title = isset( $v[ 'part_title' ] ) ?  esc_attr( $v[ 'part_title' ] ) : '';
-if ( $num_parts > 1 ){
+if ( $num_parts > 1 && is_singular( IBioTalk::$post_type) ){
 	$title = "Part $counter: " . $title;
 }
 $download = isset( $v[ 'video_download_url' ] ) ?  esc_url( $v[ 'video_download_url' ] ) : '';

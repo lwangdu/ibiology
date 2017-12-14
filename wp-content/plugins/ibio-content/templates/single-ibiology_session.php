@@ -27,11 +27,14 @@ function ibio_talks_info(){
 	// put the speaker info in the page title
 	if ( ! empty ($talk_speaker) ) {
 	  echo '<div class="entry-meta">With ';
-  	foreach ($talk_speaker as $s){
-	  	$url = get_post_permalink($s->ID);
-		  echo "<a class='speaker-link' href='$url'>" . $s->post_title . "</a>";
-  	}	
-  	echo '</div>';
+	  $out = array();
+	  foreach ( $talk_speaker as $t ){
+            $surl = get_post_permalink( $t->ID) ;
+            $out[] =  "<a href='$surl' class='speaker-link' title='{$t->post_title}'>{$t->post_title}</a>";
+        }
+
+        echo implode( ', ', $out);
+        echo '</div>';
 	}
 }
 
