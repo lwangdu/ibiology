@@ -68,8 +68,11 @@ function ibio_talks_videos(){
     ibio_get_template_part( 'shared/single', 'video' );
 
     echo "</section>";
-
-    $question_content = array_shift($qa);
+    if ( is_array( $qa ) ) {
+        $question_content = array_shift($qa);
+    } else {
+        $question_content = NULL;
+    }
       if ( !empty($question_content) ) {
           echo '<section class="row">';
           if ( !empty( $question_content['questions'] ) ){

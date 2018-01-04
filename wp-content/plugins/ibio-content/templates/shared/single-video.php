@@ -81,8 +81,12 @@ if ($transcript){
 
 echo "<div class='single-video part-$counter'>";
 
-if ( $num_parts > 1) {
-    echo "<header><h2 class='title'>$title</h2></header>";
+if ( $num_parts > 1 || is_singular( IBioSession::$post_type )) {
+    echo "<header><h2 class='title'>$title</h2>";
+    if (is_singular( IBioSession::$post_type ) && !empty( $v['video_description'])) {
+        echo "<div class='description'>{$v['video_description']}</div>";
+    }
+    echo "</header>";
 }
 echo '<div class="content">';
 
