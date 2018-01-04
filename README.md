@@ -1,9 +1,10 @@
-Welcome to the iBiology 2016 website.  This repository represents the theme and plugins that we created to implement an updated revision of the site.
+# Welcome to the iBiology website.  
+This repository represents the theme and plugins that we created to implement an updated revision of the site.
 
 The Theme:  [iBiology 2016](wp-content/themes/ibiology)
-The Plugin: [iBiology Content] (wp-content/plugins/ibio-content)
+The Plugin: [iBiology Content](wp-content/plugins/ibio-content)
 
-Other Important Plugins that provide functionslity:
+Other Important Plugins that provide functionality:
 
 Advanced Customer Fields (Pro) used for setting up the edit screens for talks, videos, etc.
 
