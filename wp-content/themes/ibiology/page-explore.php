@@ -29,7 +29,8 @@ function ibio_explore_loop(){
     echo '<ul class="grid">';
     while ($talks->have_posts()){
         $talks->the_post();
-        get_template_part( 'parts/list-talk');
+        //get_template_part( 'parts/list-talk');
+        ibio_get_template_part( 'shared/list' , 'talk');
     }
     echo '</ul>';
     ibio_facet_end();

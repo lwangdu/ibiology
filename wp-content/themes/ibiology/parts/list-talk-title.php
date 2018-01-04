@@ -1,6 +1,6 @@
 <?php
 
-// template part to display a single video in a list.  Must be insdie a loop
+// template part to display a single video in a list.  Must be inside a loop
 // to be able to use this.
 
 // Get the elements needed to display.

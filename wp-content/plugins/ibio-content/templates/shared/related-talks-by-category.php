@@ -26,7 +26,8 @@ if ( $related_category  > 0 ){
 		echo '<div class="filmstrip-wrapper"><ul class="related-by-category talks-list filmstrip">';
 		while ( $related_talks->have_posts() ) {
 			$related_talks->the_post();
-			get_template_part( 'parts/list-talk');
+			//get_template_part( 'parts/list-talk');
+            ibio_get_template_part( 'shared/list' , 'talk');
 		}
 		echo '</ul>';
 		wp_reset_query();

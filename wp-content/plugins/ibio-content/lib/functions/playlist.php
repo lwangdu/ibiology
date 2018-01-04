@@ -96,7 +96,8 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
             }
 
             setup_postdata($post);
-            get_template_part( 'parts/list-talk');
+            //get_template_part( 'parts/list-talk');
+            ibio_get_template_part( 'shared/list' , 'talk');
             $counter++;
         }
         // loop back around to the beginning and show a few more talks
@@ -104,7 +105,8 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
             $talks->rewind_posts();
             while($talks->have_posts() &&  $maxitems > $counter ){
                 $talks->the_post();
-                get_template_part( 'parts/list-talk');
+                //get_template_part( 'parts/list-talk');
+                ibio_get_template_part( 'shared/list' , 'talk');
                 $counter++;
 
             }
@@ -122,7 +124,8 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
             global $post;
             $post = $t;
             setup_postdata($post);
-            get_template_part( 'parts/list-talk');
+            //get_template_part( 'parts/list-talk');
+            ibio_get_template_part( 'shared/list' , 'talk');
             $counter++;
         }
         echo '</ul>';
