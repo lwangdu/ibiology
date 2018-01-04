@@ -37,9 +37,12 @@ Without the following, the site won't work correctly at all.
 ## How to set up your own development environment
 
 Clone this repository in what would be the main directory of a WordPress installation.  
-Download an archive of the site and unpack WordPress and contents of wp-content on top of the clone repository.
-Remove the mu-plugins directory from wp-content, as this contains stuff that's needed from our hosting provider and shouldn't affect a local install. 
-Load the live site database, doing what you need to, in order to make sure your local URL works.  (for example, add the siteurl and wordpress url to your wp-config.php file, or change the URL's in the database)
-Loading the live site database will provide you with the list of custom fields, as well as lots of content to use.
 
-NOTE: If you don't load the site database, then you can use [this file](wp-content/plugins/ibio-content/acf-fields.json) to import a more-or-less up to date list of custom fields. Make sure you are using Advanced Custom Fields PRO, or the field import won't work.
+Download an archive of the site and unpack WordPress and contents of wp-content on top of the clone repository.
+
+Remove the mu-plugins directory from wp-content, as this contains stuff that's needed from our hosting provider and shouldn't affect a local install. 
+
+Load the live site database, doing what you need to, in order to make sure your local URL works.  (for example, add the siteurl and wordpress url to your wp-config.php file, or change the URL's in the database)
+Loading the live site database will provide you with the list of custom fields, as well as lots of content to use. *NOTE*: If you don't load the site database, then you can use [this file](wp-content/plugins/ibio-content/acf-fields.json) to import a more-or-less up to date list of custom fields. Make sure you are using Advanced Custom Fields PRO, or the field import won't work.
+
+*NOTE 2:* If you add new plugins or themes in your local install, make sure you don't accidentally load them into the git repository, by adding them to the [.gitignore](.gitignore) file.  

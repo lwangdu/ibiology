@@ -2,7 +2,7 @@
 
   /* Functions related to content */
 
-//* content filters (move to its own place soon)
+//* content filters
 
 function ibio_content_archive_setup(){
 	remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs');
