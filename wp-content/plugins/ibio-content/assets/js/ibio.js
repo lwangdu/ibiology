@@ -117,3 +117,7 @@ window.onYouTubeIframeAPIReady = function(){
 
     });
 }
+
+//disable confirmation for file downloads in s2member
+var ws_plugin__s2member_skip_all_file_confirmations = true;
+
