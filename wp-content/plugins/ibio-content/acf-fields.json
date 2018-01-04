@@ -1,0 +1,1137 @@
+[
+    {
+        "key": "group_5a00d06448659",
+        "title": "Playlist Information",
+        "fields": [
+            {
+                "key": "field_5a00d07b30778",
+                "label": "Hide From Listing",
+                "name": "hide_on_archive",
+                "type": "checkbox",
+                "instructions": "Don't show this playlist in an archive.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "hide": "Hide This Playlist"
+                },
+                "allow_custom": 0,
+                "save_custom": 0,
+                "default_value": [],
+                "layout": "vertical",
+                "toggle": 0,
+                "return_format": "value"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "ibiology_playlist"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    },
+    {
+        "key": "group_58c194fb71566",
+        "title": "Speaker Information",
+        "fields": [
+            {
+                "key": "field_58c19508d6571",
+                "label": "First Name",
+                "name": "first_name",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_58c19521d6572",
+                "label": "Last Name",
+                "name": "last_name",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_58c1952ad6573",
+                "label": "Affiliation",
+                "name": "affiliation",
+                "type": "text",
+                "instructions": "Enter the instituion(s) with which this speaker is affiliated.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_58c197fc527b7",
+                "label": "Awards",
+                "name": "awards",
+                "type": "checkbox",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "breakthrough": "Breakthrough Prize",
+                    "gairdner": "Canada Gairdner Award",
+                    "hhmi": "HHMI",
+                    "lasker": "Lasker Award",
+                    "nas": "National Academy of Sciences",
+                    "national": "National Medal of Science",
+                    "nobel": "Nobel Prize",
+                    "royal": "Royal Society",
+                    "shaw": "Shaw Prize"
+                },
+                "allow_custom": 1,
+                "save_custom": 0,
+                "default_value": [],
+                "layout": "vertical",
+                "toggle": 0,
+                "return_format": "value"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "ibiology_speaker"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "acf_after_title",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    },
+    {
+        "key": "group_58af291798c20",
+        "title": "Information, Videos",
+        "fields": [
+            {
+                "key": "field_58af3539b75ad",
+                "label": "Short Title",
+                "name": "short_title",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_58af292e34186",
+                "label": "Date Recorded: Month",
+                "name": "date_recorded_month",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "00": "Select",
+                    "01": "January",
+                    "02": "February",
+                    "03": "March",
+                    "04": "April",
+                    "05": "May",
+                    "06": "June",
+                    "07": "July",
+                    "08": "August",
+                    "09": "September",
+                    "10": "October",
+                    "11": "November",
+                    "12": "December"
+                },
+                "default_value": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "ajax": 0,
+                "return_format": "value",
+                "placeholder": ""
+            },
+            {
+                "key": "field_58e66d0715a71",
+                "label": "Date Recorded: Year",
+                "name": "date_recorded_year",
+                "type": "select",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "0": "Select",
+                    "2018": "2018",
+                    "2017": "2017",
+                    "2016": "2016",
+                    "2015": "2015",
+                    "2014": "2014",
+                    "2013": "2013",
+                    "2012": "2012",
+                    "2011": "2011",
+                    "2010": "2010",
+                    "2009": "2009",
+                    "2008": "2008",
+                    "2007": "2007",
+                    "2006": "2006"
+                },
+                "default_value": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "ajax": 0,
+                "return_format": "value",
+                "placeholder": ""
+            },
+            {
+                "key": "field_58e7dcd00a394",
+                "label": "Language",
+                "name": "language",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "English": "English",
+                    "Chinese": "Chinese",
+                    "French": "French",
+                    "Italian": "Italian",
+                    "Japanese": "Japanese",
+                    "Korean": "Korean",
+                    "Portuguese": "Portuguese",
+                    "Russian": "Russian",
+                    "Spanish": "Spanish"
+                },
+                "default_value": [],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "ajax": 0,
+                "return_format": "value",
+                "placeholder": ""
+            },
+            {
+                "key": "field_58d1e481b4f9e",
+                "label": "Videos",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_58af29d434187",
+                "label": "Attached Videos",
+                "name": "videos",
+                "type": "repeater",
+                "instructions": "Add one or more videos to this talk.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "video-list",
+                    "id": ""
+                },
+                "collapsed": "",
+                "min": 1,
+                "max": 0,
+                "layout": "block",
+                "button_label": "Add Video",
+                "sub_fields": [
+                    {
+                        "key": "field_58c196b294530",
+                        "label": "Title",
+                        "name": "part_title",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_5a4e6935d4aeb",
+                        "label": "Video Description",
+                        "name": "video_description",
+                        "type": "textarea",
+                        "instructions": "Text area currently doesn't display.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "maxlength": "",
+                        "rows": "",
+                        "new_lines": ""
+                    },
+                    {
+                        "key": "field_58af2a1534188",
+                        "label": "Video URL",
+                        "name": "video_url",
+                        "type": "url",
+                        "instructions": "Please add only the URL to the video (not the full embed code).  This will allow us to resize the video to fit where we display it.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_58af2a4a34189",
+                        "label": "Length",
+                        "name": "video_length",
+                        "type": "text",
+                        "instructions": "Add the length as hours:minutes:seconds (e.g. 01:20:33)",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
+                    },
+                    {
+                        "key": "field_58af2b113418b",
+                        "label": "Video Download URL",
+                        "name": "video_download_url",
+                        "type": "url",
+                        "instructions": "A link to the original high-resolution file for download.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_58af2b423418c",
+                        "label": "Download Size",
+                        "name": "download_size",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "20",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_58af2a6d3418a",
+                        "label": "Transcript",
+                        "name": "transcript",
+                        "type": "textarea",
+                        "instructions": "Paste the full transcript text in here.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "new_lines": "wpautop",
+                        "maxlength": "",
+                        "placeholder": "",
+                        "rows": ""
+                    },
+                    {
+                        "key": "field_58ee8239c8b42",
+                        "label": "Transcript Download URL",
+                        "name": "transcript_download_url",
+                        "type": "url",
+                        "instructions": "Add a link to the .txt file for download.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_5914a14120dbf",
+                        "label": "Video Thumbnail",
+                        "name": "video_thumbnail",
+                        "type": "image",
+                        "instructions": "Each video should have a thumbnail.  A default one will be used if this is missing.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "preview_size": "thumbnail",
+                        "library": "all",
+                        "min_width": "",
+                        "min_height": "",
+                        "min_size": "",
+                        "max_width": "",
+                        "max_height": "",
+                        "max_size": "",
+                        "mime_types": ""
+                    },
+                    {
+                        "key": "field_5914a17420dc0",
+                        "label": "Download Subtitled Video",
+                        "name": "download_subtitled_video",
+                        "type": "repeater",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "collapsed": "",
+                        "min": 0,
+                        "max": 0,
+                        "layout": "table",
+                        "button_label": "Add Subtitled Video",
+                        "sub_fields": [
+                            {
+                                "key": "field_5914a19020dc1",
+                                "label": "Language",
+                                "name": "language",
+                                "type": "select",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "Chinese": "Chinese",
+                                    "English": "English",
+                                    "French": "French",
+                                    "Italian": "Italian",
+                                    "Japanese": "Japanese",
+                                    "Korean": "Korean",
+                                    "Portugese": "Portugese",
+                                    "Russian": "Russian",
+                                    "Spanish": "Spanish"
+                                },
+                                "default_value": [],
+                                "allow_null": 0,
+                                "multiple": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "return_format": "value",
+                                "placeholder": ""
+                            },
+                            {
+                                "key": "field_5914a1b520dc2",
+                                "label": "Video Download URL",
+                                "name": "video_download_url",
+                                "type": "url",
+                                "instructions": "A link to the downloadable video subtitled in this language.",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": ""
+                            }
+                        ]
+                    },
+                    {
+                        "key": "field_593996e6c80a4",
+                        "label": "Target Audience",
+                        "name": "target_audience",
+                        "type": "taxonomy",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "taxonomy": "audience",
+                        "field_type": "checkbox",
+                        "allow_null": 0,
+                        "add_term": 1,
+                        "save_terms": 0,
+                        "load_terms": 0,
+                        "return_format": "object",
+                        "multiple": 0
+                    }
+                ]
+            },
+            {
+                "key": "field_58c303bbe92da",
+                "label": "Other Languages",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_58e66ea4385ed",
+                "label": "Talk in other Languages",
+                "name": "talks_in_other_languages",
+                "type": "repeater",
+                "instructions": "For each version of the talk translated into another language, first create the talk and link it from here.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "field_58e66eae385ee",
+                "min": 0,
+                "max": 0,
+                "layout": "row",
+                "button_label": "Add Languages",
+                "sub_fields": [
+                    {
+                        "key": "field_58e66eae385ee",
+                        "label": "Language",
+                        "name": "language",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "Chinese": "Chinese",
+                            "English": "English",
+                            "Japanese": "Japanese",
+                            "Korean": "Korean",
+                            "Portugese": "Portugese",
+                            "Russian": "Russian",
+                            "Spanish": "Spanish"
+                        },
+                        "default_value": [],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "ui": 0,
+                        "ajax": 0,
+                        "return_format": "value",
+                        "placeholder": ""
+                    },
+                    {
+                        "key": "field_58e66eeb385ef",
+                        "label": "Link to the talk in other language",
+                        "name": "translated_talk",
+                        "type": "post_object",
+                        "instructions": "Link to the translated version of this talk.",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "post_type": [
+                            "ibiology_talk"
+                        ],
+                        "taxonomy": [],
+                        "allow_null": 0,
+                        "multiple": 0,
+                        "return_format": "object",
+                        "ui": 1
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "ibiology_talk"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "ibiology_session"
+                }
+            ]
+        ],
+        "menu_order": 1,
+        "position": "acf_after_title",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    },
+    {
+        "key": "group_58af2f93f3ed6",
+        "title": "Related Resources",
+        "fields": [
+            {
+                "key": "field_58af2ffc38ec7",
+                "label": "Related Resources",
+                "name": "related_resources",
+                "type": "wysiwyg",
+                "instructions": "Place any links, downloads, and bibliography here.  The content will automatically get a header of \"Related Resources\", but you can add your own headings inside the content.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 1,
+                "delay": 0
+            },
+            {
+                "key": "field_58af308b5a2a8",
+                "label": "Primary Topic for Related Talks",
+                "name": "related_talks",
+                "type": "taxonomy",
+                "instructions": "Choose a topic from which to pull related talks.  These will be displayed in reverse chronological order.  If you assign a talk to a playlist, the playlist will supercede the topic for \"related talks\" on a page.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "taxonomy": "category",
+                "field_type": "select",
+                "allow_null": 1,
+                "add_term": 0,
+                "save_terms": 0,
+                "load_terms": 0,
+                "return_format": "id",
+                "multiple": 0
+            },
+            {
+                "key": "field_596e60ae4dd93",
+                "label": "Primary Playlist",
+                "name": "primary_playlist",
+                "type": "post_object",
+                "instructions": "Show this playlist first when displaying related playlists.  Works for all post types.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "ibiology_playlist"
+                ],
+                "taxonomy": [],
+                "allow_null": 1,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "ibiology_talk"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "ibiology_speaker"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "ibiology_playlist"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "ibiology_session"
+                }
+            ]
+        ],
+        "menu_order": 1,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": "Add to speakers, talks, and playlists.  Includes links, and papers."
+    },
+    {
+        "key": "group_590b7bfb59653",
+        "title": "Assessments and Educator Resources",
+        "fields": [
+            {
+                "key": "field_5965236ed2d26",
+                "label": "Educator Resources",
+                "name": "",
+                "type": "tab",
+                "instructions": "This is a link to a page or PDF that contains information for people teaching this topic.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_596552de20fea",
+                "label": "Educator Resources Links",
+                "name": "educator_resources",
+                "type": "wysiwyg",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "all",
+                "toolbar": "basic",
+                "media_upload": 0,
+                "delay": 0
+            },
+            {
+                "key": "field_59653c633eea1",
+                "label": "Assessments\/Q&A",
+                "name": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_590b7c3c03e98",
+                "label": "Assessment Questions",
+                "name": "assessment_questions",
+                "type": "wysiwyg",
+                "instructions": "These will be displayed on talks, at the talks level.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 1,
+                "delay": 0
+            },
+            {
+                "key": "field_590b7c5003e99",
+                "label": "Answers",
+                "name": "assessment_answers",
+                "type": "wysiwyg",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 1,
+                "delay": 0
+            },
+            {
+                "key": "field_5977f1c05de4c",
+                "label": "Session Parts Q & A",
+                "name": "",
+                "type": "tab",
+                "instructions": "Use this when you are adding more than one section of questions and answers.  These will be displayed on flipped courses only.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0
+            },
+            {
+                "key": "field_5977f22d5de4d",
+                "label": "Questions and Answers List",
+                "name": "questions_answers_list",
+                "type": "repeater",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "",
+                "min": 0,
+                "max": 0,
+                "layout": "table",
+                "button_label": "",
+                "sub_fields": [
+                    {
+                        "key": "field_5977f24c5de4e",
+                        "label": "Part Number",
+                        "name": "part_number",
+                        "type": "number",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "min": "",
+                        "max": "",
+                        "step": ""
+                    },
+                    {
+                        "key": "field_5977f2735de4f",
+                        "label": "Questions",
+                        "name": "questions",
+                        "type": "wysiwyg",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "tabs": "all",
+                        "toolbar": "basic",
+                        "media_upload": 0,
+                        "delay": 0
+                    },
+                    {
+                        "key": "field_5977f2985de50",
+                        "label": "Answers",
+                        "name": "answers",
+                        "type": "wysiwyg",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "tabs": "all",
+                        "toolbar": "basic",
+                        "media_upload": 0,
+                        "delay": 0
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "ibiology_session"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "ibiology_talk"
+                }
+            ]
+        ],
+        "menu_order": 4,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": "Use when you want to provide an assement along with the talk or lesson.  You may put any HTML content into the questions and answers fields."
+    },
+    {
+        "key": "group_5944628623b00",
+        "title": "Migration Information",
+        "fields": [
+            {
+                "key": "field_594462b496063",
+                "label": "Original URL",
+                "name": "original_url",
+                "type": "url",
+                "instructions": "Where this content came from originally.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_594462cf96064",
+                "label": "Migration Status",
+                "name": "migration_status",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "New": "New",
+                    "In Progress": "In Progress",
+                    "Review": "Review",
+                    "Complete": "Complete"
+                },
+                "default_value": [
+                    "New"
+                ],
+                "allow_null": 0,
+                "multiple": 0,
+                "ui": 0,
+                "ajax": 0,
+                "return_format": "value",
+                "placeholder": ""
+            },
+            {
+                "key": "field_59efa83eb1061",
+                "label": "Parent Page",
+                "name": "parent_page",
+                "type": "post_object",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "page"
+                ],
+                "taxonomy": [],
+                "allow_null": 1,
+                "multiple": 0,
+                "return_format": "object",
+                "ui": 1
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "post"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "ibiology_talk"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "ibiology_session"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "ibiology_playlist"
+                }
+            ]
+        ],
+        "menu_order": 10,
+        "position": "side",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": 1,
+        "description": ""
+    }
+]
