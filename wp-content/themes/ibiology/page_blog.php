@@ -13,6 +13,8 @@
 
 //* Template Name: Blog
 
+remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );
+
 //* Adding text befoe the posts
 
 add_action('genesis_loop', 'genesis_standard_loop', 8);
