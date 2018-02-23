@@ -277,7 +277,7 @@ class IBioContent{
 
         $cat_link = get_site_url() . '/' . $primary_cat->slug . '/';
 
-        return $cat_link  . $post->post_name;
+        return $cat_link  . $post->post_name.'/';
 
     }
 }
