@@ -19,7 +19,7 @@ $size = isset( $v[ 'download_size' ] ) ?  '<span class="size">' . esc_attr( $v[ 
 // feature tabs.
 $feature_tabs = array();
 
-$helptext = 'title="Right-click to save media file directly."';
+$helptext = 'title="To download this video – on Firefox click and choose “save link as...."';
 
 $length = isset( $v[ 'video_length' ] ) ?  '<span class="length">Duration: ' . esc_attr( $v[ 'video_length' ] ) . '</span>' : '';
 if ( !empty($length) ) {
