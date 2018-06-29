@@ -72,7 +72,7 @@ class IBioSession {
 				'label'               => __( 'Sessions', 'ibiology' ),
 				'description'         => __( 'IBiology Flipped Course Session with one or more Videos.', 'ibiology' ),
 				'supports'						=> $supports,
-				'taxonomies'          => array( 'post_tag', 'category' ),
+				'taxonomies'          => array( 'post_tag' ),
 				'hierarchical'        => false,
 				'public'              => true,
 				'show_ui'             => true,
