@@ -2517,9 +2517,29 @@ ul.audiences{
 
 	}
 
+	section.videos .videos-info ul.videos-nav{
+		display:block;
+	}
+
+	section.videos .videos-info ul.videos-nav li figure{
+		float: left;
+		margin-right: 10px;
+	}
+
 
 }
 
+@media only screen and (max-width: 400px){
+	section.videos .videos-info ul.videos-nav li{
+		flex: 0 0 100%;
+	}
+
+	section.videos .videos-info ul.videos-nav li figure{
+		width: 100%;
+		height: auto;
+		float:none;
+	}
+}
 
 /*
  * CSS Styles that are needed by jScrollPane for it to operate correctly.
