@@ -95,8 +95,8 @@ if ( is_array( $videos ) ) {
     $translations = get_field( 'talks_in_other_languages' );
     $languages = '';
     if ( is_array( $translations ) ) {
-      $languages .= '<div class="row"><span class="toggle" data-toggle="translations">Watch in:</span>';
-      $languages .= '<ul class="translations">';
+      $languages .= '<div class="row"><span class="label" data-toggle="translations">Watch in:</span>';
+      $languages .= '<ul class="translations horizontal">';
       foreach( $translations as $t )  {
         $url = get_permalink( $t[ 'translated_talk'] );
         $languages .= "<li><a href='$url'>{$t['language']}</a></li>";

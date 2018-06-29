@@ -24,7 +24,9 @@ function ibio_speaker_info(){
 	$awards_list = get_field_object( 'awards' );
 	 echo '<span class="awards">';
 	 foreach ( $awards as $a ){
- 			echo '<span>' . $awards_list['choices'][$a] . '</span> ';
+	        if ( !empty( $awards_list[ 'choices' ][ $a ] ) ) {
+                echo '<span>' . $awards_list['choices'][$a] . '</span> ';
+            }
  		}
  	echo '</span>';
  }

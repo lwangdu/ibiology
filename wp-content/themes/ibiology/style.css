@@ -1151,6 +1151,13 @@ section.videos .videos-info .related-items{
 	padding: .75rem 8px;
 }
 
+
+section.videos .videos-info ul.horizontal{
+	display: inline-table;
+}
+
+
+
 section.videos .videos-nav li{
 	margin-bottom: 10px;
 	cursor: pointer;
@@ -2420,6 +2427,7 @@ ul.audiences{
 		float: none;
 		margin-right:0;
 	}
+
 
 }
 
