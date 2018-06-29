@@ -2490,6 +2490,10 @@ ul.audiences{
 		font-size: 1rem;
 	}
 
+	.single-session .single-video .footer {
+		padding-left: 0;
+	}
+
 	.search-results ul.videos-list li, .speaker-talks ul.videos-list li{
 		font-size: .9rem;
 	}
