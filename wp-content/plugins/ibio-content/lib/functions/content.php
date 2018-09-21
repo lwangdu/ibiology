@@ -93,7 +93,7 @@ function ibio_expandable_section( $content )
 function ibio_facet_start(){
     echo '<div class="facetwp-template"><div class="flex-row"> ';
     echo '<div class="count-summary left"> Showing &nbsp;' .  do_shortcode( '[facetwp counts="true"]' ) . ' &nbsp;talks.   </div>';
-    echo '<div> Per Page:  &nbsp;' . do_shortcode( '[facetwp per_page="true"]' ) ;
+    echo '<div> <div class="big"> Per Page:  &nbsp;' . do_shortcode( '[facetwp per_page="true"]' ) . '</div>' ;
     echo do_shortcode( '[facetwp pager="true"]' ) ;
     echo '</div></div>'; // toolbar
 
@@ -102,8 +102,9 @@ function ibio_facet_start(){
 
 function ibio_facet_end(){
     // pagination
+    echo '<div class="flex-row">';
     echo do_shortcode( '[facetwp pager="true"]' );
-    echo '</div><!--Facet Container -->';
+    echo '</div></div><!--Facet Container -->';
 }
 
 // convert a number of minutes into a nice display hh:mm:ss

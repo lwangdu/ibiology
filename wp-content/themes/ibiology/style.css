@@ -521,16 +521,15 @@ input[type="search"]::-webkit-search-results-button {
 	display: none;
 }
 
-input[type=text], select {
-	width: 100%;
+select {
+	width: auto;
 	padding: 5px 10px;
 	margin: 6px 0;
 	height: auto;
 }
 
 
-
-input[type=text], select {
+input[type=text] {
 	width: 100%;
 	padding: 10px 10px;
 	margin: 6px 0;
@@ -1367,6 +1366,7 @@ ul.stack{
 	flex-direction: row;
 	justify-content: flex-end;
 	width: 100%;
+	padding: 0 20px;
 
 }
 
@@ -1390,7 +1390,7 @@ ul.stack{
 	height: auto;
 }
 
-.flex-row > div >div{
+.flex-row > div div{
 	display:inline;
 }
 
@@ -1550,6 +1550,7 @@ p.entry-meta {
 	display: flex;
 	flex-wrap: wrap;
     align-items: stretch;
+	justify-content: center;
 	list-style-type: none;
 	margin:0 0 2rem;
 
@@ -2232,6 +2233,10 @@ ul.audiences{
 		max-width: 1000px;
 	}
 
+	.explore .site-inner{
+		max-width: 100%;
+	}
+
 	.content-sidebar-sidebar .content-sidebar-wrap,
 	.sidebar-content-sidebar .content-sidebar-wrap,
 	.sidebar-sidebar-content .content-sidebar-wrap {
@@ -2447,7 +2452,11 @@ ul.audiences{
 	.wrap {
 		max-width: 850px;
 		}
-	
+
+	.explore .site-inner{
+		max-width: 1000px;
+	}
+
 	.content{
 		width: 100%;
 		float:none;
@@ -2480,6 +2489,11 @@ ul.audiences{
 	section.videos .videos-info ul.videos-nav li figure{
 		float: none;
 		margin-right:0;
+	}
+
+	.facetwp-filters .row {
+		flex-wrap: wrap;
+		padding-right: 1rem;
 	}
 
 
@@ -2552,10 +2566,7 @@ ul.audiences{
 		font-size: .9rem;
 	}
 
-	.facetwp-filters .row {
-		flex-wrap: wrap;
-		padding-right: 1rem;
-	}
+
 
 	.facetwp-filters .facetwp-facet, .facetwp-filters .facetwp-sort {
 		margin-bottom: .5rem;
@@ -2584,7 +2595,20 @@ ul.audiences{
 		margin-right: 10px;
 	}
 
+	.flex-row > div .big {
+		display:none;
+	}
 
+	.flex-row {
+		flex-wrap: wrap;
+	}
+
+	.flex-row > div, .flex-row > div.left {
+		flex: 0 0 100%;
+		width:100%;
+		margin: 0;
+		justify-content: center;
+	}
 }
 
 @media only screen and (max-width: 400px){
