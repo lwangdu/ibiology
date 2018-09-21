@@ -521,6 +521,22 @@ input[type="search"]::-webkit-search-results-button {
 	display: none;
 }
 
+input[type=text], select {
+	width: 100%;
+	padding: 5px 10px;
+	margin: 6px 0;
+	height: auto;
+}
+
+
+
+input[type=text], select {
+	width: 100%;
+	padding: 10px 10px;
+	margin: 6px 0;
+	height: 50px;
+}
+
 /* ## Tables
 --------------------------------------------- */
 
@@ -1342,6 +1358,44 @@ section.videos .videos-nav li figure img,
 --------------------------------------------- */
 ul.stack{
 	margin:0;
+}
+
+/* ## Toolbar
+--------------------------------------------- */
+.flex-row{
+	display:flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	width: 100%;
+
+}
+
+.flex-row > div {
+	flex: 1 1 auto;
+	margin-right: 20px;
+
+	display: flex;
+	align-items:center;
+	justify-content:flex-end;
+
+}
+.flex-row > div:last-child{
+	margin-right:0;
+}
+
+.flex-row select {
+	width: auto;
+	padding: 2px;
+	margin-right: 20px;
+	height: auto;
+}
+
+.flex-row > div >div{
+	display:inline;
+}
+
+.flex-row > div.left{
+	justify-content: flex-start;
 }
 
 

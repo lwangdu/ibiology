@@ -91,10 +91,18 @@ function ibio_expandable_section( $content )
 /*******  FACET-WP items ****************/
 
 function ibio_facet_start(){
-    echo '<div class="facetwp-template">';
+    echo '<div class="facetwp-template"><div class="flex-row"> ';
+    echo '<div class="count-summary left"> Showing &nbsp;' .  do_shortcode( '[facetwp counts="true"]' ) . ' &nbsp;talks.   </div>';
+    echo '<div> Per Page:  &nbsp;' . do_shortcode( '[facetwp per_page="true"]' ) ;
+    echo do_shortcode( '[facetwp pager="true"]' ) ;
+    echo '</div></div>'; // toolbar
+
+
 }
 
 function ibio_facet_end(){
+    // pagination
+    echo do_shortcode( '[facetwp pager="true"]' );
     echo '</div><!--Facet Container -->';
 }
 
