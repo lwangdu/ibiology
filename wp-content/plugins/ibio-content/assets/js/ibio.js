@@ -88,7 +88,7 @@ jQuery(document).ready(function($) {
     $(document).on('facetwp-loaded', function() {
         // Scroll to the top of the page after the page is refreshed
         $( '.facetwp-overlay' ).hide( 1200 );
-        //$('html, body').animate({ scrollTop: 0 }, 500);
+        $('html, body').animate({ scrollTop: 250 }, 500);
 
     });
 
