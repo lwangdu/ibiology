@@ -90,21 +90,28 @@ function ibio_expandable_section( $content )
 
 /*******  FACET-WP items ****************/
 
-function ibio_facet_start(){
-    echo '<div class="facetwp-template"><div class="flex-row"> ';
-    echo '<div class="count-summary left"> Showing &nbsp;' .  do_shortcode( '[facetwp counts="true"]' ) . ' &nbsp;talks.   </div>';
-    echo '<div> <div class="big"> Per Page:  &nbsp;' . do_shortcode( '[facetwp per_page="true"]' ) . '</div>' ;
-    echo do_shortcode( '[facetwp pager="true"]' ) ;
-    echo '</div></div>'; // toolbar
+function ibio_facet_start( $feature = null ){
+
+    echo '<div class="facetwp-template"> ';
+
+    if ( $feature === 'pagination' ) {
+        echo '<div class="flex-row"> <div class="count-summary left"> Showing &nbsp;' . do_shortcode('[facetwp counts="true"]') . ' &nbsp;talks.   </div>';
+        echo '<div> <div class="big"> Display:  &nbsp;' . do_shortcode('[facetwp per_page="true"]') . '</div>';
+        echo do_shortcode('[facetwp pager="true"]');
+        echo '</div></div>'; // toolbar
+    }
 
 
 }
 
-function ibio_facet_end(){
+function ibio_facet_end( $feature = null ){
     // pagination
-    echo '<div class="flex-row">';
-    echo do_shortcode( '[facetwp pager="true"]' );
-    echo '</div></div><!--Facet Container -->';
+    if ( $feature === 'pagination' ) {
+        echo '<div class="flex-row">';
+        echo do_shortcode('[facetwp pager="true"]');
+        echo '</div>';
+    }
+    echo '<div class="facetwp-overlay" style="display:none;"></div></div><!--Facet Container -->';
 }
 
 // convert a number of minutes into a nice display hh:mm:ss

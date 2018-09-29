@@ -1541,7 +1541,7 @@ p.entry-meta {
 	display: none;
 }
 
-/* # Entries in Lists 
+/* # Entries in Lists  and Grids (including FacetWP)
 ---------------------------------------------------------------------------------------------------- */
 
 .grid-listing .content, .facetwp-template, ul.grid {
@@ -1550,10 +1550,14 @@ p.entry-meta {
 	display: flex;
 	flex-wrap: wrap;
     align-items: stretch;
-	justify-content: center;
 	list-style-type: none;
+	justify-content:flex-start;
 	margin:0 0 2rem;
 
+}
+
+.explore .facetwp-template ul.grid {
+	justify-content: center;
 }
 
 .speakers.grid-listing .content{
@@ -1875,6 +1879,20 @@ p.entry-meta {
 
 .facetwp-counter {
 	display: none;
+}
+
+
+.facetwp-template {
+	position: relative;
+}
+
+.facetwp-overlay{
+	position: absolute;
+	background-color: rgba( 255, 255, 255, .5 );
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left:0
 }
 
 /* # Icons

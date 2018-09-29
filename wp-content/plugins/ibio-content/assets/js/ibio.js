@@ -77,6 +77,23 @@ jQuery(document).ready(function($) {
         $(this).toggleClass('isopen');
     });
 
+    /* *** FacetWP Hooks *** */
+
+    $(document).on('facetwp-refresh', function() {
+        //FWP.facets['my_facet'] = [10, 20, 30]; // Change a facet value
+        // overlay w/ timer
+        $( '.facetwp-overlay' ).show( 1200 );
+    });
+
+    $(document).on('facetwp-loaded', function() {
+        // Scroll to the top of the page after the page is refreshed
+        $( '.facetwp-overlay' ).hide( 1200 );
+        //$('html, body').animate({ scrollTop: 0 }, 500);
+
+    });
+
+
+
 });
 
 window.onYouTubeIframeAPIReady = function(){

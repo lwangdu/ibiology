@@ -25,7 +25,7 @@ function ibio_explore_loop(){
 
     $talks = new WP_Query($args);
 
-    ibio_facet_start();
+    ibio_facet_start( 'pagination' );
     echo '<ul class="grid">';
     while ($talks->have_posts()){
         $talks->the_post();
@@ -33,7 +33,7 @@ function ibio_explore_loop(){
         ibio_get_template_part( 'shared/list' , 'talk');
     }
     echo '</ul>';
-    ibio_facet_end();
+    ibio_facet_end( 'pagination' );
 
     wp_reset_query();
 
