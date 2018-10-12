@@ -33,8 +33,14 @@ jQuery(document).ready(function($) {
             var api = $("#" + $(e.target).data('toggle') +' .scroll-pane').data('jsp');
             if (api) api.reinitialise();
             $(e.target).toggleClass('open');
+            if ( $(e.target).hasClass('open')){
+                $(e.target).text( $(e.target).data('active-label'));
+            } else {
+                $(e.target).text( $(e.target).data('label'));
+            }
+
         });
-        console.log( e.target );
+        //console.log( e.target );
     });
 
     $('.scroll-pane').jScrollPane({
