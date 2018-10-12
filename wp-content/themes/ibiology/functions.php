@@ -285,7 +285,7 @@ function ibio_facetwp_sort_options( $options, $params ) {
         'label' => 'Duration (shortest first)',
         'query_args' => array(
             'orderby' => 'meta_value', // sort by numerical custom field
-            'meta_key' => 'short_title', // required when sorting by custom fields
+            'meta_key' => 'total_duration', // required when sorting by custom fields
             'order' => 'ASC', // descending order
         )
     );
