@@ -2542,15 +2542,9 @@ ul.audiences{
 	.entry-comments,
 	.entry-pings,
 	.sidebar .widget {
-		padding: 0;
+		padding: 10;
 		margin-bottom: 5%;
 	}
-	.alignleft {
-    	float: none; 
-	}
-	.audiences {
-		text-align: center;
-}
 
 	.sidebar {
 		margin-bottom: 5%;
