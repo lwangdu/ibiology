@@ -885,6 +885,15 @@ th:first-child {
 	text-decoration: none;
 }
 
+.genesis-nav-menu .menu-item-has-children > a::after {
+	font-family: 'FontAwesome';
+	content: '\f107';
+	font-weight: 900;
+	margin-left: 5px;
+	float: right;
+}
+
+
 .genesis-nav-menu .sub-menu {
 	border-top: 1px solid #eee;
 	left: -9999px;
@@ -1972,7 +1981,7 @@ ul.audiences{
 
 .dashicons-arrow-down::before{
 	font-family: FontAwesome;
-	content: "\f0d7";
+	content: "\f107";
 }
 .sub-menu-toggle.activated::before{
 	content: "\f0d8";
