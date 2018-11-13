@@ -78,8 +78,14 @@ add_action('genesis_after_header', 'ibio_talks_header', 30);
 // clean up post info and post meta
 add_action( 'genesis_header', 'ibio_setup_single');
 remove_action( 'genesis_entry_header', 'genesis_do_post_title');
+
+// move the sharing buttons to above the talk overview
 if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) {
-	add_action('genesis_entry_content', 'ADDTOANY_SHARE_SAVE_KIT', 4, 0);
+	$sharing_disabled = get_post_meta( get_the_ID(), 'sharing_disabled', true );
+	if ( $sharing_disabled != 1 ) {
+		add_action('genesis_entry_content', 'ADDTOANY_SHARE_SAVE_KIT', 4, 0);
+	}
+	remove_filter( 'the_content', 'A2A_SHARE_SAVE_add_to_content', 98 ); // don't show the share buttons as part of the content
 }
 add_action( 'genesis_entry_content', 'ibio_lecture_header', 5);
 add_action('genesis_entry_content', 'ibio_ed_resources', 11);
