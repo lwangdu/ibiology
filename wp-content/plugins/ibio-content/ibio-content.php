@@ -82,9 +82,9 @@ class IBioContent{
 	function load_admin_scripts(){
 		wp_enqueue_style('ibio-admin', plugin_dir_url( __FILE__ ) . 'assets/css/admin.css' );
 		//wp_register_script( 'js-datatables', '//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js', array( 'jquery' ), '1.10.12', true);
-		wp_enqueue_script( 'ibio-app', plugin_dir_url( __FILE__ ) . '/assets/js/ibio.js', array( 'jquery' ), '1.0.0' );
+		wp_enqueue_script( 'ibio-app', plugin_dir_url( __FILE__ ) . '/assets/js/ibio.js', array( 'jquery' ), '1.0.1' );
         wp_enqueue_script('bootstrap', plugin_dir_url( __FILE__ ) . '/assets/js/bootstrap.js', array( 'jquery'), '1.0.0' );
-        wp_enqueue_script('ibio-plugins', plugin_dir_url( __FILE__ ) . '/assets/js/plugins.js', array( 'jquery'), '1.0.0' );
+        wp_enqueue_script('ibio-plugins', plugin_dir_url( __FILE__ ) . '/assets/js/plugins.js', array( 'jquery'), '1.0.1' );
         //wp_enqueue_script( 'js-datatables');
 		//wp_enqueue_style( 'js-datatables-css', '//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css');
 	} 
