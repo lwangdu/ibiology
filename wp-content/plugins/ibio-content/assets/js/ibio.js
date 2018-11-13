@@ -55,6 +55,12 @@ jQuery(document).ready(function($) {
         }
     );;
 
+    // Turn off the transcript panel if the subtitles drop-down is clicked.
+    $('.dropdown.subtitles').click( function(e) {
+         $('.dropdown.transcript .open').trigger('click');
+         ;
+    });
+
     //$('[data-toggle="tab"]').tab();
 
     $('.expandable').each(function (i, v) {

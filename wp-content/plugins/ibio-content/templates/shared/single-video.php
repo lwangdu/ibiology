@@ -93,7 +93,10 @@ echo '<div class="content">';
 $embed = wp_oembed_get( $video_url , array( 'width' => 800 ) );
 $vid_id = " id='vtframe-$counter'";
 
-// attach the showinfo parameter to the oembed.      
+// attach the showinfo parameter to the oembed.
+// rel=0 is show related videos from the same channel
+// enablejsapi is for letting us control the playback through javascript (See ibio.js)
+// see: https://developers.google.com/youtube/player_parameters for more details.
 $embed = preg_replace( '/src="(.+)oembed"/', 'src="$1oembed&showinfo=0&enablejsapi=1&rel=0" '.$vid_id, $embed );
 
 if ( $embed == false ){
