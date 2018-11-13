@@ -94,7 +94,7 @@ $embed = wp_oembed_get( $video_url , array( 'width' => 800 ) );
 $vid_id = " id='vtframe-$counter'";
 
 // attach the showinfo parameter to the oembed.      
-$embed = preg_replace( '/src="(.+)oembed"/', 'src="$1oembed&showinfo=0&enablejsapi=1" '.$vid_id, $embed );
+$embed = preg_replace( '/src="(.+)oembed"/', 'src="$1oembed&showinfo=0&enablejsapi=1&rel=0" '.$vid_id, $embed );
 
 if ( $embed == false ){
 	$embed = '<div class="empty-video">We were unable to retrieve the video</div>';
