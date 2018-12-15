@@ -12,7 +12,7 @@ if ( $num_parts > 1 && is_singular( IBioTalk::$post_type) ){
 	$title = "Part $counter: " . $title;
 }
 $download = isset( $v[ 'video_download_url' ] ) ?  esc_url( $v[ 'video_download_url' ] ) : '';
-$download_low_res = isset( $v[ 'download_url_low_res' ] ) ?  esc_url( $v[ 'video_download_url_low_res' ] ) : '';
+$download_low_res = isset( $v[ 'video_download_url_low_res' ] ) ?  esc_url( $v[ 'video_download_url_low_res' ] ) : '';
 $audio_download = isset( $v[ 'audio_download' ] ) ?  esc_url( $v[ 'audio_download' ] ) : '';
 $video_url = isset( $v[ 'video_url' ] ) ? esc_html( $v[ 'video_url' ] ) : '';
 $size = isset( $v[ 'download_size' ] ) ?  '<span class="size">' . esc_attr( $v[ 'download_size' ] ) . '</span>' : '';
