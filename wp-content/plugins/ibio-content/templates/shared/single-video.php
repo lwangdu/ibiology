@@ -12,6 +12,7 @@ if ( $num_parts > 1 && is_singular( IBioTalk::$post_type) ){
 	$title = "Part $counter: " . $title;
 }
 $download = isset( $v[ 'video_download_url' ] ) ?  esc_url( $v[ 'video_download_url' ] ) : '';
+$download_low_res = isset( $v[ 'download_url_low_res' ] ) ?  esc_url( $v[ 'video_download_url_low_res' ] ) : '';
 $audio_download = isset( $v[ 'audio_download' ] ) ?  esc_url( $v[ 'audio_download' ] ) : '';
 $video_url = isset( $v[ 'video_url' ] ) ? esc_html( $v[ 'video_url' ] ) : '';
 $size = isset( $v[ 'download_size' ] ) ?  '<span class="size">' . esc_attr( $v[ 'download_size' ] ) . '</span>' : '';
@@ -42,7 +43,17 @@ if ( !empty($download_link)){
     );
 }
 
-$audio_download_link = !empty($audio_download) ? "<span class='video-part-download'><a href='$audio_download' target='_blank' download class='download' $helptext>Audio</a></span>" : '';
+$download_low_res_link = !empty($download_low_res) ? "<span class='video-part-download'><a href='$download_low_res' target='_blank' download class='download' $helptext>Low-Res</a></span>" : '';
+if ( !empty($download_low_res_link)){
+    $feature_tabs['download'] = array(
+        "tab_title" => null,
+        "tab_content" => $download_low_res_link,
+        "target"    => null,
+        "tab_style" => 'inline'
+    );
+}
+
+$audio_download_link = !empty($audio_download) ? "<span class='audio-part-download'><a href='$audio_download' target='_blank' download class='download' $helptext>Audio</a></span>" : '';
 if ( !empty($download_link)){
 	$feature_tabs['audio_download'] = array(
 		"tab_title" => null,
