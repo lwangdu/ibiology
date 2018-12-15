@@ -1984,7 +1984,7 @@ ul.audiences{
 	content: "\f107";
 }
 .sub-menu-toggle.activated::before{
-	content: "\f0d8";
+	content: "\f106";
 }
 
 /* # Bootstrap Section
@@ -2408,7 +2408,7 @@ ul.audiences{
 
 	.sub-menu-toggle.activated:before {
 		font-family: "FontAwesome";
-		content: "\f0d8";
+		content: "\f106";
 	}
 
 	.genesis-nav-menu .sub-menu a{
