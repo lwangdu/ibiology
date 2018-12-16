@@ -45,7 +45,7 @@ if ( !empty($download_link)){
 
 $download_low_res_link = !empty($download_low_res) ? "<span class='video-part-download'><a href='$download_low_res' target='_blank' download class='download' $helptext>Low-Res</a></span>" : '';
 if ( !empty($download_low_res_link)){
-    $feature_tabs['download'] = array(
+    $feature_tabs['download_low_res'] = array(
         "tab_title" => null,
         "tab_content" => $download_low_res_link,
         "target"    => null,
