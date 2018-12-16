@@ -21,7 +21,7 @@ $size = isset( $v[ 'download_size' ] ) ?  '<span class="size">' . esc_attr( $v[ 
 // feature tabs.
 $feature_tabs = array();
 
-$helptext = 'title="Right-click to save media file directly. If you get an error using Firefox, you need to clear your browser cache."';
+$helptext = 'title="Right-click to save media file directly."';
 
 $length = isset( $v[ 'video_length' ] ) ?  '<span class="length">Duration: ' . esc_attr( $v[ 'video_length' ] ) . '</span>' : '';
 if ( !empty($length) ) {
