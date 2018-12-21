@@ -33,34 +33,43 @@ if ( !empty($length) ) {
     );
 }
 
-$download_link = !empty($download) ? "<span class='video-part-download'><a href='$download' target='_blank' download class='download' $helptext>Hi-Res</a></span>" : '';
-if ( !empty($download_link)){
-    $feature_tabs['download'] = array(
-        "tab_title" => null,
-        "tab_content" => $download_link,
-        "target"    => null,
-        "tab_style" => 'inline'
-    );
-}
 
-$download_low_res_link = !empty($download_low_res) ? "<span class='video-part-download'><a href='$download_low_res' target='_blank' download class='download' $helptext>Low-Res</a></span>" : '';
-if ( !empty($download_low_res_link)){
-    $feature_tabs['download_low_res'] = array(
-        "tab_title" => null,
-        "tab_content" => $download_low_res_link,
-        "target"    => null,
-        "tab_style" => 'inline'
-    );
-}
+/*
+ * if we have a high-res video to download, we can automatically assume there's a low-res version.
+ *
+ */
+$download_link = !empty($download) ? "<a href='$download' target='_blank' download class='download hi-res' $helptext>Hi-Res</a>" : '';
+$download_low_res = !empty( $download ) ? str_replace('hi.mp4', 'lo.mp4', $download) : 'null';
+$download_low_res_link = !empty($download_low_res) ? "<a href='$download_low_res' target='_blank' download class='download lo-res' $helptext>Low-Res</a>" : '';
+$audio_download_link = !empty($audio_download) ? "<a href='$audio_download' target='_blank' download class='download' $helptext>Audio</a>" : '';
 
-$audio_download_link = !empty($audio_download) ? "<span class='audio-part-download'><a href='$audio_download' target='_blank' download class='download' $helptext>Audio</a></span>" : '';
-if ( !empty($download_link)){
-	$feature_tabs['audio_download'] = array(
-		"tab_title" => null,
-		"tab_content" => $audio_download_link,
-		"target"    => null,
-		"tab_style" => 'inline'
-	);
+
+
+
+
+if ( !empty( $download ) || !empty( $audio_download) ){
+
+	$download_link_array = array( $download_link, $download_low_res_link, $audio_download_link);
+
+	$media_downloads = "<ul class='dropdown-menu'>";
+	foreach ( $download_link_array as $dl ){
+		if ( !empty( $dl ) ) {
+
+			$media_downloads .= "<li>$dl</li>";
+		}
+	}
+	$media_downloads .= '</ul>';
+
+		$feature_tabs['download-links'] = array(
+			"tab_title" => 'Downloads',
+			"tab_content" => $media_downloads,
+			"target"    => 'video-part-downloads-' . $counter,
+			"tab_style" => 'dropdown'
+		);
+
+
+
+
 }
 
 
