@@ -2135,20 +2135,21 @@ ul.audiences{
 
  .dropdown-toggle::after, .button.dropdown-toggle::after{
 	font-family: "FontAwesome";
-	content: '\f0da';
+	/* content: '\f0da'; */
+	 content: '\f0d7';
 	padding-left: 5px;
 	text-decoration:none;
 	width: 20px;
 }
 
- .open .dropdown-toggle::after,
+/* .open .dropdown-toggle::after,
  .open.dropdown-toggle::after{
 	font-family: "FontAwesome";
 	content: '\f0d7';
 	padding-left: 5px;
 	text-decoration:none;
 	width: 20px;
-}
+}*/
 
 .nav-tabs > li {
 	float: left;
