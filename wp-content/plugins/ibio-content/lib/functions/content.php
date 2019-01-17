@@ -95,7 +95,7 @@ function ibio_facet_start( $feature = null ){
     echo '<div class="facetwp-template"> ';
 
     if ( $feature === 'pagination' ) {
-        echo '<div class="flex-row"> <div class="count-summary left"> Showing &nbsp;' . do_shortcode('[facetwp counts="true"]') . ' &nbsp;talks.   </div>';
+        echo '<div class="flex-row archive-pagination"> <div class="count-summary left"> Showing &nbsp;' . do_shortcode('[facetwp counts="true"]') . ' &nbsp;talks.   </div>';
         echo '<div> <div class="big"> Display:  &nbsp;' . do_shortcode('[facetwp per_page="true"]') . '</div>';
         echo do_shortcode('[facetwp pager="true"]');
         echo '</div></div>'; // toolbar
