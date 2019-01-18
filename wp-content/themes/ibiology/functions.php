@@ -182,7 +182,7 @@ function ibio_prepare_query( $query ) {
 		return;
 	}
 	
-	if ( is_category() && ( !is_category('blog') || is_category('podcasts') ) ) {
+	if ( is_category() && ( !is_category('blog') || !is_category('podcasts') ) ) {
 		/* $query->query_vars['orderby'] = 'name';
 		$query->query_vars['order'] = 'ASC'; */
 		$query->query_vars['post_type'] =  IBioTalk::$post_type;
