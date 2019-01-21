@@ -192,7 +192,7 @@ function ibio_prepare_query( $query ) {
 		return;
 	}
 	
-	if ( is_category() ) {
+	if ( is_category() && ( !is_category('blog') || is_category('podcasts') ) ) {
 		/* $query->query_vars['orderby'] = 'name';
 		$query->query_vars['order'] = 'ASC'; */
 		$query->query_vars['post_type'] =  IBioTalk::$post_type;
@@ -331,5 +331,52 @@ function ibio_index_facet_duration( $params, $class ){
 
 }
 
+
+function ibio_facetwp_pager_html( $output, $params ) {
+	$page = (int) $params['page'];
+	$per_page = (int) $params['per_page'];
+	$total_rows = (int) $params['total_rows'];
+	$total_pages = (int) $params['total_pages'];
+
+	$output = '';
+
+	// Only show pagination when > 1 page
+	if ( 1 < $total_pages ) {
+
+		if ( 1 < $page ) {
+			$output .= '<a class="facetwp-page previous-page" data-page="'. ($page - 1) .'">« Previous Page</a>';
+		}
+		if ( 1 < ( $page - 10 ) ) {
+			$output .= '<a class="facetwp-page" data-page="' . ($page - 10) . '"> ... ' . ($page - 10) . '</a>';
+		}
+		for ( $i = 2; $i > 0; $i-- ) {
+			if ( 0 < ( $page - $i ) ) {
+				$output .= '<a class="facetwp-page" data-page="' . ($page - $i) . '">' . ($page - $i) . '</a>';
+			}
+		}
+
+		// Current page
+		$output .= '<a class="facetwp-page active" data-page="' . $page . '">' . $page . '</a>';
+
+		for ( $i = 1; $i <= 2; $i++ ) {
+			if ( $total_pages >= ( $page + $i ) ) {
+				$output .= '<a class="facetwp-page" data-page="' . ($page + $i) . '">' . ($page + $i) . '</a>';
+			}
+		}
+		if ( $total_pages > ( $page + 10 ) ) {
+			$output .= '<a class="facetwp-page" data-page="' . ($page + 10) . '"> ... ' . ($page + 10) . '</a>';
+		}
+		if ( $page < $total_pages ) {
+			$output .= '<a class="facetwp-page next-page" data-page="' . ($page + 1) . '">Next Page »</a>';
+		}
+	}
+
+	return $output;
+}
+
+add_filter( 'facetwp_pager_html', 'ibio_facetwp_pager_html', 10, 2 );
+
 // Hide Gravity Form field labels when using placeholders
 add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
+
+

@@ -1469,24 +1469,38 @@ p.entry-meta {
 	margin-bottom: 0;
 }
 
-.archive-pagination li {
+.facetwp-template .archive-pagination {
+	margin-bottom: 20px;
+}
+
+.archive-pagination li,
+.facetwp-pager li
+{
 	display: inline;
 }
 
-.archive-pagination a {
+.archive-pagination, .facetwp-pager{
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.archive-pagination a,
+.facetwp-pager a{
 	background-color: #fff;
 	color: #333;
 	cursor: pointer;
 	display: inline-block;
-	font-size: 16px;
-	font-weight: 600;
+
 	padding: 8px 12px;
 	text-decoration: none;
 }
 
 .archive-pagination a:hover,
 .archive-pagination a:focus,
-.archive-pagination .active a {
+.archive-pagination .active a
+.facetwp-pager a:hover,
+.facetwp-pager a:focus,
+.facetwp-pager a.active {
 	background-color: #0099d1;
 	color: #fff;
 }
@@ -2121,20 +2135,21 @@ ul.audiences{
 
  .dropdown-toggle::after, .button.dropdown-toggle::after{
 	font-family: "FontAwesome";
-	content: '\f0da';
+	/* content: '\f0da'; */
+	 content: '\f0d7';
 	padding-left: 5px;
 	text-decoration:none;
 	width: 20px;
 }
 
- .open .dropdown-toggle::after,
+/* .open .dropdown-toggle::after,
  .open.dropdown-toggle::after{
 	font-family: "FontAwesome";
 	content: '\f0d7';
 	padding-left: 5px;
 	text-decoration:none;
 	width: 20px;
-}
+}*/
 
 .nav-tabs > li {
 	float: left;
@@ -2570,7 +2585,8 @@ ul.audiences{
 		margin: 5% auto;
 	}
 
-	.archive-pagination li a {
+	.archive-pagination li a,
+	.facetwp-pager li a{
 		margin-bottom: 4px;
 	}
 
