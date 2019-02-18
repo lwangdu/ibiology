@@ -51,7 +51,8 @@ Text Domain: iBiology
 	- Search sidebar
 	- Widgets
 	- Icons
-	- Media Queries 
+	- Media Queries
+	- Google Custom Search
 
 Blue: #009ad2
 Light Green light #add04e
@@ -2785,4 +2786,85 @@ ul.audiences{
 }
 
 
+/* Google custom Search */
+
+
+.search-results .cse .gsc-control-cse, .search-results .gsc-control-cse  {
+	border:none;
+	font-size: 16px;
+}
+
+.search-results .gsc-control-cse .gs-result .gs-title, .search-results .gsc-control-cse .gsc-table-result{
+	min-height: 24px;
+	line-height:24px;
+	font-size: 16px;
+}
+
+.search-results .gsc-control-cse .gs-result .gsc-url-top{
+	font-size: 14px;
+}
+
+.search-results .gs-web-image-box img.gs-image{
+	max-width: 100px;
+	max-height: 100px;
+}
+
+
+.search-results table{
+	margin:0;
+	border:none;
+}
+
+
+.search-results table th,
+.search-results table td,
+.search-results table tbody{
+	border: none;
+}
+
+.search-results td.gsc-input table td:first-child{
+	padding: 0 8px;
+	line-height: 50px;
+
+}
+
+.search-results button.gsc-search-button{
+	height:52px;
+}
+.search-results button.gsc-search-button svg{
+	width: 20px !important;
+	height: 20px !important;
+}
+
+
+.search-results .gsc-selected-option-container{
+	max-width: 100%;
+}
+
+.search-results .gsc-orderby-label{
+	font-size: 13px;
+}
+
+.search-results .gs-web-image-box{
+	width: 100px;
+}
+
+.search-results .gsc-table-cell-thumbnail {
+	padding:0;
+}
+
+.search-results .gsc-table-cell-snippet-close{
+	padding-left:10px;
+}
+
+.search-results .gsc-results .gsc-cursor-box .gsc-cursor-page.gsc-cursor-current-page{
+	background-color: #0099D1;
+	color: #fff;
+}
+
+.search-results .gsc-results .gsc-cursor-box .gsc-cursor-page{
+	padding: 8px 10px;
+	color: #222;
+	font-weight: 700;
+}
 
