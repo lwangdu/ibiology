@@ -7,8 +7,12 @@ global $post;
 
 $resources = get_field( 'related_resources' );
 
+	echo '<section class="related-resources row">';
+
 if ( $resources ) {
-	echo '<section class="related-resources row"><h3>Related Resources</h3>';
+	if ( !is_singular( IBioSession::$post_type ) ){
+		echo '<h3>Related Resources</h3>';
+	}
 	echo $resources;
 	echo '</section>';
 }
