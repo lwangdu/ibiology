@@ -1218,7 +1218,7 @@ section.videos .videos-nav li figure img,
 /* Videos on Session Pages */
 
 .single-session .single-video.playing header{
-	display:none;
+	display:block;
 }
 
 .single-session section.video.row{
