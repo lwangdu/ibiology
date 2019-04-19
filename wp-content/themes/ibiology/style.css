@@ -1217,6 +1217,10 @@ section.videos .videos-nav li figure img,
 
 /* Videos on Session Pages */
 
+.single-session .single-video.playing header{
+	display:none;
+}
+
 .single-session section.video.row{
 	margin-top: 1rem;
 	margin-bottom: 2rem;
