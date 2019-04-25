@@ -14,6 +14,7 @@ $talk_speakers = new WP_Query(array(
     'connected_type' => 'speaker_to_session',
     'orderby' => 'meta_key',
     'meta_key' => 'last_name',
+    'order' => 'ASC',
     'connected_items' => get_queried_object(),
     'nopaging' => true
   ));
