@@ -107,6 +107,16 @@ function ibio_talk_sidebar(){
   get_sidebar( 'talk' );
 }
 
+
+// move the sharing buttons to above the overview
+if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) {
+	$sharing_disabled = get_post_meta( get_the_ID(), 'sharing_disabled', true );
+	if ( $sharing_disabled != 1 ) {
+		add_action('genesis_entry_content', 'ADDTOANY_SHARE_SAVE_KIT', 4, 0);
+	}
+	remove_filter( 'the_content', 'A2A_SHARE_SAVE_add_to_content', 98 ); // don't show the share buttons as part of the content
+}
+
 /* -------------------  Page Rendering --------------------------*/
 
 // force content-sidebar layout - comment out to enable control at the post type or post level
