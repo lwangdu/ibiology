@@ -1926,7 +1926,7 @@ p.entry-meta {
 
 /* # Add to Any kit
 ---------------------------------------------------------------------------------------------------- */
-.single-ibiology_talk .a2a_kit{
+.single-ibiology_talk .a2a_kit, .single-ibiology_session .a2a_kit{
 	margin-bottom: 10px;
 	display:block;
 }
