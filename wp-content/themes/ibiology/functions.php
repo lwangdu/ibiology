@@ -380,3 +380,18 @@ add_filter( 'facetwp_pager_html', 'ibio_facetwp_pager_html', 10, 2 );
 add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
 
 
+// Yoast Filters
+
+add_filter( 'wpseo_schema_website', 'ibio_yoast_website_schema', 10, 1 );
+function ibio_yoast_website_schema( $graph_piece ) {
+
+	if ( is_array( $graph_piece ) && !empty( $graph_piece['potentialAction'] ) ) {
+		$graph_piece['potentialAction']['target'] = site_url() . '/search-ibiology/?q={q}';
+		$graph_piece['potentialAction']['query-input'] = 'required name=q';
+	}
+
+
+	return $graph_piece;
+
+
+}
