@@ -62,6 +62,11 @@ function ibio_youtube_api(){
 
 /* -------------------  Page Rendering --------------------------*/
 
+// remove powerpress hooks
+
+remove_filter('get_the_excerpt', 'powerpress_content', 9 );
+remove_filter('the_content', 'powerpress_content', 10 );
+
 // force content-sidebar layout
 add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
 
