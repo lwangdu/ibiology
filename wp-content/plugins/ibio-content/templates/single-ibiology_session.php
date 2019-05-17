@@ -12,12 +12,15 @@ global $talk_speaker;
 $talk_speakers = new WP_Query(array(
     'post_type' => 'ibiology_speaker',
     'connected_type' => 'speaker_to_session',
-    'orderby' => 'meta_key',
+    'orderby' => 'meta_value',
     'meta_key' => 'last_name',
     'order' => 'ASC',
     'connected_items' => get_queried_object(),
     'nopaging' => true
   ));
+
+
+
 if ( !empty($talk_speakers) && isset($talk_speakers->posts)) {
   $talk_speaker = $talk_speakers->posts;
 }
