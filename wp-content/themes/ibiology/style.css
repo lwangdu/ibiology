@@ -2325,19 +2325,11 @@ ul.audiences{
 	.sidebar-primary,
 	.sidebar-secondary,
 	.sidebar-sidebar-content .content,
-	.sidebar-sidebar-content .content-sidebar-wrap,
-	.site-header .widget-area,
-	.title-area {
+	.sidebar-sidebar-content .content-sidebar-wrap{
 		width: 100%;
 	}
 
-	.site-header .wrap {
-		padding-left: 5%;
-		padding-right: 5%;
-	}
-
 	.genesis-nav-menu li,
-	.header-image .title-area,
 	.site-header ul.genesis-nav-menu,
 	.site-header .search-form {
 		float: none;
@@ -2345,15 +2337,8 @@ ul.audiences{
 
 	.genesis-nav-menu,
 	.site-description,
-	.site-header .title-area,
-	.site-header .widget-area,
 	.site-title {
 		text-align: center;
-	}
-
-	.site-header .search-form {
-		margin: 16px auto;
-		float: left;
 	}
 
 	.js nav.nav-primary,
@@ -2507,6 +2492,17 @@ ul.audiences{
 	.wrap {
 		max-width: 850px;
 		}
+
+	.site-header .title-area,
+	.site-header .widget-area
+	{
+		width: 100%;
+		float: none;
+		max-width: 600px;
+		text-align:center;
+		margin: auto;
+	}
+
 
 	.explore .site-inner{
 		max-width: 1000px;
