@@ -111,6 +111,8 @@ window.onYouTubeIframeAPIReady = function(){
     jQuery('.single-video .content').each(function () {
         var player_id = jQuery(this).children('iframe').attr("id");
         players[player_id] = new YT.Player(player_id, {
+            height: '800',
+            width: '450',
            events:{
                'onStateChange' : function(event){
                    if (event.data == YT.PlayerState.PLAYING) {
