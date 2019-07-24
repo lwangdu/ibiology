@@ -25,7 +25,7 @@
 			echo '</ul>';
 			*/
 
-			echo "<h2>View the full talk on our website</h2>";
+			echo "<h2>View the full talk with additional resources on our website</h2>";
 			get_template_part( 'parts/post' , 'with-excerpt');
 
 			wp_reset_postdata();
