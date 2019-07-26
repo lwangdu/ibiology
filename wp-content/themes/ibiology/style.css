@@ -1099,6 +1099,7 @@ section.videos .videos-container{
 	max-width: 800;
 
 	margin-right: 20px;
+	position: relative;
 }
 
 section.videos .single-video{
@@ -1108,6 +1109,7 @@ section.videos .single-video{
 	/* position: relative;
 	display:none;*/
 	position: absolute;
+	top: 0px;
 }
 
 .single-video.part-1{
@@ -1160,6 +1162,7 @@ section.videos .single-video:hover header{
 section.videos .single-video.active{
 	display:block;
 	position: relative;
+	z-index: 150;
 }
 
 .single-video .footer{
