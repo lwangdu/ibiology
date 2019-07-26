@@ -1105,8 +1105,27 @@ section.videos .single-video{
 	width: 100%;
 	max-width: 800px;
 	min-height: 300px;
-	position: relative;
-	display:none;
+	/* position: relative;
+	display:none;*/
+	position: absolute;
+}
+
+.single-video.part-1{
+	z-index: 100;
+}
+
+
+.single-video.part-2{
+	z-index: 90;
+}
+
+
+.single-video.part-3{
+	z-index: 80;
+}
+
+.single-video.part-4{
+	z-index: 70;
 }
 
 section.videos .single-video header{
@@ -1140,6 +1159,7 @@ section.videos .single-video:hover header{
 
 section.videos .single-video.active{
 	display:block;
+	position: relative;
 }
 
 .single-video .footer{
