@@ -27,6 +27,7 @@ define( 'IBIO_DIR' , plugin_dir_path( __FILE__ ) );
 /* Remove username field on RCP */
 function ibio_rcp_user_registration_data( $user ) {
 	rcp_errors()->remove( 'username_empty' );
+	rcp_errors()->remove( 'username_empty' );
 	$user['login'] = $user['email'];
 	return $user;
 }

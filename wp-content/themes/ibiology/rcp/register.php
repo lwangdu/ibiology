@@ -69,7 +69,8 @@ rcp_show_error_messages( 'register' ); ?>
 
 	<?php //do_action( 'rcp_before_subscription_form_fields' ); ?>
 
-	<input type="hidden" name="rcp_level" value="0">
+    <?php // This defaults the membership to Access level 0, but membership level id of 2 (a Community member, not an Educator) ?>
+	<input type="hidden" name="rcp_level" value="2">
 
 	<?php //do_action( 'rcp_after_register_form_fields', $levels ); ?>
 
