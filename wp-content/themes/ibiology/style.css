@@ -2894,3 +2894,8 @@ ul.audiences{
 	font-weight: 700;
 }
 
+/* ## Registration
+--------------------------------------------- */
+#rcp_user_login_wrap {
+	display: none;
+}

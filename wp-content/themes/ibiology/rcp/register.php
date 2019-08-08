@@ -67,12 +67,12 @@ rcp_show_error_messages( 'register' ); ?>
 		</fieldset>
 	<?php } ?>
 
-	<?php do_action( 'rcp_before_subscription_form_fields' ); ?>
+	<?php //do_action( 'rcp_before_subscription_form_fields' ); ?>
 
 	<input type="hidden" name="rcp_level" value="0">
 
-	<?php do_action( 'rcp_after_register_form_fields', $levels ); ?>
-	
+	<?php //do_action( 'rcp_after_register_form_fields', $levels ); ?>
+
 	<?php if ( ! empty( $rcp_options['enable_terms'] ) ) : ?>
 		<fieldset class="rcp_agree_to_terms_fieldset">
 			<p id="rcp_agree_to_terms_wrap">
