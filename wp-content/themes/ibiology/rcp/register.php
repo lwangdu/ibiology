@@ -21,7 +21,7 @@ $discount = ! empty( $_REQUEST['discount'] ) ? sanitize_text_field( $_REQUEST['d
 	<h3 class="rcp_header">
 		<?php echo apply_filters( 'rcp_registration_header_logged_in', $rcp_register_form_atts['logged_in_header'] ); ?>
 	</h3>
-<?php }
+<?php
 
 // show any error messages after form submission
 rcp_show_error_messages( 'register' ); ?>
@@ -29,10 +29,6 @@ rcp_show_error_messages( 'register' ); ?>
 <form id="rcp_registration_form" class="rcp_form" method="POST" action="<?php echo esc_url( rcp_get_current_url() ); ?>">
 
 	<?php if( ! is_user_logged_in() ) { ?>
-
-		<div class="rcp_login_link">
-			<p><?php printf( __( '<a href="%s">Log in</a> if you are already registered.', 'rcp' ), esc_url( rcp_get_login_url( rcp_get_current_url() ) ) ); ?></p>
-		</div>
 
 		<?php do_action( 'rcp_before_register_form_fields' ); ?>
 
@@ -131,3 +127,4 @@ rcp_show_error_messages( 'register' ); ?>
 		<input type="submit" name="rcp_submit_registration" id="rcp_submit" class="rcp-button" value="<?php esc_attr_e( apply_filters ( 'rcp_registration_register_button', __( 'Register', 'rcp' ) ) ); ?>"/>
 	</p>
 </form>
+<?php } // if user is logged in.
