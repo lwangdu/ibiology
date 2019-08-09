@@ -125,6 +125,7 @@ function ibio_rcp_add_select_member_edit_field( $user_id = 0 ) {
 		</th>
 		<td>
 			<select id="rcp_teach" name="rcp_teach">
+                <option value="" >Select One</option>
 				<option value="friend" <?php selected( $teach, 'elementary'); ?>><?php _e( 'Elementary or Middle School Students', 'rcp' ); ?></option>
 				<option value="search" <?php selected( $teach, 'high_school'); ?>><?php _e( 'High School Students', 'rcp' ); ?></option>
 				<option value="social" <?php selected( $teach, 'community_college'); ?>><?php _e( 'Community College or Technical School Students', 'rcp' ); ?></option>
