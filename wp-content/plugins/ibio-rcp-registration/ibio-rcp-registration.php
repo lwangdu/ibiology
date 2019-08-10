@@ -99,12 +99,12 @@ function ibio_rcp_add_select_field() {
 		<label for="rcp_teach"><?php _e( 'What type of student do you primarily teach? *', 'rcp' ); ?></label>
 		<select id="rcp_teach" name="rcp_teach">
             <option value="" >Select one</option>
-			<option value="friend" <?php selected( $teach, 'elementary'); ?>><?php _e( 'Elementary or Middle School Students', 'rcp' ); ?></option>
-			<option value="search" <?php selected( $teach, 'high_school'); ?>><?php _e( 'High School Students', 'rcp' ); ?></option>
-			<option value="social" <?php selected( $teach, 'community_college'); ?>><?php _e( 'Community College or Technical School Students', 'rcp' ); ?></option>
-			<option value="other" <?php selected( $teach, 'undergraduate'); ?>><?php _e( '4-year Undergraduate College Students', 'rcp' ); ?></option>
-			<option value="other" <?php selected( $teach, 'masters'); ?>><?php _e( 'Masters Students', 'rcp' ); ?></option>
-			<option value="other" <?php selected( $teach, 'graduate'); ?>><?php _e( 'Graduate (PhD)/Professional Students', 'rcp' ); ?></option>
+			<option value="elementary" <?php selected( $teach, 'elementary'); ?>><?php _e( 'Elementary or Middle School Students', 'rcp' ); ?></option>
+			<option value="high_school" <?php selected( $teach, 'high_school'); ?>><?php _e( 'High School Students', 'rcp' ); ?></option>
+			<option value="community_college" <?php selected( $teach, 'community_college'); ?>><?php _e( 'Community College or Technical School Students', 'rcp' ); ?></option>
+			<option value="undergraduate" <?php selected( $teach, 'undergraduate'); ?>><?php _e( '4-year Undergraduate College Students', 'rcp' ); ?></option>
+			<option value="masters" <?php selected( $teach, 'masters'); ?>><?php _e( 'Masters Students', 'rcp' ); ?></option>
+			<option value="graduate" <?php selected( $teach, 'graduate'); ?>><?php _e( 'Graduate (PhD)/Professional Students', 'rcp' ); ?></option>
 			<option value="other" <?php selected( $teach, 'other'); ?>><?php _e( 'Other', 'rcp' ); ?></option>
 		</select>
 	</p>
@@ -126,12 +126,12 @@ function ibio_rcp_add_select_member_edit_field( $user_id = 0 ) {
 		<td>
 			<select id="rcp_teach" name="rcp_teach">
                 <option value="" >Select One</option>
-				<option value="friend" <?php selected( $teach, 'elementary'); ?>><?php _e( 'Elementary or Middle School Students', 'rcp' ); ?></option>
-				<option value="search" <?php selected( $teach, 'high_school'); ?>><?php _e( 'High School Students', 'rcp' ); ?></option>
-				<option value="social" <?php selected( $teach, 'community_college'); ?>><?php _e( 'Community College or Technical School Students', 'rcp' ); ?></option>
-				<option value="other" <?php selected( $teach, 'undergraduate'); ?>><?php _e( '4-year Undergraduate College Students', 'rcp' ); ?></option>
-				<option value="other" <?php selected( $teach, 'masters'); ?>><?php _e( 'Masters Students', 'rcp' ); ?></option>
-				<option value="other" <?php selected( $teach, 'graduate'); ?>><?php _e( 'Graduate (PhD)/Professional Students', 'rcp' ); ?></option>
+				<option value="elementary" <?php selected( $teach, 'elementary'); ?>><?php _e( 'Elementary or Middle School Students', 'rcp' ); ?></option>
+				<option value="high_school" <?php selected( $teach, 'high_school'); ?>><?php _e( 'High School Students', 'rcp' ); ?></option>
+				<option value="community_college" <?php selected( $teach, 'community_college'); ?>><?php _e( 'Community College or Technical School Students', 'rcp' ); ?></option>
+				<option value="undergraduate" <?php selected( $teach, 'undergraduate'); ?>><?php _e( '4-year Undergraduate College Students', 'rcp' ); ?></option>
+				<option value="masters" <?php selected( $teach, 'masters'); ?>><?php _e( 'Masters Students', 'rcp' ); ?></option>
+				<option value="graduate" <?php selected( $teach, 'graduate'); ?>><?php _e( 'Graduate (PhD)/Professional Students', 'rcp' ); ?></option>
 				<option value="other" <?php selected( $teach, 'other'); ?>><?php _e( 'Other', 'rcp' ); ?></option>
 			</select>
 		</td>
