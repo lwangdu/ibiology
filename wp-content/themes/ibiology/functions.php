@@ -89,6 +89,7 @@ function ibiology_setup() {
 	unregister_sidebar( 'sidebar-alt' );
 
 	add_post_type_support('ibiology_podcasts', 'genesis-archive-layouts');
+	add_post_type_support('page', 'excerpt');
 }
 
 
