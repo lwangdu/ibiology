@@ -27,21 +27,23 @@ define( 'IBIO_DIR' , plugin_dir_path( __FILE__ ) );
 /* Remove username field on RCP */
 function ibio_rcp_user_registration_data( $user ) {
 	rcp_errors()->remove( 'username_empty' );
-	error_log('[ibio-register] Removing error ');
 	$user['login'] = $user['email'];
 	return $user;
 }
 
-add_filter( 'rcp_user_registration_data', 'ibio_rcp_user_registration_data' );
+add_filter( 'rcp_user_registration_data', 'ibio_rcp_user_registration_data', 20 );
 
 /**
  * Adds the custom fields to the registration form and profile editor
  *
  */
-function ibio_add_user_fields() {
+function ibio_add_user_fields($user_id = 0) {
 
-	$institution = get_user_meta( get_current_user_id(), 'ibio_institution', true );
-	$country   = get_user_meta( get_current_user_id(), 'ibio_country', true );
+    $institution = $country = '';
+    if ( !empty( $user_id ) ) {
+	    $institution = get_user_meta( $user_id, 'ibio_institution', true );
+	    $country     = get_user_meta( $user_id, 'country', true );
+    }
 	?>
 	<p>
 		<label for="ibio_institution"><?php _e( 'Your institution', 'ibiology' ); ?></label>
@@ -55,38 +57,7 @@ function ibio_add_user_fields() {
 }
 add_action( 'rcp_after_password_registration_field', 'ibio_add_user_fields' );
 add_action( 'rcp_profile_editor_after', 'ibio_add_user_fields' );
-
-/**
- * Adds the custom fields to the member edit screen
- *
- */
-function ibio_add_member_edit_fields( $user_id = 0 ) {
-
-	$institution = get_user_meta( $user_id, 'ibio_institution', true );
-	$country   = get_user_meta( $user_id, 'country', true );
-	?>
-	<tr valign="top">
-		<th scope="row" valign="top">
-			<label for="ibio_institution"><?php _e( 'Institution', 'ibiology' ); ?></label>
-		</th>
-		<td>
-			<input name="ibio_institution" id="ibio_institution" type="text" value="<?php echo esc_attr( $institution ); ?>"/>
-			<p class="description"><?php _e( 'The member\'s institution', 'ibiology' ); ?></p>
-		</td>
-	</tr>
-	<tr valign="top">
-		<th scope="row" valign="top">
-			<label for="country"><?php _e( 'Country', 'ibiology' ); ?></label>
-		</th>
-		<td>
-			<input name="country" id="country" type="text" value="<?php echo esc_attr( $country ); ?>"/>
-			<p class="description"><?php _e( 'The member\'s country', 'ibiology' ); ?></p>
-		</td>
-	</tr>
-	<?php
-}
-add_action( 'rcp_edit_member_after', 'ibio_add_member_edit_fields' );
-
+add_action( 'rcp_edit_member_after', 'ibio_add_user_fields' );
 
 
 /**
@@ -167,7 +138,7 @@ add_action( 'rcp_form_errors', 'ibio_rcp_validate_select_on_register', 10 );
  * Stores the information submitted during registration.
  */
 function ibio_rcp_save_select_field_on_register( $posted, $user_id ) {
-	if ( ! empty( $posted['rcp_teach'] ) ) {
+	if ( ! empty( $posted['ibio_teaching_level'] ) ) {
 		update_user_meta( $user_id, 'ibio_teaching_level', sanitize_text_field( $posted['ibio_teaching_level'] ) );
 	}
 }
@@ -187,8 +158,8 @@ function ibio_rcp_save_select_field_on_profile_save( $user_id ) {
 		'graduate',
 		'other'
 	);
-	if ( isset( $_POST['rcp_teach'] ) && in_array( $_POST['rcp_teach'], $available_choices ) ) {
-		update_user_meta( $user_id, 'rcp_teach', sanitize_text_field( $_POST['rcp_teach'] ) );
+	if ( isset( $_POST['ibio_teaching_level'] ) && in_array( $_POST['ibio_teaching_level'], $available_choices ) ) {
+		update_user_meta( $user_id, 'ibio_teaching_level', sanitize_text_field( $_POST['ibio_teaching_level'] ) );
 	}
 }
 //add_action( 'rcp_user_profile_updated', 'ibio_rcp_save_select_field_on_profile_save', 10 );
@@ -202,8 +173,12 @@ function ibio_rcp_save_select_field_on_profile_save( $user_id ) {
  * Adds a custom radio button fields to the registration form and profile editor.
 Have you already used iBio videos in the classroom?
  */
-function ibio_rcp_add_radio_fields() {
-	$ibio_videos = get_user_meta( get_current_user_id(), 'ibio_uses_videos', true );
+function ibio_rcp_add_uses_video_fields($user_id = 0 ) {
+    $ibio_videos = '';
+
+    if ( !empty( $user_id ) ) {
+	    $ibio_videos = get_user_meta( $user_id, 'ibio_uses_videos', true );
+    }
 	?>
 	<p>
 		<?php _e( 'Have you already used iBio videos in the classroom? * ', 'ibiology' ); ?>
@@ -224,35 +199,10 @@ function ibio_rcp_add_radio_fields() {
 
 	<?php
 }
-add_action( 'rcp_after_password_registration_field', 'ibio_rcp_add_radio_fields' );
-add_action( 'rcp_profile_editor_after', 'ibio_rcp_add_radio_fields' );
-/**
- * Adds the custom radio button fields to the member edit screen.
- */
-function ibio_rcp_add_radio_member_edit_fields( $user_id = 0 ) {
-	$ibio_videos = get_user_meta( $user_id, 'ibio_uses_videos', true );
-	?>
-	<tr valign="top">
-		<th scope="row" valign="top">
-			<label for="ibio_uses_videos"><?php _e( 'Have you already used iBio videos in the classroom?', 'ibiology' ); ?></label>
-		</th>
-		<td>
-			<label for="rcp_ibio_videos_yes">
-				<input name="ibio_uses_videos" id="rcp_ibio_videos_yes" type="radio" value="yes" <?php checked( $ibio_videos, 'yes' ); ?>/>
-				<?php _e( 'Yes', 'ibiology' ); ?>
-			</label>
-			<br/>
+add_action( 'rcp_after_password_registration_field', 'ibio_rcp_add_uses_video_fields' );
+add_action( 'rcp_profile_editor_after', 'ibio_rcp_add_uses_video_fields' );
+add_action( 'rcp_edit_member_after', 'ibio_rcp_add_uses_video_fields' );
 
-			<label for="rcp_ibio_videos_no">
-				<input name="ibio_uses_videos" id="rcp_ibio_videos_no" type="radio" value="no" <?php checked( $ibio_videos, 'no' ); ?>/>
-				<?php _e( 'No', 'ibiology' ); ?>
-			</label>
-
-		</td>
-	</tr>
-	<?php
-}
-add_action( 'rcp_edit_member_after', 'ibio_rcp_add_radio_member_edit_fields' );
 /**
  * Determines if there are problems with the registration data submitted.
  * Remove this code if you want the radio button to be optional.
@@ -277,7 +227,7 @@ add_action( 'rcp_form_errors', 'ibio_rcp_validate_radio_on_register', 10 );
  */
 function ibio_rcp_save_radio_field_on_register( $posted, $user_id ) {
 	if ( ! empty( $posted['ibio_uses_videos'] ) ) {
-		update_user_meta( $user_id, 'ibio_uses_videos', sanitize_text_field( $posted['rcp_ibio_videos'] ) );
+		update_user_meta( $user_id, 'ibio_uses_videos', sanitize_text_field( $posted['ibio_uses_videos'] ) );
 	}
 }
 add_action( 'rcp_form_processing', 'ibio_rcp_save_radio_field_on_register', 10, 2 );
@@ -291,7 +241,7 @@ function ibio_rcp_save_radio_field_on_profile_save( $user_id ) {
 		'yes',
 		'no'
 	);
-	if ( isset( $_POST['rcp_ibio_videos'] ) && in_array( $_POST['rcp_ibio_videos'], $available_choices ) ) {
+	if ( isset( $_POST['ibio_uses_videos'] ) && in_array( $_POST['ibio_uses_videos'], $available_choices ) ) {
 		update_user_meta( $user_id, 'ibio_uses_videos', sanitize_text_field( $_POST['ibio_uses_videos'] ) );
 	}
 }
@@ -334,27 +284,45 @@ function ibio_rcp_add_textarea_member_edit_field( $user_id = 0 ) {
 }
 add_action( 'rcp_edit_member_after', 'ibio_rcp_add_textarea_member_edit_field' );
 
-
+/* ----------------------------------  Saving  and updating user meta fields ------------------------------- */
 
 /**
  * Stores the information submitted during registration.
  */
-function ibio_rcp_save_textarea_field_on_register( $posted, $user_id ) {
+function ibio_rcp_save_fields_on_register( $posted, $user_id ) {
+
+	if ( ! empty( $posted['country'] ) ) {
+		update_user_meta( $user_id, 'country', wp_filter_nohtml_kses( $posted['country'] ) );
+	}
+
+	if ( ! empty( $posted['ibio_institution'] ) ) {
+		update_user_meta( $user_id, 'ibio_institution', wp_filter_nohtml_kses( $posted['ibio_institution'] ) );
+	}
+
 	if ( ! empty( $posted['ibio_video_use_info'] ) ) {
-		update_user_meta( $user_id, 'ibio_video_use_info', wp_filter_nohtml_kses( $posted['rcp_customer_description'] ) );
+		update_user_meta( $user_id, 'ibio_video_use_info', wp_filter_nohtml_kses( $posted['ibio_video_use_info'] ) );
 	}
 }
-add_action( 'rcp_form_processing', 'ibio_rcp_save_textarea_field_on_register', 10, 2 );
+add_action( 'rcp_form_processing', 'ibio_rcp_save_fields_on_register', 10, 2 );
+
 /**
  * Stores the information submitted during profile update.
  */
-function ibio_rcp_save_textarea_field_on_profile_save( $user_id ) {
+function ibio_rcp_save_fields_on_profile_save( $user_id ) {
+	if ( ! empty( $_POST['country'] ) ) {
+		update_user_meta( $user_id, 'country', wp_filter_nohtml_kses( $_POST['country'] ) );
+	}
+
+	if ( ! empty( $_POST['ibio_institution'] ) ) {
+		update_user_meta( $user_id, 'ibio_institution', wp_filter_nohtml_kses( $_POST['ibio_institution'] ) );
+	}
+
 	if ( ! empty( $_POST['ibio_video_use_info'] ) ) {
 		update_user_meta( $user_id, 'ibio_video_use_info', wp_filter_nohtml_kses( $_POST['ibio_video_use_info'] ) );
 	}
 }
-add_action( 'rcp_user_profile_updated', 'ibio_rcp_save_textarea_field_on_profile_save', 10 );
-add_action( 'rcp_edit_member', 'ibio_rcp_save_textarea_field_on_profile_save', 10 );
+add_action( 'rcp_user_profile_updated', 'ibio_rcp_save_fields_on_profile_save', 10 );
+add_action( 'rcp_edit_member', 'ibio_rcp_save_fields_on_profile_save', 10 );
 
 
 
@@ -450,7 +418,7 @@ add_action( 'rcp_form_errors', 'ibio2_rcp_validate_radio_on_register', 10 );
  */
 function ibio2_rcp_save_radio_field_on_register( $posted, $user_id ) {
 	if ( ! empty( $posted['ibio_videos_planned_use'] ) ) {
-		update_user_meta( $user_id, 'ibio_videos_planned_use', sanitize_text_field( $posted['rcp_ibio_videos2'] ) );
+		update_user_meta( $user_id, 'ibio_videos_planned_use', sanitize_text_field( $posted['ibio_videos_planned_use'] ) );
 	}
 }
 add_action( 'rcp_form_processing', 'ibio2_rcp_save_radio_field_on_register', 10, 2 );
@@ -466,7 +434,7 @@ function ibio2_rcp_save_radio_field_on_profile_save( $user_id ) {
 		'maybe'
 	);
 	if ( isset( $_POST['ibio_videos_planned_use'] ) && in_array( $_POST['ibio_videos_planned_use'], $available_choices ) ) {
-		update_user_meta( $user_id, 'ibio_videos_planned_use', sanitize_text_field( $_POST['rcp_ibio_videos2'] ) );
+		update_user_meta( $user_id, 'ibio_videos_planned_use', sanitize_text_field( $_POST['ibio_videos_planned_use'] ) );
 	}
 }
 add_action( 'rcp_user_profile_updated', 'ibio2_rcp_save_radio_field_on_profile_save', 10 );
@@ -482,7 +450,7 @@ function ibio_rcp_add_url_field() {
     <h4>Validate your institutional affiliation</h4>
 	<p>
         Please refer us to an official webpage showing your name and affiliation so we can verify that you are an educator (note: links to your institution homepage will not work for registration, also please ensure the URL you provide is not password protected). If this is not possible, please send us an email at info@ibiology.org. Our goal is to ensure that students are not accessing the educator only resources so you can use it in your classroom.
-		<input type="url" id="ibio_educator_proof_url" name="rcp_website_url" placeholder="https://" value="<?php echo esc_attr( $website_url ); ?>"/>
+		<input type="url" id="ibio_educator_proof_url" name="ibio_educator_proof_url" placeholder="https://" value="<?php echo esc_attr( $website_url ); ?>"/>
 	</p>
 
 	<?php
