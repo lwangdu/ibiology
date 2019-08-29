@@ -27,7 +27,7 @@ function ibio_convert_members(){
 		'order'        => 'ASC',
 		'offset'       => '',
 		'search'       => '',
-		'number'       => '1',
+		'number'       => '50',
 		'count_total'  => false,
 		'fields'       => 'all',
 		'who'          => '',
@@ -45,23 +45,40 @@ function ibio_convert_members(){
 	foreach($users as $u) {
 		$meta = get_user_meta($u->ID, 'wp_s2member_custom_fields', true);
 		if ( isset($meta['institution']) ){
-			update_user_meta( $u->ID,'', $meta['institution'] );
+			update_user_meta( $u->ID,'ibio_institution', $meta['institution'] );
 		}
 		if ( isset($meta['country']) ){
-			update_user_meta( $u->ID,'', $meta['country'] );
+			update_user_meta( $u->ID,'country', $meta['country'] );
 		}
 		if ( isset($meta['institution_url']) ){
-			update_user_meta( $u->ID,'', $meta['institution_url'] );
+			update_user_meta( $u->ID,'ibio_educator_proof_url', $meta['institution_url'] );
 		}
 		if ( isset($meta['institution_type']) ){
-			update_user_meta( $u->ID,'', $meta['institution_type'] );
+
+			update_user_meta( $u->ID,'ibio_teaching_level', $meta['institution_type'] );
 		}
 		if ( isset($meta['used_vids_before']) ){
-			update_user_meta( $u->ID,'', $meta['used_vids_before'] );
+			update_user_meta( $u->ID,'ibio_uses_videos', $meta['used_vids_before'] );
 		}
 		if ( isset($meta['planning_on_using_vids']) ){
-			update_user_meta( $u->ID,'', $meta['planning_on_using_vids'] );
+			update_user_meta( $u->ID,'ibio_videos_planned_use', $meta['planning_on_using_vids'] );
 		}
+
+		update_user_meta( $u->ID, '_old_wp_s2member_custom_fields', $meta);
+		delete_user_meta( $u->ID, 'wp_s2member_custom_fields', $meta);
+
+		// add a new rcp customer
+		$customer_id = rcp_add_customer( array(
+			'user_id' => $u->ID,
+			//'date_registered' => '2019-01-01 12:00:00'
+		) );
+
+		//add their membership
+		$membership_id = rcp_add_membership( array(
+			'customer_id' => $customer_id,
+			'object_id' => 1,
+			'status' => 'active'
+		) );
 	}
 
 
