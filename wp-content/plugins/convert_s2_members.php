@@ -27,7 +27,7 @@ function ibio_convert_members(){
 		'order'        => 'ASC',
 		'offset'       => '',
 		'search'       => '',
-		'number'       => '50',
+		'number'       => '25',
 		'count_total'  => false,
 		'fields'       => 'all',
 		'who'          => '',

@@ -496,6 +496,11 @@ add_action( 'rcp_edit_member', 'ibio_rcp_save_url_field_on_profile_save', 10 );
 ///  Add the ibio custom fields to the user email that goes out.
 function ibio_rcp_email_template_tags( $email_tags ) {
 	$email_tags[] = array(
+		'tag'         => 'country',
+		'description' => __( 'Educator Proof URL' ),
+		'function'    => 'ibio_country_usermeta_callback'
+	);
+	$email_tags[] = array(
 		'tag'         => 'ibio_educator_proof_url',
 		'description' => __( 'Educator Proof URL' ),
 		'function'    => 'ibio_educator_proof_url_usermeta_callback'
@@ -536,6 +541,12 @@ function ibio_rcp_email_template_tags( $email_tags ) {
 add_filter( 'rcp_email_template_tags', 'ibio_rcp_email_template_tags' );
 
 ///callbacks
+function ibio_country_usermeta_callback( $user_id = 0, $payment_id = 0, $tag = '' ) {
+	$user_meta = get_user_meta( $user_id, 'country', true );
+
+	return $user_meta;
+}
+
 function ibio_educator_proof_url_usermeta_callback( $user_id = 0, $payment_id = 0, $tag = '' ) {
 	$user_meta = get_user_meta( $user_id, 'ibio_educator_proof_url', true );
 
