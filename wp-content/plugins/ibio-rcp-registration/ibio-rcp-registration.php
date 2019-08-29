@@ -491,3 +491,83 @@ function ibio_rcp_save_url_field_on_profile_save( $user_id ) {
 	} }
 add_action( 'rcp_user_profile_updated', 'ibio_rcp_save_url_field_on_profile_save', 10 );
 add_action( 'rcp_edit_member', 'ibio_rcp_save_url_field_on_profile_save', 10 );
+
+
+///  Add the ibio custom fields to the user email that goes out.
+function ibio_rcp_email_template_tags( $email_tags ) {
+	$email_tags[] = array(
+		'tag'         => 'ibio_educator_proof_url',
+		'description' => __( 'Educator Proof URL' ),
+		'function'    => 'ibio_educator_proof_url_usermeta_callback'
+	);
+	$email_tags[] = array(
+		'tag'         => 'ibio_teaching_level',
+		'description' => __( 'Registration Survey Fields' ),
+		'function'    => 'ibio_teaching_level_usermeta_callback'
+	);
+	$email_tags[] = array(
+		'tag'         => 'ibio_uses_videos',
+		'description' => __( 'Registration Survey Fields' ),
+		'function'    => 'ibio_uses_videos_usermeta_callback'
+	);
+
+	$email_tags[] = array(
+		'tag'         => 'ibio_video_use_info',
+		'description' => __( 'Registration Survey Fields' ),
+		'function'    => 'ibio_video_use_info_usermeta_callback'
+	);
+
+	$email_tags[] = array(
+		'tag'         => 'ibio_institution',
+		'description' => __( 'Registration Survey Fields' ),
+		'function'    => 'ibio_institution_usermeta_callback'
+	);
+	$email_tags[] = array(
+		'tag'         => 'ibio_videos_planned_use',
+		'description' => __( 'Registration Survey Fields' ),
+		'function'    => 'ibio_videos_planned_use_usermeta_callback'
+	);
+
+
+	return $email_tags;
+}
+
+
+add_filter( 'rcp_email_template_tags', 'ibio_rcp_email_template_tags' );
+
+///callbacks
+function ibio_educator_proof_url_usermeta_callback( $user_id = 0, $payment_id = 0, $tag = '' ) {
+	$user_meta = get_user_meta( $user_id, 'ibio_educator_proof_url', true );
+
+	return $user_meta;
+}
+
+function ibio_teaching_level_usermeta_callback( $user_id = 0, $payment_id = 0, $tag = '' ) {
+	$my_user_meta = get_user_meta( $user_id, 'ibio_teaching_level', true );
+
+	return $my_user_meta;
+}
+
+function ibio_uses_videos_usermeta_callback( $user_id = 0, $payment_id = 0, $tag = '' ) {
+	$my_user_meta = get_user_meta( $user_id, 'ibio_uses_videos', true );
+
+	return $my_user_meta;
+}
+
+function ibio_video_use_info_usermeta_callback( $user_id = 0, $payment_id = 0, $tag = '' ) {
+	$my_user_meta = get_user_meta( $user_id, 'ibio_video_use_info', true );
+
+	return $my_user_meta;
+}
+
+function ibio_institution_usermeta_callback( $user_id = 0, $payment_id = 0, $tag = '' ) {
+	$my_user_meta = get_user_meta( $user_id, 'ibio_institution', true );
+
+	return $my_user_meta;
+}
+
+function ibio_videos_planned_use_usermeta_callback( $user_id = 0, $payment_id = 0, $tag = '' ) {
+	$my_user_meta = get_user_meta( $user_id, 'ibio_videos_planned_use', true );
+
+	return $my_user_meta;
+}
