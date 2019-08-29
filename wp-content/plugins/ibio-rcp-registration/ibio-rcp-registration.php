@@ -444,8 +444,12 @@ add_action( 'rcp_edit_member', 'ibio2_rcp_save_radio_field_on_profile_save', 10 
  * Adds a custom URL field to the registration form and profile editor.
  */
 
-function ibio_rcp_add_url_field() {
-	$website_url = get_user_meta( get_current_user_id(), 'ibio_educator_proof_url', true );
+function ibio_rcp_add_url_field( $user_id = null ) {
+    if (empty($user_id) ) {
+	    $website_url = get_user_meta( get_current_user_id(), 'ibio_educator_proof_url', true );
+    } else {
+	    $website_url = get_user_meta( $user_id, 'ibio_educator_proof_url', true );
+    }
 	?>
     <h4>Validate your institutional affiliation</h4>
 	<p>
