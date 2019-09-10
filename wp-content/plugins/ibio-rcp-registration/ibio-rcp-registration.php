@@ -452,8 +452,8 @@ function ibio_rcp_add_url_field( $user_id = null ) {
     }
 	?>
     <h4>Validate your institutional affiliation</h4>
-	<p>
-        Please refer us to an official webpage showing your name and affiliation so we can verify that you are an educator (note: links to your institution homepage will not work for registration, also please ensure the URL you provide is not password protected). If this is not possible, please send us an email at info@ibiology.org. Our goal is to ensure that students are not accessing the educator only resources so you can use it in your classroom.
+	<p>Our goal is to ensure that students are not accessing the educator only resources so you can use it in your classroom. Please refer us to an official webpage showing your name and affiliation so we can verify that you are an educator (Note: Links to your institution homepage will not work for registration. Also, please ensure the URL you provide is not password protected). If this is not possible, please send us an email at <a href="mailto:info@ibiology.org">info@ibiology.org</a>.
+       
 		<input type="url" id="ibio_educator_proof_url" name="ibio_educator_proof_url" placeholder="https://" value="<?php echo esc_attr( $website_url ); ?>"/>
 	</p>
 
