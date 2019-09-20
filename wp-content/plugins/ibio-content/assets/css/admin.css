@@ -5,10 +5,11 @@
 .profile-php tr.user-profile-picture {
 	display: none;
 }
-
+/*
 .user-url-wrap, .user-googleplus-wrap, .user-description-wrap, .user-pass1-wrap{
 	display: none;
 }
+*/
 
 /* resize the avatar image in the user listing */
 
