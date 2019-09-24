@@ -988,7 +988,7 @@ th:first-child {
 
 .horizontal li{
 	display: inline-table;
-	padding: 13px;
+	padding: 12px;
 }
 
 ul.quicklinks{
@@ -1615,7 +1615,7 @@ p.entry-meta {
 }
 
 .speakers.grid-listing .content{
-	justify-items: space-between;
+	justify-content: center;
 }
 
 .grid-listing .content .entry, .facetwp-template .entry, ul.grid li{
@@ -1638,7 +1638,7 @@ p.entry-meta {
 	padding: 10px;
 	background-color: #fafafa;
 	min-width: 200px;
-	max-width: 240px;
+	max-width: 235px;
 }
 
 
