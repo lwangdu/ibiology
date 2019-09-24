@@ -160,13 +160,15 @@ add_filter('embed_oembed_html', 'ibio_youtube_embed', 200);
 
 // pull talks in category pages -- 
 
-add_action( 'pre_get_posts', 'ibio_prepare_query' );
+add_action( 'pre_get_posts', 'ibio_prepare_query', 100 );
 
 function ibio_prepare_query( $query ) {
 	
 	$post_type = get_post_type();
 	
 	if ( !$query->is_main_query() ) return;
+
+	//error_log( serialize($query ) );
 
     /*if ( is_page('explore') ){
         error_log('page template: Explore Page');
@@ -181,10 +183,17 @@ function ibio_prepare_query( $query ) {
 		$query->query_vars['orderby'] = 'name';
 		$query->query_vars['order'] = 'ASC'; 
 		$query->query_vars['posts_per_page'] = -1;
-        $hidden = get_option( 'hidden_playlists');
+		// prevent RCP from blowing up our hidden playlists
+		$query->query_vars['suppress_filters'] = true;
+
+        $hidden = get_option('hidden_playlists');
         if ( is_array($hidden) ) {
+        	if ( !empty( $query->query_vars['post__not_in'] ) && is_array( $query->query_vars['post__not_in'] ) ){
+        		$hidden = array_merge( $query->query_vars['post__not_in'], $hidden );
+	        }
             $query->query_vars['post__not_in'] = $hidden;
         }
+
 		return;
 	}	else if ( is_post_type_archive(IBioSpeaker::$post_type) ){
 		$query->query_vars['orderby'] = 'meta_value';
