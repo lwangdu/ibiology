@@ -117,6 +117,14 @@ if ( is_array( $videos ) ) {
     echo $date_recorded;
     echo $languages;
     
+    // add a jump link to the Educator resoruces if we have them.
+    
+    $resources = get_field( 'educator_resources' );
+    
+    if ( !empty( $resources ) ){
+    	echo '<a href="#educator-resources">Educator Resources</a>';
+    }
+    
     echo '<div class="row">';
     $primary_related_category = get_field('related_talks');
     $primary_playlist = get_field( 'primary_playlist' );
