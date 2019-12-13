@@ -122,7 +122,7 @@ if ( is_array( $videos ) ) {
     $resources = get_field( 'educator_resources' );
     
     if ( !empty( $resources ) ){
-    	echo '<a href="#educator-resources">Educator Resources</a>';
+    	echo '<a href="#educator-resources">Educator Resources for this Talk</a>';
     }
     
     echo '<div class="row">';
