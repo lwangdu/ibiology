@@ -404,9 +404,4 @@ function ibio_yoast_website_schema( $graph_piece ) {
 
 	return $graph_piece;
 
-
 }
-
-//Add an archive description
-remove_action( 'genesis_before_loop', 'genesis_do_taxonomy_title_description', 15 );
-add_action( 'genesis_before_content', 'genesis_do_taxonomy_title_description', 15 );
