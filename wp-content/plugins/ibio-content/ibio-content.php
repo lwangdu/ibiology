@@ -45,7 +45,7 @@ class IBioContent{
 		add_filter( 'post_type_link', array( &$this, 'ibio_permalink') , 20, 4 );
 
 
-		add_post_type_support( "ibio_podcasts", 'genesis-cpt-archives-settings');
+		add_post_type_support( "ibiology_podcasts", 'genesis-cpt-archives-settings');
 	}
 
 
