@@ -404,5 +404,4 @@ function ibio_yoast_website_schema( $graph_piece ) {
 
 	return $graph_piece;
 
-
 }
