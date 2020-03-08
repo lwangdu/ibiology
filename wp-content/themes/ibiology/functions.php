@@ -410,7 +410,7 @@ function ibio_yoast_website_schema( $graph_piece ) {
 add_action( 'pre_get_posts', 'ibio_cpt_archive_items' );
 function ibio_cpt_archive_items( $query ) {
 if( $query->is_main_query() && !is_admin() && is_post_type_archive( 'ibiology_podcasts' ) ) {
-		$query->set( 'posts_per_page', '48' );
+		$query->set( 'posts_per_page', '24' );
 	}
 
 }
