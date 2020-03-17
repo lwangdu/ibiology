@@ -162,8 +162,8 @@ function ibio_rcp_save_select_field_on_profile_save( $user_id ) {
 		update_user_meta( $user_id, 'ibio_teaching_level', sanitize_text_field( $_POST['ibio_teaching_level'] ) );
 	}
 }
-//add_action( 'rcp_user_profile_updated', 'ibio_rcp_save_select_field_on_profile_save', 10 );
-//add_action( 'rcp_edit_member', 'ibio_rcp_save_select_field_on_profile_save', 10 );
+add_action( 'rcp_user_profile_updated', 'ibio_rcp_save_select_field_on_profile_save', 10 );
+add_action( 'rcp_edit_member', 'ibio_rcp_save_select_field_on_profile_save', 10 );
 
 
 
