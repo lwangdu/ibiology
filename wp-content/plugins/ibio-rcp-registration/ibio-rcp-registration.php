@@ -33,7 +33,9 @@ add_action( 'rcp_after_password_registration_field', 'ibio_rcp_add_url_field' );
 add_action( 'rcp_after_password_registration_field', 'ibio_rcp_add_uses_video_fields' );
 add_action( 'rcp_after_password_registration_field', 'ibio2_rcp_add_radio_fields' );
 */
-add_action( 'rcp_edit_member_after', 'ibio_add_user_fields' );
+add_action( 'rcp_edit_member_after', 'ibio_start_custom_field_section', 14);
+add_action( 'rcp_edit_member_after', 'ibio_add_user_fields', 15 );
+add_action( 'rcp_edit_member_after', 'ibio_end_custom_field_section', 16);
 /*
 add_action( 'rcp_edit_member_after', 'ibio_rcp_add_select_member_edit_field' );
 add_action( 'rcp_edit_member_after', 'ibio_rcp_add_textarea_member_edit_field' );
@@ -42,7 +44,7 @@ add_action( 'rcp_edit_member_after', 'ibio_rcp_add_uses_video_fields' );
 add_action( 'rcp_edit_member_after', 'ibio2_rcp_add_radio_member_edit_fields' );
 */
 
-add_action( 'rcp_profile_editor_after', 'ibio_add_user_fields' );
+add_action( 'rcp_profile_editor_after', 'ibio_add_user_fields', 15 );
 
 /*
 add_action( 'rcp_profile_editor_after', 'ibio_rcp_add_select_field' );
@@ -217,7 +219,7 @@ function ibio_add_user_fields($user_id = 0) {
 	// End: How they plan to use  Videos in Classroom?
 
 	// Validate their affiliation
-	$website_url = "";
+	$website_url = '';
     if ( !empty( $website_url ) ) {
 	    $website_url = get_user_meta( $user_id, 'ibio_educator_proof_url', true );
     }
@@ -234,6 +236,19 @@ function ibio_add_user_fields($user_id = 0) {
 
     // end: RCP Form Customizations
 
+}
+
+/* Because the "edit member" screen uses a table, we need to wrap our custom fields into a table row */
+function ibio_start_custom_field_section (){
+    ?>
+    <tr> <td colspan="2"><h4>Educator Custom Fields</h4>
+    <?php
+}
+
+function ibio_end_custom_field_section(){
+    ?>
+    </td></tr>
+    <?php
 }
 
 /**
