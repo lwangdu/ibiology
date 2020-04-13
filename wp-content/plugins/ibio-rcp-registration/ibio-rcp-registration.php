@@ -220,7 +220,7 @@ function ibio_add_user_fields($user_id = 0) {
 
 	// Validate their affiliation
 	$website_url = '';
-    if ( !empty( $website_url ) ) {
+    if ( !empty( $user_id ) ) {
 	    $website_url = get_user_meta( $user_id, 'ibio_educator_proof_url', true );
     }
 
@@ -241,7 +241,7 @@ function ibio_add_user_fields($user_id = 0) {
 /* Because the "edit member" screen uses a table, we need to wrap our custom fields into a table row */
 function ibio_start_custom_field_section (){
     ?>
-    <tr> <td colspan="2"><h4>Educator Custom Fields</h4>
+    <tr> <td colspan="2"><h3>Educator Custom Fields</h3>
     <?php
 }
 
