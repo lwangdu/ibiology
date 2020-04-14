@@ -297,7 +297,7 @@ function ibio_validate_data_on_register( $posted ) {
 	);
 	// Add an error message if the submitted option isn't one of our valid choices.
 	if ( ! in_array( $posted['ibio_videos_planned_use'], $available_choices ) ) {
-		rcp_errors()->add( 'invalid_ibio_videos', __( 'Please select whether you plan to use videos in the classroom', 'ibiology' ), 'register' );
+		rcp_errors()->add( 'invalid_ibio_planned_videos', __( 'Please select whether you plan to use videos in the classroom', 'ibiology' ), 'register' );
 	}
 
 	// Validate that they provided a URL
