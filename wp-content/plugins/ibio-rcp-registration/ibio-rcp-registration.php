@@ -33,49 +33,21 @@ add_action( 'rcp_edit_member_after', 'ibio_end_custom_field_section', 16);
 
 add_action( 'rcp_profile_editor_after', 'ibio_add_user_fields', 15 );
 
-
-
 /* validation of fields and Error Processing   */
-
-add_action( 'rcp_form_processing', 'ibio_rcp_save_fields_on_register', 10, 2 );
-
-/*
- *
- add_action( 'rcp_form_processing', 'ibio_rcp_save_radio_field_on_register', 10, 2 );
-add_action( 'rcp_form_processing', 'ibio_rcp_save_select_field_on_register', 10, 2 );
-add_action( 'rcp_form_processing', 'ibio_rcp_save_url_field_on_register', 10,2 );
-add_action( 'rcp_form_processing', 'ibio2_rcp_save_radio_field_on_register', 10, 2 );
-*/
 
 add_action( 'rcp_form_errors', 'ibio_validate_data_on_register', 10 );
 
-/*
-add_action( 'rcp_form_errors', 'ibio_rcp_validate_radio_on_register', 10 );
-add_action( 'rcp_form_errors', 'ibio_rcp_validate_select_on_register', 10 );
-add_action( 'rcp_form_errors', 'ibio_rcp_validate_url_on_register', 10 );
-add_action( 'rcp_form_errors', 'ibio2_rcp_validate_radio_on_register', 10 );
-*/
+/* Save new user fields */
 
-/* Functions that save (updated) information */
+add_action( 'rcp_form_processing', 'ibio_rcp_save_fields_on_register', 10, 2 );
+
+/* Update existing member information  */
 
 add_action( 'rcp_edit_member', 'ibio_rcp_save_fields_on_profile_save', 10 );
 add_action( 'rcp_user_profile_updated', 'ibio_rcp_save_fields_on_profile_save', 10 );
 
-/*
-add_action( 'rcp_edit_member', 'ibio_rcp_save_radio_field_on_profile_save', 10 );
-add_action( 'rcp_edit_member', 'ibio_rcp_save_select_field_on_profile_save', 10 );
-add_action( 'rcp_edit_member', 'ibio_rcp_save_url_field_on_profile_save', 10 );
-add_action( 'rcp_edit_member', 'ibio2_rcp_save_radio_field_on_profile_save', 10 );
-
-add_action( 'rcp_user_profile_updated', 'ibio_rcp_save_radio_field_on_profile_save', 10 );
-add_action( 'rcp_user_profile_updated', 'ibio_rcp_save_select_field_on_profile_save', 10 );
-add_action( 'rcp_user_profile_updated', 'ibio_rcp_save_url_field_on_profile_save', 10 );
-add_action( 'rcp_user_profile_updated', 'ibio2_rcp_save_radio_field_on_profile_save', 10 );
-*/
 
 add_filter( 'rcp_user_registration_data', 'ibio_rcp_user_registration_data', 20 );
-
-
 
 /* Remove username field on RCP */
 function ibio_rcp_user_registration_data( $user ) {
@@ -288,7 +260,6 @@ function ibio_validate_data_on_register( $posted ) {
 		rcp_errors()->add( 'invalid_ibio_videos', __( 'Please select whether or not you use videos in the classroom', 'ibiology' ), 'register' );
 	}
 
-
 	// Validate the Planned use of Videos (required field)
 	$available_choices = array(
 		'yes',
@@ -345,7 +316,16 @@ function ibio_rcp_save_fields_on_register( $posted, $user_id ) {
  */
 function ibio_rcp_save_select_field_on_profile_save( $user_id ) {
 
-	// List all the available options that can be selected.
+
+	if ( ! empty( $_POST['country'] ) ) {
+		update_user_meta( $user_id, 'country', wp_filter_nohtml_kses( $_POST['country'] ) );
+	}
+
+	if ( ! empty( $_POST['ibio_institution'] ) ) {
+		update_user_meta( $user_id, 'ibio_institution', wp_filter_nohtml_kses( $_POST['ibio_institution'] ) );
+	}
+
+	// Save the teaching levels
 	$available_choices = array(
 		'elementary',
 		'high_school',
@@ -358,15 +338,8 @@ function ibio_rcp_save_select_field_on_profile_save( $user_id ) {
 	if ( isset( $_POST['ibio_teaching_level'] ) && in_array( $_POST['ibio_teaching_level'], $available_choices ) ) {
 		update_user_meta( $user_id, 'ibio_teaching_level', sanitize_text_field( $_POST['ibio_teaching_level'] ) );
 	}
-}
 
-
-/**
- * Stores the information submitted during profile update.
- */
-function ibio_rcp_save_radio_field_on_profile_save( $user_id ) {
-
-	// List all the available options that can be selected.
+	// Save whether they use videos
 	$available_choices = array(
 		'yes',
 		'no'
@@ -374,34 +347,13 @@ function ibio_rcp_save_radio_field_on_profile_save( $user_id ) {
 	if ( isset( $_POST['ibio_uses_videos'] ) && in_array( $_POST['ibio_uses_videos'], $available_choices ) ) {
 		update_user_meta( $user_id, 'ibio_uses_videos', sanitize_text_field( $_POST['ibio_uses_videos'] ) );
 	}
-}
 
-/**
- * Stores the information submitted during profile update.
- */
-function ibio_rcp_save_fields_on_profile_save( $user_id ) {
-	if ( ! empty( $_POST['country'] ) ) {
-		update_user_meta( $user_id, 'country', wp_filter_nohtml_kses( $_POST['country'] ) );
-	}
-
-	if ( ! empty( $_POST['ibio_institution'] ) ) {
-		update_user_meta( $user_id, 'ibio_institution', wp_filter_nohtml_kses( $_POST['ibio_institution'] ) );
-	}
-
+	// Save how they use videos
 	if ( ! empty( $_POST['ibio_video_use_info'] ) ) {
 		update_user_meta( $user_id, 'ibio_video_use_info', wp_filter_nohtml_kses( $_POST['ibio_video_use_info'] ) );
 	}
-}
 
-
-
-
-/**
- * Stores the information submitted during profile update.
- */
-function ibio2_rcp_save_radio_field_on_profile_save( $user_id ) {
-
-	// List all the available options that can be selected.
+	// Save whether they plan to use videos
 	$available_choices = array(
 		'yes',
 		'no',
@@ -410,16 +362,16 @@ function ibio2_rcp_save_radio_field_on_profile_save( $user_id ) {
 	if ( isset( $_POST['ibio_videos_planned_use'] ) && in_array( $_POST['ibio_videos_planned_use'], $available_choices ) ) {
 		update_user_meta( $user_id, 'ibio_videos_planned_use', sanitize_text_field( $_POST['ibio_videos_planned_use'] ) );
 	}
-}
 
+	// save they educator URL
 
-
-
-/**  * Stores the information submitted during profile update.  */
-function ibio_rcp_save_url_field_on_profile_save( $user_id ) {
 	if ( ! empty($_POST['ibio_educator_proof_url'] ) ) {
 		update_user_meta( $user_id, 'ibio_educator_proof_url', esc_url_raw( $_POST['ibio_educator_proof_url'] ) );
-	} }
+	}
+
+}
+
+/* ----------------------------------  Email Template and Callbacks ------------------------------- */
 
 
 ///  Add the ibio custom fields to the user email that goes out.
