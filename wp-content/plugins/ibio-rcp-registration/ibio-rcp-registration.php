@@ -283,7 +283,7 @@ function ibio_validate_data_on_register( $posted ) {
 /**
  * Stores the information submitted during registration.
  */
-function ibio_rcp_save_fields_on_profile_save( $posted, $user_id ) {
+function ibio_rcp_save_fields_on_register( $posted, $user_id ) {
 
 	if ( ! empty( $posted['country'] ) ) {
 		update_user_meta( $user_id, 'country', wp_filter_nohtml_kses( $posted['country'] ) );
@@ -314,7 +314,7 @@ function ibio_rcp_save_fields_on_profile_save( $posted, $user_id ) {
 /**
  * Stores the information submitted during profile update.
  */
-function ibio_rcp_save_select_field_on_profile_save( $user_id ) {
+function ibio_rcp_save_fields_on_profile_save( $user_id ) {
 
 
 	if ( ! empty( $_POST['country'] ) ) {
