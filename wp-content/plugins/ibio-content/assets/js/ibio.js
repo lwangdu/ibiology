@@ -98,9 +98,22 @@ jQuery(document).ready(function($) {
     });
 
     $(document).on('facetwp-loaded', function() {
-        // Scroll to the top of the page after the page is refreshed
+        // Scroll to the top of the explore tab on page after the filter is refreshed
         $( '.facetwp-overlay' ).hide( 1200 );
-        $('html, body').animate({ scrollTop: 0 }, 500);
+        var top = $( '.facetwp-filters' ).position().top;
+        $('html, body').animate({ scrollTop: top }, 500);
+
+        var selected_facets = {};
+
+        if (typeof(FWP.facets.audience) && typeof(FWP.facets.audience[0]) ) { selected_facets['audience'] = FWP.facets.audience[0] } ;
+        if (typeof(FWP.facets.duration) && typeof(FWP.facets.duration[0]) ) { selected_facets['duration'] = FWP.facets.duration[0] } ;
+        if (typeof(FWP.facets.educator_resources) && typeof(FWP.facets.educator_resources[0]) ) { selected_facets['educator_resources'] = FWP.facets.educator_resources[0] } ;
+        if (typeof(FWP.facets.subtitles) && typeof(FWP.facets.subtitles[0]) ) { selected_facets['subtitles'] = FWP.facets.subtitles[0] } ;
+        if (typeof(FWP.facets.topics) && typeof(FWP.facets.topics[0]) ) { selected_facets['topics'] = FWP.facets.topics[0] } ;
+
+        //if (typeof(dataLayer) ) {
+            dataLayer.push({'explore_facets': selected_facets});
+        //}
     });
 
 
