@@ -113,7 +113,7 @@ jQuery(document).ready(function($) {
         if (typeof(FWP.facets.topics) && typeof(FWP.facets.topics[0])  !== 'undefined'  ) { selected_facets['topics'] = FWP.facets.topics[0] } ;
 
         if (Object.keys(selected_facets).length > 0 ) {
-            dataLayer.push({'explore_facets': selected_facets,
+            dataLayer.push({'explore_facets': JSON.stringify(selected_facets),
                     'event': 'facet_selection'});
         }
     });
