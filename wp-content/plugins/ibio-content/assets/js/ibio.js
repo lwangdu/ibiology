@@ -106,11 +106,11 @@ jQuery(document).ready(function($) {
 
         var selected_facets = {};
 
-        if (typeof(FWP.facets.audience) && typeof(FWP.facets.audience[0]) ) { selected_facets['audience'] = FWP.facets.audience[0] } ;
-        if (typeof(FWP.facets.duration) && typeof(FWP.facets.duration[0]) ) { selected_facets['duration'] = FWP.facets.duration[0] } ;
-        if (typeof(FWP.facets.educator_resources) && typeof(FWP.facets.educator_resources[0]) ) { selected_facets['educator_resources'] = FWP.facets.educator_resources[0] } ;
-        if (typeof(FWP.facets.subtitles) && typeof(FWP.facets.subtitles[0]) ) { selected_facets['subtitles'] = FWP.facets.subtitles[0] } ;
-        if (typeof(FWP.facets.topics) && typeof(FWP.facets.topics[0]) ) { selected_facets['topics'] = FWP.facets.topics[0] } ;
+        if (typeof(FWP.facets.audience) && typeof(FWP.facets.audience[0]) !== 'undefined' ) { selected_facets['audience'] = FWP.facets.audience[0] } ;
+        if (typeof(FWP.facets.duration) && typeof(FWP.facets.duration[0])  !== 'undefined'  ) { selected_facets['duration'] = FWP.facets.duration[0] } ;
+        if (typeof(FWP.facets.educator_resources) && typeof(FWP.facets.educator_resources[0])  !== 'undefined'  ) { selected_facets['educator_resources'] = FWP.facets.educator_resources[0] } ;
+        if (typeof(FWP.facets.subtitles) && typeof(FWP.facets.subtitles[0])  !== 'undefined'  ) { selected_facets['subtitles'] = FWP.facets.subtitles[0] } ;
+        if (typeof(FWP.facets.topics) && typeof(FWP.facets.topics[0])  !== 'undefined'  ) { selected_facets['topics'] = FWP.facets.topics[0] } ;
 
         if (Object.keys(selected_facets).length > 0 ) {
             dataLayer.push({'explore_facets': selected_facets,
