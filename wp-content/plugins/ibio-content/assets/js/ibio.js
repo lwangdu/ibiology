@@ -101,7 +101,8 @@ jQuery(document).ready(function($) {
         // Scroll to the top of the explore tab on page after the filter is refreshed
         $( '.facetwp-overlay' ).hide( 1200 );
         var top = $( '.facetwp-filters' ).position().top;
-        $('html, body').animate({ scrollTop: top }, 500);
+        //$('html, body').animate({ scrollTop: top }, 500);
+        $('html, body').animate({ scrollTop: 0 }, 500);
 
         var selected_facets = {};
 
@@ -111,9 +112,14 @@ jQuery(document).ready(function($) {
         if (typeof(FWP.facets.subtitles) && typeof(FWP.facets.subtitles[0]) ) { selected_facets['subtitles'] = FWP.facets.subtitles[0] } ;
         if (typeof(FWP.facets.topics) && typeof(FWP.facets.topics[0]) ) { selected_facets['topics'] = FWP.facets.topics[0] } ;
 
-        //if (typeof(dataLayer) ) {
+        if (Object.keys(selected_facets).length > 0 ) {
             dataLayer.push({'explore_facets': selected_facets});
-        //}
+            dataLayer.push({'event': 'facet_selection'});
+        }
+    });
+
+    $('.facetwp-template a').on('click', function() {
+        dataLayer.push( {'event':'explore_click'} );
     });
 
 
