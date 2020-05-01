@@ -120,7 +120,7 @@ add_theme_support(
 		array(
 			'name'  => __( 'Dark green', 'genesis-sample' ),
 			'slug'  => 'dark-green',
-			'color' => '#009ad2',
+			'color' => '#76893e',
 		),
 		array(
 			'name'  => __( 'Light green', 'genesis-sample' ),
