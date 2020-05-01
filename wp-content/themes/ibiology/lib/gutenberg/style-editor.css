@@ -217,19 +217,23 @@ p.has-background.light-text a:hover {
 
 /* Color Palette
 ---------------------------------------------------------------------------- */
-
-.has-light-gray-background-color {
-	background-color: #f5f5f5;
+.entry-content .has-white-background-color {
+	background-color: #fff;
+}
+.entry-content .has-white-color {
+	color: #fff;
 }
 
+.has-light-gray-background-color {
+	background-color: #fafafa;
+}
 .has-light-gray-color {
-	color: #f5f5f5;
+	color: #fafafa;
 }
 
 .has-medium-gray-background-color {
 	background-color: #999;
 }
-
 .has-medium-gray-color {
 	color: #999;
 }
@@ -237,9 +241,43 @@ p.has-background.light-text a:hover {
 .has-dark-gray-background-color {
 	background-color: #333;
 }
-
 .has-dark-gray-color {
 	color: #333;
+}
+
+.entry-content .has-blue-background-color {
+	background-color: #009ad2;
+}
+.entry-content .has-blue-color {
+	color: #009ad2;
+}
+
+.entry-content .has-dark-green-background-color {
+	background-color: #76893e;
+}
+.entry-content .has-dark-green-color {
+	color: #76893e;
+}
+
+.entry-content .has-light-green-background-color {
+	background-color: #add04e;
+}
+.entry-content .has-light-green-color {
+	color: #add04e;
+}
+
+.entry-content .has-orange-background-color {
+	background-color: #fbc52c;
+}
+.entry-content .has-orange-color {
+	color: #fbc52c;
+}
+
+.entry-content .has-red-background-color {
+	background-color: #b92e32;
+}
+.entry-content .has-red-color {
+	color: #b92e32;
 }
 
 /* Cover Image

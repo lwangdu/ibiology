@@ -92,9 +92,14 @@ add_theme_support(
 	'editor-color-palette',
 	array(
 		array(
+			'name'  => __( 'White', 'genesis-sample' ),
+			'slug'  => 'white',
+			'color' => '#fff',
+		),
+		array(
 			'name'  => __( 'Light gray', 'genesis-sample' ),
 			'slug'  => 'light-gray',
-			'color' => '#f5f5f5',
+			'color' => '#fafafa',
 		),
 		array(
 			'name'  => __( 'Medium gray', 'genesis-sample' ),
@@ -105,6 +110,32 @@ add_theme_support(
 			'name'  => __( 'Dark gray', 'genesis-sample' ),
 			'slug'  => 'dark-gray',
 			'color' => '#333',
+		),
+
+		array(
+			'name'  => __( 'Blue', 'genesis-sample' ),
+			'slug'  => 'blue',
+			'color' => '#009ad2',
+		),
+		array(
+			'name'  => __( 'Dark green', 'genesis-sample' ),
+			'slug'  => 'dark-green',
+			'color' => '#76893e',
+		),
+		array(
+			'name'  => __( 'Light green', 'genesis-sample' ),
+			'slug'  => 'light-green',
+			'color' => '#add04e',
+		),
+		array(
+			'name'  => __( 'Orange', 'genesis-sample' ),
+			'slug'  => 'orange',
+			'color' => '#fbc52c',
+		),
+		array(
+			'name'  => __( 'Red', 'genesis-sample' ),
+			'slug'  => 'red',
+			'color' => '#b92e32',
 		),
 	)
 );
