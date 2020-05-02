@@ -457,7 +457,7 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"],
 .button {
-	background-color: #666;
+	background-color: #007bff;
 	border: 0;
 	color: #fff;
 	cursor: pointer;
