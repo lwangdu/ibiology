@@ -205,7 +205,7 @@
 
 .content .wp-block-button .wp-block-button__link:focus,
 .content .wp-block-button .wp-block-button__link:hover {
-	background-color: #0375f0;
+	background-color: #0365cd;
 	color: #fff;
 }
 
@@ -223,7 +223,7 @@
 
 .content .wp-block-button.is-style-outline .wp-block-button__link:focus,
 .content .wp-block-button.is-style-outline .wp-block-button__link:hover {
-	color: #0375f0;
+	color: #fff;
 }
 
 /* Blockquotes and captions
