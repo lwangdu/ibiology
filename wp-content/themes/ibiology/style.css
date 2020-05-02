@@ -480,7 +480,7 @@ input:focus[type="button"],
 input:focus[type="reset"],
 input:focus[type="submit"],
 .button:focus  {
-	background-color: #333;
+	background-color: #0375f0;
 	color: #fff;
 }
 
