@@ -134,6 +134,32 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
     wp_reset_postdata();
 }
 
+function ibio_talks_playlist_expanded($playlist = null, $maxitems = 0, $orderby=''){
+
+
+	$start = 0;
+
+	if ( !$playlist ){
+		$playlist = get_queried_object();
+
+	}
+
+
+	global $talks, $sessions;
+	$talks = ibio_playlist_items( $playlist, 'playlist_to_talks',  $audience, $orderby);
+	$sessions = ibio_playlist_items( $playlist, 'playlist_to_session',  $audience);
+
+
+	if ( $talks->have_posts( ) || $sessions->have_posts( ) ) {
+		ibio_get_template_part("shared/expanded", "talks-table");
+
+	}
+
+
+	wp_reset_postdata();
+}
+
+
 function ibio_compare_playlist_posts( $a, $b){
 
     if ( !isset($a->menu_order) || !isset($b->menu_order)) return 0;
@@ -161,7 +187,8 @@ function ibio_playlist_shortcode($atts){
         'id' => null,
         'numtalks' => 4,
         'start_index' => 0,
-        'audience' => null
+        'audience' => null,
+	    'expanded' => false
         ) , $atts, 'ibio_playlist');
 
 
@@ -176,8 +203,11 @@ function ibio_playlist_shortcode($atts){
     }
 
     ob_start();
-
-    ibio_talks_playlist( $playlist, $atts['numtalks'], $atts['audience'] );
+	if ( $atts['expanded'] != true ) {
+		ibio_talks_playlist( $playlist, $atts['numtalks'], $atts['audience'] );
+	} else {
+		ibio_talks_playlist_expanded($playlist, $atts['numtalks'], $atts['audience']);
+	}
 
     $playlist = ob_get_clean();
 
