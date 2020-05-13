@@ -54,12 +54,12 @@ $speaker_content = '';
     /* Show the single row that shows the name and description of the talk or session. */
 
 ?>
-    <tr><th colspan="<?php echo ($columns - 1) ; ?>" class="section-row">
+    <tr class="section-row"><th colspan="<?php echo ($columns - 1) ; ?>">
             <span class="session-title"><a href="<?php echo $permalink;?>"><?php echo $post->post_title; ?></a></span>
             <p class="description"><?php echo $description; ?></p>
             <p class="speakers-list"><?php echo $speaker_content;?></p>
         </th>
-        <td><?php echo $resources;?></td>
+        <td ><?php echo $resources;?></td>
         </tr>
 <?php
 
