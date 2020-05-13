@@ -16,7 +16,7 @@ $columns = 7;
 	<tr><th>Title</th>
 		<th>Video</th>
 		<th>Description</th>
-		<th>Speaker</th>
+		<th>Duration</th>
 		<th>Video Downloads</th>
 		<th>Transcript</th>
 		<th class="restriced-access">Materials</th>

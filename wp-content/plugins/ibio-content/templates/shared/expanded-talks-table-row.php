@@ -44,8 +44,9 @@ $speaker_content = '';
 			$surl = get_post_permalink( $t->ID) ;
 			$out[] =  "<a href='$surl' class='speaker-link' title='{$t->post_title}'>{$t->post_title}</a>";
 		}
-
+        $speaker_content = "With: ";
 		$speaker_content .=  implode( ', ', $out);
+
 	}
 
 
@@ -53,10 +54,10 @@ $speaker_content = '';
     /* Show the single row that shows the name and description of the talk or session. */
 
 ?>
-    <tr><th colspan="<?php echo ($columns - 1) ; ?>" class="talk-header">
+    <tr><th colspan="<?php echo ($columns - 1) ; ?>" class="section-row">
             <span class="session-title"><a href="<?php echo $permalink;?>"><?php echo $post->post_title; ?></a></span>
-            <div class="description"><?php echo $description; ?></div>
-            <div class="speakers-list">With: <?php echo $speaker_content;?></div>
+            <p class="description"><?php echo $description; ?></p>
+            <p class="speakers-list"><?php echo $speaker_content;?></p>
         </th>
         <td><?php echo $resources;?></td>
         </tr>
@@ -80,7 +81,7 @@ if ( !empty( $videos ) ) :
         }
 
 		$size = isset( $v[ 'download_size' ] ) ?  '<span class="size">' . esc_attr( $v[ 'download_size' ] ) . '</span>' : '';
-		$length = isset( $v[ 'video_length' ] ) ?  '<span class="length">Duration: ' . esc_attr( $v[ 'video_length' ] ) . '</span>' : '';
+		$length = isset( $v[ 'video_length' ] ) ?  '<span class="length">' . esc_attr( $v[ 'video_length' ] ) . '</span>' : '';
 
 		$download_link = !empty($download) ? "<button class='download-link'><a href='$download' target='_blank' download class='download hi-res' $helptext>Hi-Res</a></button>" : '';
 		$download_low_res = !empty( $download ) ? str_replace('hi.mp4', 'lo.mp4', $download) : 'null';
@@ -107,7 +108,7 @@ if ( !empty( $videos ) ) :
             <td><?php echo $title; ?></td>
             <td><?php echo $video_thumbnail_img;?><a href="<?php echo $video_url; ?>">YouTube</a></td>
             <td>N/A</td>
-            <td>n/a</td>
+            <td><?php echo $length; ?></td>
             <td>
                 <?php echo "$download_link $download_low_res_link $audio_download_link $subtitles ";?>
 
