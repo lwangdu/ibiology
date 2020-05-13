@@ -109,7 +109,7 @@ if ( !empty( $videos ) ) :
             <td><?php echo $video_thumbnail_img;?><a href="<?php echo $video_url; ?>">YouTube</a></td>
             <td>N/A</td>
             <td><?php echo $length; ?></td>
-            <td>
+            <td class="controls">
                 <?php echo "$download_link $download_low_res_link $audio_download_link $subtitles ";?>
 
             </td>
