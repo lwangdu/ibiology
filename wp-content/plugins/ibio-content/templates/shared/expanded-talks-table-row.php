@@ -83,10 +83,10 @@ if ( !empty( $videos ) ) :
 		$size = isset( $v[ 'download_size' ] ) ?  '<span class="size">' . esc_attr( $v[ 'download_size' ] ) . '</span>' : '';
 		$length = isset( $v[ 'video_length' ] ) ?  '<span class="length">' . esc_attr( $v[ 'video_length' ] ) . '</span>' : '';
 
-		$download_link = !empty($download) ? "<button class='download-link'><a href='$download' target='_blank' download class='download hi-res' $helptext>Hi-Res</a></button>" : '';
+		$download_link = !empty($download) ? "<button class='download-link'><a href='$download' target='_blank' download class='download hi-res' $helptext>Hi-Res</a>" : '';
 		$download_low_res = !empty( $download ) ? str_replace('hi.mp4', 'lo.mp4', $download) : 'null';
-		$download_low_res_link = !empty($download_low_res) ? "<button class='download-link'><a href='$download_low_res' target='_blank' download class='download lo-res' $helptext>Low-Res</a></button>" : '';
-		$audio_download_link = !empty($audio_download) ? "<button class='download-link'><a href='$audio_download' target='_blank' download class='download' $helptext>Audio Only</a></button>" : '';
+		$download_low_res_link = !empty($download_low_res) ? "<a href='$download_low_res' target='_blank' download class='download lo-res' $helptext>Low-Res</a>" : '';
+		$audio_download_link = !empty($audio_download) ? "<a href='$audio_download' target='_blank' download class='download' $helptext>Audio Only</a>" : '';
 
 
 		$subtitle_downloads = !empty( $v[ 'download_subtitled_video'] ) ? $v[ 'download_subtitled_video' ] : null;
