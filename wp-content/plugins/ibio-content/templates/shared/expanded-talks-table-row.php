@@ -93,11 +93,11 @@ if ( !empty( $videos ) ) :
 		$subtitles = '';
 		if ( is_array( $subtitle_downloads ) ) {
 
-			$subtitles = "<p class='subtitle-downloads'>Download with subtitles in: <ul class='downloads-list'>";
+			$subtitles = "<p class='subtitle-downloads'>Download with subtitles in:</p> <ul class='downloads-list'>";
 			foreach ( $subtitle_downloads as $d ) {
 				$subtitles .= "<li><a href='{$d['video_download_url']}' download class='download' target='_blank'>{$d['language']}</a></li>";
 			}
-			$subtitles .= '</ul></p>';
+			$subtitles .= '</ul>';
 
 		}
 		$transcript = (isset( $v[ 'transcript' ] ) &&  strlen($v[ 'transcript' ]) > 1) ?   "Transcript available and coming soon" : '';
