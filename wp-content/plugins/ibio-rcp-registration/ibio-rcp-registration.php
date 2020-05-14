@@ -189,7 +189,7 @@ function ibio_add_user_fields($user_id = 0) {
 
 	?>
     <h4>Validate your institutional affiliation</h4>
-    <p>Our goal is to ensure that students are not accessing the educator only resources so you can use it in your classroom. Please refer us to an official webpage showing your name and affiliation so we can verify that you are an educator (Note: Links to your institution homepage will not work for registration. Also, please ensure the URL you provide is not password protected). If this is not possible, please send us an email at <a href="mailto:info@ibiology.org">info@ibiology.org</a>.
+    <p class="description">Our goal is to ensure that students are not accessing the educator only resources so you can use it in your classroom. Please refer us to an official webpage showing your name and affiliation so we can verify that you are an educator (Note: Links to your institution homepage will not work for registration. Also, please ensure the URL you provide is not password protected). If this is not possible, please send us an email at <a href="mailto:info@ibiology.org">info@ibiology.org</a>.
 
         <input type="url" id="ibio_educator_proof_url" name="ibio_educator_proof_url" placeholder="https://" value="<?php echo esc_attr( $website_url ); ?>"/>
     </p>
