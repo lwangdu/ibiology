@@ -126,10 +126,10 @@ function ibio_pretty_duration( $total_duration ){
 
 // display a list of audiences
 // takes in an array of terms
-function ibio_display_audiences( $audiences ){
+function ibio_display_audiences( $audiences, $label = "Audience: " ){
     $audience = '';
     if (!empty($audiences) && is_array($audiences)) {
-        $audience .= '<div>Audience: <ul class="audiences">';
+        $audience .= "<div>$label<ul class='audiences'>";
         foreach ($audiences as $a) {
             $audience .= "<li title='{$a->name}' class='audience {$a->slug}'><span>{$a->name}</span></li> ";
         }

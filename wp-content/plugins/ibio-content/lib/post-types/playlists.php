@@ -190,7 +190,7 @@ class IBioPlaylist {
 
 		// do stuff that might trigger another Save
 
-        // check and update the hide_playlists site option.
+        // check and update the hide_playlists site option
 
         global $wpdb;
 
@@ -200,7 +200,50 @@ class IBioPlaylist {
 
         $success = update_option('hidden_playlists', $results, true);
 
+		//update the excerpt with the information in the playlist so we don't have to recalculate it.
 
+		if ( function_exists( 'get_field' ) ) { // only do this if ACF is active
+
+			global $post;
+
+			// get the pieces that we need to put into the excerpt for use on the playlist archive page.
+
+			$seo_description = get_post_meta($post_id, '_yoast_wpseo_metadesc', true);
+
+			// count the number of videos (database way, since I don't want to retrieve them all through a complicated query)
+
+			$p2p_playlist_talks_query = "select count(*) as t from {$wpdb->p2p} where p2p_from = $post_id and p2p_type = 'playlist_to_talks'";
+			$num_talks_result = $wpdb->get_results( $p2p_playlist_talks_query);
+			if ( is_array( $num_talks_result ) ){
+				$num_talks = array_shift($num_talks_result);
+				$num_talks = $num_talks->t;
+			} else {
+				$num_talks = 0;
+			}
+
+
+			$durations = get_field('playlist_durations_description', $post_id);
+
+			$audiences = wp_get_post_terms( $post_id, 'audience');
+			$audiences = ibio_display_audiences($audiences, '');
+
+			$educator_expanded_link = get_field('playlist_educators_link', $post_id);
+
+			// might need to move this to the display for the playlist - depends on how we intend to use it.
+			if ( !empty($educator_expanded_link) ){
+				$educator_expanded_link = "<div class='educators-more-link'><a href='$educator_expanded_link' class='button'>View Playist</a></div>";
+			}
+
+			$post->post_excerpt = "<p class='description'>$seo_description</p><div class='num_talks'>$num_talks Talks</div><div class='durations'>$durations</div>$audiences";
+			$post->post_excerpt .= "$educator_expanded_link";
+
+			wp_update_post( $post );
+
+		} 
+		
+		
+		
+		// done updating the excerpt
 
 		// re-hook this function
 		add_action( 'save_post', array( &$this, 'save_post' ), 10, 2  );
