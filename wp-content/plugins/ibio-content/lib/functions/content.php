@@ -140,6 +140,8 @@ function ibio_display_audiences( $audiences, $label = "Audience: " ){
 }
 
 // output a list of speakers for a talk, with links to their respective pages.
+// TODO:  Clean this up so there's less dubplication, since we are now displaying lists of speakers in other places.
+
 function ibio_talk_speakers_list( $label = null ){
     global $talk_speaker;
     if ( empty ($talk_speaker)  ) return;
@@ -166,4 +168,61 @@ function ibio_talk_speakers_list( $label = null ){
 
 function ibio_talks_speaker(){
     ibio_get_template_part( 'shared/related', 'speaker' );
+}
+
+// get the HTML for a list of speakers given a talk or a session.
+function ibio_get_speaker_list($post){
+
+	// figure out which relationship to use for getting the connected speakers - speaker_to_session or speaker_to_talk
+	if ( $post->post_type === IBioSession::$post_type) {
+		$connection_type = 'speaker_to_session';
+	} else {
+		$connection_type = 'speaker_to_talk';
+	}
+
+	// Get the Speakers for this talk/session
+	$talk_speakers = new WP_Query(array(
+		'post_type' => 'ibiology_speaker',
+		'connected_type' => $connection_type,  // we have to check separately for talks vs. sessions
+		'orderby' => 'meta_value',
+		'meta_key' => 'last_name',
+		'order' => 'ASC',
+		'connected_items' => $post,
+		'nopaging' => true
+	));
+
+	if ( !empty($talk_speakers) && isset($talk_speakers->posts)) {
+		$talk_speaker = $talk_speakers->posts;
+	}
+
+	// Get the list of speakers with links to their pages
+	$speaker_content = '';
+	if ( ! empty ($talk_speaker) ) {
+		$out = array();
+		foreach ( $talk_speaker as $t ){
+			$surl = get_post_permalink( $t->ID) ;
+			$out[] =  "<a href='$surl' class='speaker-link' title='{$t->post_title}'>{$t->post_title}</a>";
+		}
+		$speaker_content = "With: ";
+		$speaker_content .=  implode( ', ', $out);
+
+	}
+
+	return $speaker_content;
+
+
+}
+
+// Output a talk with the parts expanded and eductator resources highlighted, in a table format
+
+function ibio_talk_for_educators( $talk = null ){
+	if ( empty($talk) ) return;
+	global $post;
+	$post = $talk;
+
+	setup_postdata($post);
+
+	ibio_get_template_part('shared/talk', 'for-educators');
+	wp_reset_postdata();
+
 }

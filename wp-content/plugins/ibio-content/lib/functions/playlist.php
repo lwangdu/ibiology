@@ -146,8 +146,8 @@ function ibio_talks_playlist_expanded($playlist = null, $maxitems = 0, $orderby=
 
 
 	global $talks, $sessions;
-	$talks = ibio_playlist_items( $playlist, 'playlist_to_talks',  $audience, $orderby);
-	$sessions = ibio_playlist_items( $playlist, 'playlist_to_session',  $audience);
+	$talks = ibio_playlist_items( $playlist, 'playlist_to_talks', $orderby);
+	$sessions = ibio_playlist_items( $playlist, 'playlist_to_session');
 
 
 	if ( $talks->have_posts( ) || $sessions->have_posts( ) ) {
