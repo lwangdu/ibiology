@@ -122,7 +122,20 @@ if ( is_array( $videos ) ) {
     $resources = get_field( 'educator_resources' );
     
     if ( !empty( $resources ) ){
-    	echo '<a href="#educator-resources">Educator Resources for this Talk</a>';
+    	$resources_page = get_option( 'ibio_teaching_tools_resource_page');
+    	if ( $resources_page) {
+    		$resources_url = get_post_permalink( $resources_page );
+	    } else {
+		    $resources_url = '';
+	    }
+
+	    if ( strpos($resources_url, '?') ){
+    		$resources_url .= "&tid={$post->ID}";
+	    } else {
+		    $resources_url .= "?tid={$post->ID}";
+	    }
+
+    	echo "<a href='$resources_url'>Educator Resources for this Talk</a>";
     }
     
     echo '<div class="row">';
