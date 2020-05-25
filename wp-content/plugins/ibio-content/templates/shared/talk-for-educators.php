@@ -12,7 +12,7 @@ $resources = get_field( 'educator_resources' );
 
 ?>
 
-<section>
+<section class="flex-split">
 	<div class="two-thirds first">
 		<p><?php echo $description; ?></p>
 		<p><?php echo $speakers_list; ?></p>
