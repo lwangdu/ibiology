@@ -21,7 +21,7 @@ $resources = get_field( 'educator_resources' );
 		<?php echo get_the_post_thumbnail($post, 'large');?>
 	</figure>
 </section>
-
+<p class="copyright">Content created by <a href="https://ibiology.org">iBiology</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a></p>
 <table class="expanded-talks">
 	<thead>
 	<tr><th>Title</th>

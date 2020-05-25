@@ -150,9 +150,24 @@ function ibio_talks_playlist_expanded($playlist = null, $maxitems = 0, $orderby=
 	$sessions = ibio_playlist_items( $playlist, 'playlist_to_session');
 
 
-	if ( $talks->have_posts( ) || $sessions->have_posts( ) ) {
-		ibio_get_template_part("shared/expanded", "talks-table");
+	if ( $talks->have_posts( ) ) {
 
+		echo "<ul class='grid large'>";
+
+		while ($talks->have_posts() ){
+			global $post;
+			$talks->the_post();
+			ibio_get_template_part("shared/list", 'talk-with-resources');
+		}
+
+
+		echo "</ul>";
+
+
+	}
+
+	if ( $sessions->have_posts() ){
+		ibio_get_template_part("shared/expanded", "talks-table");
 	}
 
 

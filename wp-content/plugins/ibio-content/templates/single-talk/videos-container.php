@@ -124,7 +124,7 @@ if ( is_array( $videos ) ) {
     if ( !empty( $resources ) ){
     	$resources_page = get_option( 'ibio_teaching_tools_resource_page');
     	if ( $resources_page) {
-    		$resources_url = get_post_permalink( $resources_page );
+    		$resources_url = get_permalink( $resources_page );
 	    } else {
 		    $resources_url = '';
 	    }
