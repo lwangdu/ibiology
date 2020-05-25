@@ -152,7 +152,7 @@ function ibio_talks_playlist_expanded($playlist = null, $maxitems = 0, $orderby=
 
 	if ( $talks->have_posts( ) ) {
 
-		echo "<ul class='grid large'>";
+		echo "<ul class='big_card_layout'>";
 
 		while ($talks->have_posts() ){
 			global $post;
