@@ -17,8 +17,22 @@ function ibio_setup_talk_display(){
 function ibio_talk_title($title){
 	global $talk_to_display;
 
-	return $talk_to_display->post_title;
+	$page = get_queried_object();
+	if ( $title === $page->post_title ){
+		return $talk_to_display->post_title;
+	} else {
+		return $title;
+	}
 
+
+}
+
+function ibio_filter_breadcrumb(){
+	add_filter('the_title', 'ibio_talk_title');
+}
+
+function ibio_undo_filter_breadcrumb(){
+	remove_filter('the_title', 'ibio_talk_title');
 }
 
 function ibio_dynamic_post_crumb( $crumbs, $args=null){
@@ -52,8 +66,10 @@ add_action('wp_head', 'ibio_setup_talk_display');
 
 //remove_action('genesis_entry_header', 'genesis_do_post_title');
 add_filter( 'genesis_post_title_text', 'ibio_talk_title', 20, 2);
+add_action( 'genesis_before_loop', 'ibio_filter_breadcrumb', 8);
+add_action( 'genesis_before_loop', 'ibio_undo_filter_breadcrumb', 22 );
 
-add_filter( 'genesis_build_crumbs', 'ibio_dynamic_post_crumb', 20, 2);
+//add_filter( 'genesis_build_crumbs', 'ibio_dynamic_post_crumb', 20, 2);
 
 remove_action('genesis_loop', 'genesis_do_loop');
 add_action('genesis_loop', 'ibio_extract_talk');
