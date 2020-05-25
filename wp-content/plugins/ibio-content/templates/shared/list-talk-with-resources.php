@@ -31,10 +31,10 @@ if ( strpos($resources_url, '?') ){
 }
 ?>
 
-<li class='talk-list-item item'>
+<li class='list-item item'>
 <figure class="post-image"><a href="<?php echo $resources_url ?>"><?php the_post_thumbnail(); ?></a></figure>
 <h3 class="entry-title"><a href="<?php echo $resources_url ?>"><?php echo $title; ?></a></h3>
-    <p class="description"><?php echo $description; ?></p>
+    <p class="excerpt"><?php echo $description; ?></p>
     <p class="icon-video"> <?php echo $num_parts; ?> videos </p>
     <a class="button" href="<?php echo $resources_url?>">View Seminar Resources</a>
 </li>
