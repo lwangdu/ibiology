@@ -226,3 +226,10 @@ function ibio_talk_for_educators( $talk = null ){
 	wp_reset_postdata();
 
 }
+
+// make a link to the transcript page
+function ibio_transcript_link( $post_id, $counter = 1 ){
+	$transcript_container_link = get_the_permalink( get_option( 'ibio_transcript_page' ) );
+	return $transcript_container_link . "?tid=$post_id&part=$counter";
+
+}

@@ -53,7 +53,14 @@ if ( !empty( $videos ) ) :
 			$subtitles .= '</ul>';
 
 		}
-		$transcript = (isset( $v[ 'transcript' ] ) &&  strlen($v[ 'transcript' ]) > 1) ?   "Transcript available and coming soon" : '';
+
+		if ( !empty( $v[ 'transcript' ] ) ){
+		    $transcript_link = ibio_transcript_link( $post->ID, $counter );
+		    $transcript = "<a href='$transcript_link' target='_blank'>View/Download Transcript</a>";
+        } else {
+		    $transcript = 'N/A';
+        }
+
 
 
 		?>
