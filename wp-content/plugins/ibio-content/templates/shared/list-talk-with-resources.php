@@ -41,6 +41,6 @@ $audience_list = wp_get_post_terms( $post->ID, 'audience' );
 <h3 class="entry-title"><a href="<?php echo $resources_url ?>"><?php echo $title; ?></a></h3>
     <p class="excerpt"><?php echo $description; ?></p>
     <p class="icon-video"> <?php echo $num_parts; ?> videos </p>
-    <?php echo ibio_display_audiences( $audience_list ); ?>
+    <?php echo ibio_display_audiences( $audience_list, '' ); ?>
     <div class="item-footer"><a class="button" href="<?php echo $resources_url?>">View Seminar Resources</a></div>
 </li>
