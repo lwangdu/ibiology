@@ -30,7 +30,7 @@ if ( strpos($resources_url, '?') ){
 	$resources_url .= "?tid={$post->ID}";
 }
 
-$audience_list = wp_get_post_terms( $this_talk->ID, 'audience' );
+$audience_list = wp_get_post_terms( $post->ID, 'audience' );
 
 
 
