@@ -23,7 +23,7 @@ if ( is_active_sidebar( 'above-resource-tables' ) ){
 	<thead>
 	<tr><th>Title</th>
 		<th>Video</th>
-		<th>Description</th>
+        <th class="part-description">Description</th>
 		<th>Duration</th>
 		<th>Video Downloads</th>
 		<th>Transcript</th>
@@ -33,24 +33,29 @@ if ( is_active_sidebar( 'above-resource-tables' ) ){
 
 <?php
 
-foreach($talks->posts as $t){
-	global $post;
-	$post = $t;
+if (!empty ( $talks ) ) {
 
-	setup_postdata($post);
+	foreach ( $talks->posts as $t ) {
+		global $post;
+		$post = $t;
 
-	ibio_get_template_part( 'shared/expanded' , 'talks-table-row');
+		setup_postdata( $post );
 
+		ibio_get_template_part( 'shared/expanded', 'talks-table-row' );
+
+	}
 }
 
-foreach($sessions->posts as $t){
-	global $post;
-	$post = $t;
+if (!empty ( $sessions ) ) {
+	foreach ( $sessions->posts as $t ) {
+		global $post;
+		$post = $t;
 
-	setup_postdata($post);
+		setup_postdata( $post );
 
-	ibio_get_template_part( 'shared/expanded' , 'talks-table-row');
+		ibio_get_template_part( 'shared/expanded', 'talks-table-row' );
 
+	}
 }
 
 ?>

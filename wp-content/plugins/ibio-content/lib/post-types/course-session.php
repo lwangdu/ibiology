@@ -33,8 +33,8 @@ class IBioSession {
 		add_filter('admin_body_class', array( &$this, 'admin_body_class' ) );
 		add_filter( 'enter_title_here', array( &$this,'default_title') );
 	
-		//add_action( 'save_post', array( &$this, 'save_post' ), 10, 2 );
-		//add_action( 'acf/save_post', array( &$this, 'acf_save_post' ), 10, 2 );
+		add_action( 'save_post', array( &$this, 'save_post' ), 10, 2 );
+		add_action( 'acf/save_post', array( &$this, 'acf_save_post' ), 10, 2 );
 
 		
 	}
@@ -173,13 +173,14 @@ class IBioSession {
 	
 	public function save_post($post_id){
 
-		// dont do this on auosave.
-    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
-        return;
+		// dont do this on auosave
+
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+         return;
 
     // verify this came from the our screen and with proper authorization,
     // because save_post can be triggered at other times
-		
+
 		$post = get_post($post_id);
 
   	if (!isset($post->post_type) || self::$post_type != $post->post_type ) {
@@ -187,16 +188,24 @@ class IBioSession {
 		}
 
     // Check permissions
-    if ( self::$post_type == $_POST['post_type'] )
+    /* if ( self::$post_type == $_POST['post_type'] )
     {
       if ( !current_user_can( 'edit_' . self::$post_type, $post_id ) )
           return;
-    }
+    }*/
 
 		// unhook this function so it doesn't loop infinitely
 		remove_action( 'save_post', array( &$this, 'save_post' ) );
 
 		// do stuff that might trigger another Save
+
+		// check for educator resources
+		$er = get_post_meta($post->ID, 'educator_resources', true);
+		if ( strlen($er) ) {
+			$meta_id = update_post_meta($post->ID, 'has_educator_resources', 'Educator Resources');
+		} else {
+			$res = delete_post_meta($post->ID, 'has_educator_resources');
+		}
 
 
 		// re-hook this function

@@ -26,6 +26,8 @@ if ( !empty( $videos ) ) :
 		$audio_download = isset( $v[ 'audio_download' ] ) ?  esc_url( $v[ 'audio_download' ] ) : '';
 		$video_url = isset( $v[ 'video_url' ] ) ? esc_html( $v[ 'video_url' ] ) : '';
 
+		$video_description = isset( $v['video_description'] ) ? $v['video_description'] : '';
+
 		$video_thumbnail = isset( $v[ 'video_thumbnail' ] ) ? $v[ 'video_thumbnail' ] : '';
 		$video_thumbnail_img = '';
 		if ( is_array( $video_thumbnail ) ){
@@ -66,8 +68,9 @@ if ( !empty( $videos ) ) :
 		?>
 		<tr>
 			<td><?php echo $title; ?></td>
-			<td><?php echo $video_thumbnail_img;?><a href="<?php echo $part_permalink; ?>">View</a></td>
-			<td>N/A</td>
+			<td><?php echo $video_thumbnail_img;?><a href="<?php echo $part_permalink; ?>">Watch on iBiology</a>
+            <br/><a href="<?php echo $video_url; ?>">Watch on YouTube</a></td>
+			<td class="part-description"><?php echo $video_description; ?></td>
 			<td><?php echo $length; ?></td>
 			<td class="controls">
 				<?php echo "$download_link $download_low_res_link $audio_download_link $subtitles ";?>
