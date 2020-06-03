@@ -36,10 +36,11 @@ class IBioContent{
 		
 		
 
-		add_action('admin_enqueue_scripts', array( &$this, 'load_admin_scripts' ));
+		add_action( 'admin_enqueue_scripts', array( &$this, 'load_admin_scripts' ));
 		add_action( 'wp_enqueue_scripts', array( &$this, 'load_scripts' ) );
-		add_action('wp_loaded', array(&$this, 'create_connection_types'), 10);
-		add_action ('init', array(&$this, 'create_taxonomies' ), 10 );
+		add_action( 'wp_loaded', array(&$this, 'create_connection_types'), 10);
+		add_action( 'widgets_init', array( &$this, 'register_sidebars' ) );
+		add_action('init', array(&$this, 'create_taxonomies' ), 10 );
 		
 		add_filter( 'rewrite_rules_array', array( &$this, 'rewrite_rules' ) );
 		add_filter( 'post_type_link', array( &$this, 'ibio_permalink') , 20, 4 );
@@ -190,7 +191,32 @@ class IBioContent{
         )
     ));
     
-    
+	}
+
+	/*
+	 * Widget areas that appear above resources tables
+	 */
+
+	function register_sidebars(){
+		register_sidebar( array(
+			'name'          => __( 'Above Resource Tables', 'ibio' ),
+			'id'            => 'above-resource-tables',
+			'description'   => __( 'Widget for content above the educator resources tables', 'ibio' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h2 class="widgettitle">',
+			'after_title'   => '</h2>',
+		) );
+
+		register_sidebar( array(
+			'name'          => __( 'Below Resource Tables', 'ibio' ),
+			'id'            => 'below-resource-tables',
+			'description'   => __( 'Widget for content below the educator resources tables', 'ibio' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h2 class="widgettitle">',
+			'after_title'   => '</h2>',
+		) );
 	}
 
 	/* Rewrite Rules for Talks

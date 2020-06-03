@@ -21,7 +21,18 @@ $resources = get_field( 'educator_resources' );
 		<?php echo get_the_post_thumbnail($post, 'large');?>
 	</figure>
 </section>
-<p class="copyright">Content created by <a href="https://ibiology.org">iBiology</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a></p>
+
+<?php
+    if ( is_active_sidebar( 'above-resource-tables' ) ){
+    ?>
+    <div class="resource-table-meta above-resource-table">
+		<?php
+		dynamic_sidebar('above-resource-tables' );
+		?>
+    </div>
+<?php
+}
+?>
 <table class="expanded-talks">
 	<thead>
 	<tr><th>Title</th>
@@ -30,13 +41,25 @@ $resources = get_field( 'educator_resources' );
 		<th>Duration</th>
 		<th>Video Downloads</th>
 		<th>Transcript</th>
-		<th class="restriced-access">Materials</th>
+		<th class="restriced-access">PDF Resources <br/>(Educators Only)</th>
 	</tr>
 	</thead>
+    <tr class="resources"><td colspan="7"><strong>Educator Resources for this talk: </strong><?php echo $resources;?></td></tr>
 
 	<?php ibio_get_template_part('shared/expanded', 'talks-table-row-parts');?>
 
-	<tr class="resources"><td colspan="7"><strong>Educator Resources for this talk: </strong><?php echo $resources;?></td></tr>
 
 </table>
 
+<?php
+
+if ( is_active_sidebar( 'below-resource-tables' ) ){
+	?>
+    <div class="resource-table-meta below-resource-table">
+		<?php
+		dynamic_sidebar('below-resource-tables' );
+		?>
+    </div>
+	<?php
+
+}

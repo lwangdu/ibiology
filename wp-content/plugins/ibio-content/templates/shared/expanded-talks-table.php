@@ -8,7 +8,15 @@ global $sessions;
 global $columns;
 $columns = 7;
 
-
+if ( is_active_sidebar( 'above-resource-tables' ) ){
+    ?>
+    <div class="resource-table-meta above-resource-table">
+    <?php
+    dynamic_sidebar('above-resource-tables' );
+    ?>
+    </div>
+    <?php
+}
 ?>
 
 <table class="expanded-talks">
@@ -19,7 +27,7 @@ $columns = 7;
 		<th>Duration</th>
 		<th>Video Downloads</th>
 		<th>Transcript</th>
-		<th class="restriced-access">Materials</th>
+		<th class="restriced-access">PDF Resources<br/>(Educators Only)</th>
 	</tr>
 	</thead>
 
@@ -47,3 +55,16 @@ foreach($sessions->posts as $t){
 
 ?>
 </table>
+
+<?php
+
+if ( is_active_sidebar( 'below-resource-tables' ) ){
+	?>
+    <div class="resource-table-meta below-resource-table">
+		<?php
+		dynamic_sidebar('below-resource-tables' );
+		?>
+    </div>
+    <?php
+
+}
