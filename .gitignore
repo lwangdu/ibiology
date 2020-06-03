@@ -154,3 +154,14 @@ wp-content/*.sql
 wp-content/themes/genesis/
 wp-content/themes/genesis-sample/
 wp-content/themes/landscape/
+
+wp-content/plugins/atomic-blocks/
+wp-content/plugins/download-monitor/
+wp-content/plugins/loginpress/
+wp-content/plugins/powerpress/
+wp-content/plugins/rcp-aweber-pro/
+wp-content/plugins/rcp-custom-redirects/
+wp-content/plugins/restrict-content-pro-download-monitor/
+wp-content/plugins/restrict-content-pro/
+wp-content/plugins/ultimate-addons-for-gutenberg/
+wp-content/themes/twentytwenty/
