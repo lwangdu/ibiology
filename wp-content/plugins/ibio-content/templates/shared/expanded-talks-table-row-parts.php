@@ -68,8 +68,8 @@ if ( !empty( $videos ) ) :
 		?>
 		<tr>
 			<td><?php echo $title; ?></td>
-			<td><?php echo $video_thumbnail_img;?><a href="<?php echo $part_permalink; ?>">Watch on iBiology</a>
-            <br/><a href="<?php echo $video_url; ?>">Watch on YouTube</a></td>
+			<td><?php echo $video_thumbnail_img;?><a href="<?php echo $part_permalink; ?>" target="_blank">Watch on iBiology</a>
+            <br/><a href="<?php echo $video_url; ?>" target="_blank">Watch on YouTube</a></td>
 			<td class="part-description"><?php echo $video_description; ?></td>
 			<td><?php echo $length; ?></td>
 			<td class="controls">
