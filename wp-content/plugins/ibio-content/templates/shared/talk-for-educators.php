@@ -35,13 +35,14 @@ $resources = get_field( 'educator_resources' );
 ?>
 <table class="expanded-talks">
 	<thead>
-	<tr><th>Title</th>
-		<th>Video</th>
+	<tr><th class="title">Title</th>
+        <th class="video">Video</th>
         <th class="part-description">Description</th>
-		<th>Duration</th>
-		<th>Video Downloads</th>
-		<th>Transcript</th>
-		<th class="restriced-access">PDF Resources <br/>(Educators Only)</th>
+        <th class="concepts">Concepts</th>
+        <th class="duration">Duration</th>
+        <th class="resource-downloads">Video Downloads</th>
+        <th class="transcript">Transcript</th>
+        <th class="restricted-access">PDF Resources<br/>(Educators Only)</th>
 	</tr>
 	</thead>
     <tr class="resources"><td colspan="7"><strong>Educator Resources for this talk: </strong><?php echo $resources;?></td></tr>

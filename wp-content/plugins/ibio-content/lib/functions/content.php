@@ -129,7 +129,7 @@ function ibio_pretty_duration( $total_duration ){
 function ibio_display_audiences( $audiences, $label = "Audience: " ){
     $audience = '';
     if (!empty($audiences) && is_array($audiences)) {
-        $audience .= "<div>$label<ul class='audiences'>";
+        $audience .= "<div class='audience-list'>$label<ul class='audiences'>";
         foreach ($audiences as $a) {
             $audience .= "<li title='{$a->name}' class='audience {$a->slug}'><span>{$a->name}</span></li> ";
         }

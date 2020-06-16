@@ -27,6 +27,7 @@ if ( !empty( $videos ) ) :
 		$video_url = isset( $v[ 'video_url' ] ) ? esc_html( $v[ 'video_url' ] ) : '';
 
 		$video_description = isset( $v['video_description'] ) ? $v['video_description'] : '';
+		$concepts = isset( $v['video_concepts'] ) ? $v['video_concepts'] : '';
 
 		$video_thumbnail = isset( $v[ 'video_thumbnail' ] ) ? $v[ 'video_thumbnail' ] : '';
 		$video_thumbnail_img = '';
@@ -48,7 +49,7 @@ if ( !empty( $videos ) ) :
 		$subtitles = '';
 		if ( is_array( $subtitle_downloads ) ) {
 
-			$subtitles = "<p class='subtitle-downloads'>Download with subtitles in:</p> <ul class='downloads-list'>";
+			$subtitles = "<p class='subtitle-downloads'>Subtitled:</p> <ul class='downloads-list'>";
 			foreach ( $subtitle_downloads as $d ) {
 				$subtitles .= "<li><a href='{$d['video_download_url']}' download class='download' target='_blank'>{$d['language']}</a></li>";
 			}
@@ -67,16 +68,17 @@ if ( !empty( $videos ) ) :
 
 		?>
 		<tr>
-			<td><?php echo $title; ?></td>
-			<td><?php echo $video_thumbnail_img;?><a href="<?php echo $part_permalink; ?>" target="_blank">Watch on iBiology</a>
+			<td class="title"><?php echo $title; ?></td>
+			<td class="video"><?php echo $video_thumbnail_img;?><a href="<?php echo $part_permalink; ?>" target="_blank">Watch on iBiology</a>
             <br/><a href="<?php echo $video_url; ?>" target="_blank">Watch on YouTube</a></td>
+            <td class="concepts"><?php echo $concepts; ?></td>
 			<td class="part-description"><?php echo $video_description; ?></td>
-			<td><?php echo $length; ?></td>
-			<td class="controls">
+			<td class="duration"><?php echo $length; ?></td>
+			<td class="resource-downloads controls">
 				<?php echo "$download_link $download_low_res_link $audio_download_link $subtitles ";?>
 
 			</td>
-			<td><?php echo $transcript; ?></td>
+			<td class="transcript"><?php echo $transcript; ?></td>
 			<td class="restriced-access"></td>
 		</tr>
 
