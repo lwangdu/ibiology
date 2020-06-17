@@ -15,31 +15,10 @@ function ibio_data_tables_scripts(){
 
 }
 
-// Get everything that has educator resources (sessions and talks) and display them in a table.
-function ibio_catalog(){
-
-	$args = array(
-		'post_type' => array( IBioTalk::$post_type, IBioSession::$post_type),
-		'post_status' => 'publish',
-		'meta_key' => 'has_educator_resources',
-		'posts_per_page' => -1
-
-	);
-
-	global $talks;
-
-	$talks = new WP_Query( $args );
-
-	//var_dump( $talks);
-
-	if ( $talks->have_posts() && function_exists( 'ibio_get_template_part' ) ){
-		ibio_get_template_part( 'shared/expanded-talks', 'table');
-	}
-
-}
-
 
 add_action( 'wp_enqueue_scripts', 'ibio_data_tables_scripts' );
-add_action( 'genesis_loop', 'ibio_catalog' );
+if (function_exists('ibio_catalog') ) {
+	add_action( 'genesis_loop', 'ibio_catalog' );
+}
 
 genesis();

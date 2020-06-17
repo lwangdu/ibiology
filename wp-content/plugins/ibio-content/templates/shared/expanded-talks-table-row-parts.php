@@ -71,8 +71,8 @@ if ( !empty( $videos ) ) :
 			<td class="title"><?php echo $title; ?></td>
 			<td class="video"><?php echo $video_thumbnail_img;?><a href="<?php echo $part_permalink; ?>" target="_blank">Watch on iBiology</a>
             <br/><a href="<?php echo $video_url; ?>" target="_blank">Watch on YouTube</a></td>
+ 			<td class="part-description"><?php echo $video_description; ?></td>
             <td class="concepts"><?php echo $concepts; ?></td>
-			<td class="part-description"><?php echo $video_description; ?></td>
 			<td class="duration"><?php echo $length; ?></td>
 			<td class="resource-downloads controls">
 				<?php echo "$download_link $download_low_res_link $audio_download_link $subtitles ";?>

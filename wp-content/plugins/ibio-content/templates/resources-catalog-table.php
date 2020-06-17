@@ -1,0 +1,170 @@
+<?php
+
+/* Template for the resource catalog */
+
+$args = array(
+	'post_type' => array( IBioTalk::$post_type, IBioSession::$post_type),
+	'post_status' => 'publish',
+	'meta_key' => 'has_educator_resources',
+	'posts_per_page' => -1
+
+);
+
+
+// Get all the speakers for the talks we'll need and put them in an array map
+
+$speakers_query = 'select p2p.p2p_from as \'speaker\', p.post_title as \'name\', p2p.p2p_to as \'talk\' from wp_p2p as p2p, wp_posts p  where p2p.p2p_type = \'speaker_to_talk\' and p2p.p2p_from = p.ID;';
+global $wpdb;
+$speakers_results = $wpdb->get_results( $speakers_query );
+
+$speakers_map = array();
+
+foreach ($speakers_results as $r ){
+	if ( isset( $speakers_map[ $r->talk] ) ){
+		$speakers_map[ $r->talk][] = array( 'id' => $r->speaker, 'name' => $r->name );
+	} else {
+		$speakers_map[ $r->talk] = array( array( 'id' => $r->speaker, 'name' => $r->name ));
+	}
+}
+
+
+//var_dump($speakers_map);
+
+$talks = new WP_Query( $args );
+
+if ($talks->have_posts()):
+	?>
+
+	<table class="expanded-talks catalog">
+		<thead>
+		<tr><th class="title">Title</th>
+			<th class="video">Video</th>
+			<th class="talk_type">Type</th>
+			<th class="linked-talk">Appears In</th>
+			<th class="audience">Audience</th>
+			<th class="part-description">Description</th>
+			<th class="concepts">Concepts</th>
+			<th class="speaker">Speaker(s)</th>
+			<th class="resource-downloads">Video Downloads</th>
+			<th class="transcript">Transcript</th>
+			<th class="restricted-access">PDF Resources<br/>(Educators Only)</th>
+		</tr>
+		</thead>
+
+		<?php
+
+		global $post;
+		while( $talks->have_posts() ):
+			$talks->the_post();
+
+			$permalink = get_post_permalink( $post->ID );
+			$part_permalink = $permalink;
+
+			$talk_type = $post->post_type === IBioTalk::$post_type ? 'Research Talk' : 'Flipped Course';
+
+			$helptext = 'title="Right-click to save media file directly."';
+
+			/* Loop through all of the videos and display details about them */
+			$videos = get_field( 'videos' );
+			$talk_title = get_field('short_title');
+
+			if ( !empty( $videos ) ) :
+			$counter = 0;
+
+			$appears_in = "<a href='$permalink'>$talk_title</a>";
+
+			$speakers = '';
+			if ( isset( $speakers_map[ $post->ID ] ) ){
+				foreach ( $speakers_map[ $post->ID ] as $s ){
+						$link = get_post_permalink( $s['id']  );
+						$speakers .= "<a href='$link' class='speaker-link'>{$s['name']}</a> ";
+				}
+			}
+
+			foreach( $videos as $v ) :
+				$counter++;
+				$title = isset( $v[ 'part_title' ] ) ?  esc_attr( $v[ 'part_title' ] ) : '';
+				if ( $post->post_type === IBioTalk::$post_type ){
+					$title = "Part $counter: $title";
+					$part_permalink = "$permalink#part-$counter";
+				}
+				$download = isset( $v[ 'video_download_url' ] ) ?  esc_url( $v[ 'video_download_url' ] ) : '';
+				$audio_download = isset( $v[ 'audio_download' ] ) ?  esc_url( $v[ 'audio_download' ] ) : '';
+				$video_url = isset( $v[ 'video_url' ] ) ? esc_html( $v[ 'video_url' ] ) : '';
+
+				$video_description = isset( $v['video_description'] ) ? $v['video_description'] : '';
+				$concepts = isset( $v['video_concepts'] ) ? $v['video_concepts'] : '';
+
+				$video_thumbnail = isset( $v[ 'video_thumbnail' ] ) ? $v[ 'video_thumbnail' ] : '';
+				$video_thumbnail_img = '';
+				if ( is_array( $video_thumbnail ) ){
+					$img_src = $video_thumbnail['sizes']['thumbnail'];
+					$video_thumbnail_img = "<a href='$part_permalink'><img src='$img_src' alt='$title' class=''></a>";
+				}
+
+				$size = isset( $v[ 'download_size' ] ) ?  '<span class="size">' . esc_attr( $v[ 'download_size' ] ) . '</span>' : '';
+				$length = isset( $v[ 'video_length' ] ) ?  '<span class="length">' . esc_attr( $v[ 'video_length' ] ) . '</span>' : '';
+
+				$download_link = !empty($download) ? "<a href='$download' target='_blank' download class='download hi-res' $helptext>Hi-Res</a>" : '';
+				$download_low_res = !empty( $download ) ? str_replace('hi.mp4', 'lo.mp4', $download) : 'null';
+				$download_low_res_link = !empty($download_low_res) ? "<a href='$download_low_res' target='_blank' download class='download lo-res' $helptext>Low-Res</a>" : '';
+				$audio_download_link = !empty($audio_download) ? "<a href='$audio_download' target='_blank' download class='download' $helptext>Audio Only</a>" : '';
+
+
+				$subtitle_downloads = !empty( $v[ 'download_subtitled_video'] ) ? $v[ 'download_subtitled_video' ] : null;
+				$subtitles = '';
+				if ( is_array( $subtitle_downloads ) ) {
+
+					$subtitles = "<p class='subtitle-downloads'>Subtitled:</p> <ul class='downloads-list'>";
+					foreach ( $subtitle_downloads as $d ) {
+						$subtitles .= "<li><a href='{$d['video_download_url']}' download class='download' target='_blank'>{$d['language']}</a></li>";
+					}
+					$subtitles .= '</ul>';
+
+				}
+
+				$audiences = $v['target_audience'];
+				$audience = ibio_display_audiences( $audiences );
+
+				if ( !empty( $v[ 'transcript' ] ) ){
+					$transcript_link = ibio_transcript_link( $post->ID, $counter );
+					$transcript = "<a href='$transcript_link' target='_blank'>View/Download Transcript</a>";
+				} else {
+					$transcript = 'N/A';
+				}
+
+
+
+				?>
+				<tr>
+					<td class="title"><?php echo $title; ?></td>
+					<td class="video"><?php echo $video_thumbnail_img;?><a href="<?php echo $part_permalink; ?>" target="_blank">Watch on iBiology</a>
+						<br/><a href="<?php echo $video_url; ?>" target="_blank">Watch on YouTube</a></td>
+					<td class="type"><?php echo $talk_type; ?></td>
+					<td class="linked-talk"><?php echo $appears_in; ?></td>
+					<td class="audience"><?php echo $audience; ?></td>
+
+					<td class="part-description"><?php echo $video_description; ?></td>
+					<td class="concepts"><?php echo $concepts; ?></td>
+					<td class="speakers"><?php echo $speakers; ?></td>
+					<td class="resource-downloads controls">
+						<?php echo "$download_link $download_low_res_link $audio_download_link $subtitles ";?>
+
+					</td>
+					<td class="transcript"><?php echo $transcript; ?></td>
+					<td class="restriced-access"></td>
+				</tr>
+
+				<?php
+			endforeach; //foreach ( $videos as $v )
+		endif; //( !empty( $videos )
+		endwhile; // have_posts
+
+
+		?>
+
+
+	</table>
+	<?php
+
+endif; //have_posts

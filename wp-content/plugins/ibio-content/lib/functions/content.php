@@ -233,3 +233,13 @@ function ibio_transcript_link( $post_id, $counter = 1 ){
 	return $transcript_container_link . "?tid=$post_id&part=$counter";
 
 }
+
+// Get everything that has educator resources (sessions and talks) and display them in a table.
+function ibio_catalog(){
+
+
+	if (  function_exists( 'ibio_get_template_part' ) ){
+		ibio_get_template_part( 'resources-catalog', 'table');
+	}
+
+}
