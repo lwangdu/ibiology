@@ -85,7 +85,7 @@ if ($talks->have_posts()):
 				$counter++;
 				$title = isset( $v[ 'part_title' ] ) ?  esc_attr( $v[ 'part_title' ] ) : '';
 				if ( $post->post_type === IBioTalk::$post_type ){
-					$title = "Part $counter: $title";
+					//$title = "Part $counter: $title";
 					$part_permalink = "$permalink#part-$counter";
 				}
 				$download = isset( $v[ 'video_download_url' ] ) ?  esc_url( $v[ 'video_download_url' ] ) : '';
@@ -124,7 +124,7 @@ if ($talks->have_posts()):
 				}
 
 				$audiences = $v['target_audience'];
-				$audience = ibio_display_audiences( $audiences );
+				$audience = ibio_display_audiences( $audiences, '' );
 
 				if ( !empty( $v[ 'transcript' ] ) ){
 					$transcript_link = ibio_transcript_link( $post->ID, $counter );
