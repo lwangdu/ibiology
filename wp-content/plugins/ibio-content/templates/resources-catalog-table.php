@@ -81,6 +81,9 @@ if ($talks->have_posts()):
 				}
 			}
 
+			// get the educator resources content
+				$resources = get_field( 'educator_resources' );
+
 			foreach( $videos as $v ) :
 				$counter++;
 				$title = isset( $v[ 'part_title' ] ) ?  esc_attr( $v[ 'part_title' ] ) : '';
@@ -152,7 +155,7 @@ if ($talks->have_posts()):
 
 					</td>
 					<td class="transcript"><?php echo $transcript; ?></td>
-					<td class="restriced-access"></td>
+					<td class="restricted-access"><?php echo $resources; ?></td>
 				</tr>
 
 				<?php
