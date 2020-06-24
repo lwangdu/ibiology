@@ -14,6 +14,7 @@ jQuery(document).ready(function( $ ) {
         "paging":   false,
         "language": {
             "search": "Search videos with educator resources:"
-        }
+        },
+        "responsive" : "true"
     });
 } );
