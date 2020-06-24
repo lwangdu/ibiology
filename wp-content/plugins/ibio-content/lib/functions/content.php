@@ -243,3 +243,19 @@ function ibio_catalog(){
 	}
 
 }
+
+function ibio_get_resources_url( $post_id = null ){
+	$resources_page = get_option( 'ibio_teaching_tools_resource_page');
+	if ( $resources_page) {
+		$resources_url = get_permalink( $resources_page );
+	} else {
+		$resources_url = '';
+	}
+	if ( strpos($resources_url, '?') ){
+		$resources_url .= "&tid={$post_id }";
+	} else {
+		$resources_url .= "?tid={$post_id }";
+	}
+
+	return $resources_url;
+}

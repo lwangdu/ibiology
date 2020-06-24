@@ -18,17 +18,7 @@ if ( is_array( $parts) ){
     $num_parts = 0;
 }
 
-$resources_page = get_option( 'ibio_teaching_tools_resource_page');
-if ( $resources_page) {
-	$resources_url = get_permalink( $resources_page );
-} else {
-	$resources_url = '';
-}
-if ( strpos($resources_url, '?') ){
-	$resources_url .= "&tid={$post->ID}";
-} else {
-	$resources_url .= "?tid={$post->ID}";
-}
+$resources_url = ibio_get_resources_url( $post->ID );
 
 $audience_list = wp_get_post_terms( $post->ID, 'audience' );
 

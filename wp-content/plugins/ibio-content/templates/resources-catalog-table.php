@@ -27,6 +27,10 @@ foreach ($speakers_results as $r ){
 	}
 }
 
+// options for the pages that contain expanded talks.
+
+
+$expanded_talk_url = ibio_get_resources_url( null );
 
 //var_dump($speakers_map);
 
@@ -57,8 +61,9 @@ if ($talks->have_posts()):
 		while( $talks->have_posts() ):
 			$talks->the_post();
 
-			$permalink = get_post_permalink( $post->ID );
-			$part_permalink = $permalink;
+			$permalink = $expanded_talk_url . $post->ID;
+            
+			$part_permalink = get_post_permalink( $post->ID );
 
 			$talk_type = $post->post_type === IBioTalk::$post_type ? 'Research Talk' : 'Flipped Course';
 
