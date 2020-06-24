@@ -35,19 +35,19 @@ $talks = new WP_Query( $args );
 if ($talks->have_posts()):
 	?>
 
-	<table class="expanded-talks catalog">
+	<table class="expanded-talks catalog" style="width:100vw">
 		<thead>
 		<tr><th class="title">Title</th>
-			<th class="video">Video</th>
+			<th class="video nosort">Video</th>
 			<th class="talk_type">Type</th>
 			<th class="linked-talk">Appears In</th>
-			<th class="audience">Audience</th>
-			<th class="part-description">Description</th>
+			<th class="audience nosort">Audience</th>
+			<th class="part-description nosort">Description</th>
 			<th class="concepts">Concepts</th>
 			<th class="speaker">Speaker(s)</th>
-			<th class="resource-downloads">Video Downloads</th>
-			<th class="transcript">Transcript</th>
-			<th class="restricted-access">PDF Resources<br/>(Educators Only)</th>
+			<th class="resource-downloads nosort">Video Downloads</th>
+			<th class="transcript nosort">Transcript</th>
+			<th class="restricted-access nosort">PDF Resources<br/>(Educators Only)</th>
 		</tr>
 		</thead>
 
