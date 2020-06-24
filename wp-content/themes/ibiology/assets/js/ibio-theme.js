@@ -11,6 +11,9 @@ jQuery(document).ready(function( $ ) {
                 "orderable": false
         }],
         "pageLength": 300,
-        "paging":   false
+        "paging":   false,
+        "language": {
+            "search": "Search videos with educator resources:"
+        }
     });
 } );
