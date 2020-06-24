@@ -10,6 +10,7 @@ jQuery(document).ready(function( $ ) {
                 "targets": 'nosort',
                 "orderable": false
         }],
-        "pageLength": 1000
+        "pageLength": 300,
+        "paging":   false
     });
 } );
