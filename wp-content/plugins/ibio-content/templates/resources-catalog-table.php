@@ -61,9 +61,9 @@ if ($talks->have_posts()):
 		while( $talks->have_posts() ):
 			$talks->the_post();
 
-			$permalink = $expanded_talk_url . $post->ID;
-            
-			$part_permalink = get_post_permalink( $post->ID );
+			$edu_permalink = $expanded_talk_url . $post->ID;
+            $permalink = get_post_permalink( $post->ID );
+			$part_permalink = '';
 
 			$talk_type = $post->post_type === IBioTalk::$post_type ? 'Research Talk' : 'Flipped Course';
 
@@ -76,7 +76,7 @@ if ($talks->have_posts()):
 			if ( !empty( $videos ) ) :
 			$counter = 0;
 
-			$appears_in = "<a href='$permalink'>$talk_title</a>";
+			$appears_in = "<a href='$edu_permalink'>$talk_title</a>";
 
 			$speakers = '';
 			if ( isset( $speakers_map[ $post->ID ] ) ){
