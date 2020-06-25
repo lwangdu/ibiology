@@ -42,10 +42,17 @@
 
 	}
 
-
+//Add custom podcast title text.
+function before_title_podcast() {
+    if(is_single() ) {
+        echo '<h2 class="podcast-title">iBiology Podcast</h2>';
+	}
+}
 
 // force full width layout
 add_filter( 'genesis_site_layout', '__genesis_return_content_sidebar' );
 	add_action( 'genesis_header' , 'ibio_remove_podcast_embeds');
 add_action( 'genesis_after_loop', 'ibio_podcast_related_items');
+add_action('genesis_entry_header', 'before_title_podcast', 9 );
+	
 genesis();
