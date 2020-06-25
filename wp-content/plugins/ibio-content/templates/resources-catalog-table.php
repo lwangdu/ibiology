@@ -146,8 +146,8 @@ if ($talks->have_posts()):
 				?>
 				<tr>
 					<td class="title"><?php echo $title; ?></td>
-					<td class="video"><?php echo $video_thumbnail_img;?><a href="<?php echo $part_permalink; ?>" target="_blank">Watch on iBiology</a>
-						<br/><a href="<?php echo $video_url; ?>" target="_blank">Watch on YouTube</a></td>
+					<td class="video"><?php echo $video_thumbnail_img;?><div class="watch-biology"><a href="<?php echo $part_permalink; ?>" target="_blank">Watch on iBiology</a></div>
+						<div class="watch-youtube"><a href="<?php echo $video_url; ?>" target="_blank">Watch on YouTube</a></p></td>
 					<td class="type"><?php echo $talk_type; ?></td>
 					<td class="linked-talk"><?php echo $appears_in; ?></td>
 					<td class="audience"><?php echo $audience; ?></td>
