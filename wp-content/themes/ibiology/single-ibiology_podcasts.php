@@ -44,7 +44,7 @@
 
 //Add custom podcast title text.
 function before_title_podcast() {
-    if(is_single() ) {
+    {
         echo '<h2 class="podcast-title">iBiology Podcast</h2>';
 	}
 }
