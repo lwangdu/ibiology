@@ -6,7 +6,7 @@ global $sessions;
 
 // to keep us honest about how many table columns we are displaying
 global $columns;
-$columns = 8;
+$columns = 7;
 
 if ( is_active_sidebar( 'above-resource-tables' ) ){
     ?>
@@ -23,7 +23,6 @@ if ( is_active_sidebar( 'above-resource-tables' ) ){
 	<thead>
 	<tr><th class="title">Title</th>
 		<th class="video">Video</th>
-        <th class="part-description">Description</th>
         <th class="concepts">Concepts</th>
 		<th class="duration">Duration</th>
 		<th class="resource-downloads">Video Downloads</th>
