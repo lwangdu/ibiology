@@ -22,7 +22,7 @@ $speaker_content = ibio_get_speaker_list( $post );
             <span class="session-title"><?php echo $post->post_title; ?></span>
             <p class="description"><?php echo $description; ?></p>
             <p class="speakers-list"><?php echo $speaker_content;?></p>
-            <p class="session-link">Share this session with your students:<a href="<?php echo $permalink;?>" target="_blank">Link</a>.</p>
+            <p class="session-link">Share this session with your students: <a href="<?php echo $permalink;?>" target="_blank">Here</a>.</p>
         </th>
         <td ><?php echo $resources;?></td>
         </tr>
