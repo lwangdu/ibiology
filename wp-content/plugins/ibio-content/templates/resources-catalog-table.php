@@ -46,7 +46,6 @@ if ($talks->have_posts()):
 			<th class="talk-type">Type</th>
 			<th class="linked-talk">Appears In</th>
 			<th class="audience nosort">Audience</th>
-			<th class="part-description nosort">Description</th>
 			<th class="concepts">Concepts</th>
 			<th class="speaker">Speaker(s)</th>
 			<th class="resource-downloads nosort">Video Downloads</th>
