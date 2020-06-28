@@ -6,7 +6,7 @@ global $sessions;
 
 // to keep us honest about how many table columns we are displaying
 global $columns;
-$columns = 7;
+$columns = 8;
 
 if ( is_active_sidebar( 'above-resource-tables' ) ){
     ?>
