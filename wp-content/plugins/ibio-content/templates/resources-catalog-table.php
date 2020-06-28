@@ -43,7 +43,7 @@ if ($talks->have_posts()):
 		<thead>
 		<tr><th class="title">Title</th>
 			<th class="video nosort">Video</th>
-			<th class="talk_type">Type</th>
+			<th class="talk-type">Type</th>
 			<th class="linked-talk">Appears In</th>
 			<th class="audience nosort">Audience</th>
 			<th class="part-description nosort">Description</th>
