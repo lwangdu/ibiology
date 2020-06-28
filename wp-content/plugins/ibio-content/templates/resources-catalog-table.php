@@ -150,7 +150,6 @@ if ($talks->have_posts()):
 					<td class="type"><?php echo $talk_type; ?></td>
 					<td class="linked-talk"><?php echo $appears_in; ?></td>
 					<td class="audience"><?php echo $audience; ?></td>
-					<td class="part-description"><?php echo $video_description; ?></td>
 					<td class="concepts"><?php echo $concepts; ?></td>
 					<td class="speakers"><?php echo $speakers; ?></td>
 					<td class="resource-downloads controls"><?php echo "$download_link $download_low_res_link $audio_download_link $subtitles ";?></td>
