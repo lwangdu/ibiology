@@ -14,6 +14,11 @@ function ibio_setup_talk_display(){
 
 }
 
+function ibio_body_class( $classes ){
+	$classes[] = 'talk-educator-resources';
+	return $classes;
+}
+
 function ibio_talk_title($title){
 	global $talk_to_display;
 
@@ -59,7 +64,9 @@ function ibio_extract_talk(){
 }
 
 // full width page
+
 add_filter( 'genesis_site_layout', '__genesis_return_full_width_content' );
+add_filter( 'body_class', 'ibio_body_class', 30);
 //add_filter('the_title', 'ibio_talk_title');
 
 add_action('wp_head', 'ibio_setup_talk_display');

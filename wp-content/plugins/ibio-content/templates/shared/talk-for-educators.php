@@ -37,7 +37,7 @@ $resources = get_field( 'educator_resources' );
 	<thead>
 	<tr><th class="title">Title</th>
         <th class="video">Video</th>
-        <th class="part-description">Description</th>
+
         <th class="concepts">Concepts</th>
         <th class="duration">Duration</th>
         <th class="resource-downloads">Video Downloads</th>
