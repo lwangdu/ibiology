@@ -134,7 +134,7 @@ function ibio_talks_playlist($playlist = null, $maxitems = 0, $audience = null, 
     wp_reset_postdata();
 }
 
-function ibio_talks_playlist_expanded($playlist = null, $maxitems = 0, $orderby=''){
+function ibio_talks_playlist_expanded($playlist = null, $maxitems = 0, $orderby='', $group_by = ''){
 
 
 	$start = 0;
@@ -150,18 +150,76 @@ function ibio_talks_playlist_expanded($playlist = null, $maxitems = 0, $orderby=
 	$sessions = ibio_playlist_items( $playlist, 'playlist_to_session');
 
 
+
 	if ( $talks->have_posts( ) ) {
 
-		echo "<ul class='big_card_layout'>";
+		if ( $group_by === 'category' ){
+			// bucket the talks into categories
+			$grouped_posts = array ( 'none ', array() );
+			$categories = array();
 
-		while ($talks->have_posts() ){
-			global $post;
-			$talks->the_post();
-			ibio_get_template_part("shared/list", 'talk-with-resources');
+			echo  "Talks: " . count( $talks->posts ) . "<br/>";
+
+			foreach ($talks->posts as $p ){
+
+				$cats = get_the_category( $p->ID );
+
+				if ( empty($cats) ) {
+					$grouped_posts['none'][] = $p;
+					//echo " <br/>Found a post with no category<br/>";
+					continue;
+				} else if ( count($cats) > 1 ){
+					$primary_cat = get_post_meta( $post->ID, '_yoast_wpseo_primary_category', true);
+
+					if ( empty($primary_cat) ) {
+						$primary_cat = array_shift( $cats );
+					} else {
+						$primary_cat = get_term( $primary_cat, 'category');
+					}
+				} else {
+					$primary_cat = array_shift( $cats );
+				}
+
+
+				if ( isset ( $categories[$primary_cat->slug]  ) ){
+					$grouped_posts[ $primary_cat->slug ][] = $p;
+				} else {
+					$categories[ $primary_cat->slug ] = $primary_cat;
+					$grouped_posts[ $primary_cat->slug ] = array ( $p );
+				}
+
+			}
+
+			usort( $categories, function($a, $b){ return $a->name > $b->name ;} );
+			
+
+			foreach ( $categories as $cat ){
+				echo "<h2>$cat->name</h2>";
+				echo "<ul class='big_card_layout'>";
+
+				foreach ( $grouped_posts[ $cat->slug ] as $p ){
+					global $post;
+					$post = $p;
+					setup_postdata( $post );
+					ibio_get_template_part("shared/list", 'talk-with-resources');
+				}
+
+				echo "</ul>";
+			}
+
+		} else {
+			echo "<ul class='big_card_layout'>";
+
+			while ($talks->have_posts() ){
+				global $post;
+				$talks->the_post();
+				ibio_get_template_part("shared/list", 'talk-with-resources');
+			}
+
+
+			echo "</ul>";
+
 		}
-
-
-		echo "</ul>";
 
 
 	}
@@ -203,7 +261,8 @@ function ibio_playlist_shortcode($atts){
         'numtalks' => 4,
         'start_index' => 0,
         'audience' => null,
-	    'expanded' => false
+	    'expanded' => false,
+	    'group_by' => null
         ) , $atts, 'ibio_playlist');
 
 
@@ -221,7 +280,7 @@ function ibio_playlist_shortcode($atts){
 	if ( $atts['expanded'] != true ) {
 		ibio_talks_playlist( $playlist, $atts['numtalks'], $atts['audience'] );
 	} else {
-		ibio_talks_playlist_expanded($playlist, $atts['numtalks'], $atts['audience']);
+		ibio_talks_playlist_expanded($playlist, $atts['numtalks'], $atts['audience'], $atts['group_by']);
 	}
 
     $playlist = ob_get_clean();
