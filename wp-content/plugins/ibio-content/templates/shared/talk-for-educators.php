@@ -45,7 +45,7 @@ $resources = get_field( 'educator_resources' );
         <th class="restricted-access">PDF Resources<br/>(Educators Only)</th>
 	</tr>
 	</thead>
-    <tr class="resources"><td colspan="6"><strong>Educator Resources for this talk: </strong><?php echo $resources;?></td><td class="restricted-access"></td></td></tr>
+    <tr class="resources"><td colspan="6"><strong>Educator Resources for this talk: </strong><?php echo $resources;?></td><td class="restricted-access"></td></tr>
 
 	<?php ibio_get_template_part('shared/expanded', 'talks-table-row-parts');?>
 
