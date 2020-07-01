@@ -158,7 +158,7 @@ function ibio_talks_playlist_expanded($playlist = null, $maxitems = 0, $orderby=
 			$grouped_posts = array ( 'none ', array() );
 			$categories = array();
 
-			echo  "Talks: " . count( $talks->posts ) . "<br/>";
+			//echo  "Talks: " . count( $talks->posts ) . "<br/>";
 
 			foreach ($talks->posts as $p ){
 
@@ -191,10 +191,10 @@ function ibio_talks_playlist_expanded($playlist = null, $maxitems = 0, $orderby=
 			}
 
 			usort( $categories, function($a, $b){ return $a->name > $b->name ;} );
-			
+
 
 			foreach ( $categories as $cat ){
-				echo "<h2>$cat->name</h2>";
+				echo "<h2 id='{$cat->slug}'>{$cat->name}</h2>";
 				echo "<ul class='big_card_layout'>";
 
 				foreach ( $grouped_posts[ $cat->slug ] as $p ){
