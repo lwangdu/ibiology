@@ -39,7 +39,7 @@ $talks = new WP_Query( $args );
 if ($talks->have_posts()):
 	?>
 
-	<table class="expanded-talks catalog" style="width:100vw">
+	<table class="expanded-talks catalog" style="width:96vw">
 		<thead>
 		<tr><th class="title">Title</th>
 			<th class="video nosort">Video</th>
