@@ -160,6 +160,8 @@ function ibio_talks_playlist_expanded($playlist = null, $maxitems = 0, $orderby=
 
 			//echo  "Talks: " . count( $talks->posts ) . "<br/>";
 
+			usort( $talks->posts, function($a, $b){ return $a->post_title <=> $b->post_title; });
+
 			foreach ($talks->posts as $p ){
 
 				$cats = get_the_category( $p->ID );
