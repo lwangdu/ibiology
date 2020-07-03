@@ -213,7 +213,7 @@ class IBioPlaylist {
 
 			// count the number of videos (database way, since I don't want to retrieve them all through a complicated query)
 
-			$p2p_playlist_talks_query = "select count(*) as t from {$wpdb->p2p} where p2p_from = $post_id and p2p_type = 'playlist_to_talks'";
+			$p2p_playlist_talks_query = "select count(*) as t from {$wpdb->p2p} where p2p_from = $post_id and p2p_type = in ('playlist_to_talks', 'playlist_to_session')";
 			$num_talks_result = $wpdb->get_results( $p2p_playlist_talks_query);
 			if ( is_array( $num_talks_result ) ){
 				$num_talks = array_shift($num_talks_result);
@@ -229,10 +229,14 @@ class IBioPlaylist {
 			$audiences = ibio_display_audiences($audiences, '');
 
 			$educator_expanded_link = get_field('playlist_educators_link', $post_id);
+			$educator_expanded_link_label = get_field ('playlist_educators_link_label', $post_id);
+			if ( empty( $educator_expanded_link_label) ){
+				$educator_expanded_link_label = "View Playlist";
+			}
 
 			// might need to move this to the display for the playlist - depends on how we intend to use it.
 			if ( !empty($educator_expanded_link) ){
-				$educator_expanded_link = "<div class='educators-more-link'><a href='$educator_expanded_link' class='button'>View Playist</a></div>";
+				$educator_expanded_link = "<div class='educators-more-link'><a href='$educator_expanded_link' class='button'>$educator_expanded_link_label</a></div>";
 			}
 
 			$post->post_excerpt = "<p class='description'>$seo_description</p><div class='num_talks'>$num_talks Talks</div><div class='durations'>$durations</div>$audiences";
