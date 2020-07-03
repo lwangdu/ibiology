@@ -75,7 +75,11 @@ if ($talks->have_posts()):
 			if ( !empty( $videos ) ) :
 			$counter = 0;
 
-			$appears_in = "<a href='$edu_permalink'>$talk_title</a>";
+			if ( $post->post_type === IBioTalk::$post_type  ) {
+				$appears_in = "<a href='$edu_permalink'>$talk_title</a>";
+			} else {
+			    $appears_in = "<a href='$permalink'>$talk_title</a>";
+            }
 
 			$speakers = '';
 			if ( isset( $speakers_map[ $post->ID ] ) ){
@@ -94,12 +98,17 @@ if ($talks->have_posts()):
 				if ( $post->post_type === IBioTalk::$post_type ){
 					//$title = "Part $counter: $title";
 					$part_permalink = "$permalink#part-$counter";
-				}
+				} else {
+				    $part_permalink = $permalink;
+                }
 				$download = isset( $v[ 'video_download_url' ] ) ?  esc_url( $v[ 'video_download_url' ] ) : '';
 				$audio_download = isset( $v[ 'audio_download' ] ) ?  esc_url( $v[ 'audio_download' ] ) : '';
 				$video_url = isset( $v[ 'video_url' ] ) ? esc_html( $v[ 'video_url' ] ) : '';
 
-				$video_description = isset( $v['video_description'] ) ? $v['video_description'] : '';
+				if ( $post->post_type === IBioSession::$post_type ) {
+					$video_description = isset( $v['video_description'] ) ? '<p class="part-description">' . $v['video_description'] . '</p>': '';
+				}
+
 				$concepts = isset( $v['video_concepts'] ) ? $v['video_concepts'] : '';
 
 				$video_thumbnail = isset( $v[ 'video_thumbnail' ] ) ? $v[ 'video_thumbnail' ] : '';
@@ -137,7 +146,7 @@ if ($talks->have_posts()):
 					$transcript_link = ibio_transcript_link( $post->ID, $counter );
 					$transcript = "<a href='$transcript_link' target='_blank'>View/Download Transcript</a>";
 				} else {
-					$transcript = 'N/A';
+					$transcript = '';
 				}
 
 
@@ -146,7 +155,8 @@ if ($talks->have_posts()):
 				<tr>
 					<td class="title"><?php echo $title; ?></td>
 					<td class="video"><?php echo $video_thumbnail_img;?><div class="watch-biology"><a href="<?php echo $part_permalink; ?>" target="_blank">Watch on iBiology</a></div>
-					<div class="watch-youtube"><a href="<?php echo $video_url; ?>" target="_blank">Watch on YouTube</a></p></td>
+					<div class="watch-youtube"><a href="<?php echo $video_url; ?>" target="_blank">Watch on YouTube</a>
+						<?php  if ( !empty ($video_description) ) echo $video_description; ?></td>
 					<td class="type"><?php echo $talk_type; ?></td>
 					<td class="linked-talk"><?php echo $appears_in; ?></td>
 					<td class="audience"><?php echo $audience; ?></td>
