@@ -213,7 +213,7 @@ class IBioPlaylist {
 
 			// count the number of videos (database way, since I don't want to retrieve them all through a complicated query)
 
-			$p2p_playlist_talks_query = "select count(*) as t from {$wpdb->p2p} where p2p_from = $post_id and p2p_type = in ('playlist_to_talks', 'playlist_to_session')";
+			$p2p_playlist_talks_query = "select count(*) as t from {$wpdb->p2p} where p2p_from = $post_id and p2p_type in ('playlist_to_talks', 'playlist_to_session')";
 			$num_talks_result = $wpdb->get_results( $p2p_playlist_talks_query);
 			if ( is_array( $num_talks_result ) ){
 				$num_talks = array_shift($num_talks_result);
