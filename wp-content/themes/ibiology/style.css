@@ -793,7 +793,7 @@ th:first-child {
 
 .site-inner {
 	clear: both;
-	padding: 40px 20px;
+	padding: 1rem 1rem;
 	word-wrap: break-word;
 }
 
