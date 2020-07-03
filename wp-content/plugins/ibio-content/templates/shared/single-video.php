@@ -115,8 +115,13 @@ echo "<div class='single-video part-$counter'>";
 
 if ( $num_parts > 1 || is_singular( IBioSession::$post_type )) {
     echo "<header><h2 class='title'>$title</h2>";
-    if (is_singular( IBioSession::$post_type ) && !empty( $v['video_description'])) {
-        echo "<div class='description'>{$v['video_description']}</div>";
+    if (is_singular( IBioSession::$post_type ))  {
+	    if (!empty( $v['video_concepts']) ) {
+		    echo "<p class='description'>{$v['video_concepts']}</p>";
+	    }
+    	if (!empty( $v['video_description']) ) {
+		    echo "<p class='description'>{$v['video_description']}</p>";
+	    }
     }
     echo "</header>";
 }
