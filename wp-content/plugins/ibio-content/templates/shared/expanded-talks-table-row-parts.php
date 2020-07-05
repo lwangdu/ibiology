@@ -25,7 +25,7 @@ if ( !empty( $videos ) ) :
 		} else {
 			$part_permalink = $permalink;
 			if ( isset( $v[ 'research_talk_link' ] ) ){
-				$part_permalink = "{$v[ 'research_talk_link' ]}#part-$counter";
+				$part_permalink = $v[ 'research_talk_link' ] ;
 
 			}
 		}
