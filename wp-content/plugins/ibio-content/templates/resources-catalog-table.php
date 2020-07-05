@@ -87,7 +87,7 @@ if ($talks->have_posts()):
 				if ( is_array( $resource_page_results ) ){
 					$playlist_page = array_shift($resource_page_results);
 					$p_id = $playlist_page->p;
-					$permalink = get_post_permalink( $p_id );
+					$permalink = get_permalink( $p_id );
 
 				}
 
