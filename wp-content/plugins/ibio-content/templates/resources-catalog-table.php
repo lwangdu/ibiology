@@ -78,6 +78,19 @@ if ($talks->have_posts()):
 			if ( $post->post_type === IBioTalk::$post_type  ) {
 				$appears_in = "<a href='$edu_permalink'>$talk_title</a>";
 			} else {
+
+			    // get the playlist for this session.
+			    global $wpdb;
+
+			    $query = "select pm.meta_value as p from {$wpdb->postmeta} pm where pm.meta_key = 'educators_link_page_id' and pm.post_id = (select pp.p2p_from from {$wpdb->p2p} pp where pp.p2p_to = {$post->ID} and pp.p2p_type = 'playlist_to_session' limit 1)";
+				$resource_page_results = $wpdb->get_results( $query);
+				if ( is_array( $resource_page_results ) ){
+					$playlist_page = array_shift($resource_page_results);
+					$p_id = $playlist_page->p;
+					$permalink = get_post_permalink( $p_id );
+
+				}
+
 			    $appears_in = "<a href='$permalink'>$talk_title</a>";
             }
 
