@@ -18,10 +18,18 @@ if ( !empty( $videos ) ) :
 	foreach( $videos as $v ) :
 		$counter++;
 		$title = isset( $v[ 'part_title' ] ) ?  esc_attr( $v[ 'part_title' ] ) : '';
+
 		if ( $post->post_type === IBioTalk::$post_type ){
-			$title = "Part $counter: $title";
+			//$title = "Part $counter: $title";
 			$part_permalink = "$permalink#part-$counter";
+		} else {
+			$part_permalink = $permalink;
+			if ( isset( $v[ 'research_talk_link' ] ) ){
+				$part_permalink = "{$v[ 'research_talk_link' ]}#part-$counter";
+
+			}
 		}
+
 		$download = isset( $v[ 'video_download_url' ] ) ?  esc_url( $v[ 'video_download_url' ] ) : '';
 		$audio_download = isset( $v[ 'audio_download' ] ) ?  esc_url( $v[ 'audio_download' ] ) : '';
 		$video_url = isset( $v[ 'video_url' ] ) ? esc_html( $v[ 'video_url' ] ) : '';

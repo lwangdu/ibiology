@@ -100,6 +100,10 @@ if ($talks->have_posts()):
 					$part_permalink = "$permalink#part-$counter";
 				} else {
 				    $part_permalink = $permalink;
+				    if ( isset( $v[ 'research_talk_link' ] ) ){
+				        $part_permalink = "{$v[ 'research_talk_link' ]}#part-$counter";
+
+                    }
                 }
 				$download = isset( $v[ 'video_download_url' ] ) ?  esc_url( $v[ 'video_download_url' ] ) : '';
 				$audio_download = isset( $v[ 'audio_download' ] ) ?  esc_url( $v[ 'audio_download' ] ) : '';
