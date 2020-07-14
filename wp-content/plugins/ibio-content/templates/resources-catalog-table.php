@@ -13,7 +13,7 @@ $args = array(
 
 // Get all the speakers for the talks we'll need and put them in an array map
 
-$speakers_query = 'select p2p.p2p_from as \'speaker\', p.post_title as \'name\', p2p.p2p_to as \'talk\' from wp_p2p as p2p, wp_posts p  where p2p.p2p_type = \'speaker_to_talk\' and p2p.p2p_from = p.ID;';
+$speakers_query = 'select p2p.p2p_from as \'speaker\', p.post_title as \'name\', p2p.p2p_to as \'talk\' from wp_p2p as p2p, wp_posts p  where p2p.p2p_type in (\'speaker_to_talk\', \'speaker_to_session\') and p2p.p2p_from = p.ID;';
 global $wpdb;
 $speakers_results = $wpdb->get_results( $speakers_query );
 
