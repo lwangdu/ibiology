@@ -76,7 +76,7 @@ if ($talks->have_posts()):
 			$counter = 0;
 
 			if ( $post->post_type === IBioTalk::$post_type  ) {
-				$appears_in = "<a href='$edu_permalink'>$talk_title</a>";
+				$appears_in = "<a href='$edu_permalink' target='_blank'>$talk_title</a>";
 			} else {
 
 			    // get the playlist for this session.
@@ -91,7 +91,7 @@ if ($talks->have_posts()):
 
 				}
 
-			    $appears_in = "<a href='$permalink'>$talk_title</a>";
+			    $appears_in = "<a href='$permalink' target='_blank' >$talk_title</a>";
             }
 
 			$speakers = '';
