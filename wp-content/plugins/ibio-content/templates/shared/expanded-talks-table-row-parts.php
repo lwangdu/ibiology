@@ -71,7 +71,7 @@ if ( !empty( $videos ) ) :
 
 		if ( !empty( $v[ 'transcript' ] ) ){
 		    $transcript_link = ibio_transcript_link( $post->ID, $counter );
-		    $transcript = "<a href='$transcript_link' target='_blank'>View/Download Transcript</a>";
+		    $transcript = "<a href='$transcript_link' target='_blank'>View Transcript</a>";
         } else {
 		    $transcript = '';
         }
@@ -81,7 +81,7 @@ if ( !empty( $videos ) ) :
 		?>
 		<tr>
 			<td class="title"><?php echo $title; ?></td>
-			<td class="video"><?php echo $video_thumbnail_img;?><div class="watch-ibiology"><a href="<?php echo $part_permalink; ?>" target="_blank">Watch on iBiology</a></div>
+			<td class="video"><?php echo $video_thumbnail_img;?><div class="watch-ibiology"><a href="<?php echo $part_permalink; ?>" target="_blank">Watch on iBio</a></div>
             <div class="watch-youtube"><a href="<?php echo $video_url; ?>" target="_blank">Watch on YouTube</a></div>
  			<?php  if ( !empty ($video_description) ) echo $video_description; ?></td>
             <td class="concepts"><?php echo $concepts; ?></td>
