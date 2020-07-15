@@ -45,7 +45,7 @@ if ( !empty( $videos ) ) :
 		$video_thumbnail_img = '';
 		if ( is_array( $video_thumbnail ) ){
 			$img_src = $video_thumbnail['sizes']['thumbnail'];
-			$video_thumbnail_img = "<a href='$part_permalink'><img src='$img_src' alt='$title' class=''></a>";
+			$video_thumbnail_img = "<a href='$part_permalink' target=\"_blank\"><img src='$img_src' alt='$title' class=''></a>";
 		}
 
 		$size = isset( $v[ 'download_size' ] ) ?  '<span class="size">' . esc_attr( $v[ 'download_size' ] ) . '</span>' : '';
