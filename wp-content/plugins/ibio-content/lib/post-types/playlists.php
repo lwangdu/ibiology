@@ -224,6 +224,9 @@ class IBioPlaylist {
 
 
 			$durations = get_field('playlist_durations_description', $post_id);
+			if ( !empty( $durations ) ) {
+				$durations = "<p class='durations'>$durations</p>";
+			}
 
 			$audiences = wp_get_post_terms( $post_id, 'audience');
 			$audiences = ibio_display_audiences($audiences, '');
@@ -239,7 +242,7 @@ class IBioPlaylist {
 				$educator_expanded_link = "<div class='educators-more-link'><a href='$educator_expanded_link' class='button'>$educator_expanded_link_label</a></div>";
 			}
 
-			$post->post_excerpt = "<p class='description'>$seo_description</p><div class='num_talks'>$num_talks Talks</div><div class='durations'>$durations</div>$audiences";
+			$post->post_excerpt = "<p class='description'>$seo_description</p><p class='num_talks'>$num_talks Talks</p>$durations $audiences";
 			$post->post_excerpt .= "$educator_expanded_link";
 
 			wp_update_post( $post );
