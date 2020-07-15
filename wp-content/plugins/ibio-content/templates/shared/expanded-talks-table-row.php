@@ -13,6 +13,7 @@ $permalink = get_post_permalink( $post );
 $resources = get_field( 'educator_resources' );
 
 $speaker_content = ibio_get_speaker_list( $post );
+$speaker_content = preg_replace( '/<a /', '<a target="_blank" ', $speaker_content);
 
 
     /* Show the single row that shows the name and description of the talk or session. */

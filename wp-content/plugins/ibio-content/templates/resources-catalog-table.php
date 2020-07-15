@@ -98,7 +98,7 @@ if ($talks->have_posts()):
 			if ( isset( $speakers_map[ $post->ID ] ) ){
 				foreach ( $speakers_map[ $post->ID ] as $s ){
 						$link = get_post_permalink( $s['id']  );
-						$speakers .= "<a href='$link' class='speaker-link'>{$s['name']}</a> ";
+						$speakers .= "<a href='$link' class='speaker-link' target='_blank'>{$s['name']}</a> ";
 				}
 			}
 
