@@ -225,12 +225,24 @@ function ibio_display_posts_with_short_title( $output, $original_atts, $image, $
 	
 	$url = get_the_permalink();	
 	$title = "<h3 class='entry-title'><a href='$url'>$title</a></h3>";	
+
+	// if the post we are displaying is an ibio custom post type, we want to use a div for the span tag normally used around an excerpt.
+	global $post;
+	if ( $post->post_type == IBioSession::$post_type
+	     || $post->post_type == IBioPlaylist::$post_type
+		|| $post->post_type == IBioTalk::$post_type
+	) {
+		$excerpt = preg_replace( '/^<span/', '<div', $excerpt);
+		$excerpt = preg_replace( '/<\/span>$/', '<\/div>', $excerpt);
+	}
 	// Now let's rebuild the output
 	$output = '<' . $inner_wrapper . ' class="' . implode( ' ', $class ) . '">' . $image . $title . $date . $excerpt . $content . '</' . $inner_wrapper . '>';
- 
+
+
 	// Finally we'll return the modified output
 	return $output;
 }
+
 
 add_filter( 'display_posts_shortcode_output', 'ibio_display_posts_with_short_title', 10, 9 );
 
