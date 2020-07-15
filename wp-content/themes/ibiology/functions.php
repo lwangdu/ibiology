@@ -232,8 +232,8 @@ function ibio_display_posts_with_short_title( $output, $original_atts, $image, $
 	     || $post->post_type == IBioPlaylist::$post_type
 		|| $post->post_type == IBioTalk::$post_type
 	) {
-		$excerpt = preg_replace( '/^<span/', '<div', $excerpt);
-		$excerpt = preg_replace( '/<\/span>$/', '<\/div>', $excerpt);
+		$excerpt = preg_replace( '/<span class="excerpt"/', '<div class="excerpt"' , $excerpt);
+		$excerpt = preg_replace( '/<\/span>$/', '</div>', $excerpt);
 	}
 	// Now let's rebuild the output
 	$output = '<' . $inner_wrapper . ' class="' . implode( ' ', $class ) . '">' . $image . $title . $date . $excerpt . $content . '</' . $inner_wrapper . '>';
