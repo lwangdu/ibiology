@@ -161,7 +161,7 @@ if ($talks->have_posts()):
 
 				if ( !empty( $v[ 'transcript' ] ) ){
 					$transcript_link = ibio_transcript_link( $post->ID, $counter );
-					$transcript = "<a href='$transcript_link' target='_blank'>View/Download Transcript</a>";
+					$transcript = "<a href='$transcript_link' target='_blank'>View Transcript</a>";
 				} else {
 					$transcript = '';
 				}
