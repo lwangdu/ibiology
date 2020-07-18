@@ -138,10 +138,10 @@ add_filter( 'body_class', 'ibio_session_body_class');
 
 add_action('genesis_entry_header', 'ibio_talks_info', 12);
 add_action( 'genesis_entry_content', 'ibio_lecture_header', 6);
-add_action('genesis_entry_content', 'ibio_ed_resources', 11);
+// add_action('genesis_entry_content', 'ibio_ed_resources', 11);
 add_action('genesis_entry_content', 'ibio_talks_videos', 12);
 add_action('genesis_entry_content', 'ibio_disucssion_questions', 12);
-// add_action('genesis_entry_content', 'ibio_related_resources', 20);
+add_action('genesis_entry_content', 'ibio_related_resources', 20);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 22);
 
 
