@@ -92,7 +92,7 @@ if ($talks->have_posts()):
 
 				}
 
-			    $appears_in = "{$playlist->post_title}<br/><a href='$permalink' target='_blank' >$talk_title</a>";
+			    $appears_in = "$talk_title<br/><a href='$permalink' target='_blank' >{$playlist->post_title}</a>";
             }
 
 			$speakers = '';
