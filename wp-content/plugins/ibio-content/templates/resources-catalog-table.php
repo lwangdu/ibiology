@@ -122,6 +122,7 @@ if ($talks->have_posts()):
 				$audio_download = isset( $v[ 'audio_download' ] ) ?  esc_url( $v[ 'audio_download' ] ) : '';
 				$video_url = isset( $v[ 'video_url' ] ) ? esc_html( $v[ 'video_url' ] ) : '';
 
+				$video_description = '';
 				if ( $post->post_type === IBioSession::$post_type ) {
 					$video_description = isset( $v['video_description'] ) ? '<p class="part-description">' . $v['video_description'] . '</p>': '';
 				}
