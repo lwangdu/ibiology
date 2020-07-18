@@ -117,7 +117,7 @@ if ( $num_parts > 1 || is_singular( IBioSession::$post_type )) {
     echo "<header><h2 class='title'>$title</h2>";
     if (is_singular( IBioSession::$post_type ))  {
 	    if (!empty( $v['video_concepts']) ) {
-		    echo "<p class='description'>{$v['video_concepts']}</p>";
+		    echo "<p class='description'><strong>Concepts:</strong> {$v['video_concepts']}</p>";
 	    }
     	if (!empty( $v['video_description']) ) {
 		    echo "<p class='description'>{$v['video_description']}</p>";

@@ -141,7 +141,7 @@ add_action( 'genesis_entry_content', 'ibio_lecture_header', 6);
 add_action('genesis_entry_content', 'ibio_ed_resources', 11);
 add_action('genesis_entry_content', 'ibio_talks_videos', 12);
 add_action('genesis_entry_content', 'ibio_disucssion_questions', 12);
-add_action('genesis_entry_content', 'ibio_related_resources', 20);
+// add_action('genesis_entry_content', 'ibio_related_resources', 20);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 22);
 
 
