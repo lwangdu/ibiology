@@ -93,7 +93,7 @@ if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) {
 	remove_filter( 'the_content', 'A2A_SHARE_SAVE_add_to_content', 98 ); // don't show the share buttons as part of the content
 }
 add_action( 'genesis_entry_content', 'ibio_lecture_header', 5);
-add_action('genesis_entry_content', 'ibio_ed_resources', 11);
+// add_action('genesis_entry_content', 'ibio_ed_resources', 11);
 add_action('genesis_entry_content', 'ibio_disucssion_questions', 12);
 add_action('genesis_entry_content', 'ibio_talks_speaker', 22);
 
