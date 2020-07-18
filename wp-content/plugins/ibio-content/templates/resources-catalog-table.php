@@ -87,11 +87,12 @@ if ($talks->have_posts()):
 				if ( is_array( $resource_page_results ) ){
 					$playlist_page = array_shift($resource_page_results);
 					$p_id = $playlist_page->p;
+					$playlist = get_post($p_id);
 					$permalink = get_permalink( $p_id );
 
 				}
 
-			    $appears_in = "<a href='$permalink' target='_blank' >$talk_title</a>";
+			    $appears_in = "{$playlist->post_title}<br/><a href='$permalink' target='_blank' >$talk_title</a>";
             }
 
 			$speakers = '';
