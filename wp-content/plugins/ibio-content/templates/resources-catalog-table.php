@@ -43,7 +43,6 @@ if ($talks->have_posts()):
 		<thead>
 		<tr><th class="title">Title</th>
 			<th class="video nosort">Video</th>
-			<th class="talk-type">Type</th>
 			<th class="linked-talk">Appears In</th>
 			<th class="audience nosort">Audience</th>
 			<th class="concepts">Concepts</th>
@@ -64,7 +63,7 @@ if ($talks->have_posts()):
             $permalink = get_post_permalink( $post->ID );
 			$part_permalink = '';
 
-			$talk_type = $post->post_type === IBioTalk::$post_type ? 'Research Talk' : 'Flipped Course';
+			$talk_type = $post->post_type === IBioTalk::$post_type ? 'Research Talk: ' : '';
 
 			$helptext = 'title="Right-click to save media file directly."';
 
@@ -92,7 +91,7 @@ if ($talks->have_posts()):
 
 				}
 
-			    $appears_in = "$talk_title<br/><a href='$permalink' target='_blank' >{$playlist->post_title}</a>";
+			    $appears_in = "<a href='$permalink' target='_blank' >{$playlist->post_title}</a><br/>$talk_title";
             }
 
 			$speakers = '';
@@ -176,8 +175,7 @@ if ($talks->have_posts()):
 					<td class="video"><?php echo $video_thumbnail_img;?><div class="watch-biology"><a href="<?php echo $part_permalink; ?>" target="_blank">Watch on iBiology</a></div>
 					<div class="watch-youtube"><a href="<?php echo $video_url; ?>" target="_blank">Watch on YouTube</a>
 						<?php  if ( !empty ($video_description) ) echo $video_description; ?></td>
-					<td class="type"><?php echo $talk_type; ?></td>
-					<td class="linked-talk"><?php echo $appears_in; ?></td>
+					<td class="linked-talk"><?php echo $talk_type; ?><?php echo $appears_in; ?></td>
 					<td class="audience"><?php echo $audience; ?></td>
 					<td class="concepts"><?php echo $concepts; ?></td>
 					<td class="speakers"><?php echo $speakers; ?></td>
