@@ -16,3 +16,15 @@ if ( $resources ) {
 	echo $resources;
 	echo '</section>';
 }
+// This collaborators and credits section.
+$collaborators_credits = get_field( 'collaborators_credits' );
+
+	echo '<section class="collaborators_credits row">';
+
+if ( $collaborators_credits ) {
+	if ( !is_singular( IBioSession::$post_type ) ){
+		echo '<h3>Credits</h3>';
+	}
+	echo $collaborators_credits;
+	echo '</section>';
+}
