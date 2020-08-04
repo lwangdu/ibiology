@@ -39,7 +39,12 @@ if ( !empty($length) ) {
  *
  */
 $download_link = !empty($download) ? "<a href='$download' target='_blank' download class='download hi-res' $helptext>Hi-Res</a>" : '';
-$download_low_res = !empty( $download ) ? str_replace('hi.mp4', 'lo.mp4', $download) : 'null';
+
+$download_low_res = '';
+if ( strpos($download_link, "hi.mp4") !== false  ) {
+	$download_low_res =  str_replace('hi.mp4', 'lo.mp4', $download);
+}
+
 $download_low_res_link = !empty($download_low_res) ? "<a href='$download_low_res' target='_blank' download class='download lo-res' $helptext>Low-Res</a>" : '';
 $audio_download_link = !empty($audio_download) ? "<a href='$audio_download' target='_blank' download class='download' $helptext>Audio Only</a>" : '';
 
