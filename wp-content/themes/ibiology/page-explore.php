@@ -20,7 +20,8 @@ function ibio_explore_loop(){
     $args = array(
         'post_type' => IBioTalk::$post_type,
         'posts_per_page' => 48,
-        'post_statys' => 'publish'
+        'post_status' => 'publish',
+	    'facetwp' => true
         );
 
     $talks = new WP_Query($args);
