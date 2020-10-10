@@ -71,6 +71,8 @@ class IBioPlaylist {
 				'hierarchical'        => false,
 				'public'              => true,
 				'show_ui'             => true,
+				'show_in_rest'		  => true,
+				'rest_base' 		  => '',
 				'show_in_menu'        => true,
 				'show_in_nav_menus'   => true,
 				'show_in_admin_bar'   => true,
