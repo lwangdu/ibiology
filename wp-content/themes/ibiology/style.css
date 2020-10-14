@@ -645,8 +645,8 @@ th:first-child {
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header {
-	background-color: #333;
-	border-top: 2px solid #0099d1;
+	background-color: #262626;
+	border-top: 4px solid #0099d1;
 }
 
 .site-header > .wrap {
