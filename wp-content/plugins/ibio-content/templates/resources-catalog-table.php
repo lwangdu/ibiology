@@ -158,6 +158,8 @@ if ($talks->have_posts()):
 					}
 					$subtitles .= '</ul>';
 
+				} else{
+					$download = 'N/A';
 				}
 
 				$audiences = $v['target_audience'];
