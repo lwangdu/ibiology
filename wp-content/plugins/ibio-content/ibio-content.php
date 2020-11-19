@@ -185,6 +185,8 @@ class IBioContent{
             'not_found' => 'No audiences found.',
             'menu_name' => 'Audience',
         ),
+        'public' => true,
+        'show_in_rest' => true,
         'rewrite' => array(
             'slug' => 'audience',
             'hierarchical' => true,
