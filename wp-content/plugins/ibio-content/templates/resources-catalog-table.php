@@ -159,7 +159,7 @@ if ($talks->have_posts()):
 					$subtitles .= '</ul>';
 
 				} else{
-					$download = 'N/A';
+					$download = 'Click on the image in this column to access videos.';
 				}
 
 				$audiences = $v['target_audience'];
@@ -169,7 +169,7 @@ if ($talks->have_posts()):
 					$transcript_link = ibio_transcript_link( $post->ID, $counter );
 					$transcript = "<a href='$transcript_link' target='_blank'>View Transcript</a>";
 				} else {
-					$transcript = 'N/A';
+					$transcript = 'Click on the image in this column to access transcriptions.';
 				}
 
 
