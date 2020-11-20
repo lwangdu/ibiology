@@ -139,7 +139,7 @@ if ($talks->have_posts()):
 				$size = isset( $v[ 'download_size' ] ) ?  '<span class="size">' . esc_attr( $v[ 'download_size' ] ) . '</span>' : '';
 				$length = isset( $v[ 'video_length' ] ) ?  '<span class="length">' . esc_attr( $v[ 'video_length' ] ) . '</span>' : '';
 
-				$download_link = !empty($download) ? "<a href='$download' target='_blank' download class='download hi-res' $helptext>Hi-Res</a>" : 'Click on the image in this column to access videos.';
+				$download_link = !empty($download) ? "<a href='$download' target='_blank' download class='download hi-res' $helptext>Hi-Res</a>" : 'Access the video/transcripts from the course "Educator Resources" page.';
 				$download_low_res = '';
 				if ( strpos($download_link, "hi.mp4") !== false  ) {
 					$download_low_res =  str_replace('hi.mp4', 'lo.mp4', $download);
@@ -159,7 +159,7 @@ if ($talks->have_posts()):
 					$subtitles .= '</ul>';
 
 				} else{
-					$download = 'Click on the image in this column to access videos.';
+					$download = 'Access the video/transcripts from the course "Educator Resources" page.';
 				}
 
 				$audiences = $v['target_audience'];
@@ -169,7 +169,7 @@ if ($talks->have_posts()):
 					$transcript_link = ibio_transcript_link( $post->ID, $counter );
 					$transcript = "<a href='$transcript_link' target='_blank'>View Transcript</a>";
 				} else {
-					$transcript = 'Click on the image in this column to access transcriptions.';
+					$transcript = 'Access the video/transcripts from the course "Educator Resources" page.';
 				}
 
 
