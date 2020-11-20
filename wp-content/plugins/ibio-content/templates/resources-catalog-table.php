@@ -139,7 +139,7 @@ if ($talks->have_posts()):
 				$size = isset( $v[ 'download_size' ] ) ?  '<span class="size">' . esc_attr( $v[ 'download_size' ] ) . '</span>' : '';
 				$length = isset( $v[ 'video_length' ] ) ?  '<span class="length">' . esc_attr( $v[ 'video_length' ] ) . '</span>' : '';
 
-				$download_link = !empty($download) ? "<a href='$download' target='_blank' download class='download hi-res' $helptext>Hi-Res</a>" : 'N/A';
+				$download_link = !empty($download) ? "<a href='$download' target='_blank' download class='download hi-res' $helptext>Hi-Res</a>" : 'Click on the image in this column to access videos.';
 				$download_low_res = '';
 				if ( strpos($download_link, "hi.mp4") !== false  ) {
 					$download_low_res =  str_replace('hi.mp4', 'lo.mp4', $download);
