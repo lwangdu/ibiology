@@ -185,7 +185,7 @@
 		_combineMenus();
 
 		// run test on resize of the window
-		$( window ).resize( _combineMenus );
+		$( window ).on('resize', _combineMenus );
 		
 		ibiology.params = typeof ibiologyL10n === 'undefined' ? '' : ibiologyL10n;
 

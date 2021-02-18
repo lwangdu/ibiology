@@ -47,13 +47,13 @@ jQuery(document).ready(function($) {
         showArrows: true,
         horizontalGutter: 10,
         contentWidth: 500
-    }).bind(
+    }).on(
         'mousewheel',
         function(e)
         {
             e.preventDefault();
         }
-    );;
+    );
 
     // Turn off the transcript panel if the subtitles drop-down is clicked.
     $('.dropdown.subtitles').on('click', function(e) {
