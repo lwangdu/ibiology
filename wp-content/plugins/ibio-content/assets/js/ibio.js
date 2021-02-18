@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
 
     $('.videos .' + part).addClass('active');
 
-    $('.videos-nav li').click(function (e) {
+    $('.videos-nav li').on('click', function(e) {
         e.preventDefault();
         $('.videos .active').removeClass('active');
         $('.videos .' + $(this).data('select')).addClass('active');
@@ -27,7 +27,7 @@ jQuery(document).ready(function($) {
 
     $('.collapse').collapse();
 
-    $('.toggle').click(function (e) {
+    $('.toggle').on('click', function(e) {
         e.preventDefault();
         $("#" + $(e.target).data('toggle')).toggle(250, function(data) {
             var api = $("#" + $(e.target).data('toggle') +' .scroll-pane').data('jsp');
@@ -56,7 +56,7 @@ jQuery(document).ready(function($) {
     );;
 
     // Turn off the transcript panel if the subtitles drop-down is clicked.
-    $('.dropdown.subtitles').click( function(e) {
+    $('.dropdown.subtitles').on('click', function(e) {
          $('.dropdown.transcript .open').trigger('click');
          ;
     });
@@ -71,7 +71,7 @@ jQuery(document).ready(function($) {
 
     /****  Create Expandable sections ****/
 
-    $('.expand').click(function (e) {
+    $('.expand').on('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
         if ($(this).hasClass('isopen')) {
