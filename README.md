@@ -31,7 +31,7 @@ Without the following, the site won't work correctly at all.
 + [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/), which is used for setting meta descriptions, indirectly affects the excerpts found in search results and on Speaker Pages
 + [SearchWP](https://searchwp.com) for search
 + [FacetWP](https://facetwp.com) for filtering (see the explore page)
-+ [S2Member](https://s2member.com/) for managing access to controlled content
++ [Restrect Content Pro](https://restrictcontentpro.com/) for managing access to controlled content
 + [Display Posts Shortcode](https://wordpress.org/plugins/display-posts-shortcode/), for creating curated landing pages for various types of content 
 
 ## How to set up your own development environment
