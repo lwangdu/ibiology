@@ -132,7 +132,6 @@ jQuery(document).ready(function($) {
     }, 500);
 });
 
-});
 
 window.onYouTubeIframeAPIReady = function(){
     jQuery('.single-video .content').each(function () {

@@ -424,3 +424,10 @@ if( $query->is_main_query() && !is_admin() && is_post_type_archive( 'ibiology_po
 	}
 
 }
+
+// Stop heatbeat (missing) error on WPEngine
+add_filter( 'wpe_heartbeat_allowed_pages', function( $pages ) {
+	global $pagenow;
+	$pages[] =  $pagenow;
+	return $pages;
+});
