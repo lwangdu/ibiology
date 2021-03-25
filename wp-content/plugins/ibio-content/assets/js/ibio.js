@@ -35,7 +35,7 @@ jQuery(document).ready(function($) {
                 showArrows: true,
                 horizontalGutter: 10,
                 contentWidth: 500
-            });
+            }).scrollToX(0);
             $(e.target).toggleClass('open');
             if ( $(e.target).hasClass('open')){
                 $(e.target).text( $(e.target).data('active-label'));
