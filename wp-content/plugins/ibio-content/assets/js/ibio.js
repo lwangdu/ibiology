@@ -31,7 +31,11 @@ jQuery(document).ready(function($) {
         e.preventDefault();
         $("#" + $(e.target).data('toggle')).toggle(250, function(data) {
             var api = $("#" + $(e.target).data('toggle') +' .scroll-pane').data('jsp');
-            //if (api) api.reinitialise();
+            if (api) api.reinitialise({
+                showArrows: true,
+                horizontalGutter: 10,
+                contentWidth: 500
+            });
             $(e.target).toggleClass('open');
             if ( $(e.target).hasClass('open')){
                 $(e.target).text( $(e.target).data('active-label'));
