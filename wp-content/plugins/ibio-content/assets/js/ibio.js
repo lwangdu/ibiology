@@ -32,9 +32,13 @@ jQuery(document).ready(function($) {
         $("#" + $(e.target).data('toggle')).toggle(250, function(data) {
             var api = $("#" + $(e.target).data('toggle') +' .scroll-pane').data('jsp');
             if (api){ api.reinitialise({
-                showArrows: true,
-                horizontalGutter: 10,
-                contentWidth: 500
+                verticalDragMinHeight: 20,
+			    verticalDragMaxHeight: 20,
+			    horizontalDragMinWidth: 20,
+			    horizontalDragMaxWidth: 20
+                //showArrows: true,
+                //horizontalGutter: 10,
+                //contentWidth: 500
             });
             api.scrollToX(0);
             }
