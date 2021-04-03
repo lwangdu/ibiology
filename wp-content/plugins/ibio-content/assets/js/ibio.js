@@ -36,9 +36,6 @@ jQuery(document).ready(function($) {
 			    verticalDragMaxHeight: 20,
 			    horizontalDragMinWidth: 20,
 			    horizontalDragMaxWidth: 20
-                //showArrows: true,
-                //horizontalGutter: 10,
-                //contentWidth: 500
             });
             api.scrollToX(0);
             }
@@ -66,18 +63,6 @@ jQuery(document).ready(function($) {
 	);
 });
 
-/*
-    $('.scroll-pane').jScrollPane({
-        showArrows: true,
-        horizontalGutter: 10,
-        contentWidth: 500
-    }).on(
-        'mousewheel',
-        function(e)
-        {
-            e.preventDefault();
-        }
-    );*/
 
     // Turn off the transcript panel if the subtitles drop-down is clicked.
     $('.dropdown.subtitles').on('click', function(e) {
