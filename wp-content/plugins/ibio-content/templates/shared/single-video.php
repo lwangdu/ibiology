@@ -38,15 +38,15 @@ if ( !empty($length) ) {
  * if we have a high-res video to download, we can automatically assume there's a low-res version.
  *
  */
-$download_link = !empty($download) ? "<a href='$download' target='_blank' download class='download hi-res' $helptext>Hi-Res</a>" : '';
+$download_link = !empty($download) ? "<a href='$download' target='_blank' rel='noopener' download class='download hi-res' $helptext>Hi-Res</a>" : '';
 
 $download_low_res = '';
 if ( strpos($download_link, "hi.mp4") !== false  ) {
 	$download_low_res =  str_replace('hi.mp4', 'lo.mp4', $download);
 }
 
-$download_low_res_link = !empty($download_low_res) ? "<a href='$download_low_res' target='_blank' download class='download lo-res' $helptext>Low-Res</a>" : '';
-$audio_download_link = !empty($audio_download) ? "<a href='$audio_download' target='_blank' download class='download' $helptext>Audio Only</a>" : '';
+$download_low_res_link = !empty($download_low_res) ? "<a href='$download_low_res' target='_blank' rel='noopener' download class='download lo-res' $helptext>Low-Res</a>" : '';
+$audio_download_link = !empty($audio_download) ? "<a href='$audio_download' target='_blank' rel='noopener' download class='download' $helptext>Audio Only</a>" : '';
 
 
 
@@ -84,7 +84,7 @@ if ( is_array( $subtitle_downloads ) ){
 
     $subtitles = "<ul class='dropdown-menu'>";
     foreach ( $subtitle_downloads as $d ){
-        $subtitles .= "<li><a href='{$d['video_download_url']}' download $helptext class='download' target='_blank'>{$d['language']}</a></li>";
+        $subtitles .= "<li><a href='{$d['video_download_url']}' download $helptext class='download' target='_blank' rel='noopener'>{$d['language']}</a></li>";
     }
     $subtitles .= '</ul>';
 
