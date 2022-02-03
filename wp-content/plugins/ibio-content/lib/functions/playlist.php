@@ -241,8 +241,8 @@ function ibio_compare_playlist_posts($a, $b)
 {
 
     if (!isset($a->menu_order) || !isset($b->menu_order)) return 0;
-
-    if ($a->menu_order == $b->menu_order) return 0;
+    if ($a->menu_order == $b->menu_order) return $b->post_date > $a->post_date;
+    //if ($a->menu_order == $b->menu_order) return 0;
 
     // always sort zeroes at the end (things w/ an order supersede things w/out an order
     if ($a->menu_order == 0) return 1;
